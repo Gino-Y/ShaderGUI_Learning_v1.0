@@ -76,6 +76,16 @@ const props = defineProps({
   activeCue: { type: Object, default: null },
   composition: { type: Object, default: null },
   motionCues: { type: Array, default: () => [] },
+  visualSpecs: { type: Array, default: () => [] },
+});
+const activeVisualSpec = computed(() => {
+  if (!props.activeCue || !props.visualSpecs?.length) return null;
+  return props.visualSpecs.find((spec) => spec.cueId === props.activeCue.cueId) || null;
+});
+watch(() => activeVisualSpec.value, (newSpec) => {
+  if (newSpec) {
+    console.log('[VisualSpec] active:', newSpec.cueId, newSpec.animation?.type, newSpec.compositionBeat?.frameZone);
+  }
 });
 const leadText = computed(() => props.slide.points?.[0] || "围绕 ShaderGUI 的工程化表达建立清晰的学习路径。");
 const mentalModel = computed(() => props.slide.mentalModel || {});

@@ -22,6 +22,8 @@
 
           :motion-cues="motionCues"
 
+          :visual-specs="visualSpecs"
+
           class="mx-auto max-w-7xl"
 
         />
@@ -93,6 +95,8 @@ const storyboardSlide = computed(() =>
 );
 
 const motionCues = computed(() => storyboardSlide.value?.motionCues ?? []);
+
+const visualSpecs = computed(() => storyboardSlide.value?.visualSpecs ?? []);
 
 const visualComposition = computed(() => storyboardSlide.value?.visualComposition ?? null);
 
