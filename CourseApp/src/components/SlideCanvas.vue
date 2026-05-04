@@ -162,7 +162,9 @@ const midgroundZone = computed(() => props.composition?.midground?.position || "
 const codeFrameZone = computed(() => props.activeCue?.compositionBeat?.frameZone || "code-panel");
 
 function isActivePoint(point) {
-  const label = props.activeCue?.knowledgeFocus?.label || props.activeCue?.contentBeat || "";
+  if (!props.activeCue) return false;
+  const label = (props.activeCue.knowledgeFocus?.label || props.activeCue.contentBeat || "").trim();
+  if (!label) return false;
   return label.includes(point) || point.includes(label);
 }
 
@@ -174,7 +176,7 @@ function pointCueClass(point) {
       ? "ring-1 ring-cyan-200/60 shadow-lg shadow-cyan-500/20"
       : "";
   }
-  return props.activeCue.dynamicGuidance?.deEmphasizeOthers ? "opacity-45" : "";
+  return props.activeCue?.dynamicGuidance?.deEmphasizeOthers ? "opacity-45" : "";
 }
 
 function pointFrameZone(index) {
@@ -188,7 +190,7 @@ function pointBadgeClass(point) {
 
 function textCueClass(point) {
   if (!isActivePoint(point)) return "";
-  const shouldBlink = props.activeCue.dynamicGuidance?.visualTreatment?.blink;
+  const shouldBlink = props.activeCue?.dynamicGuidance?.visualTreatment?.blink;
   return [
     "bg-cyan-300/15 text-white shadow-lg shadow-cyan-500/20 ring-1 ring-cyan-200/60",
     shouldBlink ? "animate-storyboard-inline-blink" : "animate-storyboard-inline-pulse",
@@ -217,7 +219,7 @@ function codeLines(block) {
 
 function codeFieldCueClass(text) {
   if (!activeCodeFields.value.includes(text)) return "";
-  const shouldBlink = props.activeCue.dynamicGuidance?.visualTreatment?.blink;
+  const shouldBlink = props.activeCue?.dynamicGuidance?.visualTreatment?.blink;
   return [
     "rounded bg-emerald-300/20 px-1 text-emerald-50 shadow-lg shadow-emerald-500/25 ring-1 ring-emerald-200/60",
     shouldBlink ? "animate-storyboard-inline-blink" : "animate-storyboard-inline-pulse",
