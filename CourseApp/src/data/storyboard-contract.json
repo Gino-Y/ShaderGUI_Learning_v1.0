@@ -2,7 +2,7 @@
   "provider": "storyboard-local-spec",
   "status": "storyboard_ready",
   "module": "Module_01",
-  "generatedAt": "2026-05-04T12:05:02Z",
+  "generatedAt": "2026-05-04T13:43:42Z",
   "source": {
     "slides": "CourseApp/src/data/slides.json",
     "explorations": "CourseApp/src/data/explorations.json",
@@ -17,6 +17,9 @@
       "title": "ShaderGUI：不只是换一层皮",
       "kind": "concept",
       "sceneIndex": 0,
+      "audio": "/audio/Module_01/p00.mp3",
+      "subtitles": "/subtitles/Module_01/p00.json",
+      "transcript": "/transcripts/Module_01/Module_01-p00-逐字稿.md",
       "storyPurpose": "Use this scene to make learners understand 'ShaderGUI：不只是换一层皮' through the content beats: ShaderGUI 是 Shader 参数系统的前端工程层 / 核心目标是降低美术调参时的认知负担 / 职责是组织参数、解释含义、同步状态.",
       "layoutIntent": {
         "primaryFocus": "concept hierarchy and mental model",
@@ -81,12 +84,12 @@
             "segmentIndex": 1,
             "subtitleEventPath": "/subtitles/Module_01/p00.json",
             "subtitleEventId": "s01",
-            "timecode": 7.73
+            "timecode": 8.27
           },
           "timeRange": {
-            "start": 7.73,
-            "end": 12.59,
-            "durationMs": 4860
+            "start": 8.27,
+            "end": 13.46,
+            "durationMs": 5190
           },
           "target": "content-beat",
           "contentBeat": "ShaderGUI 是 Shader 参数系统的前端工程层",
@@ -121,9 +124,9 @@
             "highlightText": "ShaderGUI 是 Shader 参数系统的前端工程层",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 7.73,
-              "peak": 9.67,
-              "settle": 12.59,
+              "start": 8.27,
+              "peak": 10.35,
+              "settle": 13.46,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -140,7 +143,7 @@
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "7.73s-12.59s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“ShaderGUI 是 Shader 参数系统的前端工程层”，弱化其他内容；旁白：更准确地说，它是 Shader 参数系统的前端工程层。",
+          "shotInstruction": "8.27s-13.46s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“ShaderGUI 是 Shader 参数系统的前端工程层”，弱化其他内容；旁白：更准确地说，它是 Shader 参数系统的前端工程层。",
           "focusInstruction": {
             "focus": "ShaderGUI 是 Shader 参数系统的前端工程层",
             "deEmphasize": "other point cards and non-current code callouts",
@@ -161,12 +164,12 @@
             "segmentIndex": 2,
             "subtitleEventPath": "/subtitles/Module_01/p00.json",
             "subtitleEventId": "s02",
-            "timecode": 12.59
+            "timecode": 13.46
           },
           "timeRange": {
-            "start": 12.59,
-            "end": 22.12,
-            "durationMs": 9530
+            "start": 13.46,
+            "end": 23.65,
+            "durationMs": 10190
           },
           "target": "content-beat",
           "contentBeat": "核心目标是降低美术调参时的认知负担",
@@ -201,9 +204,9 @@
             "highlightText": "核心目标是降低美术调参时的认知负担",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 12.59,
-              "peak": 16.4,
-              "settle": 22.12,
+              "start": 13.46,
+              "peak": 17.54,
+              "settle": 23.65,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -220,7 +223,7 @@
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "12.59s-22.12s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“核心目标是降低美术调参时的认知负担”，弱化其他内容；旁白：Shader 负责底层渲染逻辑，ShaderGUI 负责把这些参数组织成美术能理解、能安全使用的操作界面。",
+          "shotInstruction": "13.46s-23.65s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“核心目标是降低美术调参时的认知负担”，弱化其他内容；旁白：Shader 负责底层渲染逻辑，ShaderGUI 负责把这些参数组织成美术能理解、能安全使用的操作界面。",
           "focusInstruction": {
             "focus": "核心目标是降低美术调参时的认知负担",
             "deEmphasize": "other point cards and non-current code callouts",
@@ -241,12 +244,12 @@
             "segmentIndex": 4,
             "subtitleEventPath": "/subtitles/Module_01/p00.json",
             "subtitleEventId": "s04",
-            "timecode": 26.25
+            "timecode": 28.08
           },
           "timeRange": {
-            "start": 26.25,
-            "end": 35.42,
-            "durationMs": 9170
+            "start": 28.08,
+            "end": 37.88,
+            "durationMs": 9800
           },
           "target": "content-beat",
           "contentBeat": "职责是组织参数、解释含义、同步状态",
@@ -281,9 +284,9 @@
             "highlightText": "职责是组织参数、解释含义、同步状态",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 26.25,
-              "peak": 29.92,
-              "settle": 35.42,
+              "start": 28.08,
+              "peak": 32.0,
+              "settle": 37.88,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -300,7 +303,7 @@
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "26.25s-35.42s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“职责是组织参数、解释含义、同步状态”，弱化其他内容；旁白：它真正承担的是三件事：把参数按使用逻辑组织起来，告诉使用者每个参数的意义，并在必要时自动同步材质状态。",
+          "shotInstruction": "28.08s-37.88s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“职责是组织参数、解释含义、同步状态”，弱化其他内容；旁白：它真正承担的是三件事：把参数按使用逻辑组织起来，告诉使用者每个参数的意义，并在必要时自动同步材质状态。",
           "focusInstruction": {
             "focus": "职责是组织参数、解释含义、同步状态",
             "deEmphasize": "other point cards and non-current code callouts",
@@ -320,13 +323,13 @@
           "cueId": "cue-01",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 7.73,
+            "timecode": 8.27,
             "segmentIndex": 1
           },
           "timeRange": {
-            "start": 7.73,
-            "end": 12.59,
-            "durationMs": 4860
+            "start": 8.27,
+            "end": 13.46,
+            "durationMs": 5190
           },
           "target": "content-beat",
           "contentBeat": "ShaderGUI 是 Shader 参数系统的前端工程层",
@@ -360,9 +363,9 @@
             "highlightText": "ShaderGUI 是 Shader 参数系统的前端工程层",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 7.73,
-              "peak": 9.67,
-              "settle": 12.59,
+              "start": 8.27,
+              "peak": 10.35,
+              "settle": 13.46,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -379,7 +382,7 @@
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "7.73s-12.59s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“ShaderGUI 是 Shader 参数系统的前端工程层”，弱化其他内容；旁白：更准确地说，它是 Shader 参数系统的前端工程层。",
+          "shotInstruction": "8.27s-13.46s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“ShaderGUI 是 Shader 参数系统的前端工程层”，弱化其他内容；旁白：更准确地说，它是 Shader 参数系统的前端工程层。",
           "focusInstruction": {
             "focus": "ShaderGUI 是 Shader 参数系统的前端工程层",
             "deEmphasize": "other point cards and non-current code callouts",
@@ -397,13 +400,13 @@
           "cueId": "cue-02",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 12.59,
+            "timecode": 13.46,
             "segmentIndex": 2
           },
           "timeRange": {
-            "start": 12.59,
-            "end": 22.12,
-            "durationMs": 9530
+            "start": 13.46,
+            "end": 23.65,
+            "durationMs": 10190
           },
           "target": "content-beat",
           "contentBeat": "核心目标是降低美术调参时的认知负担",
@@ -437,9 +440,9 @@
             "highlightText": "核心目标是降低美术调参时的认知负担",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 12.59,
-              "peak": 16.4,
-              "settle": 22.12,
+              "start": 13.46,
+              "peak": 17.54,
+              "settle": 23.65,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -456,7 +459,7 @@
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "12.59s-22.12s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“核心目标是降低美术调参时的认知负担”，弱化其他内容；旁白：Shader 负责底层渲染逻辑，ShaderGUI 负责把这些参数组织成美术能理解、能安全使用的操作界面。",
+          "shotInstruction": "13.46s-23.65s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“核心目标是降低美术调参时的认知负担”，弱化其他内容；旁白：Shader 负责底层渲染逻辑，ShaderGUI 负责把这些参数组织成美术能理解、能安全使用的操作界面。",
           "focusInstruction": {
             "focus": "核心目标是降低美术调参时的认知负担",
             "deEmphasize": "other point cards and non-current code callouts",
@@ -474,13 +477,13 @@
           "cueId": "cue-03",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 26.25,
+            "timecode": 28.08,
             "segmentIndex": 4
           },
           "timeRange": {
-            "start": 26.25,
-            "end": 35.42,
-            "durationMs": 9170
+            "start": 28.08,
+            "end": 37.88,
+            "durationMs": 9800
           },
           "target": "content-beat",
           "contentBeat": "职责是组织参数、解释含义、同步状态",
@@ -514,9 +517,9 @@
             "highlightText": "职责是组织参数、解释含义、同步状态",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 26.25,
-              "peak": 29.92,
-              "settle": 35.42,
+              "start": 28.08,
+              "peak": 32.0,
+              "settle": 37.88,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -533,7 +536,7 @@
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "26.25s-35.42s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“职责是组织参数、解释含义、同步状态”，弱化其他内容；旁白：它真正承担的是三件事：把参数按使用逻辑组织起来，告诉使用者每个参数的意义，并在必要时自动同步材质状态。",
+          "shotInstruction": "28.08s-37.88s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“职责是组织参数、解释含义、同步状态”，弱化其他内容；旁白：它真正承担的是三件事：把参数按使用逻辑组织起来，告诉使用者每个参数的意义，并在必要时自动同步材质状态。",
           "focusInstruction": {
             "focus": "职责是组织参数、解释含义、同步状态",
             "deEmphasize": "other point cards and non-current code callouts",
@@ -553,13 +556,13 @@
           "cueId": "deco-cue-01",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 7.73,
+            "timecode": 8.27,
             "segmentIndex": 1
           },
           "timeRange": {
-            "start": 7.73,
-            "end": 12.59,
-            "durationMs": 4859
+            "start": 8.27,
+            "end": 13.46,
+            "durationMs": 5190
           },
           "performanceType": "decoration",
           "demoType": null,
@@ -586,13 +589,13 @@
           "cueId": "perf-cue-02",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 12.59,
+            "timecode": 13.46,
             "segmentIndex": 2
           },
           "timeRange": {
-            "start": 12.59,
-            "end": 22.12,
-            "durationMs": 9530
+            "start": 13.46,
+            "end": 23.65,
+            "durationMs": 10189
           },
           "performanceType": "demo",
           "demoType": "flow-path",
@@ -638,13 +641,13 @@
           "cueId": "deco-cue-02",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 12.59,
+            "timecode": 13.46,
             "segmentIndex": 2
           },
           "timeRange": {
-            "start": 12.59,
-            "end": 22.12,
-            "durationMs": 9530
+            "start": 13.46,
+            "end": 23.65,
+            "durationMs": 10189
           },
           "performanceType": "decoration",
           "demoType": null,
@@ -671,13 +674,13 @@
           "cueId": "deco-cue-03",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 26.25,
+            "timecode": 28.08,
             "segmentIndex": 4
           },
           "timeRange": {
-            "start": 26.25,
-            "end": 35.42,
-            "durationMs": 9170
+            "start": 28.08,
+            "end": 37.88,
+            "durationMs": 9800
           },
           "performanceType": "decoration",
           "demoType": null,
@@ -724,6 +727,9 @@
       "title": "最小可行架构",
       "kind": "code",
       "sceneIndex": 1,
+      "audio": "/audio/Module_01/p01.mp3",
+      "subtitles": "/subtitles/Module_01/p01.json",
+      "transcript": "/transcripts/Module_01/Module_01-p01-逐字稿.md",
       "storyPurpose": "Use this scene to make learners understand '最小可行架构' through the content beats: C Sharp 侧继承 ShaderGUI 并重写 OnGUI / Shader 侧通过 CustomEditor 绑定自定义面板 / 所有高级面板能力都从控制 OnGUI 开始.",
       "layoutIntent": {
         "primaryFocus": "code structure and callout annotations",
@@ -787,12 +793,12 @@
             "segmentIndex": 1,
             "subtitleEventPath": "/subtitles/Module_01/p01.json",
             "subtitleEventId": "s01",
-            "timecode": 4.19
+            "timecode": 4.81
           },
           "timeRange": {
-            "start": 4.19,
-            "end": 11.06,
-            "durationMs": 6870
+            "start": 4.81,
+            "end": 12.69,
+            "durationMs": 7880
           },
           "target": "code-callout",
           "contentBeat": "C Sharp 侧继承 ShaderGUI 并重写 OnGUI",
@@ -827,9 +833,9 @@
             "highlightText": "C Sharp 侧继承 ShaderGUI 并重写 OnGUI",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 4.19,
-              "peak": 6.94,
-              "settle": 11.06,
+              "start": 4.81,
+              "peak": 7.96,
+              "settle": 12.69,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -855,7 +861,7 @@
             "spatialChange": "shift visual weight toward code-callout while keeping title and navigation static",
             "continuityRule": "do not reflow code; preserve code panel position across all beats"
           },
-          "shotInstruction": "4.19s-11.06s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“C Sharp 侧继承 ShaderGUI 并重写 OnGUI”，弱化其他内容；旁白：C Sharp 侧创建一个类，继承 ShaderGUI，并重写 OnGUI 方法。",
+          "shotInstruction": "4.81s-12.69s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“C Sharp 侧继承 ShaderGUI 并重写 OnGUI”，弱化其他内容；旁白：C Sharp 侧创建一个类，继承 ShaderGUI，并重写 OnGUI 方法。",
           "focusInstruction": {
             "focus": "C Sharp 侧继承 ShaderGUI 并重写 OnGUI",
             "deEmphasize": "other point cards and non-current code callouts",
@@ -876,12 +882,12 @@
             "segmentIndex": 2,
             "subtitleEventPath": "/subtitles/Module_01/p01.json",
             "subtitleEventId": "s02",
-            "timecode": 11.06
+            "timecode": 12.69
           },
           "timeRange": {
-            "start": 11.06,
-            "end": 16.76,
-            "durationMs": 5700
+            "start": 12.69,
+            "end": 19.23,
+            "durationMs": 6540
           },
           "target": "code-callout",
           "contentBeat": "Shader 侧通过 CustomEditor 绑定自定义面板",
@@ -916,9 +922,9 @@
             "highlightText": "Shader 侧通过 CustomEditor 绑定自定义面板",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 11.06,
-              "peak": 13.34,
-              "settle": 16.76,
+              "start": 12.69,
+              "peak": 15.31,
+              "settle": 19.23,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -942,7 +948,7 @@
             "spatialChange": "shift visual weight toward code-callout while keeping title and navigation static",
             "continuityRule": "do not reflow code; preserve code panel position across all beats"
           },
-          "shotInstruction": "11.06s-16.76s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“Shader 侧通过 CustomEditor 绑定自定义面板”，弱化其他内容；旁白：Shader 侧在文件底部用 CustomEditor 绑定这个类。",
+          "shotInstruction": "12.69s-19.23s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“Shader 侧通过 CustomEditor 绑定自定义面板”，弱化其他内容；旁白：Shader 侧在文件底部用 CustomEditor 绑定这个类。",
           "focusInstruction": {
             "focus": "Shader 侧通过 CustomEditor 绑定自定义面板",
             "deEmphasize": "other point cards and non-current code callouts",
@@ -963,12 +969,12 @@
             "segmentIndex": 4,
             "subtitleEventPath": "/subtitles/Module_01/p01.json",
             "subtitleEventId": "s04",
-            "timecode": 20.95
+            "timecode": 24.04
           },
           "timeRange": {
-            "start": 20.95,
-            "end": 30.0,
-            "durationMs": 9050
+            "start": 24.04,
+            "end": 34.42,
+            "durationMs": 10380
           },
           "target": "code-callout",
           "contentBeat": "所有高级面板能力都从控制 OnGUI 开始",
@@ -1003,9 +1009,9 @@
             "highlightText": "所有高级面板能力都从控制 OnGUI 开始",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 20.95,
-              "peak": 24.57,
-              "settle": 30.0,
+              "start": 24.04,
+              "peak": 28.19,
+              "settle": 34.42,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -1030,7 +1036,7 @@
             "spatialChange": "shift visual weight toward code-callout while keeping title and navigation static",
             "continuityRule": "do not reflow code; preserve code panel position across all beats"
           },
-          "shotInstruction": "20.95s-30.00s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“所有高级面板能力都从控制 OnGUI 开始”，弱化其他内容；旁白：后面的分组布局、条件显示、FindPropertySafe、渲染状态同步，都是建立在这个入口之上的工程能力。",
+          "shotInstruction": "24.04s-34.42s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“所有高级面板能力都从控制 OnGUI 开始”，弱化其他内容；旁白：后面的分组布局、条件显示、FindPropertySafe、渲染状态同步，都是建立在这个入口之上的工程能力。",
           "focusInstruction": {
             "focus": "所有高级面板能力都从控制 OnGUI 开始",
             "deEmphasize": "other point cards and non-current code callouts",
@@ -1050,13 +1056,13 @@
           "cueId": "cue-01",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 4.19,
+            "timecode": 4.81,
             "segmentIndex": 1
           },
           "timeRange": {
-            "start": 4.19,
-            "end": 11.06,
-            "durationMs": 6870
+            "start": 4.81,
+            "end": 12.69,
+            "durationMs": 7880
           },
           "target": "code-callout",
           "contentBeat": "C Sharp 侧继承 ShaderGUI 并重写 OnGUI",
@@ -1090,9 +1096,9 @@
             "highlightText": "C Sharp 侧继承 ShaderGUI 并重写 OnGUI",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 4.19,
-              "peak": 6.94,
-              "settle": 11.06,
+              "start": 4.81,
+              "peak": 7.96,
+              "settle": 12.69,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -1109,7 +1115,7 @@
             "spatialChange": "shift visual weight toward code-callout while keeping title and navigation static",
             "continuityRule": "do not reflow code; preserve code panel position across all beats"
           },
-          "shotInstruction": "4.19s-11.06s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“C Sharp 侧继承 ShaderGUI 并重写 OnGUI”，弱化其他内容；旁白：C Sharp 侧创建一个类，继承 ShaderGUI，并重写 OnGUI 方法。",
+          "shotInstruction": "4.81s-12.69s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“C Sharp 侧继承 ShaderGUI 并重写 OnGUI”，弱化其他内容；旁白：C Sharp 侧创建一个类，继承 ShaderGUI，并重写 OnGUI 方法。",
           "focusInstruction": {
             "focus": "C Sharp 侧继承 ShaderGUI 并重写 OnGUI",
             "deEmphasize": "other point cards and non-current code callouts",
@@ -1127,13 +1133,13 @@
           "cueId": "cue-02",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 11.06,
+            "timecode": 12.69,
             "segmentIndex": 2
           },
           "timeRange": {
-            "start": 11.06,
-            "end": 16.76,
-            "durationMs": 5700
+            "start": 12.69,
+            "end": 19.23,
+            "durationMs": 6540
           },
           "target": "code-callout",
           "contentBeat": "Shader 侧通过 CustomEditor 绑定自定义面板",
@@ -1167,9 +1173,9 @@
             "highlightText": "Shader 侧通过 CustomEditor 绑定自定义面板",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 11.06,
-              "peak": 13.34,
-              "settle": 16.76,
+              "start": 12.69,
+              "peak": 15.31,
+              "settle": 19.23,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -1186,7 +1192,7 @@
             "spatialChange": "shift visual weight toward code-callout while keeping title and navigation static",
             "continuityRule": "do not reflow code; preserve code panel position across all beats"
           },
-          "shotInstruction": "11.06s-16.76s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“Shader 侧通过 CustomEditor 绑定自定义面板”，弱化其他内容；旁白：Shader 侧在文件底部用 CustomEditor 绑定这个类。",
+          "shotInstruction": "12.69s-19.23s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“Shader 侧通过 CustomEditor 绑定自定义面板”，弱化其他内容；旁白：Shader 侧在文件底部用 CustomEditor 绑定这个类。",
           "focusInstruction": {
             "focus": "Shader 侧通过 CustomEditor 绑定自定义面板",
             "deEmphasize": "other point cards and non-current code callouts",
@@ -1204,13 +1210,13 @@
           "cueId": "cue-03",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 20.95,
+            "timecode": 24.04,
             "segmentIndex": 4
           },
           "timeRange": {
-            "start": 20.95,
-            "end": 30.0,
-            "durationMs": 9050
+            "start": 24.04,
+            "end": 34.42,
+            "durationMs": 10380
           },
           "target": "code-callout",
           "contentBeat": "所有高级面板能力都从控制 OnGUI 开始",
@@ -1244,9 +1250,9 @@
             "highlightText": "所有高级面板能力都从控制 OnGUI 开始",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 20.95,
-              "peak": 24.57,
-              "settle": 30.0,
+              "start": 24.04,
+              "peak": 28.19,
+              "settle": 34.42,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -1263,7 +1269,7 @@
             "spatialChange": "shift visual weight toward code-callout while keeping title and navigation static",
             "continuityRule": "do not reflow code; preserve code panel position across all beats"
           },
-          "shotInstruction": "20.95s-30.00s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“所有高级面板能力都从控制 OnGUI 开始”，弱化其他内容；旁白：后面的分组布局、条件显示、FindPropertySafe、渲染状态同步，都是建立在这个入口之上的工程能力。",
+          "shotInstruction": "24.04s-34.42s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“所有高级面板能力都从控制 OnGUI 开始”，弱化其他内容；旁白：后面的分组布局、条件显示、FindPropertySafe、渲染状态同步，都是建立在这个入口之上的工程能力。",
           "focusInstruction": {
             "focus": "所有高级面板能力都从控制 OnGUI 开始",
             "deEmphasize": "other point cards and non-current code callouts",
@@ -1283,13 +1289,13 @@
           "cueId": "deco-cue-01",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 4.19,
+            "timecode": 4.81,
             "segmentIndex": 1
           },
           "timeRange": {
-            "start": 4.19,
-            "end": 11.06,
-            "durationMs": 6870
+            "start": 4.81,
+            "end": 12.69,
+            "durationMs": 7880
           },
           "performanceType": "decoration",
           "demoType": null,
@@ -1316,13 +1322,13 @@
           "cueId": "deco-cue-02",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 11.06,
+            "timecode": 12.69,
             "segmentIndex": 2
           },
           "timeRange": {
-            "start": 11.06,
-            "end": 16.76,
-            "durationMs": 5700
+            "start": 12.69,
+            "end": 19.23,
+            "durationMs": 6540
           },
           "performanceType": "decoration",
           "demoType": null,
@@ -1349,13 +1355,13 @@
           "cueId": "deco-cue-03",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 20.95,
+            "timecode": 24.04,
             "segmentIndex": 4
           },
           "timeRange": {
-            "start": 20.95,
-            "end": 30.0,
-            "durationMs": 9050
+            "start": 24.04,
+            "end": 34.42,
+            "durationMs": 10380
           },
           "performanceType": "decoration",
           "demoType": null,

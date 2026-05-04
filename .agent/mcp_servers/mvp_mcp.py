@@ -4,6 +4,7 @@ import fnmatch
 import json
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 
@@ -35,6 +36,22 @@ class MVPMCP:
             )
             if install.returncode != 0:
                 return {"status": "error", "message": install.stdout.strip() + "\n" + install.stderr.strip()}
+            # 加固 1：MVP 后自动检查并生成音频
+            audio_result = MVPMCP._ensure_audio(workspace, module)
+            if audio_result["status"] != "success":
+                print(f"[MVP Harden] Audio generation failed: {audio_result.get('message')}")
+                # 音频失败不阻断 MVP，只警告
+            # 加固 2：MVP 后自动生成 storyboard 合约（防止占位符残留）
+            try:
+                sys.path.insert(0, str(workspace / ".agent"))
+                from mcp_servers.storyboard_mcp import StoryboardMCP
+                sb_result = StoryboardMCP.prepare_storyboard_contract(workspace, module)
+                if sb_result.get("status") == "success":
+                    print(f"[MVP Harden] Storyboard contract generated: {sb_result.get('slide_count')} slides")
+                else:
+                    print(f"[MVP Harden] Storyboard generation failed: {sb_result.get('message')}")
+            except Exception as sb_exc:
+                print(f"[MVP Harden] Storyboard generation error: {sb_exc}")
         except Exception as exc:
             return {"status": "error", "message": f"MVP generation failed: {exc}"}
         return {
@@ -47,6 +64,42 @@ class MVPMCP:
             "slide_count": len(slide_ids),
             "cleaned": cleaned,
         }
+
+    @staticmethod
+    def _ensure_audio(workspace: Path, module: str) -> dict:
+        """加固工序：MVP 清理后，自动检查并生成音频（含重试）"""
+        import sys
+        transcript_dir = workspace / "CourseApp" / "public" / "transcripts" / module
+        audio_dir = workspace / "CourseApp" / "public" / "audio" / module
+        if not transcript_dir.exists():
+            return {"status": "skipped", "message": "No transcripts found"}
+        # 检查是否已有音频文件
+        existing = list(audio_dir.glob("*.mp3")) if audio_dir.exists() else []
+        transcript_count = len(list(transcript_dir.glob("*.md")))
+        if len(existing) >= transcript_count:
+            print(f"[MVP Harden] Audio files already exist ({len(existing)}/{transcript_count})")
+            return {"status": "success", "message": "Audio files already exist"}
+        # 生成音频（最多重试 3 次）
+        script = workspace / "scripts" / "generate_audio.py"
+        if not script.exists():
+            return {"status": "error", "message": f"Missing script: {script}"}
+        for attempt in range(1, 4):
+            print(f"[MVP Harden] Generating audio (attempt {attempt}/3)...")
+            result = subprocess.run(
+                [sys.executable, str(script), module],
+                cwd=str(workspace),
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+            )
+            if result.returncode == 0 and audio_dir.exists():
+                generated = list(audio_dir.glob("*.mp3"))
+                if len(generated) >= transcript_count:
+                    print(f"[MVP Harden] Audio generated successfully ({len(generated)} files)")
+                    return {"status": "success", "files": [str(f) for f in generated]}
+            print(f"[MVP Harden] Attempt {attempt} failed: {result.stderr.strip() or result.stdout.strip()}")
+        return {"status": "error", "message": "Audio generation failed after 3 retries"}
 
     @staticmethod
     def _load_json(path: Path, fallback=None):
@@ -254,13 +307,27 @@ class MVPMCP:
         MVPMCP._write_json(app / "src" / "data" / "slides.json", source["slides"])
         MVPMCP._write_json(app / "src" / "data" / "quizzes.json", source["quizzes"])
         MVPMCP._write_json(app / "src" / "data" / "explorations.json", source["explorations"])
-        MVPMCP._write_json(app / "src" / "data" / "storyboard-contract.json", {
-            "provider": "storyboard-placeholder",
-            "status": "storyboard_pending",
-            "module": module,
-            "slides": [],
-            "interactiveScreens": [],
-        })
+        # 加固：只在文件不存在时才写占位符，避免覆盖已有真实数据
+        contract_path = app / "src" / "data" / "storyboard-contract.json"
+        if not contract_path.exists():
+            MVPMCP._write_json(contract_path, {
+                "provider": "storyboard-placeholder",
+                "status": "storyboard_pending",
+                "module": module,
+                "slides": [],
+                "interactiveScreens": [],
+            })
+            print(f"[MVP Harden] storyboard-contract.json placeholder written (first run)")
+        else:
+            # 文件已存在，检查是否已有真实数据
+            try:
+                existing = json.loads(contract_path.read_text(encoding="utf-8"))
+                if existing.get("status") == "storyboard_ready" and existing.get("slides"):
+                    print(f"[MVP Harden] Skipping storyboard-contract.json (has real data: {len(existing.get('slides'))} slides)")
+                else:
+                    print(f"[MVP Harden] storyboard-contract.json exists but not ready (status={existing.get('status')}), leaving for storyboard step")
+            except Exception as ex:
+                print(f"[MVP Harden] storyboard-contract.json exists but unreadable: {ex}")
 
     @staticmethod
     def _copy_course_content(workspace: Path, module: str, slides: list[dict]) -> None:

@@ -22,6 +22,12 @@
 
           :motion-cues="motionCues"
 
+          :visual-specs="visualSpecs"
+
+          :performance-specs="performanceSpecs"
+
+          :current-time="currentTime"
+
           class="mx-auto max-w-7xl"
 
         />

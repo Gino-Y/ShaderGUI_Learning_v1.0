@@ -55,6 +55,10 @@ class StoryboardMCP:
                     "title": title,
                     "kind": kind,
                     "sceneIndex": index,
+                    # 保留来自 slides.json 的关键字段
+                    "audio": slide.get("audio", ""),
+                    "subtitles": slide.get("subtitles", ""),
+                    "transcript": slide.get("transcript", ""),
                     "storyPurpose": StoryboardMCP._story_purpose(title, points),
                     "layoutIntent": StoryboardMCP._layout_intent(kind, points),
                     "visualComposition": StoryboardMCP._visual_composition(kind, title, points, index),
