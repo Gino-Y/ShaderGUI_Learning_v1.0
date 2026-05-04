@@ -57,6 +57,7 @@ class FlowState:
     contract_check_errors: list = field(default_factory=list)
     visual_ref_check_errors: list = field(default_factory=list)
     design_diagnostics: str | None = None
+    visual_spec_file: str | None = None
 
 
 class CorePipeline:
@@ -131,6 +132,7 @@ class CorePipeline:
                 return state
             state.storyboard_file = res.get("storyboard_file")
             state.storyboard_brief = res.get("brief_file")
+            state.visual_spec_file = state.storyboard_file
             val_res = StoryboardMCP.validate_storyboard_contract(
                 self.workspace, state.module, state.storyboard_file
             )
