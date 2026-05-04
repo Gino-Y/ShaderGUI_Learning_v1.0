@@ -1,0 +1,24 @@
+{
+  "candidateSlide": "p01/explore",
+  "parentSlideId": "p01",
+  "learningQuestion": "为什么 ShaderGUI 要按功能分组和条件显示属性，而不是把所有参数平铺给使用者？",
+  "manipulableVariables": [
+    "useOutline",
+    "useDissolve",
+    "outlineWidth",
+    "preset"
+  ],
+  "feedbackTargets": [
+    "panelGroups",
+    "visibleProperties",
+    "riskLevel",
+    "explanation",
+    "codeSnippet"
+  ],
+  "staticExplanationWeakness": "静态讲解可以说明分组原则，但难以让学习者亲自比较平铺参数、条件显示和风险提示之间的认知负担差异。",
+  "learnerRisk": "学习者容易把 ShaderGUI 理解成 Inspector 换皮，而忽略参数归属、条件显示和风险暴露控制。",
+  "expectedLearningGain": "通过切换功能开关和参数范围，学习者能直接观察可见属性数量、面板分组、风险提示和代码片段如何同步变化。",
+  "verifiableOutcome": "学习者能在做题页判断分组和条件显示的价值是减少当前任务无关参数，并让属性归属和代码边界更清楚。",
+  "decision": "insert",
+  "requiredEvidenceCount": 4
+}

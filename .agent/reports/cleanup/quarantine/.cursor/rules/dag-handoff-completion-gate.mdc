@@ -1,0 +1,31 @@
+---
+description: Proactive DAG + cross-handoff completion gate; never rely on chat memory to decide whether docs need updates.
+alwaysApply: true
+---
+
+# 任务收尾闸门（主动执行，禁止仅靠对话记忆）
+
+在**结束本轮工作、向用户给出完成结论之前**，先对照仓库文件执行本清单，**不得**用「我记得不用改 DAG / 不用写交接」代替。
+
+## 何时必须执行（命中任一则触发）
+
+- 修改了 `CourseApp/`（运行时、路由、数据、样式）
+- 修改了 `.agent/mcp_servers/`、`scripts/`、`CourseContent/`
+- 修改了 `.agent/templates/`
+- 修改或生成 `storyboard-contract.json`、`design-contract.json`、slides 数据等**契约**
+- 修改了 `docs/Skill_Chain_DAG.md`、`.agent/rules.md`、`.agent/SKILL.md`、`.agent/handoff/**`
+
+纯文档错别字且明确不影响契约/验收时，仍须在当日 `memory` 中写一行「无 DAG/契约影响」以满足可追溯；**不要省略三件套中的 STATE 或 memory 的当日更新**（可极简）。
+
+## 必做步骤（按顺序）
+
+1. **DAG 影响**：是否改变阶段职责、产物契约、验收标准、目录/交付定义？若**是**或**不确定** → 打开并更新 `docs/Skill_Chain_DAG.md` 对应段落（合同见 `[COMPLETION_GATE_FILE_DRIVEN]`）。
+2. **[SYNC_RULES_DAG_VERIFY]**：凡规则/验收有变 → 同步 `.agent/rules.md`、`.agent/SKILL.md`；改验证逻辑则同步根目录与模板下的 `verify_course.py`。
+3. **交叉交付三件套**：更新 `.agent/STATE.md`、`.agent/handoff/CURSOR_HANDOFF.md`、`.agent/memory/YYYY-MM-DD.md`（日期与 `verify_course.py` 检查一致），写清改动、DAG 是否受影响、`verify_course` / `npm run build` 结果。
+4. **命令**：`python scripts/verify_course.py`；若触及前端或构建相关 → `npm --prefix CourseApp run build`。
+
+## 与用户提问无关
+
+用户**没有**问「有无违规」「有没有更新 DAG」时，仍须按上表执行。**依据只能是文件与脚本输出，不能是聊天记录。**
+
+相关对齐标记：`.agent/rules.md` / `docs/Skill_Chain_DAG.md` / `.agent/SKILL.md` / `HANDOFF_PROTOCOL.md` 中的 `[COMPLETION_GATE_FILE_DRIVEN]`。

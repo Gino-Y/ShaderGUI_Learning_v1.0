@@ -1,0 +1,14 @@
+{
+  "module": "Module_01",
+  "slideIds": [
+    "p00",
+    "p01"
+  ],
+  "explorations": [
+    {
+      "parentSlideId": "p01",
+      "explorationId": "property-grouping",
+      "route": "/module/Module_01/slide/p01/explore"
+    }
+  ]
+}

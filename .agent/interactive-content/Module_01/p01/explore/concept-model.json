@@ -1,0 +1,65 @@
+{
+  "labId": "Module_01-p01-explore-property-grouping",
+  "parentSlideId": "p01",
+  "learningQuestion": "为什么 ShaderGUI 要按功能分组和条件显示属性？",
+  "state": {
+    "useOutline": true,
+    "useDissolve": false,
+    "outlineWidth": 0.06
+  },
+  "derived": {
+    "visibleGroups": [
+      "基础设置",
+      "描边设置",
+      "状态同步"
+    ],
+    "riskLevels": [
+      "清晰状态",
+      "复杂状态",
+      "需要提示"
+    ],
+    "feedback": [
+      "panelGroups",
+      "visibleProperties",
+      "explanation",
+      "codeSnippet"
+    ]
+  },
+  "interactions": [
+    {
+      "control": "toggle",
+      "target": "useOutline",
+      "feedback": [
+        "panelGroups",
+        "visibleProperties"
+      ]
+    },
+    {
+      "control": "toggle",
+      "target": "useDissolve",
+      "feedback": [
+        "panelGroups",
+        "explanation",
+        "codeSnippet"
+      ]
+    },
+    {
+      "control": "range",
+      "target": "outlineWidth",
+      "feedback": [
+        "riskLevel",
+        "explanation"
+      ]
+    },
+    {
+      "control": "preset",
+      "target": "state",
+      "feedback": [
+        "panelGroups",
+        "visibleProperties",
+        "explanation",
+        "codeSnippet"
+      ]
+    }
+  ]
+}

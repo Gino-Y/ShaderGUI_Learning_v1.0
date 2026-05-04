@@ -1,0 +1,265 @@
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+TypeError: Cannot set properties of undefined (setting 'error')
+    at handleHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26719:14)
+    at async onHMRUpdate (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26222:35)
+    at async onFileChange (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:26247:3)
+[2m19:45:14[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to parse source for import analysis because the content contains invalid JS syntax. Install @vitejs/plugin-vue to handle .vue files.
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/src/App.vue[39m:3:11
+[2m19:45:14[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to parse source for import analysis because the content contains invalid JS syntax. Install @vitejs/plugin-vue to handle .vue files.
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/src/views/SlideView.vue[39m:4:67
+[33m  3  |    <main v-else class="grid min-h-screen place-items-center">
+  4  |      <RouterLink to="/" class="text-emerald-700">返回课程首页</RouterLink>
+  5  |    </main>
+     |    ^
+  6  |  </template>
+  7  |  <script setup>[39m
+[2m19:45:14[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to parse source for import analysis because the content contains invalid JS syntax. Install @vitejs/plugin-vue to handle .vue files.
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/src/views/QuizView.vue[39m:4:110
+[33m  3  |      <section v-if="quiz" class="mx-auto max-w-5xl">
+  4  |        <RouterLink :to="`/module/${moduleId}`" class="text-sm font-medium text-emerald-700">返回模块目录</RouterLink>
+  5  |        <h1 class="mt-4 text-3xl font-semibold">{{ quiz.title }}</h1>
+     |    ^
+  6  |        <p class="mt-2 text-neutral-600">及格线 {{ quiz.passingScore }} 分。</p>
+  7  |        <form class="mt-8 grid gap-5" @submit.prevent="submitQuiz">[39m
+[2m19:45:14[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to parse source for import analysis because the content contains invalid JS syntax. Install @vitejs/plugin-vue to handle .vue files.
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/src/views/CourseHome.vue[39m:4:64
+[33m  3  |      <section class="mx-auto max-w-5xl">
+  4  |        <p class="text-sm font-medium text-emerald-700">Course</p>
+  5  |        <h1 class="mt-3 text-4xl font-semibold text-neutral-950">{{ course.title }}</h1>
+     |    ^
+  6  |        <p class="mt-3 text-lg text-neutral-600">{{ course.subtitle }}</p>
+  7  |        <div class="mt-8 grid gap-4 sm:grid-cols-2">[39m
+[2m19:45:14[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to parse source for import analysis because the content contains invalid JS syntax. Install @vitejs/plugin-vue to handle .vue files.
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/src/views/ModuleHome.vue[39m:4:89
+[33m  3  |      <section class="mx-auto max-w-5xl">
+  4  |        <RouterLink to="/" class="text-sm font-medium text-emerald-700">返回课程首页</RouterLink>
+  5  |        <h1 class="mt-6 text-3xl font-semibold text-neutral-950">{{ module?.title }}</h1>
+     |    ^
+  6  |        <p class="mt-3 text-neutral-600">{{ module?.summary }}</p>
+  7  |        <div class="mt-8 grid gap-3">[39m
+[2m19:45:57[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to parse source for import analysis because the content contains invalid JS syntax. Install @vitejs/plugin-vue to handle .vue files.[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/src/App.vue[39m:3:11
+      at TransformPluginContext._formatLog (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at TransformPluginContext.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:27618:10)
+      at async EnvironmentPluginContainer.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24512:26)
+      at async viteTransformMiddleware (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24306:20)
+[2m19:46:05[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to parse source for import analysis because the content contains invalid JS syntax. Install @vitejs/plugin-vue to handle .vue files.[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/src/App.vue[39m:3:11
+      at TransformPluginContext._formatLog (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at TransformPluginContext.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:27618:10)
+      at async EnvironmentPluginContainer.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24512:26)
+      at async viteTransformMiddleware (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24306:20)
+[2m19:46:05[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to parse source for import analysis because the content contains invalid JS syntax. Install @vitejs/plugin-vue to handle .vue files.[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/src/views/ModuleHome.vue[39m:4:89
+[33m  3  |      <section class="mx-auto max-w-5xl">
+  4  |        <RouterLink to="/" class="text-sm font-medium text-emerald-700">返回课程首页</RouterLink>
+  5  |        <h1 class="mt-6 text-3xl font-semibold text-neutral-950">{{ module?.title }}</h1>
+     |    ^
+  6  |        <p class="mt-3 text-neutral-600">{{ module?.summary }}</p>
+  7  |        <div class="mt-8 grid gap-3">[39m
+      at TransformPluginContext._formatLog (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at TransformPluginContext.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:27618:10)
+      at async EnvironmentPluginContainer.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24512:26)
+      at async viteTransformMiddleware (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24306:20)
+[2m19:46:05[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to parse source for import analysis because the content contains invalid JS syntax. Install @vitejs/plugin-vue to handle .vue files.[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/src/views/CourseHome.vue[39m:4:64
+[33m  3  |      <section class="mx-auto max-w-5xl">
+  4  |        <p class="text-sm font-medium text-emerald-700">Course</p>
+  5  |        <h1 class="mt-3 text-4xl font-semibold text-neutral-950">{{ course.title }}</h1>
+     |    ^
+  6  |        <p class="mt-3 text-lg text-neutral-600">{{ course.subtitle }}</p>
+  7  |        <div class="mt-8 grid gap-4 sm:grid-cols-2">[39m
+      at TransformPluginContext._formatLog (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at TransformPluginContext.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:27618:10)
+      at async EnvironmentPluginContainer.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24512:26)
+      at async viteTransformMiddleware (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24306:20)
+[2m19:46:05[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to parse source for import analysis because the content contains invalid JS syntax. Install @vitejs/plugin-vue to handle .vue files.[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/src/views/QuizView.vue[39m:4:110
+[33m  3  |      <section v-if="quiz" class="mx-auto max-w-5xl">
+  4  |        <RouterLink :to="`/module/${moduleId}`" class="text-sm font-medium text-emerald-700">返回模块目录</RouterLink>
+  5  |        <h1 class="mt-4 text-3xl font-semibold">{{ quiz.title }}</h1>
+     |    ^
+  6  |        <p class="mt-2 text-neutral-600">及格线 {{ quiz.passingScore }} 分。</p>
+  7  |        <form class="mt-8 grid gap-5" @submit.prevent="submitQuiz">[39m
+      at TransformPluginContext._formatLog (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at TransformPluginContext.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:27618:10)
+      at async EnvironmentPluginContainer.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24512:26)
+      at async viteTransformMiddleware (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24306:20)
+[2m19:46:05[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to parse source for import analysis because the content contains invalid JS syntax. Install @vitejs/plugin-vue to handle .vue files.[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/src/views/SlideView.vue[39m:4:67
+[33m  3  |    <main v-else class="grid min-h-screen place-items-center">
+  4  |      <RouterLink to="/" class="text-emerald-700">返回课程首页</RouterLink>
+  5  |    </main>
+     |    ^
+  6  |  </template>
+  7  |  <script setup>[39m
+      at TransformPluginContext._formatLog (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at TransformPluginContext.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:27618:10)
+      at async EnvironmentPluginContainer.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24512:26)
+      at async viteTransformMiddleware (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24306:20)
+[2m19:48:53[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to parse source for import analysis because the content contains invalid JS syntax. Install @vitejs/plugin-vue to handle .vue files.[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/src/App.vue[39m:3:11
+      at TransformPluginContext._formatLog (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at TransformPluginContext.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:27618:10)
+      at async EnvironmentPluginContainer.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24512:26)
+      at async viteTransformMiddleware (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24306:20)
+[2m19:49:08[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to parse source for import analysis because the content contains invalid JS syntax. Install @vitejs/plugin-vue to handle .vue files.[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/src/App.vue[39m:3:11
+      at TransformPluginContext._formatLog (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at TransformPluginContext.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:27618:10)
+      at async EnvironmentPluginContainer.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24512:26)
+      at async viteTransformMiddleware (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24306:20)
+[2m19:49:21[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to parse source for import analysis because the content contains invalid JS syntax. Install @vitejs/plugin-vue to handle .vue files.[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/src/App.vue[39m:3:11
+      at TransformPluginContext._formatLog (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at TransformPluginContext.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:27618:10)
+      at async EnvironmentPluginContainer.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24512:26)
+      at async viteTransformMiddleware (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24306:20)
+[2m19:49:31[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to parse source for import analysis because the content contains invalid JS syntax. Install @vitejs/plugin-vue to handle .vue files.[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/src/App.vue[39m:3:11
+      at TransformPluginContext._formatLog (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at TransformPluginContext.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:27618:10)
+      at async EnvironmentPluginContainer.transform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24512:26)
+      at async viteTransformMiddleware (file:///D:/Works/Web/ShaderGUI_Learning_v1.0/CourseApp/node_modules/vite/dist/node/chunks/node.js:24306:20)

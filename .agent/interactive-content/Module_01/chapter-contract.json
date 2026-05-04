@@ -1,0 +1,26 @@
+{
+  "moduleId": "Module_01",
+  "skill": "chapter-lab-skill",
+  "defaultChildSkill": "explorable-mini-skill",
+  "slides": [
+    {
+      "slideId": "p00",
+      "kind": "concept",
+      "learningGoal": "理解 ShaderGUI 的定位"
+    },
+    {
+      "slideId": "p01",
+      "kind": "code",
+      "learningGoal": "理解最小 ShaderGUI 架构",
+      "explore": {
+        "route": "/module/Module_01/slide/p01/explore",
+        "learningGoal": "观察属性分组如何降低调参负担",
+        "labId": "Module_01-p01-explore-property-grouping"
+      }
+    }
+  ],
+  "quizCoverage": [
+    "q04",
+    "q05"
+  ]
+}

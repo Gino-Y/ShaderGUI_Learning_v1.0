@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #020617;
+  color: #f8fafc;
+  font-family: Inter, "Microsoft YaHei", system-ui, sans-serif;
+}
+
+@keyframes storyboard-inline-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.72; }
+}
+
+@keyframes storyboard-inline-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+@keyframes storyboard-block-pulse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+.animate-storyboard-inline-pulse {
+  animation: storyboard-inline-pulse 1.4s ease-in-out infinite;
+}
+
+.animate-storyboard-inline-blink {
+  animation: storyboard-inline-blink 0.9s ease-in-out infinite;
+}
+
+.animate-storyboard-block-pulse {
+  animation: storyboard-block-pulse 1.6s ease-in-out infinite;
+}

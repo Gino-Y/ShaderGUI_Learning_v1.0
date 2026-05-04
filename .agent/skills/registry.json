@@ -1,0 +1,80 @@
+{
+  "registry": "web-interactive-content-skill-library",
+  "sourceOfTruth": ".agent/skills/",
+  "forbiddenSources": [
+    ".cursor/",
+    ".workbuddy/"
+  ],
+  "topLevelSkill": "web-interactive-content-builder",
+  "router": "skill-router",
+  "defaultComposition": {
+    "project": "ShaderGUI_Learning_v1.0",
+    "skills": [
+      "chapter-lab-skill",
+      "explorable-mini-skill"
+    ],
+    "reason": "ShaderGUI is a structured course that benefits from chapter-level navigation plus lesson-level explorable labs."
+  },
+  "skills": [
+    {
+      "name": "interactive-article-skill",
+      "pattern": "Distill",
+      "path": ".agent/skills/interactive-article-skill/SKILL.md",
+      "signals": [
+        "long-form technical explanation",
+        "research-style article",
+        "embedded interactive figures"
+      ]
+    },
+    {
+      "name": "explorable-mini-skill",
+      "pattern": "Setosa",
+      "path": ".agent/skills/explorable-mini-skill/SKILL.md",
+      "signals": [
+        "single concept",
+        "few variables",
+        "immediate feedback"
+      ]
+    },
+    {
+      "name": "parameter-playground-skill",
+      "pattern": "TensorFlow Playground",
+      "path": ".agent/skills/parameter-playground-skill/SKILL.md",
+      "signals": [
+        "many linked parameters",
+        "training or simulation loop",
+        "presets and state comparison"
+      ]
+    },
+    {
+      "name": "creative-workbench-skill",
+      "pattern": "Teachable Machine",
+      "path": ".agent/skills/creative-workbench-skill/SKILL.md",
+      "signals": [
+        "user-created artifact",
+        "collect train test export",
+        "task workflow"
+      ]
+    },
+    {
+      "name": "animated-lesson-skill",
+      "pattern": "3Blue1Brown",
+      "path": ".agent/skills/animated-lesson-skill/SKILL.md",
+      "signals": [
+        "continuous visual transformation",
+        "spatial intuition",
+        "scene and keyframe script"
+      ]
+    },
+    {
+      "name": "chapter-lab-skill",
+      "pattern": "Seeing Theory",
+      "path": ".agent/skills/chapter-lab-skill/SKILL.md",
+      "signals": [
+        "system course",
+        "module tree",
+        "reusable lesson lab grammar"
+      ]
+    }
+  ]
+}
