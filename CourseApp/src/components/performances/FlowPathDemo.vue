@@ -134,25 +134,24 @@ const particles = computed(() => {
   100% { stroke-dashoffset: 0; }
 }
 @keyframes glowPulse {
-  0% { filter: drop-shadow(0 0 2px rgba(103,232,249,0.15)); }
-  100% { filter: drop-shadow(0 0 6px rgba(103,232,249,0.35)); }
+  0% { filter: drop-shadow(0 0 3px rgba(103,232,249,0.3)); }
+  100% { filter: drop-shadow(0 0 10px rgba(103,232,249,0.7)); }
 }
 @keyframes nodeAppear {
   0% { opacity: 0; transform: scale(0.5); }
-  100% { opacity: 0.55; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
 }
 @keyframes nodeGlow {
-  0% { filter: drop-shadow(0 0 1px rgba(103,232,249,0.1)); }
-  100% { filter: drop-shadow(0 0 4px rgba(103,232,249,0.25)); }
+  0% { filter: drop-shadow(0 0 2px rgba(103,232,249,0.2)); }
+  100% { filter: drop-shadow(0 0 8px rgba(103,232,249,0.6)); }
 }
 @keyframes particleDrift {
-  0% { transform: translateX(0) translateY(0); opacity: 0.2; }
-  100% { transform: translateX(15px) translateY(-8px); opacity: 0.45; }
+  0% { transform: translateX(0) translateY(0); opacity: 0.4; }
+  100% { transform: translateX(15px) translateY(-8px); opacity: 0.8; }
 }
 .flow-path-demo {
   width: 100%;
   height: 100%;
-  opacity: 0.4;
 }
 .edge-path {
   /* stroke-dasharray/offset driving by JS to work around v-bind limitation */
