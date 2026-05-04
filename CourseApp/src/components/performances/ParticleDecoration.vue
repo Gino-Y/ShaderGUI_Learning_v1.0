@@ -20,7 +20,8 @@ function initParticles() {
   const count = props.payload?.count || 15;
   const colors = props.payload?.colors || ["#67e8f9", "#6ee7b7", "#a78bfa"];
   const [sMin, sMax] = props.payload?.speedRange || [0.2, 0.8];
-  const [oMin, oMax] = props.payload?.opacityRange || [0.15, 0.4];
+  // 降低默认不透明度，避免遮挡卡片文字
+  const [oMin, oMax] = props.payload?.opacityRange || [0.06, 0.18];
 
   particles = Array.from({ length: count }, () => ({
     x: Math.random() * w,
@@ -102,5 +103,6 @@ watch(() => props.active, (val) => {
   width: 100%;
   height: 100%;
   pointer-events: none;
+  opacity: 0.45;
 }
 </style>
