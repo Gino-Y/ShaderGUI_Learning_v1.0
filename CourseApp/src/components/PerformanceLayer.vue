@@ -1,13 +1,7 @@
 <template>
   <div class="perf-layer" v-if="activePerfSpec">
-    <FlowPathDemo
-      v-if="activePerfSpec.performanceType === 'demo' && activePerfSpec.demoType === 'flow-path'"
-      :payload="activePerfSpec.payload"
-      :duration-ms="perfDurationMs"
-      :active="true"
-    />
     <ParticleDecoration
-      v-else-if="activePerfSpec.performanceType === 'decoration'"
+      v-if="activePerfSpec.performanceType === 'decoration'"
       :payload="activePerfSpec.payload"
       :active="true"
     />
@@ -21,7 +15,6 @@
 
 <script setup>
 import { computed } from "vue";
-import FlowPathDemo from "./performances/FlowPathDemo.vue";
 import ParticleDecoration from "./performances/ParticleDecoration.vue";
 import TransitionWipe from "./performances/TransitionWipe.vue";
 
@@ -37,12 +30,6 @@ const activePerfSpec = computed(() => {
     const end = ps.timeRange?.end ?? start + 3;
     return t >= start && t < end;
   }) || null;
-});
-
-const perfDurationMs = computed(() => {
-  if (!activePerfSpec.value) return 3000;
-  const tr = activePerfSpec.value.timeRange || {};
-  return tr.durationMs || (tr.end - tr.start) * 1000 || 3000;
 });
 </script>
 

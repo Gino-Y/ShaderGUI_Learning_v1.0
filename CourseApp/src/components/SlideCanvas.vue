@@ -69,19 +69,33 @@
           <p class="mt-3 text-2xl font-semibold leading-snug text-white">{{ storyboardEmphasisText }}</p>
         </div>
       </aside>
+
+      <!-- FlowPathDemo 与主卡片同级，跨满 grid 宽度 -->
+      <section
+        v-if="showFlowPath"
+        :key="activePerfSpec?.cueId"
+        class="[grid-column:1/-1] rounded-[1.5rem] border border-cyan-300/20 bg-slate-950/80 p-4"
+      >
+        <FlowPathDemo
+          :payload="activePerfSpec.payload"
+          :duration-ms="perfDurationMs"
+          :active="true"
+        />
+      </section>
+
     </div>
 
-    <!-- 表演层：覆盖在幻灯片内容区之上 -->
+    <!-- 表演层：仅背景粒子，z-index: -1，不影响排版 -->
     <PerformanceLayer
       :perf-specs="performanceSpecs"
       :current-time="currentTime"
-      class="pointer-events-none"
     />
   </article>
 </template>
 <script setup>
 import { computed, watch } from "vue";
 import PerformanceLayer from "./PerformanceLayer.vue";
+import FlowPathDemo from "./performances/FlowPathDemo.vue";
 
 const props = defineProps({
   slide: { type: Object, required: true },
@@ -91,6 +105,28 @@ const props = defineProps({
   visualSpecs: { type: Array, default: () => [] },
   performanceSpecs: { type: Array, default: () => [] },
   currentTime: { type: Number, default: 0 },
+});
+
+// 当前激活的表演规范（供模板条件渲染 FlowPathDemo）
+const activePerfSpec = computed(() => {
+  const t = props.currentTime;
+  return props.performanceSpecs.find((ps) => {
+    const start = ps.timeRange?.start ?? 0;
+    const end = ps.timeRange?.end ?? start + 3;
+    return t >= start && t < end;
+  }) || null;
+});
+
+const showFlowPath = computed(
+  () =>
+    activePerfSpec.value?.performanceType === "demo" &&
+    activePerfSpec.value?.demoType === "flow-path"
+);
+
+const perfDurationMs = computed(() => {
+  if (!activePerfSpec.value) return 3000;
+  const tr = activePerfSpec.value.timeRange || {};
+  return tr.durationMs || (tr.end - tr.start) * 1000 || 3000;
 });
 const activeVisualSpec = computed(() => {
   if (!props.activeCue || !props.visualSpecs?.length) return null;
