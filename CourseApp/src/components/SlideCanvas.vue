@@ -11,6 +11,9 @@
               {{ slide.moduleId }} / {{ slide.slideId }}
             </span>
             <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-slate-300">{{ slide.kind || "concept" }}</span>
+            <span v-if="activeVisualSpec" class="rounded-full bg-emerald-300/10 px-3 py-1 text-xs text-emerald-200">
+              {{ activeVisualSpec.animation?.type }} · {{ activeVisualSpec.compositionBeat?.frameZone }}
+            </span>
           </div>
           <h1 class="mt-6 max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl">
             {{ slide.title }}
