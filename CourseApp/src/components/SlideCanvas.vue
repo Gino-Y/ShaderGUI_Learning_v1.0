@@ -74,7 +74,7 @@
       <section
         v-if="showFlowPath"
         :key="activePerfSpec?.cueId"
-        class="rounded-[1.5rem] border border-cyan-300/20 bg-slate-950/80 p-4"
+        class="rounded-[1.5rem] border border-cyan-300/20 bg-slate-950/80 px-4 py-1"
         style="grid-column: 1 / -1"
       >
         <FlowPathDemo
