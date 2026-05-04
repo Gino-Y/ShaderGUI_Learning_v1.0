@@ -70,10 +70,18 @@
         </div>
       </aside>
     </div>
+
+    <!-- 表演层：覆盖在幻灯片内容区之上 -->
+    <PerformanceLayer
+      :perf-specs="performanceSpecs"
+      :current-time="currentTime"
+      class="pointer-events-none"
+    />
   </article>
 </template>
 <script setup>
 import { computed, watch } from "vue";
+import PerformanceLayer from "./PerformanceLayer.vue";
 
 const props = defineProps({
   slide: { type: Object, required: true },
@@ -81,6 +89,8 @@ const props = defineProps({
   composition: { type: Object, default: null },
   motionCues: { type: Array, default: () => [] },
   visualSpecs: { type: Array, default: () => [] },
+  performanceSpecs: { type: Array, default: () => [] },
+  currentTime: { type: Number, default: 0 },
 });
 const activeVisualSpec = computed(() => {
   if (!props.activeCue || !props.visualSpecs?.length) return null;

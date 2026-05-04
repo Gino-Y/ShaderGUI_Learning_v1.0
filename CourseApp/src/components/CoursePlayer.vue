@@ -12,12 +12,6 @@
 
       <section class="relative p-4 lg:p-6">
 
-        <PerformanceLayer
-          :perf-specs="performanceSpecs"
-          :current-time="currentTime"
-          class="absolute inset-0 z-20 pointer-events-none"
-        />
-
         <SlideCanvas
 
           :slide="slide"
@@ -29,6 +23,10 @@
           :motion-cues="motionCues"
 
           :visual-specs="visualSpecs"
+
+          :performance-specs="performanceSpecs"
+
+          :current-time="currentTime"
 
           class="mx-auto max-w-7xl"
 
@@ -71,8 +69,6 @@ import { computed, ref, watch } from "vue";
 import BreadcrumbNav from "./BreadcrumbNav.vue";
 
 import SlideCanvas from "./SlideCanvas.vue";
-
-import PerformanceLayer from "./PerformanceLayer.vue";
 
 import SlideNav from "./SlideNav.vue";
 
