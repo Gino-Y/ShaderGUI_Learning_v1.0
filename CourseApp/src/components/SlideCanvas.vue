@@ -72,7 +72,7 @@
   </article>
 </template>
 <script setup>
-import { computed } from "vue";
+import { computed, watch } from "vue";
 
 const props = defineProps({
   slide: { type: Object, required: true },

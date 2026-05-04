@@ -5,6 +5,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+from mutagen.mp3 import MP3
 
 ROOT = Path(__file__).resolve().parents[1]
 TRANSCRIPT_ROOT = ROOT / "CourseApp" / "public" / "transcripts"
@@ -25,10 +26,11 @@ def transcript_to_sentences(path: Path) -> list[str]:
     parts = [part.strip() for part in re.split(r"(?<=[。！？；.!?;])", text) if part.strip()]
     return parts or [text]
 
-def write_subtitles(path: Path, out_path: Path) -> None:
+def write_subtitles(path: Path, out_path: Path, duration: float | None = None) -> None:
     sentences = transcript_to_sentences(path)
     total_chars = max(1, sum(len(item) for item in sentences))
-    duration = max(8.0, total_chars / 5.2)
+    if duration is None:
+        duration = max(8.0, total_chars / 5.2)
     cursor = 0.0
     events = []
     for sentence in sentences:
@@ -84,9 +86,15 @@ def main() -> int:
         if not match:
             continue
         page = match.group(1)
-        write_subtitles(path, SUBTITLE_ROOT / module / f"{page}.json")
-        write_edge_tts_mp3(path, AUDIO_ROOT / module / f"{page}.mp3", args.voice, args.rate, args.pitch)
-        print(f"generated high-quality audio/subtitles {module}/{page}")
+        mp3_out = AUDIO_ROOT / module / f"{page}.mp3"
+        write_edge_tts_mp3(path, mp3_out, args.voice, args.rate, args.pitch)
+        # 读取 MP3 实际时长
+        try:
+            actual_duration = float(MP3(str(mp3_out)).info.length)
+        except Exception:
+            actual_duration = None
+        write_subtitles(path, SUBTITLE_ROOT / module / f"{page}.json", duration=actual_duration)
+        print(f"generated high-quality audio/subtitles {module}/{page} (duration={actual_duration:.1f}s)")
     return 0
 
 if __name__ == "__main__":

@@ -101,21 +101,17 @@ const visualSpecs = computed(() => storyboardSlide.value?.visualSpecs ?? []);
 const visualComposition = computed(() => storyboardSlide.value?.visualComposition ?? null);
 
 const activeCue = computed(() => {
-
   const byTime = motionCues.value.find((cue) => {
-
     const start = Number(cue.timeRange?.start ?? cue.dynamicGuidance?.timing?.start ?? cue.trigger?.start ?? NaN);
-
     const end = Number(cue.timeRange?.end ?? cue.dynamicGuidance?.timing?.settle ?? cue.trigger?.end ?? NaN);
-
     return Number.isFinite(start) && Number.isFinite(end) && currentTime.value >= start && currentTime.value < end;
-
   });
-
   if (byTime) return byTime;
-
-  return motionCues.value.find((cue) => revealedCueIds.value.includes(cue.cueId)) ?? null;
-
+  // 备用：返回最新一个已揭示的 cue（而非第一个）
+  const ids = revealedCueIds.value;
+  if (!ids.length) return null;
+  const lastId = ids[ids.length - 1];
+  return motionCues.value.find((cue) => cue.cueId === lastId) ?? null;
 });
 
 
