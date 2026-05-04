@@ -7,7 +7,6 @@ from datetime import datetime
 from pathlib import Path
 
 # Import visual spec builder
-from scripts.build_visual_from_spec import build_visual_for_cue
 
 
 class StoryboardMCP:
@@ -47,11 +46,6 @@ class StoryboardMCP:
             points = slide.get("points", [])
             kind = slide.get("kind", "concept")
             subtitle_path = slide.get("subtitles")
-            
-            # Generate motionCues with visualSpec
-            motion_cues = StoryboardMCP._motion_cues(workspace, kind, points, subtitle_path)
-            for cue in motion_cues:
-                cue["visualSpec"] = build_visual_for_cue(cue)
             
             storyboard_slides.append(
                 {
