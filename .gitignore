@@ -50,6 +50,14 @@ venv/
 env/
 ENV/
 
+# Python cache (recursive, all locations)
+__pycache__/
+**/__pycache__/
+*.pyc
+**/*.pyc
+*.pyo
+*.pyd
+
 # AI platform specific (pointers only, not actual assets)
 .cursor/rules/*.mdc
 .workbuddy/*.mdc
