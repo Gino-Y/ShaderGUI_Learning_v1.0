@@ -59,7 +59,7 @@ class StoryboardMCP:
                     "layoutIntent": StoryboardMCP._layout_intent(kind, points),
                     "visualComposition": StoryboardMCP._visual_composition(kind, title, points, index),
                     "paletteIntent": StoryboardMCP._palette_intent(kind),
-                    "motionCues": motion_cues,
+                    "motionCues": StoryboardMCP._motion_cues(workspace, kind, points, subtitle_path),
                     "animationHandoff": {
                         "target": "future-web-animation-module",
                         "triggerSource": "subtitle-events",
