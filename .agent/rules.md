@@ -220,6 +220,229 @@ git reset --hard HEAD~1
 
 ---
 
+## Git 协作工作流规范
+
+### 目标
+
+确保本地开发与远程仓库保持同步，避免因不同步导致的冲突和代码丢失。
+
+### 核心规则
+
+#### 1. Pull 拉取规则（必须强制执行）
+
+**何时必须 Pull：**
+- **首次克隆后**：第一次从远程仓库克隆代码后，必须 pull 一次确保最新
+- **每天开始前**：每天开发工作开始时，必须先 `git pull`
+- **每个大阶段开始前**：P0/P1/P2/P3/P4 阶段开始前，必须先 `git pull`
+- **切换分支前**：切换分支前必须先 pull 当前分支和目标分支
+- **合并代码前**：合并分支前必须先 pull 目标分支
+
+**Pull 命令规范：**
+```powershell
+# 开始工作前（推荐）
+git pull origin main
+
+# 如果本地有未提交改动（先暂存）
+git stash
+git pull origin main
+git stash pop
+
+# 如果本地有未提交改动（先提交）
+git add .
+git commit -m "WIP: 临时提交"
+git pull origin main
+```
+
+**Pull 失败处理：**
+```powershell
+# 如果 pull 冲突，先查看冲突文件
+git status
+
+# 手动解决冲突后
+git add .
+git commit -m "Resolve merge conflicts"
+
+# 如果无法解决冲突，回滚 pull
+git merge --abort
+```
+
+#### 2. 原子提交快照规则（开发中）
+
+**原子提交原则：**
+- 每个提交只做一个逻辑修改（原子性）
+- 提交信息必须清晰描述修改内容
+- 禁止一次性提交大量不相关改动
+
+**提交命名规范：**
+```
+格式：[类型] [范围/阶段] - [简短描述]
+
+类型：
+- feat: 新功能
+- fix: 修复 bug
+- refactor: 重构（不改变外部行为）
+- docs: 文档更新
+- style: 代码格式（不影响功能）
+- test: 测试相关
+- chore: 构建/工具/依赖更新
+
+示例：
+- feat: Module_01 - 完成 P0 阶段 Lottie 白名单集成
+- fix: SlideCanvas - 修复音频播放器崩溃问题
+- refactor: storyboard_mcp - 重构 motionCues 生成逻辑
+- docs: rules.md - 更新 Git 工作流规范
+- Snapshot: Pre-P1 - 创建 P1 阶段前快照
+```
+
+**提交检查清单：**
+- [ ] 提交是否原子性（只做一个逻辑修改）？
+- [ ] 提交信息是否清晰、可回溯？
+- [ ] 是否所有相关文件都已提交？
+- [ ] 是否通过了 `verify_course.py` 和 `npm run build`？
+
+**提交命令规范：**
+```powershell
+# 1. 检查工作区状态
+git status
+
+# 2. 添加相关文件（不要盲目 git add .）
+git add <specific-files>
+# 或者分批次提交
+git add .agent/mcp_servers/storyboard_mcp.py
+git commit -m "fix: storyboard_mcp - 修复 motionCues 引用"
+
+# 3. 推送前先 pull
+git pull origin main
+
+# 4. 解决冲突（如果有）后再推送
+```
+
+#### 3. Push 推送规则（阶段完成时）
+
+**何时 Push：**
+- **每个大阶段完成后**：P0/P1/P2/P3/P4 完成后必须 push
+- **每天工作结束时**：当天工作结束前必须 push
+- **重要功能完成后**：单个重要功能完成后建议 push
+- **修复关键 bug 后**：修复关键 bug 后必须 push
+
+**Push 命令规范：**
+```powershell
+# 1. 检查本地提交
+git log --oneline -5
+
+# 2. 推送前先 pull（确保远程无新提交）
+git pull origin main --rebase
+
+# 3. 推送到远程
+git push origin main
+
+# 4. 如果推送失败（远程有新提交），先 pull 再 push
+git pull origin main
+git push origin main
+```
+
+**Push 失败处理：**
+```powershell
+# 如果 push 被拒绝（远程有新提交）
+git pull origin main --rebase
+# 解决冲突（如果有）
+git add .
+git rebase --continue
+git push origin main
+
+# 如果 rebase 出错，中止 rebase
+git rebase --abort
+```
+
+#### 4. 远程仓库维护规则
+
+**分支管理：**
+- **main 分支**：生产就绪代码，必须稳定
+- **功能分支**：开发新功能时创建功能分支（如 `feature/lottie-integration`）
+- **禁止直接 push 到 main**：如果仓库设置了保护规则
+
+**标签管理：**
+- 重要里程碑打标签（如 `v0.1.0-Module_01-DEPLOY_READY`）
+- 标签命名规范：`v<major>.<minor>.<patch>-<milestone>`
+
+```powershell
+# 创建标签
+git tag -a v0.1.0-Module_01-DEPLOY_READY -m "Module_01 MVP 完成，所有验证通过"
+git push origin v0.1.0-Module_01-DEPLOY_READY
+```
+
+### 完整工作流示例
+
+**示例 1：每天开始工作**
+```powershell
+# 1. 拉取最新代码
+git pull origin main
+
+# 2. 检查状态
+git status
+git log --oneline -3
+
+# 3. 开始工作
+# ... 开发中 ...
+
+# 4. 原子提交
+git add .agent/mcp_servers/storyboard_mcp.py
+git commit -m "fix: storyboard_mcp - 修复 motionCues 引用"
+
+# 5. 推送
+git push origin main
+```
+
+**示例 2：大阶段开始前**
+```powershell
+# 1. 拉取最新代码
+git pull origin main
+
+# 2. 创建快照
+git add .
+git commit -m "Snapshot: Pre-P1 - Before starting P1 Lottie integration"
+
+# 3. 开始 P1 阶段
+# ... P1 开发中 ...
+
+# 4. P1 完成，原子提交
+git add .agent/ CourseApp/src/
+git commit -m "feat: Module_01 P1 - 完成 Lottie 集成"
+
+# 5. 推送
+git push origin main
+```
+
+**示例 3：功能分支工作流**
+```powershell
+# 1. 从 main 创建功能分支
+git checkout -b feature/lottie-integration
+
+# 2. 开发中，原子提交
+git add .
+git commit -m "feat: lottie - 添加 LottieStage 组件"
+git commit -m "feat: lottie - 更新 storyboard-contract.json"
+
+# 3. 功能完成，合并到 main
+git checkout main
+git pull origin main
+git merge feature/lottie-integration
+git push origin main
+
+# 4. 删除功能分支
+git branch -d feature/lottie-integration
+```
+
+### 注意事项
+
+- **禁止强制推送（git push --force）**：除非你确定要覆盖远程历史
+- **禁止提交敏感信息**：API keys、密码、token 等
+- **禁止提交大文件**：音频、视频、二进制文件等，使用 Git LFS
+- **提交前必须验证**：`verify_course.py` 和 `npm run build` 必须通过
+- **Push 前必须先 Pull**：避免冲突和代码丢失
+
+---
+
 ## 循环自检
 
 每次生成、修改、重构、排版或代码实现后必须执行闭环：
