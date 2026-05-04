@@ -43,12 +43,6 @@
       </section>
 
       <aside class="grid gap-4" :data-frame-zone="midgroundZone">
-        <div v-if="visualSpec" class="rounded-[1.5rem] border border-white/10 bg-white/[0.06] p-5">
-          <PerformanceNode
-            :nodeType="visualSpec.animation?.type || 'neural-core'"
-            :config="visualSpec.animation?.config || {}"
-          />
-        </div>
         <div v-if="codeBlocks.length" class="grid gap-4" :data-composition-zone="codeFrameZone">
           <div
             v-for="block in codeBlocks"
@@ -76,7 +70,6 @@
 </template>
 <script setup>
 import { computed } from "vue";
-import PerformanceNode from './nodes/PerformanceNode.vue'
 
 const props = defineProps({
   slide: { type: Object, required: true },
@@ -96,7 +89,6 @@ const storyboardEmphasisText = computed(() => {
   return cue.knowledgeFocus?.label || cue.contentBeat || "";
 });
 const learnerFocusVisible = computed(() => Boolean(storyboardEmphasisText.value));
-const visualSpec = computed(() => props.activeCue?.visualSpec || null)
 const codeBlocks = computed(() => {
   if (props.slide.codeBlocks?.length) return props.slide.codeBlocks;
   if (!props.slide.code) return [];

@@ -1,6 +1,57 @@
+# Dependencies
 CourseApp/node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Build outputs
 CourseApp/dist/
-CourseApp/vite-dev*.log
+CourseApp/build/
+
+# Environment files
 .env
 .env.*
 !.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+CourseApp/vite-dev*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Audio files (large files, consider using Git LFS)
+CourseApp/public/audio/*.mp3
+CourseApp/public/audio/*.wav
+CourseApp/public/audio/*.ogg
+
+# Vite temp files
+CourseApp/vite.config.*.timestamp*
+
+# Python virtual environment
+venv/
+env/
+ENV/
+
+# AI platform specific (pointers only, not actual assets)
+.cursor/rules/*.mdc
+.workbuddy/*.mdc
+!.cursor/rules/*POINTER*.mdc
+!.workbuddy/*POINTER*.mdc
