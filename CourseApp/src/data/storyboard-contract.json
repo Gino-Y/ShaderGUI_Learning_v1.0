@@ -1418,7 +1418,7 @@
     }
   ],
   "_validation": {
-    "lastStoryboardCheck": null,
+    "lastStoryboardCheck": "2026-05-04T10:58:55Z",
     "cueBindingPolicy": "subtitle segment indexes bind to concrete timecodes after audio generation",
     "realtimeInteractionPolicy": "user actions and state changes bind to concrete Vue event handlers in QuizView"
   }
