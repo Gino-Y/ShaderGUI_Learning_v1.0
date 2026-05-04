@@ -6,6 +6,9 @@ import re
 from datetime import datetime
 from pathlib import Path
 
+# Import visual spec builder
+from scripts.build_visual_from_spec import build_visual_for_cue
+
 
 class StoryboardMCP:
     """Create the narrative storyboard contract before visual design.
@@ -44,6 +47,12 @@ class StoryboardMCP:
             points = slide.get("points", [])
             kind = slide.get("kind", "concept")
             subtitle_path = slide.get("subtitles")
+            
+            # Generate motionCues with visualSpec
+            motion_cues = StoryboardMCP._motion_cues(workspace, kind, points, subtitle_path)
+            for cue in motion_cues:
+                cue["visualSpec"] = build_visual_for_cue(cue)
+            
             storyboard_slides.append(
                 {
                     "moduleId": module,
@@ -56,7 +65,7 @@ class StoryboardMCP:
                     "layoutIntent": StoryboardMCP._layout_intent(kind, points),
                     "visualComposition": StoryboardMCP._visual_composition(kind, title, points, index),
                     "paletteIntent": StoryboardMCP._palette_intent(kind),
-                    "motionCues": StoryboardMCP._motion_cues(workspace, kind, points, subtitle_path),
+                    "motionCues": motion_cues,
                     "animationHandoff": {
                         "target": "future-web-animation-module",
                         "triggerSource": "subtitle-events",
