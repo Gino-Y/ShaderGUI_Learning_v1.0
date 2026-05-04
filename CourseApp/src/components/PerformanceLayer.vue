@@ -51,6 +51,6 @@ const perfDurationMs = computed(() => {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 20;
+  z-index: -1;
 }
 </style>
