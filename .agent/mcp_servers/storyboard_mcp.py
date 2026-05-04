@@ -60,6 +60,9 @@ class StoryboardMCP:
                     "visualComposition": StoryboardMCP._visual_composition(kind, title, points, index),
                     "paletteIntent": StoryboardMCP._palette_intent(kind),
                     "motionCues": StoryboardMCP._motion_cues(workspace, kind, points, subtitle_path),
+                    "visualSpecs": StoryboardMCP.build_visual_specs_for_slide(
+                        StoryboardMCP._motion_cues(workspace, kind, points, subtitle_path)
+                    ),
                     "animationHandoff": {
                         "target": "future-web-animation-module",
                         "triggerSource": "subtitle-events",
@@ -326,6 +329,38 @@ class StoryboardMCP:
                             "issue": "codeHighlightTokens must be non-empty strings",
                             "severity": "error",
                         })
+
+            # 验证 visualSpecs
+            visual_specs = slide.get("visualSpecs", [])
+            if not isinstance(visual_specs, list):
+                errors.append({"slideId": sid, "field": "visualSpecs", "issue": "must be an array", "severity": "error"})
+            else:
+                for idx, spec in enumerate(visual_specs):
+                    prefix = f"visualSpecs[{idx}]"
+                    for req_field in ("cueId", "trigger", "timeRange", "target", "contentBeat", "knowledgeFocus", "animation", "dynamicGuidance", "compositionBeat"):
+                        if not spec.get(req_field):
+                            errors.append({"slideId": sid, "field": f"{prefix}.{req_field}", "issue": "missing or empty", "severity": "error"})
+                    trigger = spec.get("trigger", {})
+                    if trigger.get("type") != "subtitle-segment":
+                        errors.append({"slideId": sid, "field": f"{prefix}.trigger.type", "issue": "must be subtitle-segment", "severity": "error"})
+                    time_range = spec.get("timeRange", {})
+                    for key in ("start", "end", "durationMs"):
+                        if not isinstance(time_range.get(key), (int, float)):
+                            errors.append({"slideId": sid, "field": f"{prefix}.timeRange.{key}", "issue": "must be numeric", "severity": "error"})
+                    if time_range.get("end", 0) <= time_range.get("start", 0):
+                        errors.append({"slideId": sid, "field": f"{prefix}.timeRange", "issue": "end must be > start", "severity": "error"})
+                    animation = spec.get("animation", {})
+                    for req_field in ("type", "durationMs", "easing"):
+                        if animation.get(req_field) is None:
+                            errors.append({"slideId": sid, "field": f"{prefix}.animation.{req_field}", "issue": "missing", "severity": "error"})
+                    dynamic = spec.get("dynamicGuidance", {})
+                    for req_field in ("primaryEffect", "attentionPattern", "highlightTarget"):
+                        if not dynamic.get(req_field):
+                            errors.append({"slideId": sid, "field": f"{prefix}.dynamicGuidance.{req_field}", "issue": "missing or empty", "severity": "error"})
+                    comp_beat = spec.get("compositionBeat", {})
+                    for req_field in ("frameZone", "subject", "cameraAction", "spatialChange", "continuityRule"):
+                        if not comp_beat.get(req_field):
+                            errors.append({"slideId": sid, "field": f"{prefix}.compositionBeat.{req_field}", "issue": "missing or empty", "severity": "error"})
 
         if not interactive_screens:
             errors.append({"field": "interactiveScreens", "issue": "做题页实时互动故事板缺失", "severity": "error"})
@@ -615,6 +650,82 @@ class StoryboardMCP:
                 }
             )
         return cues
+
+    @staticmethod
+    def build_visual_for_cue(cue: dict) -> dict:
+        """为单个 cue 构建 visualSpec（嵌入版本，避免跨目录导入问题）"""
+        trigger = cue.get("trigger", {})
+        time_range = cue.get("timeRange", {})
+        dynamic = cue.get("dynamicGuidance", {})
+        composition_beat = cue.get("compositionBeat", {})
+        knowledge = cue.get("knowledgeFocus", {})
+
+        start = float(time_range.get("start", 0))
+        end = float(time_range.get("end", start + 2.0))
+        duration_ms = int(time_range.get("durationMs", max(1, int((end - start) * 1000))))
+
+        # AnimationSpec
+        animation = cue.get("animation", {})
+        animation_spec = {
+            "type": animation.get("name", "reveal-focus"),
+            "durationMs": animation.get("durationMs", 400),
+            "easing": animation.get("easing", "ease-out"),
+            "parameters": animation.get("parameters", {}),
+        }
+
+        # CompositionSpec
+        composition_spec = {
+            "frameZone": composition_beat.get("frameZone", "center"),
+            "subject": composition_beat.get("subject", cue.get("contentBeat", "")),
+            "cameraAction": composition_beat.get("cameraAction", "locked frame"),
+            "spatialChange": composition_beat.get("spatialChange", ""),
+            "continuityRule": composition_beat.get("continuityRule", ""),
+        }
+
+        # VisualSpec
+        visual_spec = {
+            "cueId": cue.get("cueId", ""),
+            "trigger": {
+                "type": trigger.get("type", "subtitle-segment"),
+                "timecode": trigger.get("timecode", start),
+                "segmentIndex": trigger.get("segmentIndex", 0),
+            },
+            "timeRange": {
+                "start": round(start, 2),
+                "end": round(end, 2),
+                "durationMs": duration_ms,
+            },
+            "target": cue.get("target", "content-beat"),
+            "contentBeat": cue.get("contentBeat", ""),
+            "sourceSubtitleText": cue.get("sourceSubtitleText", ""),
+            "knowledgeFocus": {
+                "id": knowledge.get("id", ""),
+                "label": knowledge.get("label", ""),
+                "semanticRole": knowledge.get("semanticRole", "concept-beat"),
+                "learnerTakeaway": knowledge.get("learnerTakeaway", ""),
+            },
+            "animation": animation_spec,
+            "dynamicGuidance": {
+                "primaryEffect": dynamic.get("primaryEffect", "knowledge-highlight"),
+                "attentionPattern": dynamic.get("attentionPattern", "pulse-once-then-hold"),
+                "highlightTarget": dynamic.get("highlightTarget", "point-card"),
+                "highlightText": dynamic.get("highlightText", ""),
+                "deEmphasizeOthers": dynamic.get("deEmphasizeOthers", True),
+                "timing": dynamic.get("timing", {}),
+                "visualTreatment": dynamic.get("visualTreatment", {}),
+            },
+            "compositionBeat": composition_spec,
+            "shotInstruction": cue.get("shotInstruction", ""),
+            "focusInstruction": cue.get("focusInstruction", {}),
+            "implementationHint": cue.get("implementationHint", {}),
+            "purpose": cue.get("purpose", "Synchronize visual emphasis with narration."),
+        }
+        return visual_spec
+
+    @staticmethod
+    def build_visual_specs_for_slide(cues: list[dict]) -> list[dict]:
+        """为 slide 的所有 cues 生成 visualSpecs"""
+        return [StoryboardMCP.build_visual_for_cue(cue) for cue in cues]
 
     @staticmethod
     def _load_subtitle_events(workspace: Path, subtitle_path: str | None) -> list[dict]:
