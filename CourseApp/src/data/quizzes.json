@@ -1,0 +1,119 @@
+[
+  {
+    "moduleId": "Module_01",
+    "title": "模块一测试：ShaderGUI 解析",
+    "passingScore": 60,
+    "questions": [
+      {
+        "id": "m01-q01",
+        "type": "single",
+        "prompt": "ShaderGUI 在 Shader 参数系统中主要承担什么角色？",
+        "options": [
+          {
+            "id": "a",
+            "text": "材质参数系统的前端工程层"
+          },
+          {
+            "id": "b",
+            "text": "运行时渲染管线的替代方案"
+          },
+          {
+            "id": "c",
+            "text": "贴图压缩和导入设置工具"
+          },
+          {
+            "id": "d",
+            "text": "动画状态机编辑器"
+          }
+        ],
+        "answer": [
+          "a"
+        ],
+        "explanation": "本模块强调 ShaderGUI 是 Shader 参数系统面向使用者的前端工程层。"
+      },
+      {
+        "id": "m01-q02",
+        "type": "multiple",
+        "prompt": "一个好的 ShaderGUI 可以帮助美术降低哪些负担？",
+        "options": [
+          {
+            "id": "a",
+            "text": "理解参数含义的成本"
+          },
+          {
+            "id": "b",
+            "text": "在大量参数中寻找正确控件的成本"
+          },
+          {
+            "id": "c",
+            "text": "编写 GPU 汇编指令的成本"
+          },
+          {
+            "id": "d",
+            "text": "判断当前材质状态是否合理的成本"
+          }
+        ],
+        "answer": [
+          "a",
+          "b",
+          "d"
+        ],
+        "explanation": "ShaderGUI 的目标是组织参数、解释含义、同步状态，从而降低调参认知负担。"
+      },
+      {
+        "id": "m01-q03",
+        "type": "single",
+        "prompt": "在 Unity 中编写自定义 ShaderGUI 时，C# 侧通常需要继承哪个类？",
+        "options": [
+          {
+            "id": "a",
+            "text": "MonoBehaviour"
+          },
+          {
+            "id": "b",
+            "text": "ShaderGUI"
+          },
+          {
+            "id": "c",
+            "text": "ScriptableObject"
+          },
+          {
+            "id": "d",
+            "text": "EditorWindow"
+          }
+        ],
+        "answer": [
+          "b"
+        ],
+        "explanation": "最小可行结构从继承 ShaderGUI 并重写 OnGUI 开始。"
+      },
+      {
+        "id": "m01-q04",
+        "type": "single",
+        "prompt": "自定义材质面板的绘制入口通常是哪个方法？",
+        "options": [
+          {
+            "id": "a",
+            "text": "Start"
+          },
+          {
+            "id": "b",
+            "text": "Update"
+          },
+          {
+            "id": "c",
+            "text": "OnGUI"
+          },
+          {
+            "id": "d",
+            "text": "OnRenderObject"
+          }
+        ],
+        "answer": [
+          "c"
+        ],
+        "explanation": "课程中的最小结构示例展示了重写 OnGUI 来绘制材质面板。"
+      }
+    ]
+  }
+]

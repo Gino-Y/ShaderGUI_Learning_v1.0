@@ -1,0 +1,16 @@
+image: gitpod/workspace-node:latest
+
+tasks:
+  - name: Install and validate
+    init: |
+      cd CourseApp
+      npm ci
+    command: |
+      cd CourseApp
+      npm run dev -- --host 0.0.0.0
+
+ports:
+  - port: 5173
+    onOpen: open-preview
+  - port: 4173
+    onOpen: ignore

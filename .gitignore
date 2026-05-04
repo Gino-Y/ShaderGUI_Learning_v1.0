@@ -1,0 +1,6 @@
+CourseApp/node_modules/
+CourseApp/dist/
+CourseApp/vite-dev*.log
+.env
+.env.*
+!.env.example

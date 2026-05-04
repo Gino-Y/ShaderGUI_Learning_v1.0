@@ -1,0 +1,85 @@
+name: Cloud Validate
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      commit_report:
+        description: "Commit cloud report back to .agent/memory"
+        required: false
+        default: "false"
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: CourseApp/package-lock.json
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install app dependencies
+        working-directory: CourseApp
+        run: npm ci
+
+      - name: Build app
+        working-directory: CourseApp
+        run: npm run build
+
+      - name: Verify course artifacts
+        run: python scripts/verify_course.py
+
+      - name: Monitor local preview
+        run: |
+          cd CourseApp
+          npm run preview -- --host 127.0.0.1 --port 4173 > ../preview.log 2>&1 &
+          echo $! > ../preview.pid
+          cd ..
+          python scripts/cloud_monitor.py --base-url http://127.0.0.1:4173 --report .agent/memory/cloud-report.md --write-memory
+
+      - name: Monitor deployed preview
+        if: ${{ vars.PREVIEW_URL != '' }}
+        run: python scripts/cloud_monitor.py --base-url "${{ vars.PREVIEW_URL }}" --report .agent/memory/cloud-preview-report.md
+
+      - name: Upload cloud reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: cloud-reports
+          path: |
+            .agent/memory/cloud-report.md
+            .agent/memory/cloud-preview-report.md
+            .agent/memory/*-cloud.md
+            preview.log
+          if-no-files-found: ignore
+
+      - name: Commit scheduled cloud report
+        if: ${{ github.event_name == 'schedule' || inputs.commit_report == 'true' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .agent/memory/*-cloud.md .agent/memory/cloud-report.md .agent/memory/cloud-preview-report.md || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update cloud validation report"
+            git push
+          fi

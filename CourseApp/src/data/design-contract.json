@@ -1,0 +1,1171 @@
+{
+  "provider": "design-v0-translated-spec",
+  "status": "design_ready",
+  "module": "Module_01",
+  "generatedAt": "2026-05-04T07:55:07Z",
+  "source": {
+    "slides": "CourseApp/src/data/slides.json",
+    "storyboard": "CourseApp/src/data/storyboard-contract.json",
+    "v0Prototype": ".agent/v0/Module_01/react-prototype.json"
+  },
+  "handoffBrief": ".agent/design/Module_01/design-brief.md",
+  "slides": [
+    {
+      "moduleId": "Module_01",
+      "slideId": "p00",
+      "route": "/module/Module_01/slide/p00",
+      "title": "ShaderGUI：不只是换一层皮",
+      "kind": "concept",
+      "screenType": "course-slide-player",
+      "visualPrompt": "Design a focused Chinese technical course slide for Unity ShaderGUI. Title: ShaderGUI：不只是换一层皮. Key points: ShaderGUI 是 Shader 参数系统的前端工程层 / 核心目标是降低美术调参时的认知负担 / 职责是组织参数、解释含义、同步状态.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_01/react-prototype.json",
+        "chatUrl": "https://v0.app/chat/qAnaC7HeGO9",
+        "translationMode": "extract-layout-interaction-visual-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark full-screen course player shell with a luminous slide canvas centered above subtitles and controls.",
+            "Concept slides use a hero statement plus three progressive content cards.",
+            "Code slides use a split reading path: principle cards beside a high-contrast code panel."
+          ],
+          "visual": [
+            "Use deep slate/neutral backgrounds, cyan or emerald accents, soft radial highlights, and glass-like cards.",
+            "Keep controls outside the learner-facing slide canvas.",
+            "Reserve strong accent treatments for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Bottom controls stay compact and touch-friendly.",
+            "Subtitles remain event-driven and visually separate from full transcripts.",
+            "Mobile surface tap toggles playback; vertical swipe navigates slides.",
+            "做题页 renders the question bank table first, then answer cards and immediate feedback.",
+            "Option swapping, answer selection, submission, reset, and scoring must remain live Vue state interactions."
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Use this scene to make learners understand 'ShaderGUI：不只是换一层皮' through the content beats: ShaderGUI 是 Shader 参数系统的前端工程层 / 核心目标是降低美术调参时的认知负担 / 职责是组织参数、解释含义、同步状态.",
+        "layoutIntent": {
+          "primaryFocus": "concept hierarchy and mental model",
+          "readingPath": "title -> core idea -> three supporting beats",
+          "density": "low-to-medium",
+          "emphasis": [
+            "ShaderGUI 是 Shader 参数系统的前端工程层",
+            "核心目标是降低美术调参时的认知负担",
+            "职责是组织参数、解释含义、同步状态"
+          ]
+        },
+        "visualComposition": {
+          "aspectRatio": "16:9 responsive canvas, preserve 7% outer safe margin",
+          "shotType": "wide instructional concept board",
+          "frameGrid": {
+            "columns": "left 56% hero concept and explanation, right 44% supporting cards",
+            "rows": "top metadata band, center concept body, bottom learner focus",
+            "anchor": "hero concept anchors upper-left; supporting beats form right-side vertical rhythm"
+          },
+          "foreground": {
+            "subject": "ShaderGUI 是 Shader 参数系统的前端工程层",
+            "position": "left-center hero area",
+            "scale": "largest text block after title; primary learner attention"
+          },
+          "midground": {
+            "subject": "secondary point cards",
+            "position": "right-center, staggered stack",
+            "role": "show the sequence of supporting ideas"
+          },
+          "background": {
+            "subject": "soft radial highlights and dark glass panels",
+            "position": "corners and far background",
+            "role": "separate layers without becoming content"
+          },
+          "negativeSpace": "leave a quiet diagonal corridor from title to focus card for eye travel",
+          "readingDirection": "upper-left title -> left hero concept -> right supporting cards -> bottom focus statement",
+          "safeArea": "keep subtitle overlay and player controls outside the composed slide frame",
+          "cameraPlan": {
+            "base": "locked camera with stable slide geometry",
+            "beatMotion": "progressive emphasis on the current point card only",
+            "avoid": [
+              "layout reflow during narration",
+              "large parallax shifts",
+              "decorative motion unrelated to current knowledge point"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "clear, instructional, confident",
+          "contrastRole": "use accent color to separate principle, example, and learner takeaway",
+          "avoid": [
+            "monochrome sameness",
+            "presentation decoration",
+            "workflow labels"
+          ]
+        },
+        "motionCueCount": 3
+      },
+      "animationHandoff": {
+        "target": "future-web-animation-module",
+        "triggerSource": "subtitle-events",
+        "subtitleEventPath": "/subtitles/Module_01/p00.json",
+        "bindingMode": "subtitle-time-range-with-knowledge-alignment",
+        "notes": [
+          "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
+          "Knowledge points are aligned to the closest subtitle segment by keyword overlap, with ordered fallback."
+        ]
+      },
+      "motionCues": [
+        {
+          "cueId": "cue-01",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 0,
+            "subtitleEventPath": "/subtitles/Module_01/p00.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "ShaderGUI 是 Shader 参数系统的前端工程层",
+          "sourceSubtitleText": "ShaderGUI 是 Shader 参数系统的前端工程层",
+          "knowledgeFocus": {
+            "id": "knowledge-01",
+            "label": "ShaderGUI 是 Shader 参数系统的前端工程层",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：ShaderGUI 是 Shader 参数系统的前端工程层"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 420,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "pulse-once-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "ShaderGUI 是 Shader 参数系统的前端工程层",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": false,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "left hero concept",
+            "subject": "ShaderGUI 是 Shader 参数系统的前端工程层",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“ShaderGUI 是 Shader 参数系统的前端工程层”，弱化其他内容；旁白：ShaderGUI 是 Shader 参数系统的前端工程层。",
+          "focusInstruction": {
+            "focus": "ShaderGUI 是 Shader 参数系统的前端工程层",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-02",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 1,
+            "subtitleEventPath": "/subtitles/Module_01/p00.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "核心目标是降低美术调参时的认知负担",
+          "sourceSubtitleText": "核心目标是降低美术调参时的认知负担",
+          "knowledgeFocus": {
+            "id": "knowledge-02",
+            "label": "核心目标是降低美术调参时的认知负担",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：核心目标是降低美术调参时的认知负担"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "核心目标是降低美术调参时的认知负担",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card top",
+            "subject": "核心目标是降低美术调参时的认知负担",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“核心目标是降低美术调参时的认知负担”，弱化其他内容；旁白：核心目标是降低美术调参时的认知负担。",
+          "focusInstruction": {
+            "focus": "核心目标是降低美术调参时的认知负担",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-03",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 2,
+            "subtitleEventPath": "/subtitles/Module_01/p00.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "职责是组织参数、解释含义、同步状态",
+          "sourceSubtitleText": "职责是组织参数、解释含义、同步状态",
+          "knowledgeFocus": {
+            "id": "knowledge-03",
+            "label": "职责是组织参数、解释含义、同步状态",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：职责是组织参数、解释含义、同步状态"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "职责是组织参数、解释含义、同步状态",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card middle",
+            "subject": "职责是组织参数、解释含义、同步状态",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“职责是组织参数、解释含义、同步状态”，弱化其他内容；旁白：职责是组织参数、解释含义、同步状态。",
+          "focusInstruction": {
+            "focus": "职责是组织参数、解释含义、同步状态",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        }
+      ],
+      "contentConstraints": [
+        "Only show ShaderGUI course content in the slide canvas.",
+        "Do not render full transcript text as a panel.",
+        "Subtitles must appear only as audio-time events.",
+        "Keep player controls outside the slide canvas.",
+        "Follow storyboard layout, palette, and motion intent before inventing new visual behavior.",
+        "Translate v0 React prototype rules into Vue and Tailwind; do not copy React/shadcn code directly."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS"
+      },
+      "layoutSpec": {
+        "template": "title-body",
+        "grid": "grid-cols-1",
+        "spacing": "gap-6",
+        "typography": {
+          "title": "text-3xl font-bold",
+          "subtitle": "text-lg text-slate-400",
+          "body": "text-base leading-relaxed",
+          "caption": "text-sm text-slate-500"
+        }
+      },
+      "colorScheme": {
+        "bg": "#0f172a",
+        "surface": "#1e293b",
+        "textPrimary": "#f8fafc",
+        "textSecondary": "#94a3b8",
+        "accent": "#38bdf8",
+        "accentSecondary": "#818cf8",
+        "codeBg": "#0d1117",
+        "codeKeyword": "#ff7b72",
+        "codeString": "#a5d6ff",
+        "codeComment": "#8b949e"
+      },
+      "componentList": [
+        "SlideTitle",
+        "PointList",
+        "SlideNav"
+      ]
+    },
+    {
+      "moduleId": "Module_01",
+      "slideId": "p01",
+      "route": "/module/Module_01/slide/p01",
+      "title": "最小可行架构",
+      "kind": "code",
+      "screenType": "course-slide-player",
+      "visualPrompt": "Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 最小可行架构. Key points: C Sharp 侧继承 ShaderGUI 并重写 OnGUI / Shader 侧通过 CustomEditor 绑定自定义面板 / 所有高级面板能力都从控制 OnGUI 开始.  Storyboard intent: layout focus=code structure and callout annotations; palette mood=precise, technical, focused; composition=medium-wide technical board shot / upper-left title -> left point stack -> right active code fragment -> bottom takeaway; foreground=right-center, inside high-contrast code panel; midground=left-center stacked vertical rhythm; negative space=reserve quiet space between left cards and right code so callout motion has room; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_01/react-prototype.json",
+        "chatUrl": "https://v0.app/chat/qAnaC7HeGO9",
+        "translationMode": "extract-layout-interaction-visual-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark full-screen course player shell with a luminous slide canvas centered above subtitles and controls.",
+            "Concept slides use a hero statement plus three progressive content cards.",
+            "Code slides use a split reading path: principle cards beside a high-contrast code panel."
+          ],
+          "visual": [
+            "Use deep slate/neutral backgrounds, cyan or emerald accents, soft radial highlights, and glass-like cards.",
+            "Keep controls outside the learner-facing slide canvas.",
+            "Reserve strong accent treatments for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Bottom controls stay compact and touch-friendly.",
+            "Subtitles remain event-driven and visually separate from full transcripts.",
+            "Mobile surface tap toggles playback; vertical swipe navigates slides.",
+            "做题页 renders the question bank table first, then answer cards and immediate feedback.",
+            "Option swapping, answer selection, submission, reset, and scoring must remain live Vue state interactions."
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Use this scene to make learners understand '最小可行架构' through the content beats: C Sharp 侧继承 ShaderGUI 并重写 OnGUI / Shader 侧通过 CustomEditor 绑定自定义面板 / 所有高级面板能力都从控制 OnGUI 开始.",
+        "layoutIntent": {
+          "primaryFocus": "code structure and callout annotations",
+          "readingPath": "title -> code block -> highlighted risk or principle -> supporting bullets",
+          "density": "medium",
+          "emphasis": [
+            "C Sharp 侧继承 ShaderGUI 并重写 OnGUI",
+            "Shader 侧通过 CustomEditor 绑定自定义面板"
+          ]
+        },
+        "visualComposition": {
+          "aspectRatio": "16:9 responsive canvas, preserve 7% outer safe margin",
+          "shotType": "medium-wide technical board shot",
+          "frameGrid": {
+            "columns": "left 48% teaching beats, right 52% code panel",
+            "rows": "top title band, middle explanation/code body, bottom learner focus strip",
+            "anchor": "code panel occupies the right visual weight; title anchors upper-left"
+          },
+          "foreground": {
+            "subject": "current code fragment and active callout",
+            "position": "right-center, inside high-contrast code panel",
+            "scale": "dominant but not full-screen; code remains readable at laptop viewport"
+          },
+          "midground": {
+            "subject": "three principle cards or point cards",
+            "position": "left-center stacked vertical rhythm",
+            "role": "support the code fragment with conceptual labels"
+          },
+          "background": {
+            "subject": "subtle dark engineering surface and radial accent glow",
+            "position": "full frame, lowest contrast",
+            "role": "create depth without competing with code"
+          },
+          "negativeSpace": "reserve quiet space between left cards and right code so callout motion has room",
+          "readingDirection": "upper-left title -> left point stack -> right active code fragment -> bottom takeaway",
+          "safeArea": "keep subtitles and player controls outside the slide canvas composition",
+          "cameraPlan": {
+            "base": "locked camera, no scene-wide zoom",
+            "beatMotion": "micro-pan attention from left point to right code callout",
+            "avoid": [
+              "whole-card bouncing",
+              "large decorative camera moves",
+              "text crossing subtitle area"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "precise, technical, focused",
+          "contrastRole": "use accent color only for the currently explained code fragment",
+          "avoid": [
+            "decorative gradients",
+            "high-saturation backgrounds",
+            "workflow labels"
+          ]
+        },
+        "motionCueCount": 3
+      },
+      "animationHandoff": {
+        "target": "future-web-animation-module",
+        "triggerSource": "subtitle-events",
+        "subtitleEventPath": "/subtitles/Module_01/p01.json",
+        "bindingMode": "subtitle-time-range-with-knowledge-alignment",
+        "notes": [
+          "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
+          "Knowledge points are aligned to the closest subtitle segment by keyword overlap, with ordered fallback."
+        ]
+      },
+      "motionCues": [
+        {
+          "cueId": "cue-01",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 0,
+            "subtitleEventPath": "/subtitles/Module_01/p01.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "code-callout",
+          "contentBeat": "C Sharp 侧继承 ShaderGUI 并重写 OnGUI",
+          "sourceSubtitleText": "C Sharp 侧继承 ShaderGUI 并重写 OnGUI",
+          "knowledgeFocus": {
+            "id": "knowledge-01",
+            "label": "C Sharp 侧继承 ShaderGUI 并重写 OnGUI",
+            "source": "slide.points",
+            "semanticRole": "code-step",
+            "learnerTakeaway": "当前应聚焦理解：C Sharp 侧继承 ShaderGUI 并重写 OnGUI"
+          },
+          "animation": {
+            "name": "code-callout-focus",
+            "durationMs": 420,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "highlight": true
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "code-highlight",
+            "attentionPattern": "pulse-once-then-hold",
+            "highlightTarget": "code-callout",
+            "highlightText": "C Sharp 侧继承 ShaderGUI 并重写 OnGUI",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "emerald",
+              "glow": true,
+              "blink": false,
+              "outline": true
+            },
+            "codeHighlightTokens": [
+              "MaterialProperty",
+              "ShaderProperty",
+              "MaterialEditor",
+              "FindProperty",
+              "ShaderGUI",
+              "override",
+              "OnGUI"
+            ]
+          },
+          "compositionBeat": {
+            "frameZone": "right code panel upper third",
+            "subject": "C Sharp 侧继承 ShaderGUI 并重写 OnGUI",
+            "cameraAction": "locked frame; move only callout glow and local code highlight",
+            "spatialChange": "shift visual weight toward code-callout while keeping title and navigation static",
+            "continuityRule": "do not reflow code; preserve code panel position across all beats"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“C Sharp 侧继承 ShaderGUI 并重写 OnGUI”，弱化其他内容；旁白：C Sharp 侧继承 ShaderGUI 并重写 OnGUI。",
+          "focusInstruction": {
+            "focus": "C Sharp 侧继承 ShaderGUI 并重写 OnGUI",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "code-callout",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-02",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 1,
+            "subtitleEventPath": "/subtitles/Module_01/p01.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "code-callout",
+          "contentBeat": "Shader 侧通过 CustomEditor 绑定自定义面板",
+          "sourceSubtitleText": "Shader 侧通过 CustomEditor 绑定自定义面板",
+          "knowledgeFocus": {
+            "id": "knowledge-02",
+            "label": "Shader 侧通过 CustomEditor 绑定自定义面板",
+            "source": "slide.points",
+            "semanticRole": "code-step",
+            "learnerTakeaway": "当前应聚焦理解：Shader 侧通过 CustomEditor 绑定自定义面板"
+          },
+          "animation": {
+            "name": "code-callout-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "highlight": true
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "code-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "code-callout",
+            "highlightText": "Shader 侧通过 CustomEditor 绑定自定义面板",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "emerald",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            },
+            "codeHighlightTokens": [
+              "CustomEditor",
+              "Properties",
+              "_BaseColor",
+              "MyShader",
+              "Shader"
+            ]
+          },
+          "compositionBeat": {
+            "frameZone": "right code panel middle third",
+            "subject": "Shader 侧通过 CustomEditor 绑定自定义面板",
+            "cameraAction": "locked frame; move only callout glow and local code highlight",
+            "spatialChange": "shift visual weight toward code-callout while keeping title and navigation static",
+            "continuityRule": "do not reflow code; preserve code panel position across all beats"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“Shader 侧通过 CustomEditor 绑定自定义面板”，弱化其他内容；旁白：Shader 侧通过 CustomEditor 绑定自定义面板。",
+          "focusInstruction": {
+            "focus": "Shader 侧通过 CustomEditor 绑定自定义面板",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "code-callout",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-03",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 2,
+            "subtitleEventPath": "/subtitles/Module_01/p01.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "code-callout",
+          "contentBeat": "所有高级面板能力都从控制 OnGUI 开始",
+          "sourceSubtitleText": "所有高级面板能力都从控制 OnGUI 开始",
+          "knowledgeFocus": {
+            "id": "knowledge-03",
+            "label": "所有高级面板能力都从控制 OnGUI 开始",
+            "source": "slide.points",
+            "semanticRole": "code-step",
+            "learnerTakeaway": "当前应聚焦理解：所有高级面板能力都从控制 OnGUI 开始"
+          },
+          "animation": {
+            "name": "code-callout-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "highlight": true
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "code-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "code-callout",
+            "highlightText": "所有高级面板能力都从控制 OnGUI 开始",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "emerald",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            },
+            "codeHighlightTokens": [
+              "MaterialProperty",
+              "ShaderProperty",
+              "MaterialEditor",
+              "FindProperty",
+              "editor",
+              "OnGUI"
+            ]
+          },
+          "compositionBeat": {
+            "frameZone": "right code panel lower third",
+            "subject": "所有高级面板能力都从控制 OnGUI 开始",
+            "cameraAction": "locked frame; move only callout glow and local code highlight",
+            "spatialChange": "shift visual weight toward code-callout while keeping title and navigation static",
+            "continuityRule": "do not reflow code; preserve code panel position across all beats"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“所有高级面板能力都从控制 OnGUI 开始”，弱化其他内容；旁白：所有高级面板能力都从控制 OnGUI 开始。",
+          "focusInstruction": {
+            "focus": "所有高级面板能力都从控制 OnGUI 开始",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "code-callout",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        }
+      ],
+      "contentConstraints": [
+        "Only show ShaderGUI course content in the slide canvas.",
+        "Do not render full transcript text as a panel.",
+        "Subtitles must appear only as audio-time events.",
+        "Keep player controls outside the slide canvas.",
+        "Follow storyboard layout, palette, and motion intent before inventing new visual behavior.",
+        "Translate v0 React prototype rules into Vue and Tailwind; do not copy React/shadcn code directly."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS"
+      },
+      "layoutSpec": {
+        "template": "title-code",
+        "grid": "grid-cols-1",
+        "spacing": "gap-4",
+        "typography": {
+          "title": "text-2xl font-bold",
+          "body": "text-base leading-relaxed",
+          "code": "text-sm font-mono",
+          "annotation": "text-xs text-slate-400"
+        }
+      },
+      "colorScheme": {
+        "bg": "#0f172a",
+        "surface": "#1e293b",
+        "textPrimary": "#f8fafc",
+        "textSecondary": "#94a3b8",
+        "accent": "#38bdf8",
+        "accentSecondary": "#818cf8",
+        "codeBg": "#0d1117",
+        "codeKeyword": "#ff7b72",
+        "codeString": "#a5d6ff",
+        "codeComment": "#8b949e"
+      },
+      "componentList": [
+        "SlideTitle",
+        "CodeBlock",
+        "PointList",
+        "SlideNav"
+      ]
+    }
+  ],
+  "interactiveScreens": [
+    {
+      "moduleId": "Module_01",
+      "screenId": "explore-p01-property-grouping",
+      "route": "/module/Module_01/slide/p01/explore",
+      "title": "探索页",
+      "screenType": "course-exploration-subpage",
+      "visualPrompt": "Design the exploration as a child page of the current lesson, not as a numbered slide. The layout must foreground manipulable controls, linked visible feedback, and a clear return path to the parent lesson. Realtime storyboard actions to preserve: load-exploration-contract, manipulate-variable, return-to-parent-slide.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_01/react-prototype.json",
+        "chatUrl": "https://v0.app/chat/qAnaC7HeGO9",
+        "translationMode": "extract-exploration-subpage-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark full-screen course player shell with a luminous slide canvas centered above subtitles and controls.",
+            "Concept slides use a hero statement plus three progressive content cards.",
+            "Code slides use a split reading path: principle cards beside a high-contrast code panel."
+          ],
+          "visual": [
+            "Use deep slate/neutral backgrounds, cyan or emerald accents, soft radial highlights, and glass-like cards.",
+            "Keep controls outside the learner-facing slide canvas.",
+            "Reserve strong accent treatments for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Bottom controls stay compact and touch-friendly.",
+            "Subtitles remain event-driven and visually separate from full transcripts.",
+            "Mobile surface tap toggles playback; vertical swipe navigates slides.",
+            "做题页 renders the question bank table first, then answer cards and immediate feedback.",
+            "Option swapping, answer selection, submission, reset, and scoring must remain live Vue state interactions."
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Let learners manipulate ShaderGUI property grouping variables as a subpage of the current lesson, without consuming a main slide number.",
+        "layoutIntent": {
+          "primaryFocus": "interactive property grouping lab",
+          "readingPath": "parent lesson -> exploration controls -> linked feedback -> return to lesson",
+          "density": "medium",
+          "emphasis": []
+        },
+        "visualComposition": {
+          "aspectRatio": "full viewport lab surface with 7% safe margin",
+          "shotType": "wide interactive workbench",
+          "frameGrid": {
+            "columns": "left controls 36%, right live material-panel feedback 64%",
+            "rows": "breadcrumb/header, interactive body, return affordance",
+            "anchor": "live feedback panel is the visual center; controls stay left"
+          },
+          "foreground": {
+            "subject": "active lab controls",
+            "position": "left-center",
+            "scale": "touch-friendly controls"
+          },
+          "midground": {
+            "subject": "material panel preview and code snippet",
+            "position": "right-center",
+            "role": "show immediate consequence"
+          },
+          "background": {
+            "subject": "dark neutral lab shell",
+            "position": "full frame",
+            "role": "keep focus on interactive cause/effect"
+          },
+          "negativeSpace": "space between controls and feedback prevents the lab from feeling like a form",
+          "readingDirection": "breadcrumb -> controls -> live feedback -> return to lesson",
+          "safeArea": "no content under footer/player controls; keep return path visible",
+          "cameraPlan": {
+            "base": "locked wide frame",
+            "beatMotion": "feedback regions update in place",
+            "avoid": [
+              "modal overlays",
+              "hidden return navigation"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "focused, experimental, immediate",
+          "contrastRole": "use emerald for active controls and cyan for linked feedback",
+          "avoid": [
+            "standalone slide numbering",
+            "audio transcript panel",
+            "decorative-only interaction"
+          ]
+        },
+        "realtimeCueCount": 3,
+        "parentSlideId": "p01"
+      },
+      "realtimeInteractionCues": [
+        {
+          "cueId": "explore-cue-01",
+          "trigger": {
+            "type": "page-load",
+            "event": "exploration-mounted"
+          },
+          "action": "load-exploration-contract",
+          "target": "PropertyGroupingLab",
+          "runtimeBinding": "slides.json explore + concept-model.json",
+          "feedback": "Render the lab as a child route of the parent lesson.",
+          "purpose": "Keep exploration outside the pxx slide sequence."
+        },
+        {
+          "cueId": "explore-cue-02",
+          "trigger": {
+            "type": "user-action",
+            "event": "input"
+          },
+          "action": "manipulate-variable",
+          "target": "lab-controls",
+          "runtimeBinding": "PropertyGroupingLab local state",
+          "feedback": "Visible properties, risk level, explanation, and code snippet update immediately.",
+          "purpose": "Show why grouping and conditional display reduce cognitive load."
+        },
+        {
+          "cueId": "explore-cue-03",
+          "trigger": {
+            "type": "user-action",
+            "event": "click"
+          },
+          "action": "return-to-parent-slide",
+          "target": "PageNav return link",
+          "runtimeBinding": "/module/Module_01/slide/p01",
+          "feedback": "Learner returns to the current lesson without changing the slide range.",
+          "purpose": "Preserve pxx as the main course spine."
+        }
+      ],
+      "runtimeGuidance": {
+        "target": "CourseApp/src/views/ExplorationView.vue",
+        "stateModel": [
+          "explore",
+          "labControls",
+          "linkedFeedback"
+        ],
+        "eventHandlers": [
+          "resolveParentSlide",
+          "updateLabState",
+          "returnToParentSlide"
+        ],
+        "mustRenderFromStoryboard": true
+      },
+      "componentList": [
+        "ExplorationShell",
+        "PropertyGroupingLab",
+        "LinkedFeedbackPanel",
+        "ReturnToParentSlide"
+      ],
+      "contentConstraints": [
+        "Exploration must not appear in slides.json and must not consume a pxx number.",
+        "The route must be a child of the parent slide route.",
+        "Interaction exists only because interaction-necessity-gate decided insert.",
+        "Provide an obvious return path to the parent lesson."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS",
+        "data": "CourseApp/src/data/explorations.json"
+      }
+    },
+    {
+      "moduleId": "Module_01",
+      "screenId": "quiz",
+      "route": "/module/Module_01/quiz",
+      "title": "做题页",
+      "screenType": "course-quiz-runtime",
+      "visualPrompt": "Design the 做题页 as a live assessment workspace. The layout must foreground the question bank table, then answer cards, then immediate result feedback. Realtime storyboard actions to preserve: shuffle-question-bank, shuffle-options, select-answer, submit-answer, show-score. Interactions must feel immediate and data-driven, with no page reload after answer selection, option swapping, submission, or reset.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_01/react-prototype.json",
+        "chatUrl": "https://v0.app/chat/qAnaC7HeGO9",
+        "translationMode": "extract-live-quiz-interaction-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark full-screen course player shell with a luminous slide canvas centered above subtitles and controls.",
+            "Concept slides use a hero statement plus three progressive content cards.",
+            "Code slides use a split reading path: principle cards beside a high-contrast code panel."
+          ],
+          "visual": [
+            "Use deep slate/neutral backgrounds, cyan or emerald accents, soft radial highlights, and glass-like cards.",
+            "Keep controls outside the learner-facing slide canvas.",
+            "Reserve strong accent treatments for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Bottom controls stay compact and touch-friendly.",
+            "Subtitles remain event-driven and visually separate from full transcripts.",
+            "Mobile surface tap toggles playback; vertical swipe navigates slides.",
+            "做题页 renders the question bank table first, then answer cards and immediate feedback.",
+            "Option swapping, answer selection, submission, reset, and scoring must remain live Vue state interactions."
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Let learners answer one focused question at a time, with randomized question order, randomized options, automatic progression, and a final score review.",
+        "layoutIntent": {
+          "primaryFocus": "single active question card",
+          "readingPath": "navigation -> current question -> answer controls -> submit -> next question or score card",
+          "density": "medium",
+          "emphasis": [
+            "单题卡片",
+            "随机题库",
+            "随机选项",
+            "提交后自动下一题",
+            "成绩复盘"
+          ]
+        },
+        "visualComposition": {
+          "aspectRatio": "centered full viewport assessment screen",
+          "shotType": "medium close assessment card",
+          "frameGrid": {
+            "columns": "single centered card, max readable width",
+            "rows": "breadcrumb, question header, answer list, action row, score review",
+            "anchor": "current question card anchors the center; score card replaces it after completion"
+          },
+          "foreground": {
+            "subject": "current question and selected options",
+            "position": "center",
+            "scale": "dominant single-task card"
+          },
+          "midground": {
+            "subject": "submit/reset actions and progress count",
+            "position": "inside card edges",
+            "role": "support decision flow"
+          },
+          "background": {
+            "subject": "quiet dark course shell",
+            "position": "full viewport",
+            "role": "reduce distraction during assessment"
+          },
+          "negativeSpace": "generous margins around the card keep the learner focused on one decision",
+          "readingDirection": "breadcrumb -> question type/progress -> question stem -> options -> submit",
+          "safeArea": "keep all answer controls above fold on common laptop viewport",
+          "cameraPlan": {
+            "base": "locked centered card",
+            "beatMotion": "card content changes, frame remains stable",
+            "avoid": [
+              "table-like all-question layout",
+              "competing sidebars"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "focused, responsive, assessment-oriented",
+          "contrastRole": "use emerald for active choices and correct feedback, rose for remediation feedback",
+          "avoid": [
+            "question bank table",
+            "question-number navigation",
+            "internal production guidance"
+          ]
+        },
+        "realtimeCueCount": 5
+      },
+      "realtimeInteractionCues": [
+        {
+          "cueId": "quiz-cue-01",
+          "trigger": {
+            "type": "page-load",
+            "event": "quiz-mounted"
+          },
+          "action": "shuffle-question-bank",
+          "target": "questionOrder",
+          "runtimeBinding": "restartQuiz()",
+          "feedback": "Question order is randomized when entering or restarting the quiz.",
+          "purpose": "Prevent answer memorization by fixed order."
+        },
+        {
+          "cueId": "quiz-cue-02",
+          "trigger": {
+            "type": "user-action",
+            "event": "change"
+          },
+          "action": "shuffle-options",
+          "target": "optionOrder[currentQuestion.id]",
+          "runtimeBinding": "shuffle(question.options)",
+          "feedback": "Each visible question renders options in a randomized order.",
+          "purpose": "Keep option display data-driven while preserving answer identity by id."
+        },
+        {
+          "cueId": "quiz-cue-03",
+          "trigger": {
+            "type": "user-action",
+            "event": "click"
+          },
+          "action": "select-answer",
+          "target": "radio-or-checkbox-inputs",
+          "runtimeBinding": "toggleAnswer(question, option.id)",
+          "feedback": "Selected options update local answer state without page reload.",
+          "purpose": "Single and multiple choice interactions stay visibly responsive."
+        },
+        {
+          "cueId": "quiz-cue-04",
+          "trigger": {
+            "type": "user-action",
+            "event": "click"
+          },
+          "action": "submit-answer",
+          "target": "submit-button",
+          "runtimeBinding": "submitAnswer(question)",
+          "feedback": "Compute correctness and advance to the next question automatically.",
+          "purpose": "Keep the quiz focused on one decision at a time."
+        },
+        {
+          "cueId": "quiz-cue-05",
+          "trigger": {
+            "type": "state-change",
+            "event": "results-updated"
+          },
+          "action": "show-score",
+          "target": "score-card",
+          "runtimeBinding": "finished + scoreCount",
+          "feedback": "Show final score, review states, restart, practice, and navigation actions.",
+          "purpose": "Close the assessment loop after all questions are answered."
+        }
+      ],
+      "runtimeGuidance": {
+        "target": "CourseApp/src/views/QuizView.vue",
+        "stateModel": [
+          "questionOrder",
+          "answers",
+          "results",
+          "optionOrder",
+          "currentIndex"
+        ],
+        "eventHandlers": [
+          "restartQuiz",
+          "continuePractice",
+          "toggleAnswer",
+          "submitAnswer",
+          "resetAnswer"
+        ],
+        "mustRenderFromStoryboard": true
+      },
+      "componentList": [
+        "QuestionBankTable",
+        "QuizQuestionCard",
+        "SingleChoiceInput",
+        "MultipleChoiceInput",
+        "OptionSwapControls",
+        "SubmitAnswerButton",
+        "ResultFeedback"
+      ],
+      "contentConstraints": [
+        "Use 做题页 terminology in learner-facing UI.",
+        "Render storyboard realtime cues as visible guidance or behavior.",
+        "Do not hard-code question rows outside quizzes.json.",
+        "Keep answer identity tied to option id when options are reordered.",
+        "Submission feedback must be immediate and visible."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS",
+        "data": "CourseApp/src/data/quizzes.json"
+      }
+    }
+  ],
+  "_validation": {
+    "lastContractCheck": null,
+    "lastVisualRefCheck": "2026-05-04T07:55:07Z",
+    "contractCheckAttempts": 0,
+    "visualRefCheckAttempts": 0
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "buildCommand": "cd CourseApp && npm ci && npm run build",
+  "outputDirectory": "CourseApp/dist",
+  "installCommand": "cd CourseApp && npm ci",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

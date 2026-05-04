@@ -1,0 +1,62 @@
+[
+  {
+    "moduleId": "Module_01",
+    "slideId": "p00",
+    "order": 0,
+    "title": "ShaderGUI：不只是换一层皮",
+    "kind": "concept",
+    "points": [
+      "ShaderGUI 是 Shader 参数系统的前端工程层",
+      "核心目标是降低美术调参时的认知负担",
+      "职责是组织参数、解释含义、同步状态"
+    ],
+    "mentalModel": {
+      "title": "知识结构",
+      "text": "先看面板职责，再看代码入口，最后把每个参数放回美术真正调节材质时的决策语境。"
+    },
+    "route": "/module/Module_01/slide/p00",
+    "audio": "/audio/Module_01/p00.mp3",
+    "subtitles": "/subtitles/Module_01/p00.json",
+    "transcript": "/transcripts/Module_01/Module_01-p00-逐字稿.md"
+  },
+  {
+    "moduleId": "Module_01",
+    "slideId": "p01",
+    "order": 1,
+    "title": "最小可行架构",
+    "kind": "code",
+    "points": [
+      "C Sharp 侧继承 ShaderGUI 并重写 OnGUI",
+      "Shader 侧通过 CustomEditor 绑定自定义面板",
+      "所有高级面板能力都从控制 OnGUI 开始"
+    ],
+    "mentalModel": {
+      "title": "代码心智模型",
+      "text": "先看代码入口，再看关键调用，最后把参数放回美术真实调参的决策语境。"
+    },
+    "codeBlocks": [
+      {
+        "title": "MyGUI.cs",
+        "language": "csharp",
+        "badge": "C# side",
+        "code": "public class MyGUI : ShaderGUI\n{\n    public override void OnGUI(MaterialEditor editor, MaterialProperty[] props)\n    {\n        MaterialProperty baseColor = FindProperty(\"_BaseColor\", props);\n        editor.ShaderProperty(baseColor, \"Base Color\");\n    }\n}"
+      },
+      {
+        "title": "ShaderLab binding",
+        "language": "shaderlab",
+        "badge": "Shader side",
+        "code": "Shader \"Custom/MyShader\"\n{\n    Properties\n    {\n        _BaseColor(\"Base Color\", Color) = (1,1,1,1)\n    }\n\n    SubShader\n    {\n        // Passes and render state live here.\n    }\n\n    CustomEditor \"MyGUI\"\n}"
+      }
+    ],
+    "explore": {
+      "id": "property-grouping",
+      "route": "/module/Module_01/slide/p01/explore",
+      "title": "探索页",
+      "component": "PropertyGroupingLab"
+    },
+    "route": "/module/Module_01/slide/p01",
+    "audio": "/audio/Module_01/p01.mp3",
+    "subtitles": "/subtitles/Module_01/p01.json",
+    "transcript": "/transcripts/Module_01/Module_01-p01-逐字稿.md"
+  }
+]
