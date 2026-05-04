@@ -10,7 +10,13 @@
 
       </section>
 
-      <section class="p-4 lg:p-6">
+      <section class="relative p-4 lg:p-6">
+
+        <PerformanceLayer
+          :perf-specs="performanceSpecs"
+          :current-time="currentTime"
+          class="absolute inset-0 z-20 pointer-events-none"
+        />
 
         <SlideCanvas
 
@@ -66,6 +72,8 @@ import BreadcrumbNav from "./BreadcrumbNav.vue";
 
 import SlideCanvas from "./SlideCanvas.vue";
 
+import PerformanceLayer from "./PerformanceLayer.vue";
+
 import SlideNav from "./SlideNav.vue";
 
 import SubtitleOverlay from "./SubtitleOverlay.vue";
@@ -97,6 +105,8 @@ const storyboardSlide = computed(() =>
 const motionCues = computed(() => storyboardSlide.value?.motionCues ?? []);
 
 const visualSpecs = computed(() => storyboardSlide.value?.visualSpecs ?? []);
+
+const performanceSpecs = computed(() => storyboardSlide.value?.performanceSpecs ?? []);
 
 const visualComposition = computed(() => storyboardSlide.value?.visualComposition ?? null);
 

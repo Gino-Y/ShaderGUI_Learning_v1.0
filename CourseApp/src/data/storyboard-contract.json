@@ -2,7 +2,7 @@
   "provider": "storyboard-local-spec",
   "status": "storyboard_ready",
   "module": "Module_01",
-  "generatedAt": "2026-05-04T11:29:05Z",
+  "generatedAt": "2026-05-04T12:05:02Z",
   "source": {
     "slides": "CourseApp/src/data/slides.json",
     "explorations": "CourseApp/src/data/explorations.json",
@@ -546,6 +546,159 @@
             "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
           },
           "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        }
+      ],
+      "performanceSpecs": [
+        {
+          "cueId": "deco-cue-01",
+          "trigger": {
+            "type": "subtitle-segment",
+            "timecode": 7.73,
+            "segmentIndex": 1
+          },
+          "timeRange": {
+            "start": 7.73,
+            "end": 12.59,
+            "durationMs": 4859
+          },
+          "performanceType": "decoration",
+          "demoType": null,
+          "payload": {
+            "particleType": "floating-cyan",
+            "count": 15,
+            "colors": [
+              "#67e8f9",
+              "#6ee7b7",
+              "#a78bfa"
+            ],
+            "speedRange": [
+              0.2,
+              0.8
+            ],
+            "opacityRange": [
+              0.15,
+              0.4
+            ]
+          },
+          "zIndex": 10
+        },
+        {
+          "cueId": "perf-cue-02",
+          "trigger": {
+            "type": "subtitle-segment",
+            "timecode": 12.59,
+            "segmentIndex": 2
+          },
+          "timeRange": {
+            "start": 12.59,
+            "end": 22.12,
+            "durationMs": 9530
+          },
+          "performanceType": "demo",
+          "demoType": "flow-path",
+          "payload": {
+            "nodes": [
+              {
+                "id": "material",
+                "label": "Material",
+                "type": "source"
+              },
+              {
+                "id": "shadergui",
+                "label": "ShaderGUI",
+                "type": "process"
+              },
+              {
+                "id": "shader",
+                "label": "Shader",
+                "type": "target"
+              }
+            ],
+            "edges": [
+              {
+                "from": "material",
+                "to": "shadergui",
+                "label": "参数传递"
+              },
+              {
+                "from": "shadergui",
+                "to": "shader",
+                "label": "属性绑定"
+              }
+            ],
+            "style": {
+              "accentColor": "#67e8f9",
+              "particleCount": 20,
+              "durationMs": 4000
+            }
+          },
+          "zIndex": 10
+        },
+        {
+          "cueId": "deco-cue-02",
+          "trigger": {
+            "type": "subtitle-segment",
+            "timecode": 12.59,
+            "segmentIndex": 2
+          },
+          "timeRange": {
+            "start": 12.59,
+            "end": 22.12,
+            "durationMs": 9530
+          },
+          "performanceType": "decoration",
+          "demoType": null,
+          "payload": {
+            "particleType": "floating-cyan",
+            "count": 15,
+            "colors": [
+              "#67e8f9",
+              "#6ee7b7",
+              "#a78bfa"
+            ],
+            "speedRange": [
+              0.2,
+              0.8
+            ],
+            "opacityRange": [
+              0.15,
+              0.4
+            ]
+          },
+          "zIndex": 10
+        },
+        {
+          "cueId": "deco-cue-03",
+          "trigger": {
+            "type": "subtitle-segment",
+            "timecode": 26.25,
+            "segmentIndex": 4
+          },
+          "timeRange": {
+            "start": 26.25,
+            "end": 35.42,
+            "durationMs": 9170
+          },
+          "performanceType": "decoration",
+          "demoType": null,
+          "payload": {
+            "particleType": "floating-cyan",
+            "count": 15,
+            "colors": [
+              "#67e8f9",
+              "#6ee7b7",
+              "#a78bfa"
+            ],
+            "speedRange": [
+              0.2,
+              0.8
+            ],
+            "opacityRange": [
+              0.15,
+              0.4
+            ]
+          },
+          "zIndex": 10
         }
       ],
       "animationHandoff": {
@@ -1123,6 +1276,107 @@
             "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
           },
           "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        }
+      ],
+      "performanceSpecs": [
+        {
+          "cueId": "deco-cue-01",
+          "trigger": {
+            "type": "subtitle-segment",
+            "timecode": 4.19,
+            "segmentIndex": 1
+          },
+          "timeRange": {
+            "start": 4.19,
+            "end": 11.06,
+            "durationMs": 6870
+          },
+          "performanceType": "decoration",
+          "demoType": null,
+          "payload": {
+            "particleType": "floating-cyan",
+            "count": 15,
+            "colors": [
+              "#67e8f9",
+              "#6ee7b7",
+              "#a78bfa"
+            ],
+            "speedRange": [
+              0.2,
+              0.8
+            ],
+            "opacityRange": [
+              0.15,
+              0.4
+            ]
+          },
+          "zIndex": 10
+        },
+        {
+          "cueId": "deco-cue-02",
+          "trigger": {
+            "type": "subtitle-segment",
+            "timecode": 11.06,
+            "segmentIndex": 2
+          },
+          "timeRange": {
+            "start": 11.06,
+            "end": 16.76,
+            "durationMs": 5700
+          },
+          "performanceType": "decoration",
+          "demoType": null,
+          "payload": {
+            "particleType": "floating-cyan",
+            "count": 15,
+            "colors": [
+              "#67e8f9",
+              "#6ee7b7",
+              "#a78bfa"
+            ],
+            "speedRange": [
+              0.2,
+              0.8
+            ],
+            "opacityRange": [
+              0.15,
+              0.4
+            ]
+          },
+          "zIndex": 10
+        },
+        {
+          "cueId": "deco-cue-03",
+          "trigger": {
+            "type": "subtitle-segment",
+            "timecode": 20.95,
+            "segmentIndex": 4
+          },
+          "timeRange": {
+            "start": 20.95,
+            "end": 30.0,
+            "durationMs": 9050
+          },
+          "performanceType": "decoration",
+          "demoType": null,
+          "payload": {
+            "particleType": "floating-cyan",
+            "count": 15,
+            "colors": [
+              "#67e8f9",
+              "#6ee7b7",
+              "#a78bfa"
+            ],
+            "speedRange": [
+              0.2,
+              0.8
+            ],
+            "opacityRange": [
+              0.15,
+              0.4
+            ]
+          },
+          "zIndex": 10
         }
       ],
       "animationHandoff": {

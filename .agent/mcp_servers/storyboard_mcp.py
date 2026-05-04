@@ -63,6 +63,10 @@ class StoryboardMCP:
                     "visualSpecs": StoryboardMCP.build_visual_specs_for_slide(
                         StoryboardMCP._motion_cues(workspace, kind, points, subtitle_path)
                     ),
+                    "performanceSpecs": StoryboardMCP.build_performance_specs_for_slide(
+                        StoryboardMCP._motion_cues(workspace, kind, points, subtitle_path),
+                        slide_kind=kind,
+                    ),
                     "animationHandoff": {
                         "target": "future-web-animation-module",
                         "triggerSource": "subtitle-events",
@@ -361,6 +365,33 @@ class StoryboardMCP:
                     for req_field in ("frameZone", "subject", "cameraAction", "spatialChange", "continuityRule"):
                         if not comp_beat.get(req_field):
                             errors.append({"slideId": sid, "field": f"{prefix}.compositionBeat.{req_field}", "issue": "missing or empty", "severity": "error"})
+
+            # 验证 performanceSpecs
+            perf_specs = slide.get("performanceSpecs", [])
+            if not isinstance(perf_specs, list):
+                errors.append({"slideId": sid, "field": "performanceSpecs", "issue": "must be an array", "severity": "error"})
+            else:
+                valid_perf_types = {"demo", "decoration", "transition"}
+                valid_demo_types = {"flow-path", "shader-preview", None}
+                for pidx, pspec in enumerate(perf_specs):
+                    pprefix = f"performanceSpecs[{pidx}]"
+                    for req_field in ("cueId", "trigger", "timeRange", "performanceType", "payload"):
+                        if pspec.get(req_field) is None:
+                            errors.append({"slideId": sid, "field": f"{pprefix}.{req_field}", "issue": "missing", "severity": "error"})
+                    pt = pspec.get("performanceType")
+                    if pt not in valid_perf_types:
+                        errors.append({"slideId": sid, "field": f"{pprefix}.performanceType", "issue": f"must be one of {valid_perf_types}", "severity": "error"})
+                    if pt == "demo" and pspec.get("demoType") not in {"flow-path", "shader-preview"}:
+                        errors.append({"slideId": sid, "field": f"{pprefix}.demoType", "issue": "must be a valid demo type for demo performance", "severity": "error"})
+                    ptrigger = pspec.get("trigger", {})
+                    if ptrigger.get("type") != "subtitle-segment":
+                        errors.append({"slideId": sid, "field": f"{pprefix}.trigger.type", "issue": "must be subtitle-segment", "severity": "error"})
+                    ptime = pspec.get("timeRange", {})
+                    for k in ("start", "end", "durationMs"):
+                        if not isinstance(ptime.get(k), (int, float)):
+                            errors.append({"slideId": sid, "field": f"{pprefix}.timeRange.{k}", "issue": "must be numeric", "severity": "error"})
+                    if ptime.get("end", 0) <= ptime.get("start", 0):
+                        errors.append({"slideId": sid, "field": f"{pprefix}.timeRange", "issue": "end must be > start", "severity": "error"})
 
         if not interactive_screens:
             errors.append({"field": "interactiveScreens", "issue": "做题页实时互动故事板缺失", "severity": "error"})
@@ -1084,6 +1115,98 @@ class StoryboardMCP:
                 ]
             )
         return "\n".join(lines)
+
+    # -------------------------------------------------------------------------
+    # Performance Specs (表演层)
+    # -------------------------------------------------------------------------
+    @staticmethod
+    def build_performance_for_cue(cue: dict, performance_type: str = "demo", demo_type: str = "flow-path") -> dict:
+        """为单个 cue 构建 performanceSpec（嵌入版本）"""
+        time_range = cue.get("timeRange", {})
+        trigger = cue.get("trigger", {})
+        start = float(time_range.get("start", 0))
+        end = float(time_range.get("end", start + 3.0))
+        duration_ms = int((end - start) * 1000)
+
+        if performance_type == "demo" and demo_type == "flow-path":
+            payload = StoryboardMCP._build_flow_path_payload(cue)
+        elif performance_type == "decoration":
+            payload = StoryboardMCP._build_decoration_payload(cue)
+        elif performance_type == "transition":
+            payload = StoryboardMCP._build_transition_payload(cue)
+        else:
+            payload = {}
+
+        return {
+            "cueId": f"perf-{cue.get('cueId', 'unknown')}",
+            "trigger": {
+                "type": trigger.get("type", "subtitle-segment"),
+                "timecode": trigger.get("timecode", start),
+                "segmentIndex": trigger.get("segmentIndex", 0),
+            },
+            "timeRange": {
+                "start": round(start, 2),
+                "end": round(end, 2),
+                "durationMs": duration_ms,
+            },
+            "performanceType": performance_type,
+            "demoType": demo_type if performance_type == "demo" else None,
+            "payload": payload,
+            "zIndex": 10,
+        }
+
+    @staticmethod
+    def build_performance_specs_for_slide(cues: list[dict], slide_kind: str = "concept") -> list[dict]:
+        """为 slide 的所有 cues 生成 performanceSpecs"""
+        specs = []
+        for i, cue in enumerate(cues):
+            if slide_kind == "concept" and i % 2 == 1:
+                spec = StoryboardMCP.build_performance_for_cue(cue, performance_type="demo", demo_type="flow-path")
+                specs.append(spec)
+            deco = StoryboardMCP.build_performance_for_cue(cue, performance_type="decoration", demo_type="particle")
+            deco["cueId"] = f"deco-{cue.get('cueId', 'unknown')}"
+            specs.append(deco)
+        return specs
+
+    @staticmethod
+    def _build_flow_path_payload(cue: dict) -> dict:
+        """Build flow-path demo payload: Material -> ShaderGUI -> Shader"""
+        return {
+            "nodes": [
+                {"id": "material", "label": "Material", "type": "source"},
+                {"id": "shadergui", "label": "ShaderGUI", "type": "process"},
+                {"id": "shader", "label": "Shader", "type": "target"},
+            ],
+            "edges": [
+                {"from": "material", "to": "shadergui", "label": "参数传递"},
+                {"from": "shadergui", "to": "shader", "label": "属性绑定"},
+            ],
+            "style": {
+                "accentColor": "#67e8f9",
+                "particleCount": 20,
+                "durationMs": min(4000, int(cue.get("timeRange", {}).get("durationMs", 4000) * 0.7)),
+            },
+        }
+
+    @staticmethod
+    def _build_decoration_payload(cue: dict) -> dict:
+        """Build particle decoration payload"""
+        return {
+            "particleType": "floating-cyan",
+            "count": 15,
+            "colors": ["#67e8f9", "#6ee7b7", "#a78bfa"],
+            "speedRange": [0.2, 0.8],
+            "opacityRange": [0.15, 0.4],
+        }
+
+    @staticmethod
+    def _build_transition_payload(cue: dict) -> dict:
+        """Build transition payload"""
+        return {
+            "transitionType": "fade-wipe",
+            "direction": "left-to-right",
+            "durationMs": 600,
+        }
 
     @staticmethod
     def _format_time(seconds: float) -> str:
