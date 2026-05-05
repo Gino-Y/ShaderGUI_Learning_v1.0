@@ -1,12 +1,12 @@
 <template>
   <div class="perf-layer" v-if="activePerfSpec">
     <ParticleDecoration
-      v-if="activePerfSpec.performanceType === 'decoration'"
+      v-if="activePerfSpec.type === 'decoration'"
       :payload="activePerfSpec.payload"
       :active="true"
     />
     <TransitionWipe
-      v-else-if="activePerfSpec.performanceType === 'transition'"
+      v-else-if="activePerfSpec.type === 'transition'"
       :payload="activePerfSpec.payload"
       :active="true"
     />
