@@ -14,7 +14,19 @@ WorkBuddy remediation is complete: design/v0 MCP runtime failures were fixed and
 
 ## Recent Changes
 
-- **2026-05-05**: Fixed `storyboard_mcp.py` and `design_mcp.py` for performance animation issues:
+- **2026-05-05 (2nd fix)**: 修复表演动画字段名全链路不一致问题：
+  - **根因**：`build_performance_for_cue()` 返回字典使用 `performanceType`/`demoType`，但 `SlideCanvas.vue`/`PerformanceLayer.vue` 消费的是 `type`/`demo`，导致 Vue 读到 `undefined`，表演动画全部消失。
+  - **修复范围（8个文件）**：
+    - `storyboard_mcp.py`：`build_performance_for_cue()` 返回字段改为 `type`/`demo`；`validate_storyboard_contract()` 校验字段同步更新
+    - `design_mcp.py`：`performanceSpecs` 读取字段同步更新
+    - `PerformanceLayer.vue`（模板）：`v-if/v-else-if` 绑定改为 `activePerfSpec.type`
+    - `SlideCanvas.vue`（模板）：`showFlowPath` 计算属性改为 `activePerfSpec.value?.type` 和 `activePerfSpec.value?.demo`
+    - `audit_semantic.py` / `audit_storyboard.py`：审计脚本字段名同步
+  - 重新生成 `storyboard-contract.json` 和 `design-contract.json`，验证 `type=demo, demo=flow-path` 正确
+  - 提交：`0736b00`
+  - 用户验证：待刷新浏览器确认动画恢复
+
+- **2026-05-05 (1st fix)**: Fixed `storyboard_mcp.py` and `design_mcp.py` for performance animation issues:
   - `storyboard_mcp.py`: Removed `slide_kind == "concept"` restriction in `build_performance_specs_for_slide()` — now all slide types (concept/code) can generate demo specs based on semantic keywords.
   - `design_mcp.py`: Fixed color code typo (`#1e293b` → `#1e293b`) in `COLOR_SCHEMES["default"]["surface"]`.
   - Re-generated `storyboard-contract.json` and `design-contract.json` — p01 now correctly generates `type=demo, demo=flow-path` performanceSpec.

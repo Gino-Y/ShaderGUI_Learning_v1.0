@@ -14,6 +14,7 @@
 - [SYNC_RULES_DAG_VERIFY] 任何影响规则、DAG、验收标准的改动必须同步更新 `docs/Skill_Chain_DAG.md`、`.agent/rules.md`、`.agent/SKILL.md` 和 `scripts/verify_course.py`，必要时同步 `.agent/mcp_servers/mvp_mcp.py`。
 - [REVERIFY_BUILD_BROWSER] 需循环自检直至交付：`verify_course.py`、`npm run build` 和必要的浏览器验证，未通过不算完成。
 - [COMPLETION_GATE_FILE_DRIVEN] 禁止仅靠对话记忆收尾；凡触及 `CourseApp/`、`.agent/mcp_servers/`、`scripts/`、`.agent/templates/`、`CourseContent/`、`docs/Skill_Chain_DAG.md`、`.agent/handoff/` 或课程数据契约，必须更新 STATE、handoff、memory 并运行验证。
+- [NO_DIRECT_EDIT_OUTPUT] **禁止直接修改产物文件**；只能通过修改 `.agent/` 中的 MCP 节点或模板 删除产物 重新生成的方式修改。`CourseApp/`、`CourseApp/dist/`、`CourseApp/src/data/` 均为产物，不得直接编辑。
 
 ## 单一资产源
 
