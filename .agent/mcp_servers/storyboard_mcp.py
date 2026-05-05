@@ -1167,7 +1167,7 @@ class StoryboardMCP:
             content = (cue.get("contentBeat") or "") + " " + (cue.get("knowledgeFocus", {}).get("label") or "")
             # 语义规则：涉及流程/过程/步骤的内容，才加 demo
             needs_demo = any(kw in content for kw in ["流程", "传递", "绑定", "过程", "步骤", "调用", "执行", "渲染", "绘制"])
-            if slide_kind == "concept" and needs_demo and i > 0:
+            if needs_demo and i > 0:  # 移除 slide_kind 限制，所有类型都可以生成 demo
                 spec = StoryboardMCP.build_performance_for_cue(cue, performance_type="demo", demo_type="flow-path")
                 specs.append(spec)
             deco = StoryboardMCP.build_performance_for_cue(cue, performance_type="decoration", demo_type="particle")

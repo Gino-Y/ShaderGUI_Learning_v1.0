@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import json
 from datetime import datetime
@@ -19,7 +19,7 @@ class DesignMCP:
     COLOR_SCHEMES = {
         "default": {
             "bg": "#0f172a",
-            "surface": "#1e293b",
+            "surface": "#1e293b",  # 修复：Slate-800
             "textPrimary": "#f8fafc",
             "textSecondary": "#94a3b8",
             "accent": "#38bdf8",
@@ -108,13 +108,14 @@ class DesignMCP:
         if not module_slides:
             return {"status": "failed", "message": f"no slides found for {module}"}
 
+        design_slides = []
         for slide in module_slides:
             slide_id = slide.get("slideId")
             title = slide.get("title", "")
             points = slide.get("points", [])
             kind = slide.get("kind", "concept")
             storyboard_slide = storyboard_by_slide.get(slide_id, {})
-            # 优先使用 storyboard 的 visualComposition 来推导 layoutSpec
+            # Prefer storyboard visualComposition when deriving layoutSpec.
             visual_comp = storyboard_slide.get("visualComposition") or {}
             if visual_comp:
                 layout_spec = {
@@ -127,13 +128,13 @@ class DesignMCP:
             else:
                 template = DesignMCP.LAYOUT_TEMPLATES.get(kind, DesignMCP.LAYOUT_TEMPLATES["concept"])
                 layout_spec = dict(template)
-            # colorScheme：使用 storyboard 的 paletteIntent 来推导
+            # Derive colorScheme from storyboard paletteIntent when available.
             palette = storyboard_slide.get("paletteIntent") or {}
             if palette:
                 color_scheme = DesignMCP._infer_color_scheme(palette)
             else:
                 color_scheme = dict(DesignMCP.COLOR_SCHEMES["default"])
-            # componentList：结合 storyboard 的 motionCues 和 visualComposition
+            # Combine storyboard motion cues and slide kind into a component list.
             motion_cues = storyboard_slide.get("motionCues", [])
             has_performance = any(
                 cue.get("performanceType") == "demo" for cue in motion_cues
@@ -143,16 +144,26 @@ class DesignMCP:
             elif kind == "code":
                 src_code = ""
                 if len(points) > 0:
-                    # 尝试从 slides.json 获取代码
-                    pass  # 保持现有逻辑
+                    # Keep current code-size heuristic until code extraction is needed.
+                    pass
                 if len(src_code) > 100:
                     component_list = list(DesignMCP.COMPONENT_SETS["code_full"])
                 else:
                     component_list = list(DesignMCP.COMPONENT_SETS["code_base"])
             else:
-                has_diagram = any(
-                    any(kw in (title + " ".join(points)) for kw in ["图", "架构", "路线", "流程"])
-                )
+                search_text = title + " " + " ".join(points)
+                diagram_keywords = [
+                    "图",
+                    "架构",
+                    "路线",
+                    "流程",
+                    "层级",
+                    "结构",
+                    "diagram",
+                    "architecture",
+                    "flow",
+                ]
+                has_diagram = any(keyword in search_text for keyword in diagram_keywords)
                 if has_diagram:
                     component_list = list(DesignMCP.COMPONENT_SETS["concept_diagram"])
                 else:
@@ -246,6 +257,72 @@ class DesignMCP:
         }
 
     @staticmethod
+    def _infer_typography(visual_comp: dict) -> dict:
+        """Derive stable Tailwind typography tokens from storyboard composition."""
+        typography = {
+            "title": "text-3xl font-bold",
+            "subtitle": "text-lg text-slate-400",
+            "body": "text-base leading-relaxed",
+            "caption": "text-sm text-slate-500",
+        }
+        if not isinstance(visual_comp, dict) or not visual_comp:
+            return typography
+
+        frame_grid = visual_comp.get("frameGrid") if isinstance(visual_comp.get("frameGrid"), dict) else {}
+        hierarchy = visual_comp.get("visualHierarchy") if isinstance(visual_comp.get("visualHierarchy"), dict) else {}
+        primary = " ".join(
+            str(value)
+            for value in (
+                visual_comp.get("primarySubject"),
+                visual_comp.get("dominantZone"),
+                frame_grid.get("emphasis"),
+                hierarchy.get("primary"),
+            )
+            if value
+        ).lower()
+
+        if any(token in primary for token in ("hero", "focus", "title", "lead")):
+            typography["title"] = "text-4xl font-bold"
+        if any(token in primary for token in ("code", "terminal", "snippet")):
+            typography["code"] = "text-sm font-mono"
+            typography["annotation"] = "text-xs text-slate-400"
+        return typography
+
+    @staticmethod
+    def _infer_color_scheme(palette: dict) -> dict:
+        """Map storyboard palette intent onto the app's design contract colors."""
+        scheme = dict(DesignMCP.COLOR_SCHEMES["default"])
+        if not isinstance(palette, dict) or not palette:
+            return scheme
+
+        accent = palette.get("accent") or palette.get("accentColor") or palette.get("primaryAccent")
+        secondary = palette.get("accentSecondary") or palette.get("secondaryAccent")
+        bg = palette.get("bg") or palette.get("background") or palette.get("backgroundColor")
+        surface = palette.get("surface") or palette.get("panel") or palette.get("panelColor")
+        text = palette.get("textPrimary") or palette.get("foreground")
+        muted = palette.get("textSecondary") or palette.get("muted")
+
+        if isinstance(accent, str) and accent.startswith("#"):
+            scheme["accent"] = accent
+        if isinstance(secondary, str) and secondary.startswith("#"):
+            scheme["accentSecondary"] = secondary
+        if isinstance(bg, str) and bg.startswith("#"):
+            scheme["bg"] = bg
+        if isinstance(surface, str) and surface.startswith("#"):
+            scheme["surface"] = surface
+        if isinstance(text, str) and text.startswith("#"):
+            scheme["textPrimary"] = text
+        if isinstance(muted, str) and muted.startswith("#"):
+            scheme["textSecondary"] = muted
+
+        mood = str(palette.get("mood") or palette.get("tone") or "").lower()
+        if "warm" in mood:
+            scheme["accentSecondary"] = "#f59e0b"
+        elif "calm" in mood or "focus" in mood:
+            scheme["accentSecondary"] = "#22d3ee"
+        return scheme
+
+    @staticmethod
     def validate_design_contract(
         workspace: Path, module: str, design_file: str | None
     ) -> dict:
@@ -329,7 +406,7 @@ class DesignMCP:
         if not interactive_screens:
             errors.append({
                 "field": "interactiveScreens",
-                "issue": "做题页设计契约缺失",
+                "issue": "interactive screen design contract is missing",
                 "severity": "error",
             })
         for screen in interactive_screens:
@@ -588,7 +665,8 @@ class DesignMCP:
             if kind == "concept":
                 points = slide.get("title", "")
                 has_diagram_keywords = any(
-                    kw in points for kw in ("图", "架构", "路线", "流程", "层级", "结构", "支柱")
+                    kw in points
+                    for kw in ("图", "架构", "路线", "流程", "层级", "结构", "支柱", "diagram", "architecture", "flow")
                 )
                 if has_diagram_keywords:
                     slide["componentList"] = list(DesignMCP.COMPONENT_SETS["concept_diagram"])
@@ -766,22 +844,22 @@ class DesignMCP:
         report_file = out_dir / f"diagnostic-report-{check_type}.md"
 
         check_label = {
-            "contract": "契约完整性",
-            "visual_ref": "视觉参考",
+            "contract": "contract integrity",
+            "visual_ref": "visual reference",
         }.get(check_type, check_type)
 
         lines = [
-            f"# 设计自检诊断报告 — {check_label}",
+            f"# Design Self-Check Diagnostic Report - {check_label}",
             "",
-            f"- 模块: {module}",
-            f"- 检查类型: {check_label}",
-            f"- 重试次数: {retries}/{max_retries}",
-            f"- 时间: {now}",
+            f"- Module: {module}",
+            f"- Check type: {check_label}",
+            f"- Retry count: {retries}/{max_retries}",
+            f"- Time: {now}",
             "",
-            "## 失败项",
+            "## Failed Items",
             "",
-            "| Slide | 字段 | 问题 | 严重度 |",
-            "|-------|------|------|--------|",
+            "| Slide | Field | Issue | Severity |",
+            "|-------|-------|-------|----------|",
         ]
 
         for err in errors:
@@ -793,28 +871,28 @@ class DesignMCP:
 
         lines.extend([
             "",
-            "## 修复建议",
+            "## Suggested Fixes",
             "",
         ])
 
         if check_type == "contract":
             lines.extend([
-                "1. 检查 `slides.json` 是否完整（所有 slide 是否有 title/points）",
-                "2. 运行 `--stage design` 清理并重新生成设计契约",
-                "3. 如果 slides.json 本身有问题，回溯到 MANIFEST_READY 阶段",
+                "1. Check that slides.json is complete and every slide has title and points.",
+                "2. Re-run the design stage through flow_engine.",
+                "3. If slides.json is invalid, return to the MANIFEST_READY stage.",
             ])
         elif check_type == "visual_ref":
             lines.extend([
-                "1. 运行 `--stage design` 清理并重新生成设计契约",
-                "2. 检查 slides.json 中每页的 kind 字段是否正确（concept/code）",
-                "3. 如果错误持续，检查 design_mcp.py 中的模板配置",
+                "1. Re-run the design stage through flow_engine.",
+                "2. Check that every slide has a valid kind field: concept or code.",
+                "3. If the issue persists, inspect DesignMCP templates and storyboard inputs.",
             ])
 
         lines.extend([
             "",
-            "## 诊断文件路径",
+            "## Diagnostic Path",
             "",
-            f"- 报告: `{report_file.relative_to(workspace).as_posix()}`",
+            f"- Report: `{report_file.relative_to(workspace).as_posix()}`",
         ])
 
         report_file.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -911,10 +989,10 @@ class DesignMCP:
             "moduleId": module,
             "screenId": screen.get("screenId"),
             "route": screen.get("route"),
-            "title": screen.get("title", "做题页"),
+            "title": screen.get("title", "Quiz"),
             "screenType": "course-quiz-runtime",
             "visualPrompt": (
-                "Design the 做题页 as a live assessment workspace. "
+                "Design the quiz page as a live assessment workspace. "
                 "The layout must foreground the question bank table, then answer cards, then immediate result feedback. "
                 f"Realtime storyboard actions to preserve: {actions}. "
                 "Interactions must feel immediate and data-driven, with no page reload after answer selection, option swapping, submission, or reset."
@@ -950,7 +1028,7 @@ class DesignMCP:
                 "ResultFeedback",
             ],
             "contentConstraints": [
-                "Use 做题页 terminology in learner-facing UI.",
+                "Use learner-facing quiz terminology in the UI.",
                 "Render storyboard realtime cues as visible guidance or behavior.",
                 "Do not hard-code question rows outside quizzes.json.",
                 "Keep answer identity tied to option id when options are reordered.",

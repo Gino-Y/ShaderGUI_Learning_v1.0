@@ -3,6 +3,7 @@
   "description": "Machine-readable execution boundary for MVPMCP clean-first generation.",
   "clean": {
     "allow": [
+      "CourseApp/src",
       "CourseApp/public",
       "CourseApp/dist",
       "CourseApp/package.json",

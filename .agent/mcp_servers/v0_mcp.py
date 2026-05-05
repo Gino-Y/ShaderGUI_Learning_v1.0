@@ -1,6 +1,7 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import json
+import os
 import time
 from datetime import datetime
 import urllib.error
@@ -15,7 +16,7 @@ class V0MCP:
     def _read_api_key(workspace: Path) -> str:
         env_file = workspace / ".env"
         if not env_file.exists():
-            raise ValueError("缺少 .env，无法读取 V0_API_KEY")
+            raise ValueError("missing .env; cannot read V0_API_KEY")
 
         key = ""
         for line in env_file.read_text(encoding="utf-8").splitlines():
@@ -23,7 +24,7 @@ class V0MCP:
                 key = line.split("=", 1)[1].strip().strip('"').strip("'")
                 break
         if not key:
-            raise ValueError(".env 中 V0_API_KEY 为空")
+            raise ValueError("V0_API_KEY is empty in .env")
         return key
 
     @staticmethod
@@ -42,7 +43,8 @@ class V0MCP:
             },
             method=method,
         )
-        timeout = 600 if method == "POST" else 30
+        default_timeout = 25 if method == "POST" else 30
+        timeout = int(os.environ.get("V0_API_TIMEOUT_SECONDS", default_timeout))
         with urllib.request.urlopen(request, timeout=timeout) as response:
             raw = response.read().decode("utf-8")
             return json.loads(raw) if raw else {}
@@ -54,14 +56,14 @@ class V0MCP:
         except ValueError as exc:
             return {"status": "error", "message": str(exc)}
         except urllib.error.HTTPError as exc:
-            return {"status": "error", "message": f"v0 API 认证失败：HTTP {exc.code}"}
+            return {"status": "error", "message": f"v0 API authentication failed: HTTP {exc.code}"}
         except Exception as exc:
-            return {"status": "error", "message": f"v0 API 探测失败：{exc}"}
+            return {"status": "error", "message": f"v0 API probe failed: {exc}"}
 
         required = {"remaining", "reset", "limit"}
         missing = sorted(required - set(payload))
         if missing:
-            return {"status": "error", "message": "v0 rate-limits 响应缺少字段：" + ", ".join(missing)}
+            return {"status": "error", "message": "v0 rate-limits response missing fields: " + ", ".join(missing)}
 
         return {
             "status": "success",
@@ -104,27 +106,30 @@ class V0MCP:
         out_dir = workspace / ".agent" / "v0" / module
         out_dir.mkdir(parents=True, exist_ok=True)
 
+        fallback_reason = None
         try:
             response = V0MCP._create_chat(workspace, prompt)
+            handoff = V0MCP._extract_handoff(module, response, module_slides)
         except ValueError as exc:
-            return {"status": "error", "message": str(exc)}
+            fallback_reason = str(exc)
+            handoff = V0MCP._fallback_handoff(module, module_slides, prompt, fallback_reason)
         except urllib.error.HTTPError as exc:
             detail = exc.read().decode("utf-8", errors="replace")
-            return {"status": "error", "message": f"v0 chat 创建失败：HTTP {exc.code}: {detail[:600]}"}
+            fallback_reason = f"v0 HTTP {exc.code}: {detail[:600]}"
+            handoff = V0MCP._fallback_handoff(module, module_slides, prompt, fallback_reason)
         except Exception as exc:
-            return {"status": "error", "message": f"v0 chat 创建失败：{exc}"}
-
-        handoff = V0MCP._extract_handoff(module, response, module_slides)
+            fallback_reason = str(exc)
+            handoff = V0MCP._fallback_handoff(module, module_slides, prompt, fallback_reason)
         prototype_file = out_dir / "react-prototype.json"
         brief_file = out_dir / "react-prototype-brief.md"
         prototype_file.write_text(json.dumps(handoff, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         brief_file.write_text(V0MCP._brief(handoff), encoding="utf-8")
-
         return {
             "status": "success",
-            "provider": "v0",
+            "provider": handoff.get("provider", "v0"),
             "chat_id": handoff.get("chat", {}).get("id"),
             "chat_url": handoff.get("chat", {}).get("url"),
+            "fallback_reason": fallback_reason,
             "prototype_file": str(prototype_file),
             "brief_file": str(brief_file),
             "slide_count": len(module_slides),
@@ -194,9 +199,9 @@ class V0MCP:
             for item in storyboard_interactions
         ]
         return (
-            "Create one compact React + Tailwind prototype for a dark Chinese Unity ShaderGUI course player plus a 做题页 quiz screen. "
+            "Create one compact React + Tailwind prototype for a dark Chinese Unity ShaderGUI course player plus a quiz screen. "
             "Use a large slide canvas, event subtitle area, compact bottom audio controls, tap-to-play, and vertical swipe navigation. "
-            "The 做题页 must reflect storyboard realtime actions: question-bank scan, answer selection, option swapping, submit scoring, and feedback. "
+            "The quiz page must reflect storyboard realtime actions: question-bank scan, answer selection, option swapping, submit scoring, and feedback. "
             "Do not use shadcn imports, Next.js routing, transcript panels, or internal production workflow text. "
             "Return code plus concise design rules for translating the result to Vue 3 + Tailwind.\n"
             f"Module: {module}\n"
@@ -251,11 +256,70 @@ class V0MCP:
                     "Bottom controls stay compact and touch-friendly.",
                     "Subtitles remain event-driven and visually separate from full transcripts.",
                     "Mobile surface tap toggles playback; vertical swipe navigates slides.",
-                    "做题页 renders the question bank table first, then answer cards and immediate feedback.",
+                    "Quiz renders the question bank table first, then answer cards and immediate feedback.",
                     "Option swapping, answer selection, submission, reset, and scoring must remain live Vue state interactions.",
                 ],
             },
             "rawResponseKeys": sorted(response.keys()),
+        }
+
+    @staticmethod
+    def _fallback_handoff(module: str, slides: list[dict], prompt: str, reason: str) -> dict:
+        """Create a deterministic local handoff when v0 is unavailable or slow."""
+        slide_summaries = [
+            {
+                "moduleId": slide.get("moduleId"),
+                "slideId": slide.get("slideId"),
+                "title": slide.get("title"),
+                "kind": slide.get("kind"),
+                "route": slide.get("route"),
+            }
+            for slide in slides
+        ]
+        return {
+            "provider": "local-v0-fallback",
+            "status": "prototype_ready",
+            "module": module,
+            "generatedAt": datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
+            "chat": {
+                "id": "local-fallback",
+                "url": None,
+                "apiUrl": None,
+                "fallbackReason": reason,
+            },
+            "source": {
+                "slides": "CourseApp/src/data/slides.json",
+                "storyboard": "CourseApp/src/data/storyboard-contract.json",
+            },
+            "slides": slide_summaries,
+            "translationBoundaries": [
+                "Use this fallback as a design-rule scaffold only.",
+                "Do not treat it as externally authored React code.",
+                "Vue runtime remains generated from local templates and contracts.",
+            ],
+            "reactPrototype": {
+                "files": [],
+                "textBlocks": [
+                    "Local fallback generated because v0 was unavailable or exceeded the configured timeout.",
+                    prompt[:4000],
+                ],
+            },
+            "extractedDesignRules": {
+                "layout": [
+                    "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+                    "Concept slides use progressive content cards; code slides keep readable DOM code blocks.",
+                ],
+                "visual": [
+                    "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+                    "Reserve strong accents for the current teaching beat or code callout.",
+                ],
+                "interaction": [
+                    "Use storyboard motionCues as the interaction and animation source.",
+                    "Quiz and exploration screens remain data-driven Vue Router pages.",
+                ],
+                "slides": slide_summaries,
+            },
+            "rawResponseKeys": [],
         }
 
     @staticmethod

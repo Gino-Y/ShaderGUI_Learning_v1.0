@@ -2,53 +2,56 @@
 
 ## Current Goal
 
-Clean remaining UTF-8/mojibake issues and make encoding validation part of the delivery gate.
+Fix WorkBuddy's remaining flow-engine regressions and make the MVP DAG runnable again.
 
 ## Completed Work
 
-- Replaced mojibake-heavy trusted documents with clean UTF-8 text:
-  - `.agent/rules.md`
-  - `.agent/SKILL.md`
-  - `docs/Skill_Chain_DAG.md`
-  - `.agent/handoff/HANDOFF_PROTOCOL.md`
-- Fixed garbled fallback text in `SlideView.vue` and its template.
-- Added UTF-8 read validation and mojibake marker checks to `scripts/verify_course.py`.
-- Synchronized the verification template at `.agent/templates/scripts/verify_course.py`.
-- Regenerated missing `Module_01` audio and subtitle artifacts.
-- Updated `.agent/STATE.md` and memory.
+- Reproduced the WorkBuddy-reported DesignMCP failure path.
+- Fixed `.agent/mcp_servers/design_mcp.py`:
+  - Missing `design_slides` initialization.
+  - Missing `_infer_typography()`.
+  - Missing `_infer_color_scheme()`.
+  - Broken `any(any(...))` diagram keyword logic.
+  - Corrupted comment that prevented `palette` assignment.
+  - Mojibake strings that caused SyntaxError in diagnostic and quiz-design paths.
+- Fixed `.agent/mcp_servers/v0_mcp.py`:
+  - Broken f-string and mojibake strings.
+  - Long blocking v0 POST timeout.
+  - Added deterministic `local-v0-fallback` handoff when v0 chat creation times out or fails.
+- Re-ran the flow engine; Module_01 reached `DEPLOY_READY`.
+- Re-ran platform, course, and build verification.
 
 ## Modified Files
 
-- `.agent/rules.md`
-- `.agent/SKILL.md`
-- `docs/Skill_Chain_DAG.md`
-- `.agent/handoff/HANDOFF_PROTOCOL.md`
-- `.agent/handoff/CURSOR_HANDOFF.md`
+- `.agent/mcp_servers/design_mcp.py`
+- `.agent/mcp_servers/v0_mcp.py`
 - `.agent/STATE.md`
-- `.agent/memory/2026-05-04-utf8-cleanup.md`
-- `scripts/verify_course.py`
-- `.agent/templates/scripts/verify_course.py`
-- `CourseApp/src/views/SlideView.vue`
-- `.agent/templates/course-app/src/views/SlideView.vue`
-- `CourseApp/public/audio/Module_01/p00.mp3`
-- `CourseApp/public/audio/Module_01/p01.mp3`
-- `CourseApp/public/subtitles/Module_01/p00.json`
-- `CourseApp/public/subtitles/Module_01/p01.json`
+- `.agent/handoff/CURSOR_HANDOFF.md`
+- `.agent/memory/2026-05-05.md`
+- Generated/updated by flow engine:
+  - `.agent/design/Module_01/*`
+  - `.agent/v0/Module_01/*`
+  - `CourseApp/src/data/design-contract.json`
+  - `CourseApp/src/data/stitch-manifest.json`
+  - `CourseApp/public/audio/Module_01/*`
+  - `CourseApp/public/subtitles/Module_01/*`
 
 ## DAG Impact
 
-Yes. The DAG contract now includes UTF-8 text validation as a delivery gate, and the DAG/rules/Skill/verify set was synchronized.
+Yes. This fixes node execution behavior inside the existing DAG without changing node order or product contracts. v0 remains in the DAG, but now has a deterministic local fallback so external v0 latency cannot stall the whole pipeline.
+
+## Unfinished / Blockers
+
+- No current blocker.
+- v0 chat creation timed out during this run, so the generated v0 artifact is `local-v0-fallback`, not a remote v0 chat.
 
 ## Verification
 
+- `V0_API_TIMEOUT_SECONDS=5 python -u .agent\flow_engine.py --mode test --stage mvp --scope module --module Module_01 --basedir .` reached `DEPLOY_READY`.
 - `python .agent\platform_violation_guard.py --basedir .` passed.
 - `python scripts\verify_course.py` passed.
 - `npm --prefix CourseApp run build` passed.
 
-## Unfinished / Blockers
-
-No current blocker.
-
 ## Next Step
 
-Continue frontend visual QA on `p01`, `p01/explore`, and `/module/Module_01/quiz` using the running local app.
+Continue browser QA on `p01`, `p01/explore`, and `/module/Module_01/quiz`; decide later whether remote v0 output is required or the deterministic fallback is enough for this MVP loop.
