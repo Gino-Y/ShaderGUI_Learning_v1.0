@@ -22,8 +22,9 @@ class ADPMCP:
             slide_ids = ADPMCP._resolve_adp_slide_ids(workspace, module, source["slides"])
             source["slides"] = [slide for slide in source["slides"] if slide["slideId"] in slide_ids]
             cleaned = ADPMCP._clean_adp_products(workspace, module)
+            # 先复制所有模块的逐字稿（为新逻辑全量扫描做准备）
+            ADPMCP._copy_all_course_content(workspace)
             ADPMCP._write_course_app(workspace, module, source)
-            ADPMCP._copy_course_content(workspace, module, source["slides"])
             ADPMCP._write_scripts(workspace)
             install = subprocess.run(
                 ["npm.cmd", "install"],
@@ -210,7 +211,7 @@ class ADPMCP:
                 shutil.rmtree(target)
             else:
                 target.unlink()
-            cleaned.append(str(target.relative_to(workspace)).replace("\\", "/")
+            cleaned.append(target.relative_to(workspace).as_posix())
         return cleaned
 
     @staticmethod
@@ -320,6 +321,22 @@ class ADPMCP:
             transcript = ADPMCP._find_transcript(workspace / "CourseContent" / module, module, slide["slideId"])
             if transcript:
                 shutil.copy2(transcript, transcript_root / transcript.name)
+
+    @staticmethod
+    def _copy_all_course_content(workspace: Path) -> None:
+        """扫描所有模块，把逐字稿复制到 CourseApp/public/transcripts/。"""
+        for mod_dir in sorted(workspace.glob("CourseContent/Module_*")):
+            if not mod_dir.is_dir():
+                continue
+            mod_name = mod_dir.name
+            doc_dir = mod_dir / "doc"
+            if not doc_dir.exists():
+                continue
+            dest_dir = workspace / "CourseApp" / "public" / "transcripts" / mod_name
+            dest_dir.mkdir(parents=True, exist_ok=True)
+            for md_file in sorted(doc_dir.glob("*.md")):
+                shutil.copy2(md_file, dest_dir / md_file.name)
+        print("[ADP] 已复制所有模块的逐字稿")
 
     @staticmethod
     def _write_scripts(workspace: Path) -> None:
