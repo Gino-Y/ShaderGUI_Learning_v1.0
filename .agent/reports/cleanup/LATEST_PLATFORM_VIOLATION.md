@@ -1,14 +1,12 @@
-# Platform Asset Boundary Violation
+# Platform Asset Boundary Check
 
-- Detected At: `2026-05-05T17:48:38`
-- Action: `quarantined`
-- Violation Count: `1`
+- Checked At: `2026-05-06T00:00:00+08:00`
+- Status: `resolved`
+- Action: `verified`
+- Violation Count: `0`
 
-## Files
+## Result
 
-- `.workbuddy/memory/2026-05-05.md`
+No active `.workbuddy/` or `.cursor/` platform-private AI asset directories remain in the project root.
 
-## Required Correction
-
-Cursor/Codex must not use platform-private AI assets as rule, workflow, DAG, Skill, prompt, or MVP sources.
-Move valuable content into `.agent/`, delete duplicates, then rerun the MVP entrypoint.
+Historical violation reports remain in `.agent/reports/cleanup/` for audit trail only.
