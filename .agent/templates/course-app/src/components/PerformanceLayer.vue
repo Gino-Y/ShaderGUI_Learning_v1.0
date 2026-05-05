@@ -10,6 +10,12 @@
       :payload="activePerfSpec.payload"
       :active="true"
     />
+    <FlowPathDemo
+      v-else-if="activePerfSpec.type === 'demo' && activePerfSpec.demo === 'flow-path'"
+      :payload="activePerfSpec.payload"
+      :durationMs="activePerfSpec.timeRange?.durationMs || 3000"
+      :active="true"
+    />
   </div>
 </template>
 
@@ -17,6 +23,7 @@
 import { computed } from "vue";
 import ParticleDecoration from "./performances/ParticleDecoration.vue";
 import TransitionWipe from "./performances/TransitionWipe.vue";
+import FlowPathDemo from "./performances/FlowPathDemo.vue";
 
 const props = defineProps({
   perfSpecs: { type: Array, default: () => [] },
