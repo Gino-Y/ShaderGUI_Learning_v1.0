@@ -104,6 +104,19 @@ ADPMCP 平行 DAG 节点已创建完成。现在可以使用 `--adp` 标志运�
 - `python scripts\verify_course.py` passed.
 - `npm --prefix CourseApp run build` passed.
 
+- **2026-05-05 (ADP scope fix)**: 独立化 ADPMCP 清理配置：
+  - **根因**：`adp_mcp.py` 复用了 `MVPMCP` 的清理函数 `_clean_mvp_products()`，读取的是 `mvp-execution-scope.json`，语义不对。
+  - **修复**：
+    - 新建 `.agent/adp-execution-scope.json`（ADP 独立清理范围）
+    - 新建 `docs/ADP_Execution_Contract.md`（ADP 执行契约）
+    - 修改 `.agent/mcp_servers/adp_mcp.py`：
+      - `_clean_mvp_products` → `_clean_adp_products`
+      - 读取 `adp-execution-scope.json`（不再复用 MVP 的）
+      - 检查 `docs/ADP_Execution_Contract.md`（不再检查 MVP 的）
+  - **验证**：`verify_course.py` ✅ 通过，语法检查 ✅ 通过
+  - **提交**：`3308675`（快照）+ `c945fdc`（feat: ADP scope fix）
+  - **状态**：ADPMCP 现在有自己的清理配置，不再依赖 MVP 的 scope 文件
+
 ## Next Step
 
 测试 ADPMCP 完整生产流程：`python .agent\flow_engine.py --mode production --adp --scope module --module Module_01`
