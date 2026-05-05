@@ -295,3 +295,37 @@ class MVPMCP:
     @staticmethod
     def _write_scripts(workspace: Path) -> None:
         MVPMCP._copy_template_tree(MVPMCP._template_root(workspace) / "scripts", workspace / "scripts")
+
+    @staticmethod
+    def _ensure_audio(workspace: Path, module: str) -> dict:
+        """检查音频文件是否存在（不生成音频，由 flow engine 调度）"""
+        app = workspace / "CourseApp"
+        slides_file = app / "src" / "data" / "slides.json"
+        
+        if not slides_file.exists():
+            return {"status": "error", "message": "slides.json not found"}
+        
+        try:
+            slides = json.loads(slides_file.read_text(encoding="utf-8"))
+        except Exception as exc:
+            return {"status": "error", "message": f"Failed to read slides.json: {exc}"}
+        
+        module_slides = [s for s in slides if s.get("moduleId") == module]
+        missing_audio = []
+        
+        for slide in module_slides:
+            audio_path = slide.get("audio")
+            if not audio_path:
+                continue
+            full_path = app / "public" / audio_path.lstrip("/")
+            if not full_path.exists():
+                missing_audio.append(audio_path)
+        
+        if missing_audio:
+            return {
+                "status": "warning",
+                "message": f"缺少 {len(missing_audio)} 个音频文件，将由 flow engine 生成",
+                "missing": missing_audio,
+            }
+        
+        return {"status": "success", "message": "所有音频文件已存在"}
