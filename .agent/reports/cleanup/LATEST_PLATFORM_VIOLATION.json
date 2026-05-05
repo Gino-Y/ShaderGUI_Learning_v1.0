@@ -1,7 +1,7 @@
 {
   "status": "failed",
-  "action": "blocked",
-  "report": ".agent/reports/cleanup/platform-violation-20260505-125424.md",
+  "action": "quarantined",
+  "report": ".agent/reports/cleanup/platform-violation-20260505-141430.md",
   "violations": [
     ".workbuddy/memory/2026-05-05.md"
   ]
