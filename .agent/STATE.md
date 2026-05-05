@@ -14,6 +14,21 @@ WorkBuddy remediation is complete: design/v0 MCP runtime failures were fixed and
 
 ## Recent Changes
 
+- **2026-05-05 (MVP production)**: 完整 MVP 流程执行成功（字段名修复后）：
+  - 清理旧产物（14项）
+  - 重新生成 storyboard-contract.json（type/demo 字段名正确）
+  - 重新生成 design-contract.json
+  - v0 使用 local-fallback
+  - 音频、字幕、stitch 全部生成
+  - Vue SPA 构建成功
+  - 最终状态：DEPLOY_READY
+  - 提交：`2170464`
+
+- **2026-05-05 (rules)**: 添加 `[NO_DIRECT_EDIT_OUTPUT]` 规则到 `.agent/rules.md`：
+  - 禁止直接修改产物文件
+  - 只能通过修改 `.agent/` 中的 MCP 节点或模板 → 删除产物 → 重新生成的方式修改
+  - 提交：`a53e225`
+
 - **2026-05-05 (2nd fix)**: 修复表演动画字段名全链路不一致问题：
   - **根因**：`build_performance_for_cue()` 返回字典使用 `performanceType`/`demoType`，但 `SlideCanvas.vue`/`PerformanceLayer.vue` 消费的是 `type`/`demo`，导致 Vue 读到 `undefined`，表演动画全部消失。
   - **修复范围（8个文件）**：
