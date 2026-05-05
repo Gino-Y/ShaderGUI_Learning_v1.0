@@ -292,6 +292,11 @@ const activeVisualSpecStyle = computed(() => {
     "--viz-opacity-end": p.opacity?.[1] ?? 1,
     "--viz-translate-y-start": (p.translateY?.[0] ?? 12) + "px",
     "--viz-translate-y-end": (p.translateY?.[1] ?? 0) + "px",
+    "--viz-scale-start": p.scale?.[0] ?? 0.96,
+    "--viz-scale-end": p.scale?.[1] ?? 1.0,
+    "--viz-shadow": visual.glow
+      ? `0 0 24px 6px rgba(103,232,249,${p.glowAlpha ?? 0.35})`
+      : "none",
     "--viz-duration": (spec.animation?.durationMs ?? 400) + "ms",
     "--viz-easing": spec.animation?.easing ?? "ease-out",
     "--viz-accent": visual.accent === "cyan" ? "#67e8f9" : "#6ee7b7",
@@ -319,15 +324,15 @@ watch(() => activeVisualSpec.value, (spec, oldSpec) => {
 <style scoped>
 /* === visualSpecs 驱动的表演动画 === */
 
-/* reveal-focus：从透明+下移 淡入归位 */
-@keyframes reveal-focus {
+/* reveal-scale：从透明+下移+缩小 淡入放大归位 */
+@keyframes reveal-scale {
   0% {
-    opacity: 0;
-    transform: translateY(12px);
+    opacity: var(--viz-opacity-start, 0);
+    transform: translateY(var(--viz-translate-y-start, 12px)) scale(var(--viz-scale-start, 0.96));
   }
   100% {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: var(--viz-opacity-end, 1);
+    transform: translateY(var(--viz-translate-y-end, 0)) scale(var(--viz-scale-end, 1));
   }
 }
 
@@ -337,10 +342,10 @@ watch(() => activeVisualSpec.value, (spec, oldSpec) => {
 }
 
 .point-card[data-visual-active="true"] {
-  animation: reveal-focus v-bind(animDuration) v-bind(animEasing);
+  animation: reveal-scale v-bind(animDuration) v-bind(animEasing);
   animation-fill-mode: both;
   border-color: rgba(103, 232, 249, 0.5);
-  box-shadow: 0 0 18px 2px rgba(103, 232, 249, 0.25);
+  box-shadow: var(--viz-shadow, 0 0 18px 2px rgba(103, 232, 249, 0.25));
 }
 
 .point-card:not([data-visual-active]) {

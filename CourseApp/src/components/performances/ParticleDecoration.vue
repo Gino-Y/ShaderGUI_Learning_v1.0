@@ -16,22 +16,9 @@ let particles = [];
 let ctx = null;
 let w = 0, h = 0;
 
-// mood → 粒子颜色映射（由 storyboard_mcp.py 的 _build_decoration_payload 注入）
-const MOOD_COLORS = {
-  heroic: ["#67e8f9", "#6ee7b7", "#a78bfa"],
-  warn: ["#fbbf24", "#f97316", "#ef4444"],
-  calm: ["#67e8f9", "#6ee7b7", "#34d399"],
-  neutral: ["#94a3b8", "#cbd5e1", "#e2e8f0"],
-};
-
-const moodColors = computed(() => {
-  const mood = props.payload?.mood || "heroic";
-  return props.payload?.colors || MOOD_COLORS[mood] || MOOD_COLORS["heroic"];
-});
-
 function initParticles() {
   const count = props.payload?.count || 15;
-  const colors = moodColors.value;
+  const colors = props.payload?.colors || ["#67e8f9", "#6ee7b7", "#a78bfa"];
   const [sMin, sMax] = props.payload?.speedRange || [0.2, 0.8];
   // 降低默认不透明度，避免遮挡卡片文字
   const [oMin, oMax] = props.payload?.opacityRange || [0.15, 0.4];
