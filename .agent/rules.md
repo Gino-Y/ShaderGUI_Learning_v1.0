@@ -14,7 +14,9 @@
 - [SYNC_RULES_DAG_VERIFY] 任何影响规则、DAG、验收标准的改动必须同步更新 `docs/Skill_Chain_DAG.md`、`.agent/rules.md`、`.agent/SKILL.md` 和 `scripts/verify_course.py`，必要时同步 `.agent/mcp_servers/mvp_mcp.py`。
 - [REVERIFY_BUILD_BROWSER] 需循环自检直至交付：`verify_course.py`、`npm run build` 和必要的浏览器验证，未通过不算完成。
 - [COMPLETION_GATE_FILE_DRIVEN] 禁止仅靠对话记忆收尾；凡触及 `CourseApp/`、`.agent/mcp_servers/`、`scripts/`、`.agent/templates/`、`CourseContent/`、`docs/Skill_Chain_DAG.md`、`.agent/handoff/` 或课程数据契约，必须更新 STATE、handoff、memory 并运行验证。
-- [NO_DIRECT_EDIT_OUTPUT] **禁止直接修改产物文件**；只能通过修改 `.agent/` 中的 MCP 节点或模板 删除产物 重新生成的方式修改。`CourseApp/`、`CourseApp/dist/`、`CourseApp/src/data/` 均为产物，不得直接编辑。
+- [NO_DIRECT_EDIT_OUTPUT] **禁止直接修改产物文件**；只能通过修改 `.agent/` 中的 MCP 节点或模板后重新生成的方式修改。`CourseApp/`、`CourseApp/dist/`、`CourseApp/src/data/` 均为产物，不得直接编辑。
+  - **MVP清理例外**：执行 MVP 前允许直接移除产物文件（清理操作），但重新生成后不得手动修改产物。
+  - **测试型修改**：允许为快速验证而直接修改产物文件，但测试结果确认后，必须立即将改动同步回对应的 DAG 节点（MCP Server 或模板），确保 MVP 和正式生产时的一致性。未同步前不得视为完成。
 - [STOP_DEV_SERVER_BEFORE_MVP] **执行 MVP 前必须关闭开发服务器**；开发服务器会占用端口并锁定文件，导致 MVP 清理/重新生成失败。执行 `npm --prefix CourseApp run dev` 的进程必须先终止。
 
 ## 单一资产源

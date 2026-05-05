@@ -18,6 +18,9 @@ allowed-tools: Read, Edit, Bash
 - [SYNC_RULES_DAG_VERIFY] 任何影响规则/DAG/验收标准的改动必须同步更新 `docs/Skill_Chain_DAG.md`、`.agent/rules.md`、`.agent/SKILL.md` 和 `scripts/verify_course.py`。
 - [REVERIFY_BUILD_BROWSER] 修改后必须循环自检：`verify_course.py`、`npm run build` 和必要浏览器验证。
 - [COMPLETION_GATE_FILE_DRIVEN] 任务完成必须以仓库文件和验证结果为准，不得只靠对话记忆。
+- [NO_DIRECT_EDIT_OUTPUT] **禁止直接修改产物文件**；只能通过修改 `.agent/` 中的 MCP 节点或模板后重新生成的方式修改。`CourseApp/`、`CourseApp/dist/`、`CourseApp/src/data/` 均为产物，不得直接编辑。
+  - **MVP清理例外**：执行 MVP 前允许直接移除产物文件（清理操作），但重新生成后不得手动修改产物。
+  - **测试型修改**：允许为快速验证而直接修改产物文件，但测试结果确认后，必须立即将改动同步回对应的 DAG 节点（MCP Server 或模板），确保 MVP 和正式生产时的一致性。未同步前不得视为完成。
 
 ## 角色定位
 

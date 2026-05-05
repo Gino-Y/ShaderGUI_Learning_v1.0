@@ -2,7 +2,7 @@
   "provider": "storyboard-local-spec",
   "status": "storyboard_ready",
   "module": "Module_01",
-  "generatedAt": "2026-05-05T07:36:33Z",
+  "generatedAt": "2026-05-05T08:04:17Z",
   "source": {
     "slides": "CourseApp/src/data/slides.json",
     "explorations": "CourseApp/src/data/explorations.json",
@@ -571,8 +571,8 @@
             "count": 15,
             "colors": [
               "#67e8f9",
-              "#6ee7b7",
-              "#a78bfa"
+              "#818cf8",
+              "#c084fc"
             ],
             "speedRange": [
               0.2,
@@ -582,7 +582,7 @@
               0.15,
               0.4
             ],
-            "mood": "default"
+            "mood": "clear, instructional, confident"
           },
           "zIndex": 10
         },
@@ -605,8 +605,8 @@
             "count": 15,
             "colors": [
               "#67e8f9",
-              "#6ee7b7",
-              "#a78bfa"
+              "#818cf8",
+              "#c084fc"
             ],
             "speedRange": [
               0.2,
@@ -616,7 +616,7 @@
               0.15,
               0.4
             ],
-            "mood": "default"
+            "mood": "clear, instructional, confident"
           },
           "zIndex": 10
         },
@@ -639,8 +639,8 @@
             "count": 15,
             "colors": [
               "#67e8f9",
-              "#6ee7b7",
-              "#a78bfa"
+              "#818cf8",
+              "#c084fc"
             ],
             "speedRange": [
               0.2,
@@ -650,7 +650,7 @@
               0.15,
               0.4
             ],
-            "mood": "default"
+            "mood": "clear, instructional, confident"
           },
           "zIndex": 10
         }
@@ -1254,9 +1254,9 @@
             "particleType": "floating-cyan",
             "count": 15,
             "colors": [
+              "#22d3ee",
               "#67e8f9",
-              "#6ee7b7",
-              "#a78bfa"
+              "#818cf8"
             ],
             "speedRange": [
               0.2,
@@ -1266,7 +1266,7 @@
               0.15,
               0.4
             ],
-            "mood": "default"
+            "mood": "precise, technical, focused"
           },
           "zIndex": 10
         },
@@ -1340,9 +1340,9 @@
             "particleType": "floating-cyan",
             "count": 15,
             "colors": [
+              "#22d3ee",
               "#67e8f9",
-              "#6ee7b7",
-              "#a78bfa"
+              "#818cf8"
             ],
             "speedRange": [
               0.2,
@@ -1352,7 +1352,7 @@
               0.15,
               0.4
             ],
-            "mood": "default"
+            "mood": "precise, technical, focused"
           },
           "zIndex": 10
         },
@@ -1374,9 +1374,9 @@
             "particleType": "floating-cyan",
             "count": 15,
             "colors": [
+              "#22d3ee",
               "#67e8f9",
-              "#6ee7b7",
-              "#a78bfa"
+              "#818cf8"
             ],
             "speedRange": [
               0.2,
@@ -1386,7 +1386,7 @@
               0.15,
               0.4
             ],
-            "mood": "default"
+            "mood": "precise, technical, focused"
           },
           "zIndex": 10
         }
