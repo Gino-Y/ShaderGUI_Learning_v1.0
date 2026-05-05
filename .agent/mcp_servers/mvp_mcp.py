@@ -234,8 +234,6 @@ class MVPMCP:
             rel = src.relative_to(template_dir)
             dst = target_dir / rel
             dst.parent.mkdir(parents=True, exist_ok=True)
-            if dst.exists():
-                continue  # 不覆盖已存在的文件（防止节点漂移）
             shutil.copy2(src, dst)
 
     @staticmethod
