@@ -1,42 +1,52 @@
 [
   {
-    "moduleId": "Module_04",
     "slideId": "p00",
+    "moduleId": "Module_01",
     "order": 0,
-    "title": "条件显示与高级布局",
-    "kind": "code",
-    "points": [
-      "根据属性值条件显示/隐藏其他属性",
-      "使用 EditorGUILayout 实现复杂布局",
-      "处理动画属性的时间轴绑定"
-    ],
-    "codeBlocks": [
-      {
-        "title": "条件显示.cs",
-        "language": "csharp",
-        "badge": "C#",
-        "code": "var mode = FindProperty(\"_Mode\", props);\nif (mode.floatValue == 1) {\n    editor.ShaderProperty(FindProperty(\"_Cutoff\", props), \"Cutoff\");\n}"
-      }
-    ],
-    "route": "/module/Module_04/slide/p00",
-    "audio": "/audio/Module_04/p00.mp3",
-    "subtitles": "/subtitles/Module_04/p00.json",
-    "transcript": "/transcripts/Module_04/Module_04-p00-逐字稿.md"
+    "title": "ShaderGUI：不仅仅是换个皮",
+    "type": "lecture",
+    "duration": 180,
+    "content": "理解 ShaderGUI 是 Shader 参数系统的前端工程层，而非简单的 UI 美化。",
+    "route": "/module/Module_01/slide/p00",
+    "audio": "/audio/Module_01/p00.mp3",
+    "subtitles": "/subtitles/Module_01/p00.json",
+    "transcript": "/transcripts/Module_01/Module_01-p00-逐字稿.md"
   },
   {
-    "moduleId": "Module_04",
     "slideId": "p01",
+    "moduleId": "Module_01",
     "order": 1,
-    "title": "实战踩坑与性能优化",
-    "kind": "concept",
-    "points": [
-      "避免在 OnGUI 中做耗时操作",
-      "材质属性变更触发重新序列化",
-      "使用 MaterialEditor.RegisterPropertyChangeUndo 支持撤销"
-    ],
-    "route": "/module/Module_04/slide/p01",
-    "audio": "/audio/Module_04/p01.mp3",
-    "subtitles": "/subtitles/Module_04/p01.json",
-    "transcript": "/transcripts/Module_04/Module_04-p01-逐字稿.md"
+    "title": "编写第一个自定义材质面板",
+    "type": "code",
+    "duration": 240,
+    "content": "继承 ShaderGUI 并重写 OnGUI，在 Shader 中通过 CustomEditor 绑定。",
+    "route": "/module/Module_01/slide/p01",
+    "audio": "/audio/Module_01/p01.mp3",
+    "subtitles": "/subtitles/Module_01/p01.json",
+    "transcript": "/transcripts/Module_01/Module_01-p01-逐字稿.md",
+    "explore": {
+      "id": "property-grouping",
+      "route": "/module/Module_01/slide/p01/explore",
+      "title": "探索页",
+      "component": "PropertyGroupingLab"
+    }
+  },
+  {
+    "slideId": "p02",
+    "moduleId": "Module_01",
+    "order": 2,
+    "title": "如何安全地获取参数？",
+    "type": "lecture",
+    "duration": 210,
+    "content": "Required vs Safe 模式对比，封装 FindPropertySafe 工具函数。",
+    "explore": {
+      "id": "property-grouping",
+      "route": "/module/Module_01/slide/p02/explore",
+      "title": "属性查找实战"
+    },
+    "route": "/module/Module_01/slide/p02",
+    "audio": "/audio/Module_01/p02.mp3",
+    "subtitles": "/subtitles/Module_01/p02.json",
+    "transcript": "/transcripts/Module_01/Module_01-p02-属性查找的工程策略.md"
   }
 ]
