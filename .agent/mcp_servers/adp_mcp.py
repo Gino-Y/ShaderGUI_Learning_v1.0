@@ -210,7 +210,7 @@ class ADPMCP:
                 shutil.rmtree(target)
             else:
                 target.unlink()
-            cleaned.append(str(target.relative_to(workspace)).replace("\\", "/"))
+            cleaned.append(str(target.relative_to(workspace)).replace("\\", "/")
         return cleaned
 
     @staticmethod
@@ -239,90 +239,78 @@ class ADPMCP:
 
     @staticmethod
     def _write_course_app(workspace: Path, module: str, source: dict) -> None:
+        """不依赖跨运行合并——扫描所有模块源文件，一次性写全量产物。"""
         app = workspace / "CourseApp"
         ADPMCP._copy_template_tree(ADPMCP._template_root(workspace) / "course-app", app)
 
-        course_source = source["course"]
-        module_source = course_source.get("module") or {}
-        current_module_id = module_source.get("id", module)
+        all_modules = []
+        all_slides = []
+        all_quizzes = []
+        all_explorations = []
 
-        # --- 合并 course.json ---
-        course_file = app / "src" / "data" / "course.json"
-        if course_file.exists():
-            course = json.loads(course_file.read_text(encoding="utf-8"))
-        else:
-            course = {
-                "title": course_source.get("title", "Course"),
-                "subtitle": course_source.get("subtitle", ""),
-                "modules": [],
-            }
-        existing_ids = {m.get("id") for m in course["modules"]}
-        new_module_entry = {
-            "id": current_module_id,
-            "title": module_source.get("title", module),
-            "summary": module_source.get("summary", ""),
-            "slideCount": len(source["slides"]),
-        }
-        if current_module_id in existing_ids:
-            for m in course["modules"]:
-                if m.get("id") == current_module_id:
-                    m.update(new_module_entry)
-                    break
-        else:
-            course["modules"].append(new_module_entry)
-        ADPMCP._write_json(course_file, course)
-
-        # --- 合并 slides.json（先移除当前模块的旧数据，再追加） ---
-        slides_file = app / "src" / "data" / "slides.json"
-        if slides_file.exists():
-            existing_slides = json.loads(slides_file.read_text(encoding="utf-8"))
-        else:
-            existing_slides = []
-        # 移除当前模块的旧 slides
-        existing_slides = [s for s in existing_slides if s.get("moduleId") != module]
-        existing_slides.extend(source["slides"])
-        ADPMCP._write_json(slides_file, existing_slides)
-
-        # --- 合并 quizzes.json ---
-        quizzes_file = app / "src" / "data" / "quizzes.json"
-        if quizzes_file.exists():
-            existing_quizzes = json.loads(quizzes_file.read_text(encoding="utf-8"))
-        else:
-            existing_quizzes = []
-        existing_quizzes = [q for q in existing_quizzes if q.get("moduleId") != module]
-        existing_quizzes.extend(source["quizzes"])
-        ADPMCP._write_json(quizzes_file, existing_quizzes)
-
-        # --- 合并 explorations.json ---
-        explorations_file = app / "src" / "data" / "explorations.json"
-        if explorations_file.exists():
-            existing_explorations = json.loads(explorations_file.read_text(encoding="utf-8"))
-        else:
-            existing_explorations = []
-        existing_explorations = [e for e in existing_explorations if e.get("moduleId") != module]
-        existing_explorations.extend(source["explorations"])
-        ADPMCP._write_json(explorations_file, existing_explorations)
-
-        # 加固：只在文件不存在时才写占位符，避免覆盖已有真实数据
-        contract_path = app / "src" / "data" / "storyboard-contract.json"
-        if not contract_path.exists():
-            ADPMCP._write_json(contract_path, {
-                "provider": "storyboard-placeholder",
-                "status": "storyboard_pending",
-                "module": module,
-                "slides": [],
-                "interactiveScreens": [],
-            })
-            print(f"[ADP] storyboard-contract.json placeholder written (first run)")
-        else:
+        for mod_dir in sorted(workspace.glob("CourseContent/Module_*")):
+            if not mod_dir.is_dir():
+                continue
+            mod_name = mod_dir.name
             try:
-                existing = json.loads(contract_path.read_text(encoding="utf-8"))
-                if existing.get("status") == "storyboard_ready" and existing.get("slides"):
-                    print(f"[ADP] Skipping storyboard-contract.json (has real data: {len(existing.get('slides'))} slides)")
-                else:
-                    print(f"[ADP] storyboard-contract.json exists but not ready (status={existing.get('status')}), leaving for storyboard step")
+                c = json.loads((mod_dir / "course.json").read_text(encoding="utf-8-sig"))
+                s = json.loads((mod_dir / "slides.json").read_text(encoding="utf-8-sig"))
+                q = json.loads((mod_dir / "quizzes.json").read_text(encoding="utf-8-sig")) if (mod_dir / "quizzes.json").exists() else []
+                e = json.loads((mod_dir / "explorations.json").read_text(encoding="utf-8-sig")) if (mod_dir / "explorations.json").exists() else []
             except Exception as ex:
-                print(f"[ADP] storyboard-contract.json exists but unreadable: {ex}")
+                print(f"[ADP] 跳过 {mod_name}（读源文件失败: {ex}）")
+                continue
+
+            norm_slides = ADPMCP._normalize_slides(mod_dir, mod_name, s)
+
+            # course.json 格式：{ "title": "...", "modules": [{ "id": "...", ...}] }
+            mod_entry = {}
+            if isinstance(c, dict):
+                modules_list = c.get("modules", [])
+                if modules_list and isinstance(modules_list, list):
+                    mod_entry = modules_list[0]
+
+            all_modules.append({
+                "id": mod_entry.get("id", mod_name),
+                "title": mod_entry.get("title", mod_name),
+                "summary": mod_entry.get("summary", ""),
+                "slideCount": len(norm_slides),
+            })
+            all_slides.extend(norm_slides)
+            all_quizzes.extend(q)
+            all_explorations.extend(ADPMCP._normalize_explorations(mod_name, e))
+
+        course_out = {
+            "title": source["course"].get("title", "Course"),
+            "subtitle": source["course"].get("subtitle", ""),
+            "modules": all_modules,
+        }
+        ADPMCP._write_json(app / "src" / "data" / "course.json", course_out)
+        ADPMCP._write_json(app / "src" / "data" / "slides.json", all_slides)
+        ADPMCP._write_json(app / "src" / "data" / "quizzes.json", all_quizzes)
+        ADPMCP._write_json(app / "src" / "data" / "explorations.json", all_explorations)
+        print(f"[ADP] 已写入全量产物：{len(all_modules)} 模块，{len(all_slides)} slides")
+
+    @staticmethod
+    def _normalize_slides(mod_dir: Path, mod_name: str, slides: list) -> list:
+        """给 slides 添加 route/audio/subtitles/transcript 字段。"""
+        result = []
+        for slide in slides:
+            if not isinstance(slide, dict):
+                continue
+            slide_id = slide.get("slideId", "")
+            norm = {
+                **slide,
+                "moduleId": slide.get("moduleId", mod_name),
+                "route": f"/module/{mod_name}/slide/{slide_id}",
+                "audio": f"/audio/{mod_name}/{slide_id}.mp3",
+                "subtitles": f"/subtitles/{mod_name}/{slide_id}.json",
+            }
+            transcript = ADPMCP._find_transcript(mod_dir, mod_name, slide_id)
+            if transcript:
+                norm["transcript"] = f"/transcripts/{mod_name}/{transcript.name}"
+            result.append(norm)
+        return result
 
     @staticmethod
     def _copy_course_content(workspace: Path, module: str, slides: list[dict]) -> None:
