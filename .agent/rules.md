@@ -4,6 +4,8 @@
 
 ## 对齐约束（必读）
 
+- [GIT_SNAPSHOT_BEFORE_MODIFY] **修改代码前必须创建Git快照**（详见第126行"Git快照与回滚规范"）；快照不是备份，是在重要节点创建的可回溯标记。
+- [GIT_COMMIT_AFTER_TASK] **任务完成后必须提交Git**（详见第223行"Git协作工作流规范"）；不得积累大量未提交改动。
 - [AGENT_SINGLE_SOURCE] `.agent` 是唯一可信源；禁止使用 `.cursor`、`.workbuddy` 作为规则、资产、Skill、workflow 或 prompt 来源。
 - [MVP_EXECUTION_CONTRACT] 执行 MVP 必须遵循 `docs/MVP_Execution_Contract.md` 和 `.agent/mvp-execution-scope.json`；禁止清理 `.agent`、`node_modules` 等禁区。
 - [NO_INTERNAL_GUIDANCE_UI] 前端学习页面不得展示内部生产指导：`shotInstruction`、`focusInstruction`、`implementationHint`、`learnerTakeaway`、`Now focusing` 一律禁止展示。
