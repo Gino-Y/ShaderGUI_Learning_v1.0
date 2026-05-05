@@ -1,35 +1,55 @@
 {
-  "module": "Module_03",
+  "module": "Module_04",
   "player": "CoursePlayer.vue",
   "navigation": "SlideNav.vue",
   "subtitleOverlay": "SubtitleOverlay.vue",
   "slides": [
     {
-      "moduleId": "Module_03",
+      "moduleId": "Module_04",
       "slideId": "p00",
-      "route": "/module/Module_03/slide/p00",
-      "audio": "/audio/Module_03/p00.mp3",
-      "subtitles": "/subtitles/Module_03/p00.json",
-      "transcript": "/transcripts/Module_03/Module_03-p00-逐字稿.md",
-      "subtitleEventCount": 36,
+      "route": "/module/Module_04/slide/p00",
+      "audio": "/audio/Module_04/p00.mp3",
+      "subtitles": "/subtitles/Module_04/p00.json",
+      "transcript": "/transcripts/Module_04/Module_04-p00-逐字稿.md",
+      "subtitleEventCount": 16,
       "interaction": null
     },
     {
-      "moduleId": "Module_03",
+      "moduleId": "Module_04",
       "slideId": "p01",
-      "route": "/module/Module_03/slide/p01",
-      "audio": "/audio/Module_03/p01.mp3",
-      "subtitles": "/subtitles/Module_03/p01.json",
-      "transcript": "/transcripts/Module_03/Module_03-p01-逐字稿.md",
-      "subtitleEventCount": 10,
+      "route": "/module/Module_04/slide/p01",
+      "audio": "/audio/Module_04/p01.mp3",
+      "subtitles": "/subtitles/Module_04/p01.json",
+      "transcript": "/transcripts/Module_04/Module_04-p01-逐字稿.md",
+      "subtitleEventCount": 16,
+      "interaction": null
+    },
+    {
+      "moduleId": "Module_04",
+      "slideId": "p02",
+      "route": "/module/Module_04/slide/p02",
+      "audio": "/audio/Module_04/p02.mp3",
+      "subtitles": "/subtitles/Module_04/p02.json",
+      "transcript": "/transcripts/Module_04/Module_04-p02-实战验收.md",
+      "subtitleEventCount": 6,
+      "interaction": null
+    },
+    {
+      "moduleId": "Module_04",
+      "slideId": "p03",
+      "route": "/module/Module_04/slide/p03",
+      "audio": "/audio/Module_04/p03.mp3",
+      "subtitles": "/subtitles/Module_04/p03.json",
+      "transcript": "/transcripts/Module_04/Module_04-p03-元认知总结.md",
+      "subtitleEventCount": 7,
       "interaction": null
     }
   ],
   "interactiveScreens": [
     {
-      "moduleId": "Module_03",
+      "moduleId": "Module_04",
       "screenId": "quiz",
-      "route": "/module/Module_03/quiz",
+      "route": "/module/Module_04/quiz",
       "runtime": "QuizView.vue",
       "questionCount": 2,
       "storyboardCueCount": 5,

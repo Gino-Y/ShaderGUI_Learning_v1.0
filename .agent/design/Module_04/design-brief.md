@@ -1,0 +1,133 @@
+# Design Brief
+
+- Provider mode: `design-v0-translated-spec`
+- Module: `Module_04`
+- Source: `{'slides': 'CourseApp/src/data/slides.json', 'storyboard': 'CourseApp/src/data/storyboard-contract.json', 'v0Prototype': '.agent/v0/Module_04/react-prototype.json'}`
+- Goal: Generate or refine high-fidelity course-player UI screens for the Vue SPA.
+- Storyboard source: `CourseApp/src/data/storyboard-contract.json`.
+- v0 source: `.agent/v0/<module>/react-prototype.json`; translate design rules, do not copy React code directly.
+- Hard rule: Course production workflow text must not appear inside course slides.
+- Hard rule: Full transcripts are production material only; the runtime shows subtitles from audio events.
+- Hard rule: Motion cues are described for the future web animation module and triggered from subtitle events.
+
+## Screens
+
+### Module_04 / p00
+
+- Route: `/module/Module_04/slide/p00`
+- Title: 渲染状态同步：让 GUI 替人思考
+- Kind: concept
+- Prompt: Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 渲染状态同步：让 GUI 替人思考. Key points: 在 OnGUI 末尾检测属性变化 / 自动同步 Blend、ZWrite、RenderQueue.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=2. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.
+- v0 chat: None
+- Story purpose: Use this scene to make learners understand '渲染状态同步：让 GUI 替人思考' through the content beats: 在 OnGUI 末尾检测属性变化 / 自动同步 Blend、ZWrite、RenderQueue.
+- Motion cues: 2
+- Constraints:
+  - Only show ShaderGUI course content in the slide canvas.
+  - Do not render full transcript text as a panel.
+  - Subtitles must appear only as audio-time events.
+  - Keep player controls outside the slide canvas.
+  - Follow storyboard layout, palette, and motion intent before inventing new visual behavior.
+  - Translate v0 React prototype rules into Vue and Tailwind; do not copy React/shadcn code directly.
+
+- Layout:
+  - Template: title-body
+  - Grid: left 56% hero concept and explanation, right 44% supporting cards
+  - Spacing: gap-6
+
+- Components: SlideTitle, PointList, SlideNav
+
+### Module_04 / p01
+
+- Route: `/module/Module_04/slide/p01`
+- Title: 版本迁移：如何让旧资产不碎掉？
+- Kind: concept
+- Prompt: Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 版本迁移：如何让旧资产不碎掉？. Key points: 属性名 Fallback / 语义映射 / 静默升级策略.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.
+- v0 chat: None
+- Story purpose: Use this scene to make learners understand '版本迁移：如何让旧资产不碎掉？' through the content beats: 属性名 Fallback / 语义映射 / 静默升级策略.
+- Motion cues: 3
+- Constraints:
+  - Only show ShaderGUI course content in the slide canvas.
+  - Do not render full transcript text as a panel.
+  - Subtitles must appear only as audio-time events.
+  - Keep player controls outside the slide canvas.
+  - Follow storyboard layout, palette, and motion intent before inventing new visual behavior.
+  - Translate v0 React prototype rules into Vue and Tailwind; do not copy React/shadcn code directly.
+
+- Layout:
+  - Template: title-body
+  - Grid: left 56% hero concept and explanation, right 44% supporting cards
+  - Spacing: gap-6
+
+- Components: SlideTitle, PointList, SlideNav
+
+### Module_04 / p02
+
+- Route: `/module/Module_04/slide/p02`
+- Title: 最终实战：构建专业级描边材质面板
+- Kind: concept
+- Prompt: Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 最终实战：构建专业级描边材质面板. Key points: 分组清晰 / 安全可靠 / 美术友好 / 性能同步.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=4. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.
+- v0 chat: None
+- Story purpose: Use this scene to make learners understand '最终实战：构建专业级描边材质面板' through the content beats: 分组清晰 / 安全可靠 / 美术友好.
+- Motion cues: 4
+- Constraints:
+  - Only show ShaderGUI course content in the slide canvas.
+  - Do not render full transcript text as a panel.
+  - Subtitles must appear only as audio-time events.
+  - Keep player controls outside the slide canvas.
+  - Follow storyboard layout, palette, and motion intent before inventing new visual behavior.
+  - Translate v0 React prototype rules into Vue and Tailwind; do not copy React/shadcn code directly.
+
+- Layout:
+  - Template: title-body
+  - Grid: left 56% hero concept and explanation, right 44% supporting cards
+  - Spacing: gap-6
+
+- Components: SlideTitle, PointList, SlideNav
+
+### Module_04 / p03
+
+- Route: `/module/Module_04/slide/p03`
+- Title: ShaderGUI 进阶思维路线图
+- Kind: concept
+- Prompt: Design a focused Chinese technical course slide for Unity ShaderGUI. Title: ShaderGUI 进阶思维路线图. Key points: 解构阶段 / 重构阶段 / 进化阶段 / 治理阶段.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=4. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.
+- v0 chat: None
+- Story purpose: Use this scene to make learners understand 'ShaderGUI 进阶思维路线图' through the content beats: 解构阶段 / 重构阶段 / 进化阶段.
+- Motion cues: 4
+- Constraints:
+  - Only show ShaderGUI course content in the slide canvas.
+  - Do not render full transcript text as a panel.
+  - Subtitles must appear only as audio-time events.
+  - Keep player controls outside the slide canvas.
+  - Follow storyboard layout, palette, and motion intent before inventing new visual behavior.
+  - Translate v0 React prototype rules into Vue and Tailwind; do not copy React/shadcn code directly.
+
+- Layout:
+  - Template: title-body
+  - Grid: left 56% hero concept and explanation, right 44% supporting cards
+  - Spacing: gap-6
+
+- Components: SlideTitle, PointList, DiagramPlaceholder, SlideNav
+
+## Interactive Screens
+
+### quiz - 做题页
+
+- Route: `/module/Module_04/quiz`
+- Prompt: Design the quiz page as a live assessment workspace. The layout must foreground the question bank table, then answer cards, then immediate result feedback. Realtime storyboard actions to preserve: shuffle-question-bank, shuffle-options, select-answer, submit-answer, show-score. Interactions must feel immediate and data-driven, with no page reload after answer selection, option swapping, submission, or reset.
+- Story purpose: Let learners answer one focused question at a time, with randomized question order, randomized options, automatic progression, and a final score review.
+- Realtime cues: 5
+- Runtime target: `CourseApp/src/views/QuizView.vue`
+- Components: QuestionBankTable, QuizQuestionCard, SingleChoiceInput, MultipleChoiceInput, OptionSwapControls, SubmitAnswerButton, ResultFeedback
+- Constraints:
+  - Use learner-facing quiz terminology in the UI.
+  - Render storyboard realtime cues as visible guidance or behavior.
+  - Do not hard-code question rows outside quizzes.json.
+  - Keep answer identity tied to option id when options are reordered.
+  - Submission feedback must be immediate and visible.
+
+## Validation History
+
+- Last contract check: None
+- Last visual ref check: None
+- Contract check attempts: 0
+- Visual ref check attempts: 0
