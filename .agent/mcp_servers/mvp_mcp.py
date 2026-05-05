@@ -40,13 +40,7 @@ class MVPMCP:
             # 加固：MVP 后自动检查并生成音频（不调用 storyboard，由 flow engine 调度）
             audio_result = MVPMCP._ensure_audio(workspace, module)
             if audio_result["status"] != "success":
-                print(f"[MVP Harden] Audio generation failed: {audio_result.get('message')}")
-            # 加固：MVP 后修复 storyboard-contract.json 的 timeRange 对齐
-            fix_result = MVPMCP._fix_timeRange(workspace, module)
-            if fix_result["status"] == "error":
-                print(f"[MVP Harden] fix_timeRange failed: {fix_result.get('message')}")
-            elif fix_result["status"] == "success":
-                print(f"[MVP Harden] fix_timeRange: {fix_result.get('message')}")
+                print(f"[MVP Harden] Audio: {audio_result.get('message')}")
         except Exception as exc:
             return {"status": "error", "message": f"MVP generation failed: {exc}"}
         return {

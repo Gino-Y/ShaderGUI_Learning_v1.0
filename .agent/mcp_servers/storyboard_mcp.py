@@ -49,8 +49,6 @@ class StoryboardMCP:
             kind = slide.get("kind", "concept")
             subtitle_path = slide.get("subtitles")
             
-            storyboard_slides.append(
-                {
             # 提前计算 paletteIntent 和 mood，避免重复调用
             palette_intent = StoryboardMCP._palette_intent(kind)
             mood = palette_intent.get("mood", "")
@@ -622,7 +620,6 @@ class StoryboardMCP:
 
     @staticmethod
     def _motion_cues(workspace: Path, kind: str, points: list[str], subtitle_path: str | None) -> list[dict]:
-        print(f"DEBUG _motion_cues: workspace={workspace.absolute()}, subtitle_path='{subtitle_path}'")
         subtitle_events = StoryboardMCP._load_subtitle_events(workspace, subtitle_path)
         alignments = StoryboardMCP._align_points_to_subtitles(points[:4], subtitle_events)
         cues = []
@@ -630,7 +627,6 @@ class StoryboardMCP:
             event = alignments[index] if index < len(alignments) else None
             start = float(event.get("start", 0.0)) if event else 0.0
             end = float(event.get("end", start + 1.8)) if event else start + 1.8
-            print(f"DEBUG _motion_cues: point[{index}]='{point[:30]}', event={event['segmentIndex'] if event else None}, start={start}, end={end}")
             duration_ms = max(1, int(round((end - start) * 1000)))
             source_text = event.get("text", "") if event else point
             focus_id = f"knowledge-{index + 1:02d}"
