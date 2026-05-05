@@ -67,6 +67,8 @@ def _is_pointer_file(path: Path) -> bool:
 
 def scan_platform_violations(workspace: Path) -> list[Path]:
     violations: list[Path] = []
+    # WorkBuddy 自己的内存目录，不属于 AI 资产违规
+    memory_dir = workspace / ".workbuddy" / "memory"
     for dirname in PLATFORM_DIRS:
         root = workspace / dirname
         if not root.exists():
@@ -76,6 +78,9 @@ def scan_platform_violations(workspace: Path) -> list[Path]:
                 continue
             # 指针文件不算违规（它只指向 .agent/ 中的正规路径）
             if _is_pointer_file(path):
+                continue
+            # .workbuddy/memory/ 是 WorkBuddy 自己的内存，不扫描
+            if memory_dir.exists() and memory_dir in path.parents:
                 continue
             if _is_ai_asset(path):
                 violations.append(path)

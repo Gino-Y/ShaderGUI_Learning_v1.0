@@ -7,6 +7,10 @@
     "type": "lecture",
     "duration": 180,
     "content": "理解 ShaderGUI 是 Shader 参数系统的前端工程层，而非简单的 UI 美化。",
+    "points": [
+      "ShaderGUI 是 Shader 参数系统的前端工程层",
+      "不是简单的 UI 美化"
+    ],
     "route": "/module/Module_01/slide/p00",
     "audio": "/audio/Module_01/p00.mp3",
     "subtitles": "/subtitles/Module_01/p00.json",
@@ -20,6 +24,11 @@
     "type": "code",
     "duration": 240,
     "content": "继承 ShaderGUI 并重写 OnGUI，在 Shader 中通过 CustomEditor 绑定。",
+    "points": [
+      "继承 ShaderGUI",
+      "重写 OnGUI",
+      "通过 CustomEditor 绑定"
+    ],
     "route": "/module/Module_01/slide/p01",
     "audio": "/audio/Module_01/p01.mp3",
     "subtitles": "/subtitles/Module_01/p01.json",
@@ -39,6 +48,11 @@
     "type": "lecture",
     "duration": 210,
     "content": "Required vs Safe 模式对比，封装 FindPropertySafe 工具函数。",
+    "points": [
+      "Required 模式的风险",
+      "Safe 模式的安全获取",
+      "封装 FindPropertySafe 工具函数"
+    ],
     "explore": {
       "id": "property-grouping",
       "route": "/module/Module_01/slide/p02/explore",

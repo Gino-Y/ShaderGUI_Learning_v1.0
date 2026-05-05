@@ -14,6 +14,32 @@ ADPMCP 平行 DAG 节点已创建完成。现在可以使用 `--adp` 标志运�
 
 ## Recent Changes
 
+- **2026-05-05 (ADP flow success + points fix)**:
+  - **问题**：ADP 流程在 Storyboard 阶段失败（`3 storyboard check(s) failed`）
+  - **根因**：`CourseContent/Module_01/slides.json` 缺少 `points` 字段
+  - **修复**：
+    - Module_01：p00/p01/p02 添加 `points`
+    - Module_02：p00/p01/p02 添加 `points`
+    - Module_03：p00/p01 添加 `points`
+    - Module_04：p00/p01/p02/p03 添加 `points`
+  - **验证**：ADP 流程通过（DEPLOY_READ Y）
+  - **提交**：`db36b91` + `bc883ef`
+  - **状态**：所有模块的 slides 现已包含 `points`，ADP 流程可正常运行
+
+## Recent Changes
+
+- **2026-05-05 (ADP flow success + points fix)**:
+  - **问题**：ADP 流程在 Storyboard 阶段失败（`3 storyboard check(s) failed`）
+  - **根因**：`CourseContent/Module_01/slides.json` 缺少 `points` 字段 → `_motion_cues()` 返回空列表
+  - **修复**：
+    - `CourseContent/Module_01/slides.json`：p00/p01/p02 添加 `points`
+    - `CourseContent/Module_02/slides.json`：p00/p01/p02 添加 `points`
+    - `CourseContent/Module_03/slides.json`：p00/p01 添加 `points`
+    - `CourseContent/Module_04/slides.json`：p00/p01/p02/p03 添加 `points`
+  - **验证**：ADP 流程通过（DEPLOY_READY）
+  - **提交**：`db36b91`（Module_01 points）+ `bc883ef`（Module_02/03/04 points）
+  - **状态**：所有模块的 slides 现已包含 `points`，ADP 流程可正常运行
+
 - **2026-05-05 (ADP DAG node)**: 新增 ADPMCP 作为平行于 MVPMCP 的 DAG 节点：
   - **根因**：用户要求"建一个 adp_mcp 跟 mvp_mcp 平级的 DAG 节点"，之前错误地修改了 `mvp_mcp.py`
   - **修复**：创建新文件 `.agent/mcp_servers/adp_mcp.py`（平行节点，不修改 `mvp_mcp.py`）
@@ -119,6 +145,21 @@ ADPMCP 平行 DAG 节点已创建完成。现在可以使用 `--adp` 标志运�
 
 ## Next Step
 
-测试 ADPMCP 完整生产流程：`python .agent\flow_engine.py --mode production --adp --scope module --module Module_01`
+ADPMCP 流程已通过 Module_01（DEPLOY_READY）。其他模块（Module_02/03/04）的 `points` 字段已全部补充，可继续测试其他模块或部署。
 
-验证 ADPMCP 是否正确生成所有 slides（非仅 p00/p01）。
+---
+
+## Recent Changes
+
+- **2026-05-05 (ADP flow success + points fix)**:
+  - **问题**：ADP 流程在 Storyboard 阶段失败（`3 storyboard check(s) failed`）
+  - **根因**：`CourseContent/Module_01/slides.json` 缺少 `points` 字段
+  - **修复**：
+    - Module_01：p00/p01/p02 添加 `points`
+    - Module_02：p00/p01/p02 添加 `points`
+    - Module_03：p00/p01 添加 `points`
+    - Module_04：p00/p01/p02/p03 添加 `points`
+  - **验证**：ADP 流程通过（DEPLOY_READY）
+  - **提交**：`db36b91` + `bc883ef`
+  - **状态**：所有模块的 slides 现已包含 `points`，ADP 流程可正常运行
+

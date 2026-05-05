@@ -1,0 +1,106 @@
+{
+  "module": "Module_01",
+  "player": "CoursePlayer.vue",
+  "navigation": "SlideNav.vue",
+  "subtitleOverlay": "SubtitleOverlay.vue",
+  "slides": [
+    {
+      "moduleId": "Module_01",
+      "slideId": "p00",
+      "route": "/module/Module_01/slide/p00",
+      "audio": "/audio/Module_01/p00.mp3",
+      "subtitles": "/subtitles/Module_01/p00.json",
+      "transcript": "/transcripts/Module_01/Module_01-p00-逐字稿.md",
+      "subtitleEventCount": 5,
+      "interaction": null
+    },
+    {
+      "moduleId": "Module_01",
+      "slideId": "p01",
+      "route": "/module/Module_01/slide/p01",
+      "audio": "/audio/Module_01/p01.mp3",
+      "subtitles": "/subtitles/Module_01/p01.json",
+      "transcript": "/transcripts/Module_01/Module_01-p01-逐字稿.md",
+      "subtitleEventCount": 5,
+      "interaction": null
+    },
+    {
+      "moduleId": "Module_01",
+      "slideId": "p02",
+      "route": "/module/Module_01/slide/p02",
+      "audio": "/audio/Module_01/p02.mp3",
+      "subtitles": "/subtitles/Module_01/p02.json",
+      "transcript": "/transcripts/Module_01/Module_01-p02-属性查找的工程策略.md",
+      "subtitleEventCount": 11,
+      "interaction": null
+    }
+  ],
+  "interactiveScreens": [
+    {
+      "moduleId": "Module_01",
+      "screenId": "explore-p01-property-grouping",
+      "route": "/module/Module_01/slide/p01/explore",
+      "runtime": "ExploreView.vue",
+      "parentSlideId": "p01",
+      "component": "PropertyGroupingLab",
+      "storyboardCueCount": 3,
+      "designCueCount": 3,
+      "stateModel": [
+        "explore",
+        "labControls",
+        "linkedFeedback"
+      ],
+      "eventHandlers": [
+        "resolveParentSlide",
+        "updateLabState",
+        "returnToParentSlide"
+      ],
+      "bindingMode": "parent-slide-subroute-exploration"
+    },
+    {
+      "moduleId": "Module_01",
+      "screenId": "explore-p02-property-grouping",
+      "route": "/module/Module_01/slide/p02/explore",
+      "runtime": "ExploreView.vue",
+      "parentSlideId": "p02",
+      "component": null,
+      "storyboardCueCount": 3,
+      "designCueCount": 3,
+      "stateModel": [
+        "explore",
+        "labControls",
+        "linkedFeedback"
+      ],
+      "eventHandlers": [
+        "resolveParentSlide",
+        "updateLabState",
+        "returnToParentSlide"
+      ],
+      "bindingMode": "parent-slide-subroute-exploration"
+    },
+    {
+      "moduleId": "Module_01",
+      "screenId": "quiz",
+      "route": "/module/Module_01/quiz",
+      "runtime": "QuizView.vue",
+      "questionCount": 1,
+      "storyboardCueCount": 5,
+      "designCueCount": 5,
+      "stateModel": [
+        "questionOrder",
+        "answers",
+        "results",
+        "optionOrder",
+        "currentIndex"
+      ],
+      "eventHandlers": [
+        "restartQuiz",
+        "continuePractice",
+        "toggleAnswer",
+        "submitAnswer",
+        "resetAnswer"
+      ],
+      "bindingMode": "storyboard-and-design-guided-realtime-vue-state"
+    }
+  ]
+}

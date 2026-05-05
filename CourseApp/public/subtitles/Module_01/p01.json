@@ -1,0 +1,27 @@
+[
+  {
+    "start": 0.0,
+    "end": 5.56,
+    "text": "自定义 ShaderGUI 的最小架构其实很直接。"
+  },
+  {
+    "start": 5.56,
+    "end": 14.67,
+    "text": "C Sharp 侧创建一个类，继承 ShaderGUI，并重写 OnGUI 方法。"
+  },
+  {
+    "start": 14.67,
+    "end": 22.22,
+    "text": "Shader 侧在文件底部用 CustomEditor 绑定这个类。"
+  },
+  {
+    "start": 22.22,
+    "end": 27.78,
+    "text": "完成这两步之后，材质面板的绘制权就回到了我们手里。"
+  },
+  {
+    "start": 27.78,
+    "end": 39.78,
+    "text": "后面的分组布局、条件显示、FindPropertySafe、渲染状态同步，都是建立在这个入口之上的工程能力。"
+  }
+]
