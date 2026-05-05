@@ -99,7 +99,8 @@ const storyboardSlide = computed(() =>
 );
 
 const motionCues = computed(() => storyboardSlide.value?.motionCues ?? []);
-
+const visualSpecs = computed(() => storyboardSlide.value?.visualSpecs ?? []);
+const performanceSpecs = computed(() => storyboardSlide.value?.performanceSpecs ?? []);
 const visualComposition = computed(() => storyboardSlide.value?.visualComposition ?? null);
 
 const activeCue = computed(() => {
