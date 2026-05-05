@@ -120,8 +120,8 @@ const activePerfSpec = computed(() => {
 
 const showFlowPath = computed(
   () =>
-    activePerfSpec.value?.type === "demo" &&
-    activePerfSpec.value?.demo === "flow-path"
+    activePerfSpec.value?.performanceType === "demo" &&
+    activePerfSpec.value?.demoType === "flow-path"
 );
 
 const perfDurationMs = computed(() => {
