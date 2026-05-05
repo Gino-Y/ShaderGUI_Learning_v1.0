@@ -6,20 +6,29 @@ Fix WorkBuddy's remaining flow-engine regressions and make the MVP DAG runnable 
 
 ## Completed Work
 
-- Reproduced the WorkBuddy-reported DesignMCP failure path.
-- Fixed `.agent/mcp_servers/design_mcp.py`:
-  - Missing `design_slides` initialization.
-  - Missing `_infer_typography()`.
-  - Missing `_infer_color_scheme()`.
-  - Broken `any(any(...))` diagram keyword logic.
-  - Corrupted comment that prevented `palette` assignment.
-  - Mojibake strings that caused SyntaxError in diagnostic and quiz-design paths.
-- Fixed `.agent/mcp_servers/v0_mcp.py`:
-  - Broken f-string and mojibake strings.
-  - Long blocking v0 POST timeout.
-  - Added deterministic `local-v0-fallback` handoff when v0 chat creation times out or fails.
-- Re-ran the flow engine; Module_01 reached `DEPLOY_READY`.
-- Re-ran platform, course, and build verification.
+- **2026-05-05 (animation.scale fix)**:
+  - Fixed `storyboard_mcp.py`: Added `"scale": [0.96, 1.0]` to `animation["parameters"]` in `_motion_cues()` (line 642).
+  - Verified `performanceSpecs[].payload.colors` is correctly generated (non-empty array).
+  - Re-generated `storyboard-contract.json` via `regen_storyboard.py` (temporary script, then deleted).
+  - Verified `visualSpecs[].animation.parameters.scale = [0.96, 1.0]` in re-generated contract.
+  - Verified `performanceSpecs[].payload.colors` matches mood-based color schemes.
+  - Ran `verify_course.py` ✅ and `npm run build` ✅.
+  - Git commit: `8efc269`.
+
+- **2026-05-05 (earlier)**: Reproduced and fixed WorkBuddy's remaining flow-engine regressions:
+  - Fixed `.agent/mcp_servers/design_mcp.py`:
+    - Missing `design_slides` initialization.
+    - Missing `_infer_typography()`.
+    - Missing `_infer_color_scheme()`.
+    - Broken `any(any(...))` diagram keyword logic.
+    - Corrupted comment that prevented `palette` assignment.
+    - Mojibake strings that caused SyntaxError in diagnostic and quiz-design paths.
+  - Fixed `.agent/mcp_servers/v0_mcp.py`:
+    - Broken f-string and mojibake strings.
+    - Long blocking v0 POST timeout.
+    - Added deterministic `local-v0-fallback` handoff when v0 chat creation times out or fails.
+  - Re-ran the flow engine; Module_01 reached `DEPLOY_READY`.
+  - Re-ran platform, course, and build verification.
 
 ## Modified Files
 

@@ -14,6 +14,15 @@ WorkBuddy remediation is complete: design/v0 MCP runtime failures were fixed and
 
 ## Recent Changes
 
+- **2026-05-05 (animation.scale fix)**: 修复 `storyboard_mcp.py` 和验证 `colors` 数据：
+  - **根因**：`storyboard_mcp.py` 的 `_motion_cues()` 中 `animation["parameters"]` 缺少 `scale` 字段，导致 P1 动画增强（scale + 动态阴影）不生效。
+  - **修复**：在 `animation["parameters"]` 中添加 `"scale": [0.96, 1.0]`（第 642 行）。
+  - **验证**：重新生成 `storyboard-contract.json`，确认 `visualSpecs[].animation.parameters.scale = [0.96, 1.0]`。
+  - **验证**：确认 `performanceSpecs[].payload.colors` 正确生成（非空的数组），例如 p00 的 `colors=['#67e8f9', '#818cf8', '#c084fc']`。
+  - **自检**：`verify_course.py` ✅ 通过，`npm run build` ✅ 通过。
+  - **提交**：`8efc269`
+  - **状态**：P1 动画增强现在应该生效（scale 动画 + 动态阴影），ParticleDecoration.vue 能读到 `payload.colors`。
+
 - **2026-05-05 (MVP fix)**: 修复表演动画反复消失问题（根因：模板不覆盖）：
   - **根因**：`mvp_mcp.py` 的 `_copy_template_tree()` 发现 `CourseApp/src/` 中文件已存在时 `continue`，导致模板更新后不复制到产物
   - **修复**：删除 `if dst.exists(): continue`，强制覆盖
