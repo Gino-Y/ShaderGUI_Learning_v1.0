@@ -14,6 +14,12 @@ WorkBuddy remediation is complete: design/v0 MCP runtime failures were fixed and
 
 ## Recent Changes
 
+- **2026-05-05 (MVP fix)**: 修复表演动画反复消失问题（根因：模板不覆盖）：
+  - **根因**：`mvp_mcp.py` 的 `_copy_template_tree()` 发现 `CourseApp/src/` 中文件已存在时 `continue`，导致模板更新后不复制到产物
+  - **修复**：删除 `if dst.exists(): continue`，强制覆盖
+  - **提交**：`a036067`（快照）+ `37f2cc5`（MVP 产物）
+  - MVP 重新执行：`DEPLOY_READY`，所有阶段通过
+
 - **2026-05-05 (MVP production)**: 完整 MVP 流程执行成功（字段名修复后）：
   - 清理旧产物（14项）
   - 重新生成 storyboard-contract.json（type/demo 字段名正确）
