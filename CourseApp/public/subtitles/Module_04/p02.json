@@ -1,32 +1,32 @@
 [
   {
     "start": 0.0,
-    "end": 17.11,
-    "text": "阶段11：实战验收：MOutlineFittingh01 —— 逐字稿 最后，我们将所有的知识点汇聚到 MOutlineFittingh01 这个案例中。"
+    "end": 9.33,
+    "text": "最后，我们将所有的知识点汇聚到 MOutlineFitting_h01 这个案例中。"
   },
   {
-    "start": 17.11,
-    "end": 25.33,
+    "start": 9.33,
+    "end": 17.56,
     "text": "这不再是一个简单的 Shader 练习，而是一个符合工业化标准的材质工具。"
   },
   {
-    "start": 25.33,
-    "end": 34.22,
+    "start": 17.56,
+    "end": 26.44,
     "text": "从这一刻起，你不再只是在\"写 Shader\"，你是在为团队定义一套\"创作标准\"。"
   },
   {
-    "start": 34.22,
-    "end": 41.33,
+    "start": 26.44,
+    "end": 33.56,
     "text": "当我们把这份 GUI 交付给美术同学时，我们交付的是效率和信心。"
   },
   {
-    "start": 41.33,
-    "end": 111.11,
+    "start": 33.56,
+    "end": 103.33,
     "text": "验收标准清单 # 验收项 标准 --- -------- ------ 1 分组清晰 Shape / Clip / Motion / Color 逻辑分明 2 安全可靠 删除 Shader 中任意属性，面板不崩溃 3 美术友好 关键参数有 HelpBox 说明，支持彩虹色动态联动 4 性能同步 自动根据 Toggle 开启/关闭 Shader 变体（Keywords） 完整示例代码 关键要点回顾 分组清晰：用 BeginVertical(\"box\") 建立视觉边界 Safe 查找：FindPropertySafe 防止属性缺失导致崩溃 ManagedProps 追踪：确保无遗漏、无重复 渲染状态同步：EditorGUI."
   },
   {
-    "start": 111.11,
-    "end": 124.44,
+    "start": 103.33,
+    "end": 116.67,
     "text": "BeginChangeCheck() 检测变化并自动写入 兜底绘制：循环遍历 props，将未被管理的属性以默认方式显示"
   }
 ]

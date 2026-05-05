@@ -6,14 +6,15 @@
 
 - [GIT_SNAPSHOT_BEFORE_MODIFY] **修改代码前必须创建Git快照**（详见第126行"Git快照与回滚规范"）；快照不是备份，是在重要节点创建的可回溯标记。
 - [GIT_COMMIT_AFTER_TASK] **任务完成后必须提交Git**（详见第223行"Git协作工作流规范"）；不得积累大量未提交改动。
-- [AGENT_SINGLE_SOURCE] `.agent` 是唯一可信源；禁止使用 `.cursor`、`.workbuddy` 作为规则、资产、Skill、workflow 或 prompt 来源。
+- [NO_CONTEXT_INFERENCE] **禁止通过上下文推测执行流程**：AI 不得从对话上下文、历史记录或推理中推断"应该做什么"或"下一步"。所有执行流程、触发条件、完成标准必须以文本形式写入规则文件（`rules.md`、`SKILL.md`、DAG、`STATE.md`、`CURSOR_HANDOFF.md`）。未写入规则文件的流程视为不存在，AI 不得自行假设执行。
 - [MVP_EXECUTION_CONTRACT] 执行 MVP 必须遵循 `docs/MVP_Execution_Contract.md` 和 `.agent/mvp-execution-scope.json`；禁止清理 `.agent`、`node_modules` 等禁区。
 - [NO_INTERNAL_GUIDANCE_UI] 前端学习页面不得展示内部生产指导：`shotInstruction`、`focusInstruction`、`implementationHint`、`learnerTakeaway`、`Now focusing` 一律禁止展示。
 - [TOKEN_LEVEL_ANIMATION] 代码类页面动效必须细化到代码字段/token，例如 `ShaderGUI`、`OnGUI`、`CustomEditor`、`FindProperty`、`ShaderProperty`；不得退化为整卡片或整块代码动画。
 - [COURSE_HOME_ALIGNMENT_GRID] 首页和模块入口必须使用统一菜单结构，展示课程首页、模块信息、课时入口、探索入口和做题页入口，不得恢复二级菜单页。
-- [SYNC_RULES_DAG_VERIFY] 任何影响规则、DAG、验收标准的改动必须同步更新 `docs/Skill_Chain_DAG.md`、`.agent/rules.md`、`.agent/SKILL.md` 和 `scripts/verify_course.py`，必要时同步 `.agent/mcp_servers/mvp_mcp.py`。
+- [DUAL_COMPLIANCE] **双规（双重合规）**：通过上下文（对话/推理）更改产物后，必须同时满足两条铁规，否则构成双重违规：
+  - **铁规1 同步 DAG 节点**（`[SYNC_RULES_DAG_VERIFY]`）：任何影响规则、DAG、验收标准的改动必须同步更新 `docs/Skill_Chain_DAG.md`、`.agent/rules.md`、`.agent/SKILL.md` 和 `scripts/verify_course.py`，必要时同步 `.agent/mcp_servers/mvp_mcp.py`。
+  - **铁规2 汇报 AI 交叉开发文档**（`[COMPLETION_GATE_FILE_DRIVEN]`）：禁止仅靠对话记忆收尾；凡触及 `CourseApp/`、`.agent/mcp_servers/`、`scripts/`、`.agent/templates/`、`CourseContent/`、`docs/Skill_Chain_DAG.md`、`.agent/handoff/` 或课程数据契约，必须更新 STATE、handoff、memory 并运行验证。
 - [REVERIFY_BUILD_BROWSER] 需循环自检直至交付：`verify_course.py`、`npm run build` 和必要的浏览器验证，未通过不算完成。
-- [COMPLETION_GATE_FILE_DRIVEN] 禁止仅靠对话记忆收尾；凡触及 `CourseApp/`、`.agent/mcp_servers/`、`scripts/`、`.agent/templates/`、`CourseContent/`、`docs/Skill_Chain_DAG.md`、`.agent/handoff/` 或课程数据契约，必须更新 STATE、handoff、memory 并运行验证。
 - [NO_DIRECT_EDIT_OUTPUT] **禁止直接修改产物文件**；只能通过修改 `.agent/` 中的 MCP 节点或模板后重新生成的方式修改。`CourseApp/`、`CourseApp/dist/`、`CourseApp/src/data/` 均为产物，不得直接编辑。
   - **MVP清理例外**：执行 MVP 前允许直接移除产物文件（清理操作），但重新生成后不得手动修改产物。
   - **测试型修改**：允许为快速验证而直接修改产物文件，但测试结果确认后，必须立即将改动同步回对应的 DAG 节点（MCP Server 或模板），确保 MVP 和正式生产时的一致性。未同步前不得视为完成。

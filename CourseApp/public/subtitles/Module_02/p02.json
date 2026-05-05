@@ -1,42 +1,42 @@
 [
   {
     "start": 0.0,
-    "end": 16.89,
-    "text": "阶段6：封装工具类（Refactoring Utility）—— 逐字稿 如果我们每个 ShaderGUI 都手写一遍 EditorGUILayout."
+    "end": 8.67,
+    "text": "如果我们每个 ShaderGUI 都手写一遍 EditorGUILayout."
   },
   {
-    "start": 16.89,
-    "end": 24.44,
+    "start": 8.67,
+    "end": 16.22,
     "text": "BeginVertical(\"box\")，代码会变得冗长且难以维护。"
   },
   {
-    "start": 24.44,
-    "end": 27.56,
+    "start": 16.22,
+    "end": 19.33,
     "text": "作为开发者，我们要学会抽象。"
   },
   {
-    "start": 27.56,
-    "end": 37.78,
+    "start": 19.33,
+    "end": 29.56,
     "text": "通过封装一套基础的工具函数，我们可以像搭积木一样，在 5 分钟内搭建出一个专业级的材质面板。"
   },
   {
-    "start": 37.78,
-    "end": 40.89,
+    "start": 29.56,
+    "end": 32.67,
     "text": "记住，一致性是专业感的来源。"
   },
   {
-    "start": 40.89,
-    "end": 98.0,
+    "start": 32.67,
+    "end": 89.78,
     "text": "重构动作 封装 DrawProp(prop, label) 封装 DrawTex(prop, label) 封装 BeginGroup / EndGroup 工具类示例代码 工程价值 提高编写效率：新增 ShaderGUI 时只需调用工具函数 视觉高度统一：所有面板使用相同的分组样式和间距 降低维护成本：修改工具类即可全局生效 减少 Bug：集中处理 null 检查和边界情况 最佳实践 工具类做成 public static，无需实例化 每个 Draw 方法都做 null 检查 用 EditorStyles."
   },
   {
-    "start": 98.0,
-    "end": 106.67,
+    "start": 89.78,
+    "end": 98.44,
     "text": "boldLabel 统一标题样式 分组间距用 EditorGUILayout."
   },
   {
-    "start": 106.67,
-    "end": 108.89,
+    "start": 98.44,
+    "end": 100.67,
     "text": "Space() 控制"
   }
 ]
