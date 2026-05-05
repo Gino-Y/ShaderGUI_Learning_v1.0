@@ -244,22 +244,65 @@ class ADPMCP:
 
         course_source = source["course"]
         module_source = course_source.get("module") or {}
-        course = {
-            "title": course_source.get("title", "Course"),
-            "subtitle": course_source.get("subtitle", ""),
-            "modules": [
-                {
-                    "id": module_source.get("id", module),
-                    "title": module_source.get("title", module),
-                    "summary": module_source.get("summary", ""),
-                    "slideCount": len(source["slides"]),
-                }
-            ],
+        current_module_id = module_source.get("id", module)
+
+        # --- 合并 course.json ---
+        course_file = app / "src" / "data" / "course.json"
+        if course_file.exists():
+            course = json.loads(course_file.read_text(encoding="utf-8"))
+        else:
+            course = {
+                "title": course_source.get("title", "Course"),
+                "subtitle": course_source.get("subtitle", ""),
+                "modules": [],
+            }
+        existing_ids = {m.get("id") for m in course["modules"]}
+        new_module_entry = {
+            "id": current_module_id,
+            "title": module_source.get("title", module),
+            "summary": module_source.get("summary", ""),
+            "slideCount": len(source["slides"]),
         }
-        ADPMCP._write_json(app / "src" / "data" / "course.json", course)
-        ADPMCP._write_json(app / "src" / "data" / "slides.json", source["slides"])
-        ADPMCP._write_json(app / "src" / "data" / "quizzes.json", source["quizzes"])
-        ADPMCP._write_json(app / "src" / "data" / "explorations.json", source["explorations"])
+        if current_module_id in existing_ids:
+            for m in course["modules"]:
+                if m.get("id") == current_module_id:
+                    m.update(new_module_entry)
+                    break
+        else:
+            course["modules"].append(new_module_entry)
+        ADPMCP._write_json(course_file, course)
+
+        # --- 合并 slides.json（先移除当前模块的旧数据，再追加） ---
+        slides_file = app / "src" / "data" / "slides.json"
+        if slides_file.exists():
+            existing_slides = json.loads(slides_file.read_text(encoding="utf-8"))
+        else:
+            existing_slides = []
+        # 移除当前模块的旧 slides
+        existing_slides = [s for s in existing_slides if s.get("moduleId") != module]
+        existing_slides.extend(source["slides"])
+        ADPMCP._write_json(slides_file, existing_slides)
+
+        # --- 合并 quizzes.json ---
+        quizzes_file = app / "src" / "data" / "quizzes.json"
+        if quizzes_file.exists():
+            existing_quizzes = json.loads(quizzes_file.read_text(encoding="utf-8"))
+        else:
+            existing_quizzes = []
+        existing_quizzes = [q for q in existing_quizzes if q.get("moduleId") != module]
+        existing_quizzes.extend(source["quizzes"])
+        ADPMCP._write_json(quizzes_file, existing_quizzes)
+
+        # --- 合并 explorations.json ---
+        explorations_file = app / "src" / "data" / "explorations.json"
+        if explorations_file.exists():
+            existing_explorations = json.loads(explorations_file.read_text(encoding="utf-8"))
+        else:
+            existing_explorations = []
+        existing_explorations = [e for e in existing_explorations if e.get("moduleId") != module]
+        existing_explorations.extend(source["explorations"])
+        ADPMCP._write_json(explorations_file, existing_explorations)
+
         # 加固：只在文件不存在时才写占位符，避免覆盖已有真实数据
         contract_path = app / "src" / "data" / "storyboard-contract.json"
         if not contract_path.exists():
