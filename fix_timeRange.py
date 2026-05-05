@@ -1,91 +1,153 @@
 #!/usr/bin/env python3
 """
-修复 storyboard-contract.json 中的 timeRange 错误。
-问题：motionCues 和 performanceSpecs 的 timeRange 全是 {start: 0.0, end: 1.8}
-修复：从字幕文件读取正确的时间并替换。
+fix_timeRange.py — 后处理脚本
+读取 storyboard-contract.json，根据每个 slide 的 subtitles 文件，
+将 motionCues / visualSpecs / performanceSpecs 的 timeRange 对齐到真实的字幕时间段。
+
+用法：python fix_timeRange.py  （在 workspace 根目录执行）
 """
+
+from __future__ import annotations
+
 import json
-import re
+import sys
 from pathlib import Path
 
-BASE_DIR = Path(__file__).parent
-CONTRACT_PATH = BASE_DIR / "CourseApp/src/data/storyboard-contract.json"
+WORKSPACE = Path(__file__).resolve().parent
+CONTRACT_FILE = WORKSPACE / "CourseApp" / "src" / "data" / "storyboard-contract.json"
 
-def fix_contract():
-    if not CONTRACT_PATH.exists():
-        print(f"契约文件不存在: {CONTRACT_PATH}")
-        return False
-    
-    contract = json.loads(CONTRACT_PATH.read_text(encoding="utf-8"))
-    fixed_count = 0
-    
-    for slide in contract.get("slides", []):
-        module_id = slide.get("moduleId", "")
-        slide_id = slide.get("slideId", "")
-        subtitle_path = slide.get("subtitles", "")
-        
-        if not subtitle_path:
-            print(f"  {slide_id}: 无字幕路径，跳过")
+
+def load_subtitles(workspace: Path, subtitle_path: str) -> list[dict]:
+    """加载字幕文件，返回 normalized 的 segment 列表"""
+    if not subtitle_path:
+        return []
+    path = workspace / "CourseApp" / "public" / subtitle_path.lstrip("/")
+    if not path.exists():
+        print(f"[fix_timeRange] WARNING: subtitle file not found: {path}")
+        return []
+    try:
+        events = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, Exception) as exc:
+        print(f"[fix_timeRange] WARNING: failed to parse {path}: {exc}")
+        return []
+    result = []
+    for idx, event in enumerate(events if isinstance(events, list) else []):
+        try:
+            start = float(event["start"])
+            end = float(event["end"])
+        except (TypeError, ValueError, KeyError):
             continue
-            
-        # 加载字幕事件
-        subtitle_file = BASE_DIR / "CourseApp/public" / subtitle_path.lstrip("/")
-        if not subtitle_file.exists():
-            print(f"  {slide_id}: 字幕文件不存在 {subtitle_file}")
+        if end <= start:
             continue
-            
-        events = json.loads(subtitle_file.read_text(encoding="utf-8"))
-        print(f"  {slide_id}: 找到 {len(events)} 个字幕事件")
-        
-        # 修复 motionCues 的 timeRange
-        motion_cues = slide.get("motionCues", [])
-        for i, cue in enumerate(motion_cues):
-            if i < len(events):
-                event = events[i]
-                old_range = dict(cue.get("timeRange", {}))
-                cue["timeRange"] = {
-                    "start": round(event["start"], 2),
-                    "end": round(event["end"], 2),
-                    "durationMs": int(round((event["end"] - event["start"]) * 1000)),
-                }
-                print(f"    motionCues[{i}]: {old_range} -> {cue['timeRange']}")
-                fixed_count += 1
-        
-        # 修复 performanceSpecs 的 timeRange
-        perf_specs = slide.get("performanceSpecs", [])
-        # 构建 cueId -> timeRange 的映射，供 decoration 对齐
-        cue_time_map = {}
-        for cue in motion_cues:
-            cue_time_map[cue["cueId"]] = cue["timeRange"]
-        
-        for spec in perf_specs:
-            spec_cue_id = spec.get("cueId", "")
-            # perf-cue-xx -> cue-xx; deco-cue-xx -> cue-xx
-            m = re.search(r"(cue-\d+)", spec_cue_id)
-            if m:
-                target_cue_id = m.group(1)
-                if target_cue_id in cue_time_map:
-                    old_range = dict(spec.get("timeRange", {}))
-                    spec["timeRange"] = dict(cue_time_map[target_cue_id])
-                    print(f"    {spec_cue_id} ({spec.get('type','?')}): {old_range} -> {spec['timeRange']}")
-                    fixed_count += 1
-                elif spec.get("type") == "demo" and events:
-                    # demo 找不到对应 cue，用最后一个 event
-                    event = events[-1]
-                    old_range = dict(spec.get("timeRange", {}))
-                    spec["timeRange"] = {
-                        "start": round(event["start"], 2),
-                        "end": round(event["end"], 2),
-                        "durationMs": int(round((event["end"] - event["start"]) * 1000)),
-                    }
-                    print(f"    {spec_cue_id} (demo,fallback): {old_range} -> {spec['timeRange']}")
-                    fixed_count += 1
-    
-    # 保存修复后的契约
-    CONTRACT_PATH.write_text(json.dumps(contract, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"\n✅ 修复完成！共修复 {fixed_count} 个 timeRange")
-    return True
+        result.append({
+            "segmentIndex": idx,
+            "start": start,
+            "end": end,
+            "text": str(event.get("text", "")),
+        })
+    return result
+
+
+def fix_time_range(obj: dict, subtitles: list[dict], field_name: str) -> int:
+    """
+    修复单个对象（cue 或 spec）的 timeRange。
+    根据 trigger.segmentIndex 找到对应字幕段，写入正确的 start/end/durationMs。
+    返回修复数量。
+    """
+    count = 0
+    trigger = obj.get("trigger", {})
+    seg_idx = trigger.get("segmentIndex")
+    if seg_idx is None:
+        return 0
+
+    # 找到匹配的字幕段
+    segment = None
+    for s in subtitles:
+        if s["segmentIndex"] == seg_idx:
+            segment = s
+            break
+    if not segment:
+        # 没有对应字幕段，保持原样
+        return 0
+
+    time_range = obj.get("timeRange", {})
+    old_start = time_range.get("start")
+    old_end = time_range.get("end")
+
+    new_start = round(segment["start"], 2)
+    new_end = round(segment["end"], 2)
+    new_duration_ms = max(1, int(round((new_end - new_start) * 1000)))
+
+    if old_start == new_start and old_end == new_end:
+        return 0  # 已经正确
+
+    time_range["start"] = new_start
+    time_range["end"] = new_end
+    time_range["durationMs"] = new_duration_ms
+    obj["timeRange"] = time_range
+
+    # 同时修正 trigger.timecode
+    trigger["timecode"] = new_start
+    obj["trigger"] = trigger
+
+    count += 1
+    if count <= 20:  # 避免刷屏
+        print(f"  [fix] {field_name}: timeRange {old_start}-{old_end} → {new_start}-{new_end}")
+    return count
+
+
+def process_slide(slide: dict, workspace: Path) -> int:
+    """处理单个 slide，返回修复总数"""
+    subtitle_path = slide.get("subtitles")
+    if not subtitle_path:
+        return 0
+
+    subtitles = load_subtitles(workspace, subtitle_path)
+    if not subtitles:
+        return 0
+
+    total = 0
+    print(f"\n[fix_timeRange] {slide['moduleId']}/{slide['slideId']}: {len(subtitles)} subtitle segments")
+
+    # 修复 motionCues
+    for cue in slide.get("motionCues", []):
+        total += fix_time_range(cue, subtitles, f"motionCue {cue.get('cueId')}")
+
+    # 修复 visualSpecs
+    for spec in slide.get("visualSpecs", []):
+        total += fix_time_range(spec, subtitles, f"visualSpec {spec.get('cueId')}")
+
+    # 修复 performanceSpecs
+    for spec in slide.get("performanceSpecs", []):
+        total += fix_time_range(spec, subtitles, f"perfSpec {spec.get('cueId')}")
+
+    return total
+
+
+def main():
+    if not CONTRACT_FILE.exists():
+        print(f"[fix_timeRange] ERROR: {CONTRACT_FILE} not found")
+        sys.exit(1)
+
+    contract = json.loads(CONTRACT_FILE.read_text(encoding="utf-8"))
+    slides = contract.get("slides", [])
+    if not slides:
+        print("[fix_timeRange] No slides found in contract")
+        sys.exit(0)
+
+    total_fixed = 0
+    for slide in slides:
+        total_fixed += process_slide(slide, WORKSPACE)
+
+    if total_fixed > 0:
+        CONTRACT_FILE.write_text(
+            json.dumps(contract, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        print(f"\n[fix_timeRange] ✅ Fixed {total_fixed} timeRange entries, contract updated.")
+    else:
+        print("\n[fix_timeRange] ℹ️  All timeRange values already correct, no changes made.")
+
 
 if __name__ == "__main__":
-    print("=== 修复 storyboard-contract.json timeRange ===")
-    fix_contract()
+    main()
