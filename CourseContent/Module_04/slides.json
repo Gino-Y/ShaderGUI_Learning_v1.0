@@ -6,7 +6,11 @@
     "title": "渲染状态同步：让 GUI 替人思考",
     "type": "code",
     "duration": 240,
-    "content": "在 OnGUI 末尾检测属性变化，自动同步 Blend、ZWrite、RenderQueue。"
+    "content": "在 OnGUI 末尾检测属性变化，自动同步 Blend、ZWrite、RenderQueue。",
+    "points": [
+      "在 OnGUI 末尾检测属性变化",
+      "自动同步 Blend、ZWrite、RenderQueue"
+    ]
   },
   {
     "slideId": "p01",
@@ -15,7 +19,12 @@
     "title": "版本迁移：如何让旧资产不碎掉？",
     "type": "lecture",
     "duration": 210,
-    "content": "属性名 Fallback、语义映射、静默升级策略。"
+    "content": "属性名 Fallback、语义映射、静默升级策略。",
+    "points": [
+      "属性名 Fallback",
+      "语义映射",
+      "静默升级策略"
+    ]
   },
   {
     "slideId": "p02",
@@ -24,7 +33,13 @@
     "title": "最终实战：构建专业级描边材质面板",
     "type": "code",
     "duration": 300,
-    "content": "验收标准清单：分组清晰、安全可靠、美术友好、性能同步。"
+    "content": "验收标准清单：分组清晰、安全可靠、美术友好、性能同步。",
+    "points": [
+      "分组清晰",
+      "安全可靠",
+      "美术友好",
+      "性能同步"
+    ]
   },
   {
     "slideId": "p03",
@@ -33,6 +48,12 @@
     "title": "ShaderGUI 进阶思维路线图",
     "type": "summary",
     "duration": 180,
-    "content": "元认知总结：解构 → 重构 → 进化 → 治理，四个阶段的成长路线。"
+    "content": "元认知总结：解构 → 重构 → 进化 → 治理，四个阶段的成长路线。",
+    "points": [
+      "解构阶段",
+      "重构阶段",
+      "进化阶段",
+      "治理阶段"
+    ]
   }
 ]

@@ -6,7 +6,12 @@
     "title": "告别参数地狱：逻辑化的分组设计",
     "type": "lecture",
     "duration": 180,
-    "content": "信息架构设计，使用 BeginVertical 创建视觉边界，按渲染逻辑排列参数。"
+    "content": "信息架构设计，使用 BeginVertical 创建视觉边界，按渲染逻辑排列参数。",
+    "points": [
+      "信息架构设计",
+      "BeginVertical 创建视觉边界",
+      "按渲染逻辑排列参数"
+    ]
   },
   {
     "slideId": "p01",
@@ -15,7 +20,12 @@
     "title": "只给用户他需要的：智能 UI 联动",
     "type": "code",
     "duration": 240,
-    "content": "条件显示技术，通过 Toggle/Enum 控制参数组显隐，EditorGUI.DisabledScope 应用。"
+    "content": "条件显示技术，通过 Toggle/Enum 控制参数组显隐，EditorGUI.DisabledScope 应用。",
+    "points": [
+      "条件显示技术",
+      "Toggle/Enum 控制参数组显隐",
+      "EditorGUI.DisabledScope 应用"
+    ]
   },
   {
     "slideId": "p02",
@@ -24,6 +34,11 @@
     "title": "拒绝代码重复：打造 ShaderGUI 工具箱",
     "type": "code",
     "duration": 210,
-    "content": "封装 DrawProp / DrawTex / BeginGroup 工具类，提高编写效率和视觉统一性。"
+    "content": "封装 DrawProp / DrawTex / BeginGroup 工具类，提高编写效率和视觉统一性。",
+    "points": [
+      "封装 DrawProp / DrawTex / BeginGroup 工具类",
+      "提高编写效率",
+      "视觉统一性"
+    ]
   }
 ]
