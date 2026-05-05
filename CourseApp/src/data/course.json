@@ -7,6 +7,24 @@
       "title": "模块一：解构",
       "summary": "理解 ShaderGUI 的定位，并完成最小自定义材质面板架构。",
       "slideCount": 3
+    },
+    {
+      "id": "Module_02",
+      "title": "模块二：逻辑化分组",
+      "summary": "告别参数地狱，打造逻辑化的分组设计，实现智能 UI 联动。",
+      "slideCount": 3
+    },
+    {
+      "id": "Module_03",
+      "title": "模块三：模块化",
+      "summary": "像搭积木一样构建材质面板，实现 Managed Properties 行政管理。",
+      "slideCount": 2
+    },
+    {
+      "id": "Module_04",
+      "title": "模块四：渲染状态同步",
+      "summary": "让 GUI 替人思考，掌握版本迁移策略，完成最终实战。",
+      "slideCount": 4
     }
   ]
 }
