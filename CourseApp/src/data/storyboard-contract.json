@@ -2,7 +2,7 @@
   "provider": "storyboard-local-spec",
   "status": "storyboard_ready",
   "module": "Module_01",
-  "generatedAt": "2026-05-05T06:15:23Z",
+  "generatedAt": "2026-05-05T06:20:38Z",
   "source": {
     "slides": "CourseApp/src/data/slides.json",
     "explorations": "CourseApp/src/data/explorations.json",
@@ -1678,7 +1678,7 @@
     }
   ],
   "_validation": {
-    "lastStoryboardCheck": "2026-05-05T06:15:23Z",
+    "lastStoryboardCheck": "2026-05-05T06:20:38Z",
     "cueBindingPolicy": "subtitle segment indexes bind to concrete timecodes after audio generation",
     "realtimeInteractionPolicy": "user actions and state changes bind to concrete Vue event handlers in QuizView"
   }
