@@ -1,0 +1,75 @@
+{
+  "provider": "local-v0-fallback",
+  "status": "prototype_ready",
+  "module": "Module_02",
+  "generatedAt": "2026-05-05T09:02:13Z",
+  "chat": {
+    "id": "local-fallback",
+    "url": null,
+    "apiUrl": null,
+    "fallbackReason": "v0 HTTP 402: {\"error\":{\"type\":\"payment_required_error\",\"message\":\"You are out of credits. Add more or enable Auto-topup at https://v0.app/chat/settings/billing\"}}"
+  },
+  "source": {
+    "slides": "CourseApp/src/data/slides.json",
+    "storyboard": "CourseApp/src/data/storyboard-contract.json"
+  },
+  "slides": [
+    {
+      "moduleId": "Module_02",
+      "slideId": "p00",
+      "title": "Drawer 是什么",
+      "kind": "concept",
+      "route": "/module/Module_02/slide/p00"
+    },
+    {
+      "moduleId": "Module_02",
+      "slideId": "p01",
+      "title": "内置 Drawer 实战",
+      "kind": "code",
+      "route": "/module/Module_02/slide/p01"
+    }
+  ],
+  "translationBoundaries": [
+    "Use this fallback as a design-rule scaffold only.",
+    "Do not treat it as externally authored React code.",
+    "Vue runtime remains generated from local templates and contracts."
+  ],
+  "reactPrototype": {
+    "files": [],
+    "textBlocks": [
+      "Local fallback generated because v0 was unavailable or exceeded the configured timeout.",
+      "Create one compact React + Tailwind prototype for a dark Chinese Unity ShaderGUI course player plus a quiz screen. Use a large slide canvas, event subtitle area, compact bottom audio controls, tap-to-play, and vertical swipe navigation. The quiz page must reflect storyboard realtime actions: question-bank scan, answer selection, option swapping, submit scoring, and feedback. Do not use shadcn imports, Next.js routing, transcript panels, or internal production workflow text. Return code plus concise design rules for translating the result to Vue 3 + Tailwind.\nModule: Module_02\nSlides: [{\"slideId\": \"p00\", \"title\": \"Drawer 是什么\", \"kind\": \"concept\", \"points\": [\"Drawer 控制材质属性在面板中的渲染方式\", \"内置 Drawer：Toggle、Enum、PowerSlider\", \"自定义 Drawer 继承 MaterialPropertyDrawer\"], \"hasCode\": false}, {\"slideId\": \"p01\", \"title\": \"内置 Drawer 实战\", \"kind\": \"code\", \"points\": [\"[Toggle] 控制布尔属性\", \"[Enum] 控制下拉选择\", \"[PowerSlider] 非线性滑块\"], \"hasCode\": false}]\nStoryboard: {\"p00\": {\"layout\": \"concept hierarchy and mental model\", \"palette\": \"clear, instructional, confident\", \"motionCueCount\": 3}, \"p01\": {\"layout\": \"code structure and callout annotations\", \"palette\": \"precise, technical, focused\", \"motionCueCount\": 3}}\nInteractive screens: [{\"screenId\": \"quiz\", \"route\": \"/module/Module_02/quiz\", \"title\": \"做题页\", \"layout\": \"single active question card\", \"realtimeActions\": [\"shuffle-question-bank\", \"shuffle-options\", \"select-answer\", \"submit-answer\", \"show-score\"], \"runtimeTarget\": \"CourseApp/src/views/QuizView.vue\"}]\n"
+    ]
+  },
+  "extractedDesignRules": {
+    "layout": [
+      "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+      "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+    ],
+    "visual": [
+      "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+      "Reserve strong accents for the current teaching beat or code callout."
+    ],
+    "interaction": [
+      "Use storyboard motionCues as the interaction and animation source.",
+      "Quiz and exploration screens remain data-driven Vue Router pages."
+    ],
+    "slides": [
+      {
+        "moduleId": "Module_02",
+        "slideId": "p00",
+        "title": "Drawer 是什么",
+        "kind": "concept",
+        "route": "/module/Module_02/slide/p00"
+      },
+      {
+        "moduleId": "Module_02",
+        "slideId": "p01",
+        "title": "内置 Drawer 实战",
+        "kind": "code",
+        "route": "/module/Module_02/slide/p01"
+      }
+    ]
+  },
+  "rawResponseKeys": []
+}

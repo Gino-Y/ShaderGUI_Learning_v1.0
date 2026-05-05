@@ -1,15 +1,1 @@
-[
-  {
-    "moduleId": "Module_01",
-    "parentSlideId": "p01",
-    "explorationId": "property-grouping",
-    "route": "/module/Module_01/slide/p01/explore",
-    "title": "探索页",
-    "component": "PropertyGroupingLab",
-    "gateDecision": {
-      "status": "inserted",
-      "gate": "interaction-necessity-gate",
-      "reason": "MVP scope requested this parent-slide child exploration."
-    }
-  }
-]
+[]

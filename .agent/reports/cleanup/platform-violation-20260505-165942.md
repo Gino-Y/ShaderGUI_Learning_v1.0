@@ -1,7 +1,7 @@
 # Platform Asset Boundary Violation
 
-- Detected At: `2026-05-05T16:59:56`
-- Action: `quarantined`
+- Detected At: `2026-05-05T16:59:42`
+- Action: `blocked`
 - Violation Count: `1`
 
 ## Files

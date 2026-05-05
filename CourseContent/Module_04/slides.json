@@ -17,11 +17,7 @@
         "badge": "C#",
         "code": "var mode = FindProperty(\"_Mode\", props);\nif (mode.floatValue == 1) {\n    editor.ShaderProperty(FindProperty(\"_Cutoff\", props), \"Cutoff\");\n}"
       }
-    ],
-    "route": "/module/Module_04/slide/p00",
-    "audio": "/audio/Module_04/p00.mp3",
-    "subtitles": "/subtitles/Module_04/p00.json",
-    "transcript": "/transcripts/Module_04/Module_04-p00-逐字稿.md"
+    ]
   },
   {
     "moduleId": "Module_04",
@@ -33,10 +29,6 @@
       "避免在 OnGUI 中做耗时操作",
       "材质属性变更触发重新序列化",
       "使用 MaterialEditor.RegisterPropertyChangeUndo 支持撤销"
-    ],
-    "route": "/module/Module_04/slide/p01",
-    "audio": "/audio/Module_04/p01.mp3",
-    "subtitles": "/subtitles/Module_04/p01.json",
-    "transcript": "/transcripts/Module_04/Module_04-p01-逐字稿.md"
+    ]
   }
 ]

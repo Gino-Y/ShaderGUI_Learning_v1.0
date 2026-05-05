@@ -1,0 +1,22 @@
+[
+  {
+    "moduleId": "Module_03",
+    "question": "ShaderGUI 中哪个方法负责绘制面板？",
+    "options": [
+      "OnGUI",
+      "OnInspectorGUI",
+      "OnSceneGUI"
+    ],
+    "answer": 0
+  },
+  {
+    "moduleId": "Module_03",
+    "question": "FindProperty 的第二个参数是？",
+    "options": [
+      "MaterialProperty[]",
+      "Material",
+      "Shader"
+    ],
+    "answer": 0
+  }
+]

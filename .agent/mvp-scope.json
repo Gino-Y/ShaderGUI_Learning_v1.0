@@ -1,14 +1,30 @@
 {
-  "module": "Module_01",
-  "slideIds": [
-    "p00",
-    "p01"
-  ],
-  "explorations": [
+  "modules": [
     {
-      "parentSlideId": "p01",
-      "explorationId": "property-grouping",
-      "route": "/module/Module_01/slide/p01/explore"
+      "module": "Module_01",
+      "slideIds": ["p00", "p01"],
+      "explorations": [
+        {
+          "parentSlideId": "p01",
+          "explorationId": "property-grouping",
+          "route": "/module/Module_01/slide/p01/explore"
+        }
+      ]
+    },
+    {
+      "module": "Module_02",
+      "slideIds": ["p00", "p01"],
+      "explorations": []
+    },
+    {
+      "module": "Module_03",
+      "slideIds": ["p00", "p01"],
+      "explorations": []
+    },
+    {
+      "module": "Module_04",
+      "slideIds": ["p00", "p01"],
+      "explorations": []
     }
   ]
 }

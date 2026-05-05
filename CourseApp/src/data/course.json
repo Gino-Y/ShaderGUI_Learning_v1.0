@@ -1,11 +1,11 @@
 {
-  "title": "ShaderGUI 专家成长之路",
-  "subtitle": "从工具使用者到工具定义者",
+  "title": "高级布局与实战技巧",
+  "subtitle": "",
   "modules": [
     {
-      "id": "Module_01",
-      "title": "模块一：解构",
-      "summary": "理解 ShaderGUI 的定位，并完成最小自定义材质面板架构。",
+      "id": "Module_04",
+      "title": "Module_04",
+      "summary": "",
       "slideCount": 2
     }
   ]

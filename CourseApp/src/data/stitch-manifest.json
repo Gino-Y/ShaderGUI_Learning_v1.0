@@ -1,58 +1,37 @@
 {
-  "module": "Module_01",
+  "module": "Module_04",
   "player": "CoursePlayer.vue",
   "navigation": "SlideNav.vue",
   "subtitleOverlay": "SubtitleOverlay.vue",
   "slides": [
     {
-      "moduleId": "Module_01",
+      "moduleId": "Module_04",
       "slideId": "p00",
-      "route": "/module/Module_01/slide/p00",
-      "audio": "/audio/Module_01/p00.mp3",
-      "subtitles": "/subtitles/Module_01/p00.json",
-      "transcript": "/transcripts/Module_01/Module_01-p00-逐字稿.md",
-      "subtitleEventCount": 5,
+      "route": "/module/Module_04/slide/p00",
+      "audio": "/audio/Module_04/p00.mp3",
+      "subtitles": "/subtitles/Module_04/p00.json",
+      "transcript": "/transcripts/Module_04/Module_04-p00-逐字稿.md",
+      "subtitleEventCount": 1,
       "interaction": null
     },
     {
-      "moduleId": "Module_01",
+      "moduleId": "Module_04",
       "slideId": "p01",
-      "route": "/module/Module_01/slide/p01",
-      "audio": "/audio/Module_01/p01.mp3",
-      "subtitles": "/subtitles/Module_01/p01.json",
-      "transcript": "/transcripts/Module_01/Module_01-p01-逐字稿.md",
-      "subtitleEventCount": 5,
+      "route": "/module/Module_04/slide/p01",
+      "audio": "/audio/Module_04/p01.mp3",
+      "subtitles": "/subtitles/Module_04/p01.json",
+      "transcript": "/transcripts/Module_04/Module_04-p01-逐字稿.md",
+      "subtitleEventCount": 1,
       "interaction": null
     }
   ],
   "interactiveScreens": [
     {
-      "moduleId": "Module_01",
-      "screenId": "explore-p01-property-grouping",
-      "route": "/module/Module_01/slide/p01/explore",
-      "runtime": "ExploreView.vue",
-      "parentSlideId": "p01",
-      "component": "PropertyGroupingLab",
-      "storyboardCueCount": 3,
-      "designCueCount": 3,
-      "stateModel": [
-        "explore",
-        "labControls",
-        "linkedFeedback"
-      ],
-      "eventHandlers": [
-        "resolveParentSlide",
-        "updateLabState",
-        "returnToParentSlide"
-      ],
-      "bindingMode": "parent-slide-subroute-exploration"
-    },
-    {
-      "moduleId": "Module_01",
+      "moduleId": "Module_04",
       "screenId": "quiz",
-      "route": "/module/Module_01/quiz",
+      "route": "/module/Module_04/quiz",
       "runtime": "QuizView.vue",
-      "questionCount": 1,
+      "questionCount": 2,
       "storyboardCueCount": 5,
       "designCueCount": 5,
       "stateModel": [

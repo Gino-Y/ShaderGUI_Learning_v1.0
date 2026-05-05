@@ -1,0 +1,22 @@
+[
+  {
+    "moduleId": "Module_02",
+    "question": "以下哪个 Drawer 可以实现开关效果？",
+    "options": [
+      "[Toggle]",
+      "[Slider]",
+      "[IntRange]"
+    ],
+    "answer": 0
+  },
+  {
+    "moduleId": "Module_02",
+    "question": "自定义 Drawer 需要继承哪个类？",
+    "options": [
+      "MaterialPropertyDrawer",
+      "ShaderGUI",
+      "Editor"
+    ],
+    "answer": 0
+  }
+]
