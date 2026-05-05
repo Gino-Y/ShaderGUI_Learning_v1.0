@@ -2,65 +2,66 @@
 
 ## Current Goal
 
-Fix WorkBuddy's remaining flow-engine regressions and make the MVP DAG runnable again.
+ADPMCP 平行 DAG 节点已创建完成，支持完整生产模式（非 MVP 裁剪）。
 
 ## Completed Work
 
-- **2026-05-05 (animation.scale fix)**:
-  - Fixed `storyboard_mcp.py`: Added `"scale": [0.96, 1.0]` to `animation["parameters"]` in `_motion_cues()` (line 642).
-  - Verified `performanceSpecs[].payload.colors` is correctly generated (non-empty array).
-  - Re-generated `storyboard-contract.json` via `regen_storyboard.py` (temporary script, then deleted).
-  - Verified `visualSpecs[].animation.parameters.scale = [0.96, 1.0]` in re-generated contract.
-  - Verified `performanceSpecs[].payload.colors` matches mood-based color schemes.
-  - Ran `verify_course.py` ✅ and `npm run build` ✅.
-  - Git commit: `8efc269`.
+- **2026-05-05 (ADP DAG node)**:
+  - 创建新文件 `.agent/mcp_servers/adp_mcp.py`（平行节点，不修改 `mvp_mcp.py`）
+  - 更新 `flow_engine.py` 支持 `--adp` 标志，在 pipeline 中根据 mode 选择调用 `ADPMCP` 或 `MVPMCP`
+  - 创建 `.agent/adp-scope.json`（包含所有模块的完整 slideIds，非 MVP 裁剪）
+  - 更新 4 个模块的 `slides.json`，补充缺失的 slides（Module_01 p02, Module_02 p02, Module_04 p02/p03）
+  - 新增逐字稿文件（Module_01-p02, Module_02-p02, Module_04-p02/p03）
+  - 验证：`verify_course.py` ✅ 通过，`npm run build` ✅ 通过
+  - 提交：`bb36efa`（快照）+ `d0e322c`（feat: ADP）
+  - 状态：ADPMCP 节点已就绪
 
-- **2026-05-05 (earlier)**: Reproduced and fixed WorkBuddy's remaining flow-engine regressions:
-  - Fixed `.agent/mcp_servers/design_mcp.py`:
-    - Missing `design_slides` initialization.
-    - Missing `_infer_typography()`.
-    - Missing `_infer_color_scheme()`.
-    - Broken `any(any(...))` diagram keyword logic.
-    - Corrupted comment that prevented `palette` assignment.
-    - Mojibake strings that caused SyntaxError in diagnostic and quiz-design paths.
-  - Fixed `.agent/mcp_servers/v0_mcp.py`:
-    - Broken f-string and mojibake strings.
-    - Long blocking v0 POST timeout.
-    - Added deterministic `local-v0-fallback` handoff when v0 chat creation times out or fails.
-  - Re-ran the flow engine; Module_01 reached `DEPLOY_READY`.
-  - Re-ran platform, course, and build verification.
+- **2026-05-05 (earlier work - already in previous handoff)**:
+  - Fixed `storyboard_mcp.py` scale field and color data
+  - Fixed performance animation field name inconsistencies
+  - Fixed MVP template not overwriting issue
+  - Hardened `v0_mcp.py` with timeout and local fallback
 
 ## Modified Files
 
-- `.agent/mcp_servers/design_mcp.py`
-- `.agent/mcp_servers/v0_mcp.py`
-- `.agent/STATE.md`
-- `.agent/handoff/CURSOR_HANDOFF.md`
-- `.agent/memory/2026-05-05.md`
-- Generated/updated by flow engine:
-  - `.agent/design/Module_01/*`
-  - `.agent/v0/Module_01/*`
-  - `CourseApp/src/data/design-contract.json`
-  - `CourseApp/src/data/stitch-manifest.json`
-  - `CourseApp/public/audio/Module_01/*`
-  - `CourseApp/public/subtitles/Module_01/*`
+- `.agent/mcp_servers/adp_mcp.py` (新增)
+- `.agent/flow_engine.py` (修改：支持 --adp 标志)
+- `.agent/adp-scope.json` (新增)
+- `CourseContent/Module_01/slides.json` (修改：补充 p02)
+- `CourseContent/Module_02/slides.json` (修改：补充 p02)
+- `CourseContent/Module_03/slides.json` (修改：维持 p00/p01)
+- `CourseContent/Module_04/slides.json` (修改：补充 p02/p03)
+- `CourseContent/Module_01/doc/Module_01-p02-属性查找的工程策略.md` (新增)
+- `CourseContent/Module_02/doc/Module_02-p02-封装工具类.md` (新增)
+- `CourseContent/Module_04/doc/Module_04-p02-实战验收.md` (新增)
+- `CourseContent/Module_04/doc/Module_04-p03-元认知总结.md` (新增)
+- `.agent/STATE.md` (更新)
 
 ## DAG Impact
 
-Yes. This fixes node execution behavior inside the existing DAG without changing node order or product contracts. v0 remains in the DAG, but now has a deterministic local fallback so external v0 latency cannot stall the whole pipeline.
+Yes. Added `ADPMCP` as a parallel DAG node to `MVPMCP`:
+- `MVPMCP`: MVP mode, reads from `mvp-scope.json`, generates only p00/p01
+- `ADPMCP`: ADP mode (--adp flag), reads from `adp-scope.json`, generates ALL slides
+- No change to existing DAG node order or product contracts
+- Flow engine now supports `--adp` flag to switch between MVP and ADP modes
 
 ## Unfinished / Blockers
 
-- No current blocker.
-- v0 chat creation timed out during this run, so the generated v0 artifact is `local-v0-fallback`, not a remote v0 chat.
+- No current blocker for ADP node creation.
+- Need to test ADP mode: `python .agent\flow_engine.py --mode production --adp --scope module --module Module_01`
 
 ## Verification
 
-- `V0_API_TIMEOUT_SECONDS=5 python -u .agent\flow_engine.py --mode test --stage mvp --scope module --module Module_01 --basedir .` reached `DEPLOY_READY`.
-- `python .agent\platform_violation_guard.py --basedir .` passed.
-- `python scripts\verify_course.py` passed.
-- `npm --prefix CourseApp run build` passed.
+- `python scripts\verify_course.py` passed ✅
+- `npm --prefix CourseApp run build` passed ✅
+- `python .agent\platform_violation_guard.py --basedir .` passed ✅
+- Syntax check for `flow_engine.py` passed ✅
 
 ## Next Step
 
-Continue browser QA on `p01`, `p01/explore`, and `/module/Module_01/quiz`; decide later whether remote v0 output is required or the deterministic fallback is enough for this MVP loop.
+Test ADPMCP full production flow:
+```powershell
+python .agent\flow_engine.py --mode production --adp --scope module --module Module_01 --basedir . --max-retries 5
+```
+
+Verify ADPMCP correctly generates ALL slides (not just p00/p01).

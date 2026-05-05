@@ -10,9 +10,20 @@ Module_01
 
 ## Current Focus
 
-WorkBuddy remediation is complete: design/v0 MCP runtime failures were fixed and the full flow engine reaches DEPLOY_READY.
+ADPMCP 平行 DAG 节点已创建完成。现在可以使用 `--adp` 标志运行完整生产（非 MVP 裁剪）。
 
 ## Recent Changes
+
+- **2026-05-05 (ADP DAG node)**: 新增 ADPMCP 作为平行于 MVPMCP 的 DAG 节点：
+  - **根因**：用户要求"建一个 adp_mcp 跟 mvp_mcp 平级的 DAG 节点"，之前错误地修改了 `mvp_mcp.py`
+  - **修复**：创建新文件 `.agent/mcp_servers/adp_mcp.py`（平行节点，不修改 `mvp_mcp.py`）
+  - **修改**：更新 `flow_engine.py` 支持 `--adp` 标志，在 pipeline 中根据 mode 选择调用 `ADPMCP` 或 `MVPMCP`
+  - **配置**：创建 `.agent/adp-scope.json`（包含所有模块的完整 slideIds，非 MVP 裁剪）
+  - **数据**：更新 4 个模块的 `slides.json`，补充缺失的 slides（Module_01 p02, Module_02 p02, Module_04 p02/p03）
+  - **逐字稿**：新增 4 个逐字稿文件（Module_01-p02, Module_02-p02, Module_04-p02/p03）
+  - **验证**：`verify_course.py` ✅ 通过，`npm run build` ✅ 通过
+  - **提交**：`bb36efa`（快照）+ `d0e322c`（feat: ADP）
+  - **状态**：ADPMCP 节点已就绪，可通过 `python .agent/flow_engine.py --mode production --adp --scope module --module Module_01` 调用
 
 - **2026-05-05 (animation.scale fix)**: 修复 `storyboard_mcp.py` 和验证 `colors` 数据：
   - **根因**：`storyboard_mcp.py` 的 `_motion_cues()` 中 `animation["parameters"]` 缺少 `scale` 字段，导致 P1 动画增强（scale + 动态阴影）不生效。
@@ -95,4 +106,6 @@ WorkBuddy remediation is complete: design/v0 MCP runtime failures were fixed and
 
 ## Next Step
 
-Refresh the local app and continue visual QA on `p01`, `p01/explore`, and `/module/Module_01/quiz`.
+测试 ADPMCP 完整生产流程：`python .agent\flow_engine.py --mode production --adp --scope module --module Module_01`
+
+验证 ADPMCP 是否正确生成所有 slides（非仅 p00/p01）。
