@@ -29,6 +29,22 @@ ADPMCP 平行 DAG 节点已创建完成，支持完整生产模式（非 MVP 裁
   - 提交：`bb36efa`（快照）+ `d0e322c`（feat: ADP）
   - 状态：ADPMCP 节点已就绪
 
+- **2026-05-05 (Sidebar 移动端悬浮按钮重构)**:
+  - **目标**：将移动端导航从底部标签栏（`BottomTabBar`）改为悬浮按钮 + 侧边栏
+  - **修改文件**：
+    - `CourseApp/src/components/Sidebar.jsx`（新增移动端悬浮按钮 + 侧边栏逻辑）
+    - `CourseApp/src/App.jsx`（移除 `BottomTabBar` 组件）
+  - **实现细节**：
+    - 桌面端（≥1024px）：维持原侧边栏行为
+    - 移动端（<1024px）：
+      - 悬浮按钮（固定定位，左上角，z-50）
+      - 点击按钮 → 显示侧边栏（绝对定位，覆盖全高）
+      - 点击遮罩层 → 关闭侧边栏
+      - 点击导航项 → 跳转 + 关闭侧边栏
+  - **验证**：`npm run build` ✅ 通过
+  - **提交**：`000bd14`（快照）+ `bc883ef`（feat: Sidebar 移动端悬浮按钮）+ `8bd0a6a`（fix: 移除 BottomTabBar）
+  - **状态**：移动端导航已重构为悬浮按钮 + 侧边栏
+
 - **2026-05-05 (earlier work - already in previous handoff)**:
   - Fixed `storyboard_mcp.py` scale field and color data
   - Fixed performance animation field name inconsistencies
