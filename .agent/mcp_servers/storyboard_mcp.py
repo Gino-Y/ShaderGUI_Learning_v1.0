@@ -1161,10 +1161,13 @@ class StoryboardMCP:
 
     @staticmethod
     def build_performance_specs_for_slide(cues: list[dict], slide_kind: str = "concept") -> list[dict]:
-        """为 slide 的所有 cues 生成 performanceSpecs"""
+        """为 slide 的所有 cues 生成 performanceSpecs（语义驱动）"""
         specs = []
         for i, cue in enumerate(cues):
-            if slide_kind == "concept" and i % 2 == 1:
+            content = (cue.get("contentBeat") or "") + " " + (cue.get("knowledgeFocus", {}).get("label") or "")
+            # 语义规则：涉及流程/过程/步骤的内容，才加 demo
+            needs_demo = any(kw in content for kw in ["流程", "传递", "绑定", "过程", "步骤", "调用", "执行", "渲染", "绘制"])
+            if slide_kind == "concept" and needs_demo and i > 0:
                 spec = StoryboardMCP.build_performance_for_cue(cue, performance_type="demo", demo_type="flow-path")
                 specs.append(spec)
             deco = StoryboardMCP.build_performance_for_cue(cue, performance_type="decoration", demo_type="particle")
@@ -1173,18 +1176,33 @@ class StoryboardMCP:
         return specs
 
     @staticmethod
-    def _build_flow_path_payload(cue: dict) -> dict:
-        """Build flow-path demo payload: Material -> ShaderGUI -> Shader"""
+    def _build_flow_path_payload(cue: dict, slide_points: list[str] | None = None) -> dict:
+        """Build flow-path demo payload（动态：根据 slide 内容生成节点）"""
+        # 根据 slide 内容推断流程节点
+        points_text = " ".join(slide_points or []).lower()
+        content = (cue.get("contentBeat") or "") + " " + (cue.get("knowledgeFocus", {}).get("label") or "")
+
+        # 默认节点（ShaderGUI 教学的标准三节点）
+        nodes = [
+            {"id": "material", "label": "Material", "type": "source"},
+            {"id": "shadergui", "label": "ShaderGUI", "type": "process"},
+            {"id": "shader", "label": "Shader", "type": "target"},
+        ]
+        edges = [
+            {"from": "material", "to": "shadergui", "label": "参数传递"},
+            {"from": "shadergui", "to": "shader", "label": "属性绑定"},
+        ]
+
+        # 如果内容涉及更多步骤，扩展节点
+        if any(kw in content for kw in ["继承", "override", "重写"]):
+            nodes.insert(1, {"id": "customeditor", "label": "CustomEditor", "type": "process"})
+            edges.insert(1, {"from": "material", "to": "customeditor", "label": "绑定"})
+            edges[2] = {"from": "customeditor", "to": "shadergui", "label": "调用"}
+            edges.append({"from": "shadergui", "to": "shader", "label": "应用"})
+
         return {
-            "nodes": [
-                {"id": "material", "label": "Material", "type": "source"},
-                {"id": "shadergui", "label": "ShaderGUI", "type": "process"},
-                {"id": "shader", "label": "Shader", "type": "target"},
-            ],
-            "edges": [
-                {"from": "material", "to": "shadergui", "label": "参数传递"},
-                {"from": "shadergui", "to": "shader", "label": "属性绑定"},
-            ],
+            "nodes": nodes,
+            "edges": edges,
             "style": {
                 "accentColor": "#67e8f9",
                 "particleCount": 20,
