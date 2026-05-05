@@ -15,7 +15,7 @@
 - [DUAL_COMPLIANCE] **双规（双重合规）**：通过上下文（对话/推理）更改产物后，必须同时满足两条铁规，否则构成双重违规：
   - **铁规1 同步 DAG 节点**（`[SYNC_RULES_DAG_VERIFY]`）：任何影响规则、DAG、验收标准的改动必须同步更新 `docs/Skill_Chain_DAG.md`、`.agent/rules.md`、`.agent/SKILL.md` 和 `scripts/verify_course.py`，必要时同步 `.agent/mcp_servers/mvp_mcp.py`。
   - **铁规2 汇报 AI 交叉开发文档**（`[COMPLETION_GATE_FILE_DRIVEN]`）：禁止仅靠对话记忆收尾；凡触及 `CourseApp/`、`.agent/mcp_servers/`、`scripts/`、`.agent/templates/`、`CourseContent/`、`docs/Skill_Chain_DAG.md`、`.agent/handoff/` 或课程数据契约，必须更新 STATE、handoff、memory 并运行验证。
-- [REVERIFY_BUILD_BROWSER] 需循环自检直至交付：`verify_course.py`、`npm run build` 和必要的浏览器验证，未通过不算完成。
+- [REVERIFY_BUILD_BROWSER] 需循环自检直至交付：`verify_course.py`、`npm run build`、启动开发服务器（`npm --prefix CourseApp run dev`）、输出 `http://localhost:5173/` URL，未通过不算完成。本地服务可用时，最终回复必须给出 URL。
 - [NO_DIRECT_EDIT_OUTPUT] **禁止直接修改产物文件**；只能通过修改 `.agent/` 中的 MCP 节点或模板后重新生成的方式修改。`CourseApp/`、`CourseApp/dist/`、`CourseApp/src/data/` 均为产物，不得直接编辑。
   - **MVP清理例外**：执行 MVP 前允许直接移除产物文件（清理操作），但重新生成后不得手动修改产物。
   - **测试型修改**：允许为快速验证而直接修改产物文件，但测试结果确认后，必须立即将改动同步回对应的 DAG 节点（MCP Server 或模板），确保 MVP 和正式生产时的一致性。未同步前不得视为完成。
@@ -82,7 +82,6 @@ Cursor、Codex 或任何其它 AI 平台执行 MVP 时，只能作为执行器�
 - 路由必须包含 `/`、`/module/:moduleId/slide/:slideId`、`/module/:moduleId/slide/:slideId/explore`、`/module/:moduleId/quiz`。
 - `/module/:moduleId` 只作为兼容入口，不得承载二级菜单页。
 - 页面、音频、字幕和讲稿映射必须由 `CourseApp/src/data/*.json` 驱动。
-- 本地服务可用时，最终回复必须给出 `http://localhost:5173/`。
 
 ## 分镜头与设计
 
