@@ -21,8 +21,8 @@
 - Quiz and exploration screens remain data-driven Vue Router pages.
 
 ### slides
-- {'moduleId': 'Module_03', 'slideId': 'p00', 'title': 'OnGUI 是唯一的入口', 'kind': 'concept', 'route': '/module/Module_03/slide/p00'}
-- {'moduleId': 'Module_03', 'slideId': 'p01', 'title': '参数分组与布局', 'kind': 'code', 'route': '/module/Module_03/slide/p01'}
+- {'moduleId': 'Module_03', 'slideId': 'p00', 'title': '像搭积木一样构建材质面板', 'kind': None, 'route': '/module/Module_03/slide/p00'}
+- {'moduleId': 'Module_03', 'slideId': 'p01', 'title': 'Managed Properties：面板的行政管理', 'kind': None, 'route': '/module/Module_03/slide/p01'}
 
 ## React Prototype Files
 

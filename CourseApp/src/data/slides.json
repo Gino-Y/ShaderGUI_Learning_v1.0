@@ -32,13 +32,7 @@
     "route": "/module/Module_01/slide/p01",
     "audio": "/audio/Module_01/p01.mp3",
     "subtitles": "/subtitles/Module_01/p01.json",
-    "transcript": "/transcripts/Module_01/Module_01-p01-逐字稿.md",
-    "explore": {
-      "id": "property-grouping",
-      "route": "/module/Module_01/slide/p01/explore",
-      "title": "探索页",
-      "component": "PropertyGroupingLab"
-    }
+    "transcript": "/transcripts/Module_01/Module_01-p01-逐字稿.md"
   },
   {
     "slideId": "p02",
@@ -62,5 +56,168 @@
     "audio": "/audio/Module_01/p02.mp3",
     "subtitles": "/subtitles/Module_01/p02.json",
     "transcript": "/transcripts/Module_01/Module_01-p02-属性查找的工程策略.md"
+  },
+  {
+    "slideId": "p00",
+    "moduleId": "Module_02",
+    "order": 0,
+    "title": "告别参数地狱：逻辑化的分组设计",
+    "type": "lecture",
+    "duration": 180,
+    "content": "信息架构设计，使用 BeginVertical 创建视觉边界，按渲染逻辑排列参数。",
+    "points": [
+      "信息架构设计",
+      "BeginVertical 创建视觉边界",
+      "按渲染逻辑排列参数"
+    ],
+    "route": "/module/Module_02/slide/p00",
+    "audio": "/audio/Module_02/p00.mp3",
+    "subtitles": "/subtitles/Module_02/p00.json",
+    "transcript": "/transcripts/Module_02/Module_02-p00-逐字稿.md"
+  },
+  {
+    "slideId": "p01",
+    "moduleId": "Module_02",
+    "order": 1,
+    "title": "只给用户他需要的：智能 UI 联动",
+    "type": "code",
+    "duration": 240,
+    "content": "条件显示技术，通过 Toggle/Enum 控制参数组显隐，EditorGUI.DisabledScope 应用。",
+    "points": [
+      "条件显示技术",
+      "Toggle/Enum 控制参数组显隐",
+      "EditorGUI.DisabledScope 应用"
+    ],
+    "route": "/module/Module_02/slide/p01",
+    "audio": "/audio/Module_02/p01.mp3",
+    "subtitles": "/subtitles/Module_02/p01.json",
+    "transcript": "/transcripts/Module_02/Module_02-p01-逐字稿.md"
+  },
+  {
+    "slideId": "p02",
+    "moduleId": "Module_02",
+    "order": 2,
+    "title": "拒绝代码重复：打造 ShaderGUI 工具箱",
+    "type": "code",
+    "duration": 210,
+    "content": "封装 DrawProp / DrawTex / BeginGroup 工具类，提高编写效率和视觉统一性。",
+    "points": [
+      "封装 DrawProp / DrawTex / BeginGroup 工具类",
+      "提高编写效率",
+      "视觉统一性"
+    ],
+    "route": "/module/Module_02/slide/p02",
+    "audio": "/audio/Module_02/p02.mp3",
+    "subtitles": "/subtitles/Module_02/p02.json",
+    "transcript": "/transcripts/Module_02/Module_02-p02-封装工具类.md"
+  },
+  {
+    "slideId": "p00",
+    "moduleId": "Module_03",
+    "order": 0,
+    "title": "像搭积木一样构建材质面板",
+    "type": "code",
+    "duration": 240,
+    "content": "模块化思维，静态功能类设计，DrawProperties 静态方法签名。",
+    "points": [
+      "模块化思维",
+      "静态功能类设计",
+      "DrawProperties 静态方法"
+    ],
+    "route": "/module/Module_03/slide/p00",
+    "audio": "/audio/Module_03/p00.mp3",
+    "subtitles": "/subtitles/Module_03/p00.json",
+    "transcript": "/transcripts/Module_03/Module_03-p00-逐字稿.md"
+  },
+  {
+    "slideId": "p01",
+    "moduleId": "Module_03",
+    "order": 1,
+    "title": "Managed Properties：面板的行政管理",
+    "type": "lecture",
+    "duration": 210,
+    "content": "注册机制与自动补位，确保不漏掉参数且不重复绘制。",
+    "points": [
+      "注册机制与自动补位",
+      "确保不漏掉参数",
+      "不重复绘制"
+    ],
+    "route": "/module/Module_03/slide/p01",
+    "audio": "/audio/Module_03/p01.mp3",
+    "subtitles": "/subtitles/Module_03/p01.json",
+    "transcript": "/transcripts/Module_03/Module_03-p01-逐字稿.md"
+  },
+  {
+    "slideId": "p00",
+    "moduleId": "Module_04",
+    "order": 0,
+    "title": "渲染状态同步：让 GUI 替人思考",
+    "type": "code",
+    "duration": 240,
+    "content": "在 OnGUI 末尾检测属性变化，自动同步 Blend、ZWrite、RenderQueue。",
+    "points": [
+      "在 OnGUI 末尾检测属性变化",
+      "自动同步 Blend、ZWrite、RenderQueue"
+    ],
+    "route": "/module/Module_04/slide/p00",
+    "audio": "/audio/Module_04/p00.mp3",
+    "subtitles": "/subtitles/Module_04/p00.json",
+    "transcript": "/transcripts/Module_04/Module_04-p00-逐字稿.md"
+  },
+  {
+    "slideId": "p01",
+    "moduleId": "Module_04",
+    "order": 1,
+    "title": "版本迁移：如何让旧资产不碎掉？",
+    "type": "lecture",
+    "duration": 210,
+    "content": "属性名 Fallback、语义映射、静默升级策略。",
+    "points": [
+      "属性名 Fallback",
+      "语义映射",
+      "静默升级策略"
+    ],
+    "route": "/module/Module_04/slide/p01",
+    "audio": "/audio/Module_04/p01.mp3",
+    "subtitles": "/subtitles/Module_04/p01.json",
+    "transcript": "/transcripts/Module_04/Module_04-p01-逐字稿.md"
+  },
+  {
+    "slideId": "p02",
+    "moduleId": "Module_04",
+    "order": 2,
+    "title": "最终实战：构建专业级描边材质面板",
+    "type": "code",
+    "duration": 300,
+    "content": "验收标准清单：分组清晰、安全可靠、美术友好、性能同步。",
+    "points": [
+      "分组清晰",
+      "安全可靠",
+      "美术友好",
+      "性能同步"
+    ],
+    "route": "/module/Module_04/slide/p02",
+    "audio": "/audio/Module_04/p02.mp3",
+    "subtitles": "/subtitles/Module_04/p02.json",
+    "transcript": "/transcripts/Module_04/Module_04-p02-实战验收.md"
+  },
+  {
+    "slideId": "p03",
+    "moduleId": "Module_04",
+    "order": 3,
+    "title": "ShaderGUI 进阶思维路线图",
+    "type": "summary",
+    "duration": 180,
+    "content": "元认知总结：解构 → 重构 → 进化 → 治理，四个阶段的成长路线。",
+    "points": [
+      "解构阶段",
+      "重构阶段",
+      "进化阶段",
+      "治理阶段"
+    ],
+    "route": "/module/Module_04/slide/p03",
+    "audio": "/audio/Module_04/p03.mp3",
+    "subtitles": "/subtitles/Module_04/p03.json",
+    "transcript": "/transcripts/Module_04/Module_04-p03-元认知总结.md"
   }
 ]

@@ -11,38 +11,38 @@
 ### Module_03 / p00
 
 - Route: `/module/Module_03/slide/p00`
-- Title: OnGUI 是唯一的入口
-- Purpose: Use this scene to make learners understand 'OnGUI 是唯一的入口' through the content beats: ShaderGUI 是材质面板的真正控制器 / OnGUI 每帧调用，负责绘制所有属性 / FindProperty 按名称取出属性引用.
+- Title: 像搭积木一样构建材质面板
+- Purpose: Use this scene to make learners understand '像搭积木一样构建材质面板' through the content beats: 模块化思维 / 静态功能类设计 / DrawProperties 静态方法.
 - Layout: concept hierarchy and mental model
 - Composition: wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement
 - Frame grid: {'columns': 'left 56% hero concept and explanation, right 44% supporting cards', 'rows': 'top metadata band, center concept body, bottom learner focus', 'anchor': 'hero concept anchors upper-left; supporting beats form right-side vertical rhythm'}
 - Palette: clear, instructional, confident
 - Emphasis: motionCues bind subtitles to knowledgeFocus; optional slide `mentalModel` in slides.json (teaching layer).
 - Motion cues:
-  - `cue-01` 00:00.00-00:01.80 segment 0: reveal-focus -> content-beat (ShaderGUI 是材质面板的真正控制器); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: ShaderGUI 是材质面板的真正控制器
-    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“ShaderGUI 是材质面板的真正控制器”，弱化其他内容；旁白：ShaderGUI 是材质面板的真正控制器。
-  - `cue-02` 00:00.00-00:01.80 segment 1: reveal-focus -> content-beat (OnGUI 每帧调用，负责绘制所有属性); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: OnGUI 每帧调用，负责绘制所有属性
-    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“OnGUI 每帧调用，负责绘制所有属性”，弱化其他内容；旁白：OnGUI 每帧调用，负责绘制所有属性。
-  - `cue-03` 00:00.00-00:01.80 segment 2: reveal-focus -> content-beat (FindProperty 按名称取出属性引用); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: FindProperty 按名称取出属性引用
-    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“FindProperty 按名称取出属性引用”，弱化其他内容；旁白：FindProperty 按名称取出属性引用。
+  - `cue-01` 00:00.00-00:01.80 segment 0: reveal-focus -> content-beat (模块化思维); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: 模块化思维
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“模块化思维”，弱化其他内容；旁白：模块化思维。
+  - `cue-02` 00:00.00-00:01.80 segment 1: reveal-focus -> content-beat (静态功能类设计); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 静态功能类设计
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“静态功能类设计”，弱化其他内容；旁白：静态功能类设计。
+  - `cue-03` 00:00.00-00:01.80 segment 2: reveal-focus -> content-beat (DrawProperties 静态方法); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: DrawProperties 静态方法
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“DrawProperties 静态方法”，弱化其他内容；旁白：DrawProperties 静态方法。
 
 ### Module_03 / p01
 
 - Route: `/module/Module_03/slide/p01`
-- Title: 参数分组与布局
-- Purpose: Use this scene to make learners understand '参数分组与布局' through the content beats: editor.LabelField 绘制分组标题 / editor.ShaderProperty 绘制单个属性 / GUILayout.Space 控制间距.
-- Layout: code structure and callout annotations
-- Composition: medium-wide technical board shot / upper-left title -> left point stack -> right active code fragment -> bottom takeaway
-- Frame grid: {'columns': 'left 48% teaching beats, right 52% code panel', 'rows': 'top title band, middle explanation/code body, bottom learner focus strip', 'anchor': 'code panel occupies the right visual weight; title anchors upper-left'}
-- Palette: precise, technical, focused
+- Title: Managed Properties：面板的行政管理
+- Purpose: Use this scene to make learners understand 'Managed Properties：面板的行政管理' through the content beats: 注册机制与自动补位 / 确保不漏掉参数 / 不重复绘制.
+- Layout: concept hierarchy and mental model
+- Composition: wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement
+- Frame grid: {'columns': 'left 56% hero concept and explanation, right 44% supporting cards', 'rows': 'top metadata band, center concept body, bottom learner focus', 'anchor': 'hero concept anchors upper-left; supporting beats form right-side vertical rhythm'}
+- Palette: clear, instructional, confident
 - Emphasis: motionCues bind subtitles to knowledgeFocus; optional slide `mentalModel` in slides.json (teaching layer).
 - Motion cues:
-  - `cue-01` 00:00.00-00:01.80 segment 0: code-callout-focus -> code-callout (editor.LabelField 绘制分组标题); focus `knowledge-01` with pulse-once-then-hold / code-highlight; target `code-callout`; source subtitle: editor.LabelField 绘制分组标题
-    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“editor.LabelField 绘制分组标题”，弱化其他内容；旁白：editor.LabelField 绘制分组标题。
-  - `cue-02` 00:00.00-00:01.80 segment 1: code-callout-focus -> code-callout (editor.ShaderProperty 绘制单个属性); focus `knowledge-02` with soft-blink-then-hold / code-highlight; target `code-callout`; source subtitle: editor.ShaderProperty 绘制单个属性
-    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“editor.ShaderProperty 绘制单个属性”，弱化其他内容；旁白：editor.ShaderProperty 绘制单个属性。
-  - `cue-03` 00:00.00-00:01.80 segment 2: code-callout-focus -> code-callout (GUILayout.Space 控制间距); focus `knowledge-03` with soft-blink-then-hold / code-highlight; target `code-callout`; source subtitle: GUILayout.Space 控制间距
-    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将代码标注区域切到当前焦点“GUILayout.Space 控制间距”，弱化其他内容；旁白：GUILayout.Space 控制间距。
+  - `cue-01` 00:00.00-00:01.80 segment 0: reveal-focus -> content-beat (注册机制与自动补位); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: 注册机制与自动补位
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“注册机制与自动补位”，弱化其他内容；旁白：注册机制与自动补位。
+  - `cue-02` 00:00.00-00:01.80 segment 1: reveal-focus -> content-beat (确保不漏掉参数); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 确保不漏掉参数
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“确保不漏掉参数”，弱化其他内容；旁白：确保不漏掉参数。
+  - `cue-03` 00:00.00-00:01.80 segment 2: reveal-focus -> content-beat (不重复绘制); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 不重复绘制
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“不重复绘制”，弱化其他内容；旁白：不重复绘制。
 
 ## Interactive Screens
 

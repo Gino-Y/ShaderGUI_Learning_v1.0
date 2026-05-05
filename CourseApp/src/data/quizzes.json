@@ -115,5 +115,65 @@
         "explanation": "课程中的最小结构示例展示了重写 OnGUI 来绘制材质面板。"
       }
     ]
+  },
+  {
+    "moduleId": "Module_02",
+    "question": "以下哪个 Drawer 可以实现开关效果？",
+    "options": [
+      "[Toggle]",
+      "[Slider]",
+      "[IntRange]"
+    ],
+    "answer": 0
+  },
+  {
+    "moduleId": "Module_02",
+    "question": "自定义 Drawer 需要继承哪个类？",
+    "options": [
+      "MaterialPropertyDrawer",
+      "ShaderGUI",
+      "Editor"
+    ],
+    "answer": 0
+  },
+  {
+    "moduleId": "Module_03",
+    "question": "ShaderGUI 中哪个方法负责绘制面板？",
+    "options": [
+      "OnGUI",
+      "OnInspectorGUI",
+      "OnSceneGUI"
+    ],
+    "answer": 0
+  },
+  {
+    "moduleId": "Module_03",
+    "question": "FindProperty 的第二个参数是？",
+    "options": [
+      "MaterialProperty[]",
+      "Material",
+      "Shader"
+    ],
+    "answer": 0
+  },
+  {
+    "moduleId": "Module_04",
+    "question": "以下哪个操作在 OnGUI 中应该避免？",
+    "options": [
+      "耗时计算/网络请求",
+      "ShaderProperty",
+      "LabelField"
+    ],
+    "answer": 0
+  },
+  {
+    "moduleId": "Module_04",
+    "question": "支持撤销需要调用哪个方法？",
+    "options": [
+      "RegisterPropertyChangeUndo",
+      "Undo.RecordObject",
+      "EditorUtility.SetDirty"
+    ],
+    "answer": 0
   }
 ]

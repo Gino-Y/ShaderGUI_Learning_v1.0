@@ -15,11 +15,35 @@
 ### Module_02 / p00
 
 - Route: `/module/Module_02/slide/p00`
-- Title: Drawer 是什么
+- Title: 告别参数地狱：逻辑化的分组设计
 - Kind: concept
-- Prompt: Design a focused Chinese technical course slide for Unity ShaderGUI. Title: Drawer 是什么. Key points: Drawer 控制材质属性在面板中的渲染方式 / 内置 Drawer：Toggle、Enum、PowerSlider / 自定义 Drawer 继承 MaterialPropertyDrawer.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.
+- Prompt: Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 告别参数地狱：逻辑化的分组设计. Key points: 信息架构设计 / BeginVertical 创建视觉边界 / 按渲染逻辑排列参数.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.
 - v0 chat: None
-- Story purpose: Use this scene to make learners understand 'Drawer 是什么' through the content beats: Drawer 控制材质属性在面板中的渲染方式 / 内置 Drawer：Toggle、Enum、PowerSlider / 自定义 Drawer 继承 MaterialPropertyDrawer.
+- Story purpose: Use this scene to make learners understand '告别参数地狱：逻辑化的分组设计' through the content beats: 信息架构设计 / BeginVertical 创建视觉边界 / 按渲染逻辑排列参数.
+- Motion cues: 3
+- Constraints:
+  - Only show ShaderGUI course content in the slide canvas.
+  - Do not render full transcript text as a panel.
+  - Subtitles must appear only as audio-time events.
+  - Keep player controls outside the slide canvas.
+  - Follow storyboard layout, palette, and motion intent before inventing new visual behavior.
+  - Translate v0 React prototype rules into Vue and Tailwind; do not copy React/shadcn code directly.
+
+- Layout:
+  - Template: title-body
+  - Grid: left 56% hero concept and explanation, right 44% supporting cards
+  - Spacing: gap-6
+
+- Components: SlideTitle, PointList, DiagramPlaceholder, SlideNav
+
+### Module_02 / p01
+
+- Route: `/module/Module_02/slide/p01`
+- Title: 只给用户他需要的：智能 UI 联动
+- Kind: concept
+- Prompt: Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 只给用户他需要的：智能 UI 联动. Key points: 条件显示技术 / Toggle/Enum 控制参数组显隐 / EditorGUI.DisabledScope 应用.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.
+- v0 chat: None
+- Story purpose: Use this scene to make learners understand '只给用户他需要的：智能 UI 联动' through the content beats: 条件显示技术 / Toggle/Enum 控制参数组显隐 / EditorGUI.DisabledScope 应用.
 - Motion cues: 3
 - Constraints:
   - Only show ShaderGUI course content in the slide canvas.
@@ -36,14 +60,14 @@
 
 - Components: SlideTitle, PointList, SlideNav
 
-### Module_02 / p01
+### Module_02 / p02
 
-- Route: `/module/Module_02/slide/p01`
-- Title: 内置 Drawer 实战
-- Kind: code
-- Prompt: Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 内置 Drawer 实战. Key points: [Toggle] 控制布尔属性 / [Enum] 控制下拉选择 / [PowerSlider] 非线性滑块.  Storyboard intent: layout focus=code structure and callout annotations; palette mood=precise, technical, focused; composition=medium-wide technical board shot / upper-left title -> left point stack -> right active code fragment -> bottom takeaway; foreground=right-center, inside high-contrast code panel; midground=left-center stacked vertical rhythm; negative space=reserve quiet space between left cards and right code so callout motion has room; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.
+- Route: `/module/Module_02/slide/p02`
+- Title: 拒绝代码重复：打造 ShaderGUI 工具箱
+- Kind: concept
+- Prompt: Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 拒绝代码重复：打造 ShaderGUI 工具箱. Key points: 封装 DrawProp / DrawTex / BeginGroup 工具类 / 提高编写效率 / 视觉统一性.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.
 - v0 chat: None
-- Story purpose: Use this scene to make learners understand '内置 Drawer 实战' through the content beats: [Toggle] 控制布尔属性 / [Enum] 控制下拉选择 / [PowerSlider] 非线性滑块.
+- Story purpose: Use this scene to make learners understand '拒绝代码重复：打造 ShaderGUI 工具箱' through the content beats: 封装 DrawProp / DrawTex / BeginGroup 工具类 / 提高编写效率 / 视觉统一性.
 - Motion cues: 3
 - Constraints:
   - Only show ShaderGUI course content in the slide canvas.
@@ -54,11 +78,11 @@
   - Translate v0 React prototype rules into Vue and Tailwind; do not copy React/shadcn code directly.
 
 - Layout:
-  - Template: title-code
-  - Grid: left 48% teaching beats, right 52% code panel
+  - Template: title-body
+  - Grid: left 56% hero concept and explanation, right 44% supporting cards
   - Spacing: gap-6
 
-- Components: SlideTitle, CodeBlock, PointList, SlideNav
+- Components: SlideTitle, PointList, SlideNav
 
 ## Interactive Screens
 

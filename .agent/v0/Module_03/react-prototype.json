@@ -2,7 +2,7 @@
   "provider": "local-v0-fallback",
   "status": "prototype_ready",
   "module": "Module_03",
-  "generatedAt": "2026-05-05T09:02:36Z",
+  "generatedAt": "2026-05-05T11:30:11Z",
   "chat": {
     "id": "local-fallback",
     "url": null,
@@ -17,15 +17,15 @@
     {
       "moduleId": "Module_03",
       "slideId": "p00",
-      "title": "OnGUI 是唯一的入口",
-      "kind": "concept",
+      "title": "像搭积木一样构建材质面板",
+      "kind": null,
       "route": "/module/Module_03/slide/p00"
     },
     {
       "moduleId": "Module_03",
       "slideId": "p01",
-      "title": "参数分组与布局",
-      "kind": "code",
+      "title": "Managed Properties：面板的行政管理",
+      "kind": null,
       "route": "/module/Module_03/slide/p01"
     }
   ],
@@ -38,7 +38,7 @@
     "files": [],
     "textBlocks": [
       "Local fallback generated because v0 was unavailable or exceeded the configured timeout.",
-      "Create one compact React + Tailwind prototype for a dark Chinese Unity ShaderGUI course player plus a quiz screen. Use a large slide canvas, event subtitle area, compact bottom audio controls, tap-to-play, and vertical swipe navigation. The quiz page must reflect storyboard realtime actions: question-bank scan, answer selection, option swapping, submit scoring, and feedback. Do not use shadcn imports, Next.js routing, transcript panels, or internal production workflow text. Return code plus concise design rules for translating the result to Vue 3 + Tailwind.\nModule: Module_03\nSlides: [{\"slideId\": \"p00\", \"title\": \"OnGUI 是唯一的入口\", \"kind\": \"concept\", \"points\": [\"ShaderGUI 是材质面板的真正控制器\", \"OnGUI 每帧调用，负责绘制所有属性\", \"FindProperty 按名称取出属性引用\"], \"hasCode\": false}, {\"slideId\": \"p01\", \"title\": \"参数分组与布局\", \"kind\": \"code\", \"points\": [\"editor.LabelField 绘制分组标题\", \"editor.ShaderProperty 绘制单个属性\", \"GUILayout.Space 控制间距\"], \"hasCode\": false}]\nStoryboard: {\"p00\": {\"layout\": \"concept hierarchy and mental model\", \"palette\": \"clear, instructional, confident\", \"motionCueCount\": 3}, \"p01\": {\"layout\": \"code structure and callout annotations\", \"palette\": \"precise, technical, focused\", \"motionCueCount\": 3}}\nInteractive screens: [{\"screenId\": \"quiz\", \"route\": \"/module/Module_03/quiz\", \"title\": \"做题页\", \"layout\": \"single active question card\", \"realtimeActions\": [\"shuffle-question-bank\", \"shuffle-options\", \"select-answer\", \"submit-answer\", \"show-score\"], \"runtimeTarget\": \"CourseApp/src/views/QuizView.vue\"}]\n"
+      "Create one compact React + Tailwind prototype for a dark Chinese Unity ShaderGUI course player plus a quiz screen. Use a large slide canvas, event subtitle area, compact bottom audio controls, tap-to-play, and vertical swipe navigation. The quiz page must reflect storyboard realtime actions: question-bank scan, answer selection, option swapping, submit scoring, and feedback. Do not use shadcn imports, Next.js routing, transcript panels, or internal production workflow text. Return code plus concise design rules for translating the result to Vue 3 + Tailwind.\nModule: Module_03\nSlides: [{\"slideId\": \"p00\", \"title\": \"像搭积木一样构建材质面板\", \"kind\": null, \"points\": [\"模块化思维\", \"静态功能类设计\", \"DrawProperties 静态方法\"], \"hasCode\": false}, {\"slideId\": \"p01\", \"title\": \"Managed Properties：面板的行政管理\", \"kind\": null, \"points\": [\"注册机制与自动补位\", \"确保不漏掉参数\", \"不重复绘制\"], \"hasCode\": false}]\nStoryboard: {\"p00\": {\"layout\": \"concept hierarchy and mental model\", \"palette\": \"clear, instructional, confident\", \"motionCueCount\": 3}, \"p01\": {\"layout\": \"concept hierarchy and mental model\", \"palette\": \"clear, instructional, confident\", \"motionCueCount\": 3}}\nInteractive screens: [{\"screenId\": \"quiz\", \"route\": \"/module/Module_03/quiz\", \"title\": \"做题页\", \"layout\": \"single active question card\", \"realtimeActions\": [\"shuffle-question-bank\", \"shuffle-options\", \"select-answer\", \"submit-answer\", \"show-score\"], \"runtimeTarget\": \"CourseApp/src/views/QuizView.vue\"}]\n"
     ]
   },
   "extractedDesignRules": {
@@ -58,15 +58,15 @@
       {
         "moduleId": "Module_03",
         "slideId": "p00",
-        "title": "OnGUI 是唯一的入口",
-        "kind": "concept",
+        "title": "像搭积木一样构建材质面板",
+        "kind": null,
         "route": "/module/Module_03/slide/p00"
       },
       {
         "moduleId": "Module_03",
         "slideId": "p01",
-        "title": "参数分组与布局",
-        "kind": "code",
+        "title": "Managed Properties：面板的行政管理",
+        "kind": null,
         "route": "/module/Module_03/slide/p01"
       }
     ]
