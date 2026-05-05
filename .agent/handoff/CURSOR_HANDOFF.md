@@ -2,9 +2,31 @@
 
 ## Current Goal
 
-ADPMCP 平行 DAG 节点已创建完成，支持完整生产模式（非 MVP 裁剪）。
+ADP 全量写入架构已落地，全部 4 模块 DEPLOY_READY。MVP 模式与 ADP 模式已完全分离。
 
 ## Completed Work
+
+- **2026-05-06 (ADP 全量写入架构重构)**:
+  - **根因**：ADP 逐模块运行时，`_write_course_app` 跨运行合并依赖上一次的 `course.json`，但 `flow_engine.py` 的 `clear_stage_outputs("mvp", ...)` 删除整个 CourseApp/ 导致合并源消失
+  - **修复（3 处）**：
+    1. `.agent/mcp_servers/adp_mcp.py`：
+       - `_write_course_app` 改为全量扫描写入（扫描所有 `CourseContent/Module_*/` 目录，一次性写全量产物）
+       - 新增 `_copy_all_course_content()` 在写入前复制所有模块逐字稿
+       - 新增 `_normalize_slides()` 辅助方法
+       - `generate_products` 不再内部调用 `_clean_adp_products`（改由 flow_engine 统一管理）
+    2. `.agent/flow_engine.py`：
+       - V0_READY 阶段增加 `mode == "adp"` 判断
+       - ADP 模式调用 `ADPMCP._clean_adp_products()` 而非 `clear_stage_outputs("mvp", ...)`
+    3. `.agent/adp-execution-scope.json`：
+       - 从 `clean.allow` 移除 `CourseApp/public/audio/{module}`、`subtitles/{module}`、`transcripts/{module}`
+  - **DAG 同步**：`docs/Skill_Chain_DAG.md` 已更新（MVP/ADP 双模式说明、清理边界、全量写入架构、ADPMCP 节点职责）
+  - **验证**：
+    - Module_01/02/03/04 全部 DEPLOY_READY
+    - `verify_course.py` ✅
+    - `npm run build` ✅ (614ms)
+    - 12 个音频文件完好无损
+  - **提交**：`407039a` → `225f262`（14 commits 已 push）
+  - **状态**：ADP 管线稳定
 
 - **2026-05-05 (generate_audio.py clean_text 修复)**:
   - **根因**：`clean_text()` 只清理了代码块和标题符号，未清理粗体/斜体/链接/引用/列表等 Markdown 符号，也未移除内部指导字段（`shotInstruction` 等），导致 TTS 生成 MP3 时会读出这些符号和文字
@@ -72,49 +94,35 @@ ADPMCP 平行 DAG 节点已创建完成，支持完整生产模式（非 MVP 裁
   - Fixed MVP template not overwriting issue
   - Hardened `v0_mcp.py` with timeout and local fallback
 
-## Modified Files
+## Modified Files (2026-05-06)
 
-- `.agent/mcp_servers/adp_mcp.py` (新增 + 修改：独立化清理配置)
-- `.agent/flow_engine.py` (修改：支持 --adp 标志)
-- `.agent/adp-scope.json` (新增)
-- `.agent/adp-execution-scope.json` (新增：ADP 独立清理范围)
-- `docs/ADP_Execution_Contract.md` (新增：ADP 执行契约)
-- `CourseContent/Module_01/slides.json` (修改：补充 p02)
-- `CourseContent/Module_02/slides.json` (修改：补充 p02)
-- `CourseContent/Module_03/slides.json` (修改：维持 p00/p01)
-- `CourseContent/Module_04/slides.json` (修改：补充 p02/p03)
-- `CourseContent/Module_01/doc/Module_01-p02-属性查找的工程策略.md` (新增)
-- `CourseContent/Module_02/doc/Module_02-p02-封装工具类.md` (新增)
-- `CourseContent/Module_04/doc/Module_04-p02-实战验收.md` (新增)
-- `CourseContent/Module_04/doc/Module_04-p03-元认知总结.md` (新增)
+- `.agent/mcp_servers/adp_mcp.py` (重构：全量扫描写入、移除内部清理调用)
+- `.agent/flow_engine.py` (修改：ADP 模式使用 ADP 专用清理)
+- `.agent/adp-execution-scope.json` (修改：移除增量资产清理项)
+- `docs/Skill_Chain_DAG.md` (更新：MVP/ADP 双模式说明)
 - `.agent/STATE.md` (更新)
 - `.agent/handoff/CURSOR_HANDOFF.md` (更新)
 
 ## DAG Impact
 
-Yes. Added `ADPMCP` as a parallel DAG node to `MVPMCP`:
-- `MVPMCP`: MVP mode, reads from `mvp-scope.json`, generates only p00/p01
-- `ADPMCP`: ADP mode (--adp flag), reads from `adp-scope.json`, generates ALL slides
-- No change to existing DAG node order or product contracts
-- Flow engine now supports `--adp` flag to switch between MVP and ADP modes
+Yes. 2026-05-06 架构重构影响 DAG 清理策略和写入策略：
+
+- **清理分离**：`flow_engine.py` 现在根据运行模式选择不同清理策略。MVP 用 `clear_stage_outputs("mvp")` 全量清理；ADP 用 `ADPMCP._clean_adp_products()` 只清理 scope 允许的路径。
+- **全量写入**：`ADPMCP._write_course_app()` 不再依赖跨运行合并，改为每次全量扫描所有模块源文件，一次性写全量产物。
+- **增量资产保护**：ADP 模式不清理音频、字幕、逐字稿等跨模块增量资产。
+- DAG 节点顺序和产品契约不变。
 
 ## Unfinished / Blockers
 
-- No current blocker for ADP node creation.
-- Need to test ADP mode: `python .agent\flow_engine.py --mode production --adp --scope module --module Module_01`
+- 无当前阻塞项。
 
 ## Verification
 
 - `python scripts\verify_course.py` passed ✅
 - `npm --prefix CourseApp run build` passed ✅
-- `python .agent\platform_violation_guard.py --basedir .` passed ✅
-- Syntax check for `flow_engine.py` passed ✅
+- 全部 4 模块 ADP DEPLOY_READY ✅
+- 12 个音频文件完好无损 ✅
 
 ## Next Step
 
-Test ADPMCP full production flow:
-```powershell
-python .agent\flow_engine.py --mode production --adp --scope module --module Module_01 --basedir . --max-retries 5
-```
-
-Verify ADPMCP correctly generates ALL slides (not just p00/p01).
+ADP 管线已稳定。可根据需要进行课程内容迭代或前端体验优化。

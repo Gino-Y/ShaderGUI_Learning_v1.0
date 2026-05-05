@@ -18,8 +18,14 @@
 ```mermaid
 flowchart TD
   A["教学计划 docs/ShaderGUI_Teaching_Plan.md"] --> B["CourseMCP: 源材料与规则检查"]
-  B --> C["MVPMCP: 生成 CourseContent / CourseApp / scripts"]
+  B --> B2["V0MCP: API Key 验证"]
+  B2 --> C0{"运行模式"}
+  C0 -->|"MVP (--max-retries)"| C1["clear_stage_outputs(mvp)"]
+  C0 -->|"ADP (--adp)"| C2["ADPMCP._clean_adp_products()"]
+  C1 --> C["MVPMCP: 生成 CourseApp / scripts（scope 裁剪）"]
+  C2 --> C3["ADPMCP: 全量扫描写入 CourseApp / scripts"]
   C --> D["StoryboardMCP: 分镜头契约"]
+  C3 --> D
   D --> E["V0MCP: v0 React 原型与设计规则"]
   E --> F["DesignMCP: Vue 设计契约"]
   F --> G["VoiceMCP: MP3 与字幕事件"]
@@ -29,6 +35,28 @@ flowchart TD
   J --> K["Audit: 依赖审计"]
   K --> L["DEPLOY_READY"]
 ```
+
+## MVP 与 ADP 模式
+
+| 维度 | MVP 模式 | ADP 模式 |
+| :--- | :--- | :--- |
+| 触发 | `--max-retries N` | `--adp` 标志 |
+| 生成节点 | `MVPMCP` | `ADPMCP` |
+| 清理策略 | `clear_stage_outputs("mvp")` 删除整个 CourseApp/（除 node_modules） | `ADPMCP._clean_adp_products()` 只清理 scope 允许的路径 |
+| 写入策略 | 模板覆盖 + scope 裁剪 | **全量扫描**所有模块源文件，一次性写全量 `course.json` / `slides.json` / `quizzes.json` / `explorations.json` |
+| 音频/字幕 | 清理后由 flow engine Dev 步骤生成 | **不清理**音频/字幕/逐字稿（增量资产），由 flow engine Dev 步骤生成 |
+| scope 文件 | `.agent/mvp-scope.json` + `.agent/mvp-execution-scope.json` | `.agent/adp-scope.json` + `.agent/adp-execution-scope.json` |
+
+### ADP 清理边界
+
+`adp-execution-scope.json` 的 `clean.allow` **不包含** `CourseApp/public/audio/`、`subtitles/`、`transcripts/`。这些是跨模块增量资产，ADP 全量写入模式下不可清理。
+
+### ADP 全量写入
+
+`ADPMCP._write_course_app()` 不依赖跨运行合并：
+1. `_copy_all_course_content()` — 复制所有模块逐字稿到 `CourseApp/public/transcripts/`
+2. 扫描所有 `CourseContent/Module_*/` 目录
+3. 一次性写全量 `course.json`（含所有模块）、`slides.json`（含所有 slide）、`quizzes.json`、`explorations.json`
 
 ## MVP Scope
 
@@ -46,6 +74,7 @@ flowchart TD
 | :--- | :--- | :--- | :--- |
 | `CourseMCP` | docs、`.agent` 规则 | 源材料检查结果 | 必须确认 `.agent` 单一可信源 |
 | `MVPMCP` | `CourseContent/<module>`、scope、templates | Vue SPA、数据、脚本 | 只生成 scope 内产物 |
+| `ADPMCP` | `CourseContent/Module_*/`（全量扫描）、scope、templates | Vue SPA（全量数据）、脚本 | 全量写入所有模块数据 |
 | `StoryboardMCP` | slides、subtitles、explorations、quizzes | `storyboard-contract.json` | motion cues 与交互屏完整 |
 | `V0MCP` | storyboard | `.agent/v0/<module>/react-prototype.json` | v0 引用落到 `.agent/v0/` |
 | `DesignMCP` | storyboard、v0 handoff | `design-contract.json` | 设计契约承接 storyboard 与 v0 |
