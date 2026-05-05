@@ -1,54 +1,34 @@
 [
   {
-    "moduleId": "Module_01",
     "slideId": "p00",
+    "moduleId": "Module_01",
     "order": 0,
-    "title": "ShaderGUI：不只是换一层皮",
-    "kind": "concept",
-    "points": [
-      "ShaderGUI 是 Shader 参数系统的前端工程层",
-      "核心目标是降低美术调参时的认知负担",
-      "职责是组织参数、解释含义、同步状态"
-    ],
-    "mentalModel": {
-      "title": "知识结构",
-      "text": "先看面板职责，再看代码入口，最后把每个参数放回美术真正调节材质时的决策语境。"
-    }
+    "title": "ShaderGUI：不仅仅是换个皮",
+    "type": "lecture",
+    "duration": 180,
+    "content": "理解 ShaderGUI 是 Shader 参数系统的前端工程层，而非简单的 UI 美化。"
   },
   {
-    "moduleId": "Module_01",
     "slideId": "p01",
+    "moduleId": "Module_01",
     "order": 1,
-    "title": "最小可行架构",
-    "kind": "code",
-    "points": [
-      "C Sharp 侧继承 ShaderGUI 并重写 OnGUI",
-      "Shader 侧通过 CustomEditor 绑定自定义面板",
-      "所有高级面板能力都从控制 OnGUI 开始"
-    ],
-    "mentalModel": {
-      "title": "代码心智模型",
-      "text": "先看代码入口，再看关键调用，最后把参数放回美术真实调参的决策语境。"
-    },
-    "codeBlocks": [
-      {
-        "title": "MyGUI.cs",
-        "language": "csharp",
-        "badge": "C# side",
-        "code": "public class MyGUI : ShaderGUI\n{\n    public override void OnGUI(MaterialEditor editor, MaterialProperty[] props)\n    {\n        MaterialProperty baseColor = FindProperty(\"_BaseColor\", props);\n        editor.ShaderProperty(baseColor, \"Base Color\");\n    }\n}"
-      },
-      {
-        "title": "ShaderLab binding",
-        "language": "shaderlab",
-        "badge": "Shader side",
-        "code": "Shader \"Custom/MyShader\"\n{\n    Properties\n    {\n        _BaseColor(\"Base Color\", Color) = (1,1,1,1)\n    }\n\n    SubShader\n    {\n        // Passes and render state live here.\n    }\n\n    CustomEditor \"MyGUI\"\n}"
-      }
-    ],
+    "title": "编写第一个自定义材质面板",
+    "type": "code",
+    "duration": 240,
+    "content": "继承 ShaderGUI 并重写 OnGUI，在 Shader 中通过 CustomEditor 绑定。"
+  },
+  {
+    "slideId": "p02",
+    "moduleId": "Module_01",
+    "order": 2,
+    "title": "如何安全地获取参数？",
+    "type": "lecture",
+    "duration": 210,
+    "content": "Required vs Safe 模式对比，封装 FindPropertySafe 工具函数。",
     "explore": {
       "id": "property-grouping",
-      "route": "/module/Module_01/slide/p01/explore",
-      "title": "探索页",
-      "component": "PropertyGroupingLab"
+      "route": "/module/Module_01/slide/p02/explore",
+      "title": "属性查找实战"
     }
   }
 ]

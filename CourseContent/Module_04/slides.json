@@ -1,34 +1,38 @@
 [
   {
-    "moduleId": "Module_04",
     "slideId": "p00",
+    "moduleId": "Module_04",
     "order": 0,
-    "title": "条件显示与高级布局",
-    "kind": "code",
-    "points": [
-      "根据属性值条件显示/隐藏其他属性",
-      "使用 EditorGUILayout 实现复杂布局",
-      "处理动画属性的时间轴绑定"
-    ],
-    "codeBlocks": [
-      {
-        "title": "条件显示.cs",
-        "language": "csharp",
-        "badge": "C#",
-        "code": "var mode = FindProperty(\"_Mode\", props);\nif (mode.floatValue == 1) {\n    editor.ShaderProperty(FindProperty(\"_Cutoff\", props), \"Cutoff\");\n}"
-      }
-    ]
+    "title": "渲染状态同步：让 GUI 替人思考",
+    "type": "code",
+    "duration": 240,
+    "content": "在 OnGUI 末尾检测属性变化，自动同步 Blend、ZWrite、RenderQueue。"
   },
   {
-    "moduleId": "Module_04",
     "slideId": "p01",
+    "moduleId": "Module_04",
     "order": 1,
-    "title": "实战踩坑与性能优化",
-    "kind": "concept",
-    "points": [
-      "避免在 OnGUI 中做耗时操作",
-      "材质属性变更触发重新序列化",
-      "使用 MaterialEditor.RegisterPropertyChangeUndo 支持撤销"
-    ]
+    "title": "版本迁移：如何让旧资产不碎掉？",
+    "type": "lecture",
+    "duration": 210,
+    "content": "属性名 Fallback、语义映射、静默升级策略。"
+  },
+  {
+    "slideId": "p02",
+    "moduleId": "Module_04",
+    "order": 2,
+    "title": "最终实战：构建专业级描边材质面板",
+    "type": "code",
+    "duration": 300,
+    "content": "验收标准清单：分组清晰、安全可靠、美术友好、性能同步。"
+  },
+  {
+    "slideId": "p03",
+    "moduleId": "Module_04",
+    "order": 3,
+    "title": "ShaderGUI 进阶思维路线图",
+    "type": "summary",
+    "duration": 180,
+    "content": "元认知总结：解构 → 重构 → 进化 → 治理，四个阶段的成长路线。"
   }
 ]

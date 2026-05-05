@@ -1,34 +1,20 @@
 [
   {
-    "moduleId": "Module_03",
     "slideId": "p00",
+    "moduleId": "Module_03",
     "order": 0,
-    "title": "OnGUI 是唯一的入口",
-    "kind": "concept",
-    "points": [
-      "ShaderGUI 是材质面板的真正控制器",
-      "OnGUI 每帧调用，负责绘制所有属性",
-      "FindProperty 按名称取出属性引用"
-    ]
+    "title": "像搭积木一样构建材质面板",
+    "type": "code",
+    "duration": 240,
+    "content": "模块化思维，静态功能类设计，DrawProperties 静态方法签名。"
   },
   {
-    "moduleId": "Module_03",
     "slideId": "p01",
+    "moduleId": "Module_03",
     "order": 1,
-    "title": "参数分组与布局",
-    "kind": "code",
-    "points": [
-      "editor.LabelField 绘制分组标题",
-      "editor.ShaderProperty 绘制单个属性",
-      "GUILayout.Space 控制间距"
-    ],
-    "codeBlocks": [
-      {
-        "title": "分组绘制.cs",
-        "language": "csharp",
-        "badge": "C#",
-        "code": "public override void OnGUI(MaterialEditor editor, MaterialProperty[] props) {\n    var p = FindProperty(\"_Color\", props);\n    editor.LabelField(\"Base Settings\", EditorStyles.boldLabel);\n    editor.ShaderProperty(p, \"Color\");\n    GUILayout.Space(8);\n}"
-      }
-    ]
+    "title": "Managed Properties：面板的行政管理",
+    "type": "lecture",
+    "duration": 210,
+    "content": "注册机制与自动补位，确保不漏掉参数且不重复绘制。"
   }
 ]

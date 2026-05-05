@@ -1,0 +1,30 @@
+{
+  "modules": [
+    {
+      "module": "Module_01",
+      "slideIds": ["p00", "p01", "p02"],
+      "explorations": [
+        {
+          "parentSlideId": "p02",
+          "explorationId": "property-grouping",
+          "route": "/module/Module_01/slide/p02/explore"
+        }
+      ]
+    },
+    {
+      "module": "Module_02",
+      "slideIds": ["p00", "p01", "p02"],
+      "explorations": []
+    },
+    {
+      "module": "Module_03",
+      "slideIds": ["p00", "p01"],
+      "explorations": []
+    },
+    {
+      "module": "Module_04",
+      "slideIds": ["p00", "p01", "p02", "p03"],
+      "explorations": []
+    }
+  ]
+}

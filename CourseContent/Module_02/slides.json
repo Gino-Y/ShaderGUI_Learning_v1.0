@@ -1,40 +1,29 @@
 [
   {
-    "moduleId": "Module_02",
     "slideId": "p00",
+    "moduleId": "Module_02",
     "order": 0,
-    "title": "Drawer 是什么",
-    "kind": "concept",
-    "points": [
-      "Drawer 控制材质属性在面板中的渲染方式",
-      "内置 Drawer：Toggle、Enum、PowerSlider",
-      "自定义 Drawer 继承 MaterialPropertyDrawer"
-    ]
+    "title": "告别参数地狱：逻辑化的分组设计",
+    "type": "lecture",
+    "duration": 180,
+    "content": "信息架构设计，使用 BeginVertical 创建视觉边界，按渲染逻辑排列参数。"
   },
   {
-    "moduleId": "Module_02",
     "slideId": "p01",
+    "moduleId": "Module_02",
     "order": 1,
-    "title": "内置 Drawer 实战",
-    "kind": "code",
-    "points": [
-      "[Toggle] 控制布尔属性",
-      "[Enum] 控制下拉选择",
-      "[PowerSlider] 非线性滑块"
-    ],
-    "codeBlocks": [
-      {
-        "title": "Drawer 示例.shader",
-        "language": "shaderlab",
-        "badge": "Shader",
-        "code": "[Toggle]_UseAlpha(\"Use Alpha\", Float) = 0\n[Toggle(MyToggle)]_Feature(\"Feature\", Float) = 0\n[Enum(Off,0,On,1)]_State(\"State\", Float) = 0"
-      },
-      {
-        "title": "CustomDrawer.cs",
-        "language": "csharp",
-        "badge": "C#",
-        "code": "public class MyToggle : MaterialPropertyDrawer {\n    public override void OnGUI(Rect pos, MaterialProperty prop, string label, ShaderGUI editor) {\n        prop.floatValue = EditorGUI.Toggle(pos, label, prop.floatValue == 1) ? 1 : 0;\n    }\n}"
-      }
-    ]
+    "title": "只给用户他需要的：智能 UI 联动",
+    "type": "code",
+    "duration": 240,
+    "content": "条件显示技术，通过 Toggle/Enum 控制参数组显隐，EditorGUI.DisabledScope 应用。"
+  },
+  {
+    "slideId": "p02",
+    "moduleId": "Module_02",
+    "order": 2,
+    "title": "拒绝代码重复：打造 ShaderGUI 工具箱",
+    "type": "code",
+    "duration": 210,
+    "content": "封装 DrawProp / DrawTex / BeginGroup 工具类，提高编写效率和视觉统一性。"
   }
 ]
