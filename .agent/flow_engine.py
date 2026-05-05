@@ -100,9 +100,13 @@ class CorePipeline:
             print("[Prereq 2/4 OK] v0 API reachable")
 
         if state.status == "V0_READY":
-            print("-> [Prereq 2/3] CLEANUP_BEFORE_MVP：清理旧产物...")
-            deleted = clear_stage_outputs(self.workspace, "mvp", state.module)
-            print(f"[Prereq 2/3 OK] cleaned={len(deleted)}")
+            if mode == "adp":
+                print("-> [Prereq 3/4] CLEANUP_BEFORE_ADP：清理旧产物（ADP scope）...")
+                deleted = ADPMCP._clean_adp_products(self.workspace, state.module)
+            else:
+                print("-> [Prereq 3/4] CLEANUP_BEFORE_MVP：清理旧产物...")
+                deleted = clear_stage_outputs(self.workspace, "mvp", state.module)
+            print(f"[Prereq 3/4 OK] cleaned={len(deleted)}")
             state.status = "CLEANUP_BEFORE_MVP_READY"
 
         if state.status == "CLEANUP_BEFORE_MVP_READY":

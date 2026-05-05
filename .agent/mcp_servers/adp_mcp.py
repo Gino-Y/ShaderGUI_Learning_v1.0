@@ -21,7 +21,7 @@ class ADPMCP:
             source = ADPMCP._load_module_source(workspace, module)
             slide_ids = ADPMCP._resolve_adp_slide_ids(workspace, module, source["slides"])
             source["slides"] = [slide for slide in source["slides"] if slide["slideId"] in slide_ids]
-            cleaned = ADPMCP._clean_adp_products(workspace, module)
+            # 清理由 flow engine 统一管理（_clean_adp_products），此处不再重复
             # 先复制所有模块的逐字稿（为新逻辑全量扫描做准备）
             ADPMCP._copy_all_course_content(workspace)
             ADPMCP._write_course_app(workspace, module, source)
@@ -49,7 +49,6 @@ class ADPMCP:
             "scripts": str(workspace / "scripts"),
             "slide_ids": slide_ids,
             "slide_count": len(slide_ids),
-            "cleaned": cleaned,
         }
 
     @staticmethod
