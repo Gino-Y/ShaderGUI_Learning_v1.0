@@ -19,12 +19,12 @@
 - Palette: clear, instructional, confident
 - Emphasis: motionCues bind subtitles to knowledgeFocus; optional slide `mentalModel` in slides.json (teaching layer).
 - Motion cues:
-  - `cue-01` 00:00.00-00:01.80 segment 0: reveal-focus -> content-beat (模块化思维); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: 模块化思维
-    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“模块化思维”，弱化其他内容；旁白：模块化思维。
-  - `cue-02` 00:00.00-00:01.80 segment 1: reveal-focus -> content-beat (静态功能类设计); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 静态功能类设计
-    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“静态功能类设计”，弱化其他内容；旁白：静态功能类设计。
-  - `cue-03` 00:00.00-00:01.80 segment 2: reveal-focus -> content-beat (DrawProperties 静态方法); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: DrawProperties 静态方法
-    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“DrawProperties 静态方法”，弱化其他内容；旁白：DrawProperties 静态方法。
+  - `cue-01` 00:00.00-00:16.67 segment 0: reveal-focus -> content-beat (模块化思维); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: 像搭积木一样构建材质面板 —— 逐字稿 你有没有遇到过这种情况：一个 ShaderGUI 脚本写了上千行，所有属性的绘制逻辑全都堆在 OnGUI 里。
+    - Shot: 0.00s-16.67s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“模块化思维”，弱化其他内容；旁白：像搭积木一样构建材质面板 —— 逐字稿 你有没有遇到过这种情况：一个 ShaderGUI 脚本写了上千行，所有属性的绘制逻辑全都堆在 OnGUI 里。
+  - `cue-02` 00:16.67-00:20.22 segment 1: reveal-focus -> content-beat (静态功能类设计); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 改一个地方，整块面板都要跟着改。
+    - Shot: 16.67s-20.22s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“静态功能类设计”，弱化其他内容；旁白：改一个地方，整块面板都要跟着改。
+  - `cue-03` 00:20.22-00:27.33 segment 2: reveal-focus -> content-beat (DrawProperties 静态方法); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 后期维护的时候，光是找到某段绘制代码藏在哪一行，就要花半天时间。
+    - Shot: 20.22s-27.33s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“DrawProperties 静态方法”，弱化其他内容；旁白：后期维护的时候，光是找到某段绘制代码藏在哪一行，就要花半天时间。
 
 ### Module_03 / p01
 
@@ -37,12 +37,12 @@
 - Palette: clear, instructional, confident
 - Emphasis: motionCues bind subtitles to knowledgeFocus; optional slide `mentalModel` in slides.json (teaching layer).
 - Motion cues:
-  - `cue-01` 00:00.00-00:01.80 segment 0: reveal-focus -> content-beat (注册机制与自动补位); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: 注册机制与自动补位
-    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“注册机制与自动补位”，弱化其他内容；旁白：注册机制与自动补位。
-  - `cue-02` 00:00.00-00:01.80 segment 1: reveal-focus -> content-beat (确保不漏掉参数); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 确保不漏掉参数
-    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“确保不漏掉参数”，弱化其他内容；旁白：确保不漏掉参数。
-  - `cue-03` 00:00.00-00:01.80 segment 2: reveal-focus -> content-beat (不重复绘制); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 不重复绘制
-    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“不重复绘制”，弱化其他内容；旁白：不重复绘制。
+  - `cue-01` 00:00.00-00:13.56 segment 0: reveal-focus -> content-beat (注册机制与自动补位); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: Managed Properties：面板的行政管理 —— 逐字稿 在前面两节课里，我们学会了如何查找属性、如何绘制控件。
+    - Shot: 0.00s-13.56s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“注册机制与自动补位”，弱化其他内容；旁白：Managed Properties：面板的行政管理 —— 逐字稿 在前面两节课里，我们学会了如何查找属性、如何绘制控件。
+  - `cue-02` 00:13.56-00:28.44 segment 1: reveal-focus -> content-beat (确保不漏掉参数); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 但当一个 ShaderGUI 代码变得越来越长，你有没有遇到过这种情况：某个属性明明在 Shader 里定义了，但面板里就是没画出来？
+    - Shot: 13.56s-28.44s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“确保不漏掉参数”，弱化其他内容；旁白：但当一个 ShaderGUI 代码变得越来越长，你有没有遇到过这种情况：某个属性明明在 Shader 里定义了，但面板里就是没画出来。
+  - `cue-03` 00:28.44-00:32.00 segment 2: reveal-focus -> content-beat (不重复绘制); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 或者更糟，同一个属性被画了两次？
+    - Shot: 28.44s-32.00s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“不重复绘制”，弱化其他内容；旁白：或者更糟，同一个属性被画了两次。
 
 ## Interactive Screens
 

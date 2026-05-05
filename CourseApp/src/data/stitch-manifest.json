@@ -1,45 +1,35 @@
 {
-  "module": "Module_02",
+  "module": "Module_03",
   "player": "CoursePlayer.vue",
   "navigation": "SlideNav.vue",
   "subtitleOverlay": "SubtitleOverlay.vue",
   "slides": [
     {
-      "moduleId": "Module_02",
+      "moduleId": "Module_03",
       "slideId": "p00",
-      "route": "/module/Module_02/slide/p00",
-      "audio": "/audio/Module_02/p00.mp3",
-      "subtitles": "/subtitles/Module_02/p00.json",
-      "transcript": "/transcripts/Module_02/Module_02-p00-逐字稿.md",
-      "subtitleEventCount": 5,
+      "route": "/module/Module_03/slide/p00",
+      "audio": "/audio/Module_03/p00.mp3",
+      "subtitles": "/subtitles/Module_03/p00.json",
+      "transcript": "/transcripts/Module_03/Module_03-p00-逐字稿.md",
+      "subtitleEventCount": 36,
       "interaction": null
     },
     {
-      "moduleId": "Module_02",
+      "moduleId": "Module_03",
       "slideId": "p01",
-      "route": "/module/Module_02/slide/p01",
-      "audio": "/audio/Module_02/p01.mp3",
-      "subtitles": "/subtitles/Module_02/p01.json",
-      "transcript": "/transcripts/Module_02/Module_02-p01-逐字稿.md",
-      "subtitleEventCount": 11,
-      "interaction": null
-    },
-    {
-      "moduleId": "Module_02",
-      "slideId": "p02",
-      "route": "/module/Module_02/slide/p02",
-      "audio": "/audio/Module_02/p02.mp3",
-      "subtitles": "/subtitles/Module_02/p02.json",
-      "transcript": "/transcripts/Module_02/Module_02-p02-封装工具类.md",
-      "subtitleEventCount": 8,
+      "route": "/module/Module_03/slide/p01",
+      "audio": "/audio/Module_03/p01.mp3",
+      "subtitles": "/subtitles/Module_03/p01.json",
+      "transcript": "/transcripts/Module_03/Module_03-p01-逐字稿.md",
+      "subtitleEventCount": 10,
       "interaction": null
     }
   ],
   "interactiveScreens": [
     {
-      "moduleId": "Module_02",
+      "moduleId": "Module_03",
       "screenId": "quiz",
-      "route": "/module/Module_02/quiz",
+      "route": "/module/Module_03/quiz",
       "runtime": "QuizView.vue",
       "questionCount": 2,
       "storyboardCueCount": 5,

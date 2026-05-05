@@ -1,34 +1,34 @@
 {
   "provider": "storyboard-local-spec",
   "status": "storyboard_ready",
-  "module": "Module_02",
-  "generatedAt": "2026-05-05T11:47:26Z",
+  "module": "Module_03",
+  "generatedAt": "2026-05-05T11:47:59Z",
   "source": {
     "slides": "CourseApp/src/data/slides.json",
     "explorations": "CourseApp/src/data/explorations.json",
     "quizzes": "CourseApp/src/data/quizzes.json"
   },
-  "handoffBrief": ".agent/storyboard/Module_02/storyboard-brief.md",
+  "handoffBrief": ".agent/storyboard/Module_03/storyboard-brief.md",
   "slides": [
     {
-      "moduleId": "Module_02",
+      "moduleId": "Module_03",
       "slideId": "p00",
-      "route": "/module/Module_02/slide/p00",
-      "title": "告别参数地狱：逻辑化的分组设计",
+      "route": "/module/Module_03/slide/p00",
+      "title": "像搭积木一样构建材质面板",
       "kind": "concept",
       "sceneIndex": 0,
-      "audio": "/audio/Module_02/p00.mp3",
-      "subtitles": "/subtitles/Module_02/p00.json",
-      "transcript": "/transcripts/Module_02/Module_02-p00-逐字稿.md",
-      "storyPurpose": "Use this scene to make learners understand '告别参数地狱：逻辑化的分组设计' through the content beats: 信息架构设计 / BeginVertical 创建视觉边界 / 按渲染逻辑排列参数.",
+      "audio": "/audio/Module_03/p00.mp3",
+      "subtitles": "/subtitles/Module_03/p00.json",
+      "transcript": "/transcripts/Module_03/Module_03-p00-逐字稿.md",
+      "storyPurpose": "Use this scene to make learners understand '像搭积木一样构建材质面板' through the content beats: 模块化思维 / 静态功能类设计 / DrawProperties 静态方法.",
       "layoutIntent": {
         "primaryFocus": "concept hierarchy and mental model",
         "readingPath": "title -> core idea -> three supporting beats",
         "density": "low-to-medium",
         "emphasis": [
-          "信息架构设计",
-          "BeginVertical 创建视觉边界",
-          "按渲染逻辑排列参数"
+          "模块化思维",
+          "静态功能类设计",
+          "DrawProperties 静态方法"
         ]
       },
       "visualComposition": {
@@ -40,7 +40,7 @@
           "anchor": "hero concept anchors upper-left; supporting beats form right-side vertical rhythm"
         },
         "foreground": {
-          "subject": "信息架构设计",
+          "subject": "模块化思维",
           "position": "left-center hero area",
           "scale": "largest text block after title; primary learner attention"
         },
@@ -82,24 +82,24 @@
           "trigger": {
             "type": "subtitle-segment",
             "segmentIndex": 0,
-            "subtitleEventPath": "/subtitles/Module_02/p00.json",
+            "subtitleEventPath": "/subtitles/Module_03/p00.json",
             "subtitleEventId": "s00",
             "timecode": 0.0
           },
           "timeRange": {
             "start": 0.0,
-            "end": 11.78,
-            "durationMs": 11780
+            "end": 16.67,
+            "durationMs": 16670
           },
           "target": "content-beat",
-          "contentBeat": "信息架构设计",
-          "sourceSubtitleText": "告别参数地狱：逻辑化的分组设计 —— 逐字稿 参数多是 ShaderGUI 的常态，但\"多\"不等于\"乱\"。",
+          "contentBeat": "模块化思维",
+          "sourceSubtitleText": "像搭积木一样构建材质面板 —— 逐字稿 你有没有遇到过这种情况：一个 ShaderGUI 脚本写了上千行，所有属性的绘制逻辑全都堆在 OnGUI 里。",
           "knowledgeFocus": {
             "id": "knowledge-01",
-            "label": "信息架构设计",
+            "label": "模块化思维",
             "source": "slide.points",
             "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：信息架构设计"
+            "learnerTakeaway": "当前应聚焦理解：模块化思维"
           },
           "animation": {
             "name": "reveal-focus",
@@ -125,12 +125,12 @@
             "primaryEffect": "knowledge-highlight",
             "attentionPattern": "pulse-once-then-hold",
             "highlightTarget": "point-card",
-            "highlightText": "信息架构设计",
+            "highlightText": "模块化思维",
             "deEmphasizeOthers": true,
             "timing": {
               "start": 0.0,
-              "peak": 4.71,
-              "settle": 11.78,
+              "peak": 6.67,
+              "settle": 16.67,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -142,14 +142,14 @@
           },
           "compositionBeat": {
             "frameZone": "left hero concept",
-            "subject": "信息架构设计",
+            "subject": "模块化思维",
             "cameraAction": "locked frame; reveal or pulse the current card in place",
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "0.00s-11.78s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“信息架构设计”，弱化其他内容；旁白：告别参数地狱：逻辑化的分组设计 —— 逐字稿 参数多是 ShaderGUI 的常态，但\"多\"不等于\"乱\"。",
+          "shotInstruction": "0.00s-16.67s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“模块化思维”，弱化其他内容；旁白：像搭积木一样构建材质面板 —— 逐字稿 你有没有遇到过这种情况：一个 ShaderGUI 脚本写了上千行，所有属性的绘制逻辑全都堆在 OnGUI 里。",
           "focusInstruction": {
-            "focus": "信息架构设计",
+            "focus": "模块化思维",
             "deEmphasize": "other point cards and non-current code callouts",
             "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
           },
@@ -166,24 +166,24 @@
           "trigger": {
             "type": "subtitle-segment",
             "segmentIndex": 1,
-            "subtitleEventPath": "/subtitles/Module_02/p00.json",
+            "subtitleEventPath": "/subtitles/Module_03/p00.json",
             "subtitleEventId": "s01",
-            "timecode": 11.78
+            "timecode": 16.67
           },
           "timeRange": {
-            "start": 11.78,
-            "end": 17.33,
-            "durationMs": 5550
+            "start": 16.67,
+            "end": 20.22,
+            "durationMs": 3550
           },
           "target": "content-beat",
-          "contentBeat": "BeginVertical 创建视觉边界",
-          "sourceSubtitleText": "本节课教你用信息架构思维，把一堆属性变成有序面板。",
+          "contentBeat": "静态功能类设计",
+          "sourceSubtitleText": "改一个地方，整块面板都要跟着改。",
           "knowledgeFocus": {
             "id": "knowledge-02",
-            "label": "BeginVertical 创建视觉边界",
+            "label": "静态功能类设计",
             "source": "slide.points",
             "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：BeginVertical 创建视觉边界"
+            "learnerTakeaway": "当前应聚焦理解：静态功能类设计"
           },
           "animation": {
             "name": "reveal-focus",
@@ -209,12 +209,12 @@
             "primaryEffect": "knowledge-highlight",
             "attentionPattern": "soft-blink-then-hold",
             "highlightTarget": "point-card",
-            "highlightText": "BeginVertical 创建视觉边界",
+            "highlightText": "静态功能类设计",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 11.78,
-              "peak": 14.0,
-              "settle": 17.33,
+              "start": 16.67,
+              "peak": 18.09,
+              "settle": 20.22,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -226,14 +226,14 @@
           },
           "compositionBeat": {
             "frameZone": "right support card top",
-            "subject": "BeginVertical 创建视觉边界",
+            "subject": "静态功能类设计",
             "cameraAction": "locked frame; reveal or pulse the current card in place",
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "11.78s-17.33s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“BeginVertical 创建视觉边界”，弱化其他内容；旁白：本节课教你用信息架构思维，把一堆属性变成有序面板。",
+          "shotInstruction": "16.67s-20.22s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“静态功能类设计”，弱化其他内容；旁白：改一个地方，整块面板都要跟着改。",
           "focusInstruction": {
-            "focus": "BeginVertical 创建视觉边界",
+            "focus": "静态功能类设计",
             "deEmphasize": "other point cards and non-current code callouts",
             "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
           },
@@ -250,24 +250,24 @@
           "trigger": {
             "type": "subtitle-segment",
             "segmentIndex": 2,
-            "subtitleEventPath": "/subtitles/Module_02/p00.json",
+            "subtitleEventPath": "/subtitles/Module_03/p00.json",
             "subtitleEventId": "s02",
-            "timecode": 17.33
+            "timecode": 20.22
           },
           "timeRange": {
-            "start": 17.33,
-            "end": 45.33,
-            "durationMs": 28000
+            "start": 20.22,
+            "end": 27.33,
+            "durationMs": 7110
           },
           "target": "content-beat",
-          "contentBeat": "按渲染逻辑排列参数",
-          "sourceSubtitleText": "核心观点 问题：Shader 属性多了，默认面板是一维长列表，美术不知道什么是什么 思路：按渲染逻辑分组，用 UI 边界（Vertical/Horizontal）建立视觉层次 金句：\"好的 GUI 不是把参数都摆出来，而是让美术知道先填什么、后填什么。",
+          "contentBeat": "DrawProperties 静态方法",
+          "sourceSubtitleText": "后期维护的时候，光是找到某段绘制代码藏在哪一行，就要花半天时间。",
           "knowledgeFocus": {
             "id": "knowledge-03",
-            "label": "按渲染逻辑排列参数",
+            "label": "DrawProperties 静态方法",
             "source": "slide.points",
             "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：按渲染逻辑排列参数"
+            "learnerTakeaway": "当前应聚焦理解：DrawProperties 静态方法"
           },
           "animation": {
             "name": "reveal-focus",
@@ -293,12 +293,12 @@
             "primaryEffect": "knowledge-highlight",
             "attentionPattern": "soft-blink-then-hold",
             "highlightTarget": "point-card",
-            "highlightText": "按渲染逻辑排列参数",
+            "highlightText": "DrawProperties 静态方法",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 17.33,
-              "peak": 28.53,
-              "settle": 45.33,
+              "start": 20.22,
+              "peak": 23.06,
+              "settle": 27.33,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -310,14 +310,14 @@
           },
           "compositionBeat": {
             "frameZone": "right support card middle",
-            "subject": "按渲染逻辑排列参数",
+            "subject": "DrawProperties 静态方法",
             "cameraAction": "locked frame; reveal or pulse the current card in place",
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "17.33s-45.33s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“按渲染逻辑排列参数”，弱化其他内容；旁白：核心观点 问题：Shader 属性多了，默认面板是一维长列表，美术不知道什么是什么 思路：按渲染逻辑分组，用 UI 边界（Vertical/Horizontal）建立视觉层次 金句：\"好的 GUI 不是把参数都摆出来，而是让美术知道先填什么、后填什么。",
+          "shotInstruction": "20.22s-27.33s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“DrawProperties 静态方法”，弱化其他内容；旁白：后期维护的时候，光是找到某段绘制代码藏在哪一行，就要花半天时间。",
           "focusInstruction": {
-            "focus": "按渲染逻辑排列参数",
+            "focus": "DrawProperties 静态方法",
             "deEmphasize": "other point cards and non-current code callouts",
             "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
           },
@@ -340,17 +340,17 @@
           },
           "timeRange": {
             "start": 0.0,
-            "end": 11.78,
-            "durationMs": 11780
+            "end": 16.67,
+            "durationMs": 16670
           },
           "target": "content-beat",
-          "contentBeat": "信息架构设计",
-          "sourceSubtitleText": "告别参数地狱：逻辑化的分组设计 —— 逐字稿 参数多是 ShaderGUI 的常态，但\"多\"不等于\"乱\"。",
+          "contentBeat": "模块化思维",
+          "sourceSubtitleText": "像搭积木一样构建材质面板 —— 逐字稿 你有没有遇到过这种情况：一个 ShaderGUI 脚本写了上千行，所有属性的绘制逻辑全都堆在 OnGUI 里。",
           "knowledgeFocus": {
             "id": "knowledge-01",
-            "label": "信息架构设计",
+            "label": "模块化思维",
             "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：信息架构设计"
+            "learnerTakeaway": "当前应聚焦理解：模块化思维"
           },
           "animation": {
             "type": "reveal-focus",
@@ -376,12 +376,12 @@
             "primaryEffect": "knowledge-highlight",
             "attentionPattern": "pulse-once-then-hold",
             "highlightTarget": "point-card",
-            "highlightText": "信息架构设计",
+            "highlightText": "模块化思维",
             "deEmphasizeOthers": true,
             "timing": {
               "start": 0.0,
-              "peak": 4.71,
-              "settle": 11.78,
+              "peak": 6.67,
+              "settle": 16.67,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -393,14 +393,14 @@
           },
           "compositionBeat": {
             "frameZone": "left hero concept",
-            "subject": "信息架构设计",
+            "subject": "模块化思维",
             "cameraAction": "locked frame; reveal or pulse the current card in place",
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "0.00s-11.78s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“信息架构设计”，弱化其他内容；旁白：告别参数地狱：逻辑化的分组设计 —— 逐字稿 参数多是 ShaderGUI 的常态，但\"多\"不等于\"乱\"。",
+          "shotInstruction": "0.00s-16.67s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“模块化思维”，弱化其他内容；旁白：像搭积木一样构建材质面板 —— 逐字稿 你有没有遇到过这种情况：一个 ShaderGUI 脚本写了上千行，所有属性的绘制逻辑全都堆在 OnGUI 里。",
           "focusInstruction": {
-            "focus": "信息架构设计",
+            "focus": "模块化思维",
             "deEmphasize": "other point cards and non-current code callouts",
             "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
           },
@@ -416,22 +416,22 @@
           "cueId": "cue-02",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 11.78,
+            "timecode": 16.67,
             "segmentIndex": 1
           },
           "timeRange": {
-            "start": 11.78,
-            "end": 17.33,
-            "durationMs": 5550
+            "start": 16.67,
+            "end": 20.22,
+            "durationMs": 3550
           },
           "target": "content-beat",
-          "contentBeat": "BeginVertical 创建视觉边界",
-          "sourceSubtitleText": "本节课教你用信息架构思维，把一堆属性变成有序面板。",
+          "contentBeat": "静态功能类设计",
+          "sourceSubtitleText": "改一个地方，整块面板都要跟着改。",
           "knowledgeFocus": {
             "id": "knowledge-02",
-            "label": "BeginVertical 创建视觉边界",
+            "label": "静态功能类设计",
             "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：BeginVertical 创建视觉边界"
+            "learnerTakeaway": "当前应聚焦理解：静态功能类设计"
           },
           "animation": {
             "type": "reveal-focus",
@@ -457,12 +457,12 @@
             "primaryEffect": "knowledge-highlight",
             "attentionPattern": "soft-blink-then-hold",
             "highlightTarget": "point-card",
-            "highlightText": "BeginVertical 创建视觉边界",
+            "highlightText": "静态功能类设计",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 11.78,
-              "peak": 14.0,
-              "settle": 17.33,
+              "start": 16.67,
+              "peak": 18.09,
+              "settle": 20.22,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -474,14 +474,14 @@
           },
           "compositionBeat": {
             "frameZone": "right support card top",
-            "subject": "BeginVertical 创建视觉边界",
+            "subject": "静态功能类设计",
             "cameraAction": "locked frame; reveal or pulse the current card in place",
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "11.78s-17.33s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“BeginVertical 创建视觉边界”，弱化其他内容；旁白：本节课教你用信息架构思维，把一堆属性变成有序面板。",
+          "shotInstruction": "16.67s-20.22s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“静态功能类设计”，弱化其他内容；旁白：改一个地方，整块面板都要跟着改。",
           "focusInstruction": {
-            "focus": "BeginVertical 创建视觉边界",
+            "focus": "静态功能类设计",
             "deEmphasize": "other point cards and non-current code callouts",
             "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
           },
@@ -497,22 +497,22 @@
           "cueId": "cue-03",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 17.33,
+            "timecode": 20.22,
             "segmentIndex": 2
           },
           "timeRange": {
-            "start": 17.33,
-            "end": 45.33,
-            "durationMs": 28000
+            "start": 20.22,
+            "end": 27.33,
+            "durationMs": 7110
           },
           "target": "content-beat",
-          "contentBeat": "按渲染逻辑排列参数",
-          "sourceSubtitleText": "核心观点 问题：Shader 属性多了，默认面板是一维长列表，美术不知道什么是什么 思路：按渲染逻辑分组，用 UI 边界（Vertical/Horizontal）建立视觉层次 金句：\"好的 GUI 不是把参数都摆出来，而是让美术知道先填什么、后填什么。",
+          "contentBeat": "DrawProperties 静态方法",
+          "sourceSubtitleText": "后期维护的时候，光是找到某段绘制代码藏在哪一行，就要花半天时间。",
           "knowledgeFocus": {
             "id": "knowledge-03",
-            "label": "按渲染逻辑排列参数",
+            "label": "DrawProperties 静态方法",
             "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：按渲染逻辑排列参数"
+            "learnerTakeaway": "当前应聚焦理解：DrawProperties 静态方法"
           },
           "animation": {
             "type": "reveal-focus",
@@ -538,12 +538,12 @@
             "primaryEffect": "knowledge-highlight",
             "attentionPattern": "soft-blink-then-hold",
             "highlightTarget": "point-card",
-            "highlightText": "按渲染逻辑排列参数",
+            "highlightText": "DrawProperties 静态方法",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 17.33,
-              "peak": 28.53,
-              "settle": 45.33,
+              "start": 20.22,
+              "peak": 23.06,
+              "settle": 27.33,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -555,14 +555,14 @@
           },
           "compositionBeat": {
             "frameZone": "right support card middle",
-            "subject": "按渲染逻辑排列参数",
+            "subject": "DrawProperties 静态方法",
             "cameraAction": "locked frame; reveal or pulse the current card in place",
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "17.33s-45.33s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“按渲染逻辑排列参数”，弱化其他内容；旁白：核心观点 问题：Shader 属性多了，默认面板是一维长列表，美术不知道什么是什么 思路：按渲染逻辑分组，用 UI 边界（Vertical/Horizontal）建立视觉层次 金句：\"好的 GUI 不是把参数都摆出来，而是让美术知道先填什么、后填什么。",
+          "shotInstruction": "20.22s-27.33s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“DrawProperties 静态方法”，弱化其他内容；旁白：后期维护的时候，光是找到某段绘制代码藏在哪一行，就要花半天时间。",
           "focusInstruction": {
-            "focus": "按渲染逻辑排列参数",
+            "focus": "DrawProperties 静态方法",
             "deEmphasize": "other point cards and non-current code callouts",
             "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
           },
@@ -585,8 +585,8 @@
           },
           "timeRange": {
             "start": 0.0,
-            "end": 11.78,
-            "durationMs": 11780
+            "end": 16.67,
+            "durationMs": 16670
           },
           "type": "decoration",
           "demo": null,
@@ -614,13 +614,698 @@
           "cueId": "deco-cue-02",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 11.78,
+            "timecode": 16.67,
             "segmentIndex": 1
           },
           "timeRange": {
-            "start": 11.78,
-            "end": 17.33,
-            "durationMs": 5549
+            "start": 16.67,
+            "end": 20.22,
+            "durationMs": 3549
+          },
+          "type": "decoration",
+          "demo": null,
+          "payload": {
+            "particleType": "floating-cyan",
+            "count": 15,
+            "colors": [
+              "#67e8f9",
+              "#818cf8",
+              "#c084fc"
+            ],
+            "speedRange": [
+              0.2,
+              0.8
+            ],
+            "opacityRange": [
+              0.15,
+              0.4
+            ],
+            "mood": "clear, instructional, confident"
+          },
+          "zIndex": 10
+        },
+        {
+          "cueId": "deco-cue-03",
+          "trigger": {
+            "type": "subtitle-segment",
+            "timecode": 20.22,
+            "segmentIndex": 2
+          },
+          "timeRange": {
+            "start": 20.22,
+            "end": 27.33,
+            "durationMs": 7109
+          },
+          "type": "decoration",
+          "demo": null,
+          "payload": {
+            "particleType": "floating-cyan",
+            "count": 15,
+            "colors": [
+              "#67e8f9",
+              "#818cf8",
+              "#c084fc"
+            ],
+            "speedRange": [
+              0.2,
+              0.8
+            ],
+            "opacityRange": [
+              0.15,
+              0.4
+            ],
+            "mood": "clear, instructional, confident"
+          },
+          "zIndex": 10
+        }
+      ],
+      "animationHandoff": {
+        "target": "future-web-animation-module",
+        "triggerSource": "subtitle-events",
+        "subtitleEventPath": "/subtitles/Module_03/p00.json",
+        "bindingMode": "subtitle-time-range-with-knowledge-alignment",
+        "notes": [
+          "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
+          "Knowledge points are aligned to the closest subtitle segment by keyword overlap, with ordered fallback."
+        ]
+      },
+      "designDirectives": [
+        "Storyboard intent must guide layout hierarchy, color emphasis, and motion pacing.",
+        "Course production workflow text must not appear in the learner-facing slide canvas.",
+        "Animations must serve comprehension of teaching content, not decorative spectacle."
+      ]
+    },
+    {
+      "moduleId": "Module_03",
+      "slideId": "p01",
+      "route": "/module/Module_03/slide/p01",
+      "title": "Managed Properties：面板的行政管理",
+      "kind": "concept",
+      "sceneIndex": 1,
+      "audio": "/audio/Module_03/p01.mp3",
+      "subtitles": "/subtitles/Module_03/p01.json",
+      "transcript": "/transcripts/Module_03/Module_03-p01-逐字稿.md",
+      "storyPurpose": "Use this scene to make learners understand 'Managed Properties：面板的行政管理' through the content beats: 注册机制与自动补位 / 确保不漏掉参数 / 不重复绘制.",
+      "layoutIntent": {
+        "primaryFocus": "concept hierarchy and mental model",
+        "readingPath": "title -> core idea -> three supporting beats",
+        "density": "low-to-medium",
+        "emphasis": [
+          "注册机制与自动补位",
+          "确保不漏掉参数",
+          "不重复绘制"
+        ]
+      },
+      "visualComposition": {
+        "aspectRatio": "16:9 responsive canvas, preserve 7% outer safe margin",
+        "shotType": "wide instructional concept board",
+        "frameGrid": {
+          "columns": "left 56% hero concept and explanation, right 44% supporting cards",
+          "rows": "top metadata band, center concept body, bottom learner focus",
+          "anchor": "hero concept anchors upper-left; supporting beats form right-side vertical rhythm"
+        },
+        "foreground": {
+          "subject": "注册机制与自动补位",
+          "position": "left-center hero area",
+          "scale": "largest text block after title; primary learner attention"
+        },
+        "midground": {
+          "subject": "secondary point cards",
+          "position": "right-center, staggered stack",
+          "role": "show the sequence of supporting ideas"
+        },
+        "background": {
+          "subject": "soft radial highlights and dark glass panels",
+          "position": "corners and far background",
+          "role": "separate layers without becoming content"
+        },
+        "negativeSpace": "leave a quiet diagonal corridor from title to focus card for eye travel",
+        "readingDirection": "upper-left title -> left hero concept -> right supporting cards -> bottom focus statement",
+        "safeArea": "keep subtitle overlay and player controls outside the composed slide frame",
+        "cameraPlan": {
+          "base": "locked camera with stable slide geometry",
+          "beatMotion": "progressive emphasis on the current point card only",
+          "avoid": [
+            "layout reflow during narration",
+            "large parallax shifts",
+            "decorative motion unrelated to current knowledge point"
+          ]
+        }
+      },
+      "paletteIntent": {
+        "mood": "clear, instructional, confident",
+        "contrastRole": "use accent color to separate principle, example, and learner takeaway",
+        "avoid": [
+          "monochrome sameness",
+          "presentation decoration",
+          "workflow labels"
+        ]
+      },
+      "motionCues": [
+        {
+          "cueId": "cue-01",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 0,
+            "subtitleEventPath": "/subtitles/Module_03/p01.json",
+            "subtitleEventId": "s00",
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 13.56,
+            "durationMs": 13560
+          },
+          "target": "content-beat",
+          "contentBeat": "注册机制与自动补位",
+          "sourceSubtitleText": "Managed Properties：面板的行政管理 —— 逐字稿 在前面两节课里，我们学会了如何查找属性、如何绘制控件。",
+          "knowledgeFocus": {
+            "id": "knowledge-01",
+            "label": "注册机制与自动补位",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：注册机制与自动补位"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 420,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "pulse-once-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "注册机制与自动补位",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 5.42,
+              "settle": 13.56,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": false,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "left hero concept",
+            "subject": "注册机制与自动补位",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-13.56s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“注册机制与自动补位”，弱化其他内容；旁白：Managed Properties：面板的行政管理 —— 逐字稿 在前面两节课里，我们学会了如何查找属性、如何绘制控件。",
+          "focusInstruction": {
+            "focus": "注册机制与自动补位",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-02",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 1,
+            "subtitleEventPath": "/subtitles/Module_03/p01.json",
+            "subtitleEventId": "s01",
+            "timecode": 13.56
+          },
+          "timeRange": {
+            "start": 13.56,
+            "end": 28.44,
+            "durationMs": 14880
+          },
+          "target": "content-beat",
+          "contentBeat": "确保不漏掉参数",
+          "sourceSubtitleText": "但当一个 ShaderGUI 代码变得越来越长，你有没有遇到过这种情况：某个属性明明在 Shader 里定义了，但面板里就是没画出来？",
+          "knowledgeFocus": {
+            "id": "knowledge-02",
+            "label": "确保不漏掉参数",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：确保不漏掉参数"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "确保不漏掉参数",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 13.56,
+              "peak": 19.51,
+              "settle": 28.44,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card top",
+            "subject": "确保不漏掉参数",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "13.56s-28.44s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“确保不漏掉参数”，弱化其他内容；旁白：但当一个 ShaderGUI 代码变得越来越长，你有没有遇到过这种情况：某个属性明明在 Shader 里定义了，但面板里就是没画出来。",
+          "focusInstruction": {
+            "focus": "确保不漏掉参数",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-03",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 2,
+            "subtitleEventPath": "/subtitles/Module_03/p01.json",
+            "subtitleEventId": "s02",
+            "timecode": 28.44
+          },
+          "timeRange": {
+            "start": 28.44,
+            "end": 32.0,
+            "durationMs": 3560
+          },
+          "target": "content-beat",
+          "contentBeat": "不重复绘制",
+          "sourceSubtitleText": "或者更糟，同一个属性被画了两次？",
+          "knowledgeFocus": {
+            "id": "knowledge-03",
+            "label": "不重复绘制",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：不重复绘制"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "不重复绘制",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 28.44,
+              "peak": 29.86,
+              "settle": 32.0,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card middle",
+            "subject": "不重复绘制",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "28.44s-32.00s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“不重复绘制”，弱化其他内容；旁白：或者更糟，同一个属性被画了两次。",
+          "focusInstruction": {
+            "focus": "不重复绘制",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        }
+      ],
+      "visualSpecs": [
+        {
+          "cueId": "cue-01",
+          "trigger": {
+            "type": "subtitle-segment",
+            "timecode": 0.0,
+            "segmentIndex": 0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 13.56,
+            "durationMs": 13560
+          },
+          "target": "content-beat",
+          "contentBeat": "注册机制与自动补位",
+          "sourceSubtitleText": "Managed Properties：面板的行政管理 —— 逐字稿 在前面两节课里，我们学会了如何查找属性、如何绘制控件。",
+          "knowledgeFocus": {
+            "id": "knowledge-01",
+            "label": "注册机制与自动补位",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：注册机制与自动补位"
+          },
+          "animation": {
+            "type": "reveal-focus",
+            "durationMs": 420,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "pulse-once-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "注册机制与自动补位",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 5.42,
+              "settle": 13.56,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": false,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "left hero concept",
+            "subject": "注册机制与自动补位",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-13.56s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“注册机制与自动补位”，弱化其他内容；旁白：Managed Properties：面板的行政管理 —— 逐字稿 在前面两节课里，我们学会了如何查找属性、如何绘制控件。",
+          "focusInstruction": {
+            "focus": "注册机制与自动补位",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-02",
+          "trigger": {
+            "type": "subtitle-segment",
+            "timecode": 13.56,
+            "segmentIndex": 1
+          },
+          "timeRange": {
+            "start": 13.56,
+            "end": 28.44,
+            "durationMs": 14880
+          },
+          "target": "content-beat",
+          "contentBeat": "确保不漏掉参数",
+          "sourceSubtitleText": "但当一个 ShaderGUI 代码变得越来越长，你有没有遇到过这种情况：某个属性明明在 Shader 里定义了，但面板里就是没画出来？",
+          "knowledgeFocus": {
+            "id": "knowledge-02",
+            "label": "确保不漏掉参数",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：确保不漏掉参数"
+          },
+          "animation": {
+            "type": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "确保不漏掉参数",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 13.56,
+              "peak": 19.51,
+              "settle": 28.44,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card top",
+            "subject": "确保不漏掉参数",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "13.56s-28.44s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“确保不漏掉参数”，弱化其他内容；旁白：但当一个 ShaderGUI 代码变得越来越长，你有没有遇到过这种情况：某个属性明明在 Shader 里定义了，但面板里就是没画出来。",
+          "focusInstruction": {
+            "focus": "确保不漏掉参数",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-03",
+          "trigger": {
+            "type": "subtitle-segment",
+            "timecode": 28.44,
+            "segmentIndex": 2
+          },
+          "timeRange": {
+            "start": 28.44,
+            "end": 32.0,
+            "durationMs": 3560
+          },
+          "target": "content-beat",
+          "contentBeat": "不重复绘制",
+          "sourceSubtitleText": "或者更糟，同一个属性被画了两次？",
+          "knowledgeFocus": {
+            "id": "knowledge-03",
+            "label": "不重复绘制",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：不重复绘制"
+          },
+          "animation": {
+            "type": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "不重复绘制",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 28.44,
+              "peak": 29.86,
+              "settle": 32.0,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card middle",
+            "subject": "不重复绘制",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "28.44s-32.00s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“不重复绘制”，弱化其他内容；旁白：或者更糟，同一个属性被画了两次。",
+          "focusInstruction": {
+            "focus": "不重复绘制",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        }
+      ],
+      "performanceSpecs": [
+        {
+          "cueId": "deco-cue-01",
+          "trigger": {
+            "type": "subtitle-segment",
+            "timecode": 0.0,
+            "segmentIndex": 0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 13.56,
+            "durationMs": 13560
+          },
+          "type": "decoration",
+          "demo": null,
+          "payload": {
+            "particleType": "floating-cyan",
+            "count": 15,
+            "colors": [
+              "#67e8f9",
+              "#818cf8",
+              "#c084fc"
+            ],
+            "speedRange": [
+              0.2,
+              0.8
+            ],
+            "opacityRange": [
+              0.15,
+              0.4
+            ],
+            "mood": "clear, instructional, confident"
+          },
+          "zIndex": 10
+        },
+        {
+          "cueId": "deco-cue-02",
+          "trigger": {
+            "type": "subtitle-segment",
+            "timecode": 13.56,
+            "segmentIndex": 1
+          },
+          "timeRange": {
+            "start": 13.56,
+            "end": 28.44,
+            "durationMs": 14880
           },
           "type": "decoration",
           "demo": null,
@@ -648,13 +1333,13 @@
           "cueId": "perf-cue-03",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 17.33,
+            "timecode": 28.44,
             "segmentIndex": 2
           },
           "timeRange": {
-            "start": 17.33,
-            "end": 45.33,
-            "durationMs": 28000
+            "start": 28.44,
+            "end": 32.0,
+            "durationMs": 3559
           },
           "type": "demo",
           "demo": "flow-path",
@@ -691,7 +1376,7 @@
             "style": {
               "accentColor": "#67e8f9",
               "particleCount": 20,
-              "durationMs": 4000
+              "durationMs": 2492
             }
           },
           "zIndex": 10
@@ -700,13 +1385,13 @@
           "cueId": "deco-cue-03",
           "trigger": {
             "type": "subtitle-segment",
-            "timecode": 17.33,
+            "timecode": 28.44,
             "segmentIndex": 2
           },
           "timeRange": {
-            "start": 17.33,
-            "end": 45.33,
-            "durationMs": 28000
+            "start": 28.44,
+            "end": 32.0,
+            "durationMs": 3559
           },
           "type": "decoration",
           "demo": null,
@@ -734,1377 +1419,7 @@
       "animationHandoff": {
         "target": "future-web-animation-module",
         "triggerSource": "subtitle-events",
-        "subtitleEventPath": "/subtitles/Module_02/p00.json",
-        "bindingMode": "subtitle-time-range-with-knowledge-alignment",
-        "notes": [
-          "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
-          "Knowledge points are aligned to the closest subtitle segment by keyword overlap, with ordered fallback."
-        ]
-      },
-      "designDirectives": [
-        "Storyboard intent must guide layout hierarchy, color emphasis, and motion pacing.",
-        "Course production workflow text must not appear in the learner-facing slide canvas.",
-        "Animations must serve comprehension of teaching content, not decorative spectacle."
-      ]
-    },
-    {
-      "moduleId": "Module_02",
-      "slideId": "p01",
-      "route": "/module/Module_02/slide/p01",
-      "title": "只给用户他需要的：智能 UI 联动",
-      "kind": "concept",
-      "sceneIndex": 1,
-      "audio": "/audio/Module_02/p01.mp3",
-      "subtitles": "/subtitles/Module_02/p01.json",
-      "transcript": "/transcripts/Module_02/Module_02-p01-逐字稿.md",
-      "storyPurpose": "Use this scene to make learners understand '只给用户他需要的：智能 UI 联动' through the content beats: 条件显示技术 / Toggle/Enum 控制参数组显隐 / EditorGUI.DisabledScope 应用.",
-      "layoutIntent": {
-        "primaryFocus": "concept hierarchy and mental model",
-        "readingPath": "title -> core idea -> three supporting beats",
-        "density": "low-to-medium",
-        "emphasis": [
-          "条件显示技术",
-          "Toggle/Enum 控制参数组显隐",
-          "EditorGUI.DisabledScope 应用"
-        ]
-      },
-      "visualComposition": {
-        "aspectRatio": "16:9 responsive canvas, preserve 7% outer safe margin",
-        "shotType": "wide instructional concept board",
-        "frameGrid": {
-          "columns": "left 56% hero concept and explanation, right 44% supporting cards",
-          "rows": "top metadata band, center concept body, bottom learner focus",
-          "anchor": "hero concept anchors upper-left; supporting beats form right-side vertical rhythm"
-        },
-        "foreground": {
-          "subject": "条件显示技术",
-          "position": "left-center hero area",
-          "scale": "largest text block after title; primary learner attention"
-        },
-        "midground": {
-          "subject": "secondary point cards",
-          "position": "right-center, staggered stack",
-          "role": "show the sequence of supporting ideas"
-        },
-        "background": {
-          "subject": "soft radial highlights and dark glass panels",
-          "position": "corners and far background",
-          "role": "separate layers without becoming content"
-        },
-        "negativeSpace": "leave a quiet diagonal corridor from title to focus card for eye travel",
-        "readingDirection": "upper-left title -> left hero concept -> right supporting cards -> bottom focus statement",
-        "safeArea": "keep subtitle overlay and player controls outside the composed slide frame",
-        "cameraPlan": {
-          "base": "locked camera with stable slide geometry",
-          "beatMotion": "progressive emphasis on the current point card only",
-          "avoid": [
-            "layout reflow during narration",
-            "large parallax shifts",
-            "decorative motion unrelated to current knowledge point"
-          ]
-        }
-      },
-      "paletteIntent": {
-        "mood": "clear, instructional, confident",
-        "contrastRole": "use accent color to separate principle, example, and learner takeaway",
-        "avoid": [
-          "monochrome sameness",
-          "presentation decoration",
-          "workflow labels"
-        ]
-      },
-      "motionCues": [
-        {
-          "cueId": "cue-01",
-          "trigger": {
-            "type": "subtitle-segment",
-            "segmentIndex": 0,
-            "subtitleEventPath": "/subtitles/Module_02/p01.json",
-            "subtitleEventId": "s00",
-            "timecode": 0.0
-          },
-          "timeRange": {
-            "start": 0.0,
-            "end": 13.56,
-            "durationMs": 13560
-          },
-          "target": "content-beat",
-          "contentBeat": "条件显示技术",
-          "sourceSubtitleText": "只给用户他需要的：智能 UI 联动 —— 逐字稿 好的面板不是\"能改所有参数\"，而是\"在当前配置下，只展示有意义的参数\"。",
-          "knowledgeFocus": {
-            "id": "knowledge-01",
-            "label": "条件显示技术",
-            "source": "slide.points",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：条件显示技术"
-          },
-          "animation": {
-            "name": "reveal-focus",
-            "durationMs": 420,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "pulse-once-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "条件显示技术",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 0.0,
-              "peak": 5.42,
-              "settle": 13.56,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": false,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "left hero concept",
-            "subject": "条件显示技术",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "0.00s-13.56s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“条件显示技术”，弱化其他内容；旁白：只给用户他需要的：智能 UI 联动 —— 逐字稿 好的面板不是\"能改所有参数\"，而是\"在当前配置下，只展示有意义的参数\"。",
-          "focusInstruction": {
-            "focus": "条件显示技术",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        },
-        {
-          "cueId": "cue-02",
-          "trigger": {
-            "type": "subtitle-segment",
-            "segmentIndex": 1,
-            "subtitleEventPath": "/subtitles/Module_02/p01.json",
-            "subtitleEventId": "s01",
-            "timecode": 13.56
-          },
-          "timeRange": {
-            "start": 13.56,
-            "end": 16.67,
-            "durationMs": 3110
-          },
-          "target": "content-beat",
-          "contentBeat": "Toggle/Enum 控制参数组显隐",
-          "sourceSubtitleText": "条件显示是专业感的核心来源。",
-          "knowledgeFocus": {
-            "id": "knowledge-02",
-            "label": "Toggle/Enum 控制参数组显隐",
-            "source": "slide.points",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：Toggle/Enum 控制参数组显隐"
-          },
-          "animation": {
-            "name": "reveal-focus",
-            "durationMs": 360,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "soft-blink-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "Toggle/Enum 控制参数组显隐",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 13.56,
-              "peak": 14.8,
-              "settle": 16.67,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": true,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "right support card top",
-            "subject": "Toggle/Enum 控制参数组显隐",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "13.56s-16.67s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“Toggle/Enum 控制参数组显隐”，弱化其他内容；旁白：条件显示是专业感的核心来源。",
-          "focusInstruction": {
-            "focus": "Toggle/Enum 控制参数组显隐",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        },
-        {
-          "cueId": "cue-03",
-          "trigger": {
-            "type": "subtitle-segment",
-            "segmentIndex": 2,
-            "subtitleEventPath": "/subtitles/Module_02/p01.json",
-            "subtitleEventId": "s02",
-            "timecode": 16.67
-          },
-          "timeRange": {
-            "start": 16.67,
-            "end": 34.22,
-            "durationMs": 17550
-          },
-          "target": "content-beat",
-          "contentBeat": "EditorGUI.DisabledScope 应用",
-          "sourceSubtitleText": "核心观点 问题：枚举切换后，某些参数对当前配置无意义，但还显示着，干扰判断 思路：监听关键属性（Toggle/Enum），用 EditorGUILayout.",
-          "knowledgeFocus": {
-            "id": "knowledge-03",
-            "label": "EditorGUI.DisabledScope 应用",
-            "source": "slide.points",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：EditorGUI.DisabledScope 应用"
-          },
-          "animation": {
-            "name": "reveal-focus",
-            "durationMs": 360,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "soft-blink-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "EditorGUI.DisabledScope 应用",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 16.67,
-              "peak": 23.69,
-              "settle": 34.22,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": true,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "right support card middle",
-            "subject": "EditorGUI.DisabledScope 应用",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "16.67s-34.22s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“EditorGUI.DisabledScope 应用”，弱化其他内容；旁白：核心观点 问题：枚举切换后，某些参数对当前配置无意义，但还显示着，干扰判断 思路：监听关键属性（Toggle/Enum），用 EditorGUILayout。",
-          "focusInstruction": {
-            "focus": "EditorGUI.DisabledScope 应用",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        }
-      ],
-      "visualSpecs": [
-        {
-          "cueId": "cue-01",
-          "trigger": {
-            "type": "subtitle-segment",
-            "timecode": 0.0,
-            "segmentIndex": 0
-          },
-          "timeRange": {
-            "start": 0.0,
-            "end": 13.56,
-            "durationMs": 13560
-          },
-          "target": "content-beat",
-          "contentBeat": "条件显示技术",
-          "sourceSubtitleText": "只给用户他需要的：智能 UI 联动 —— 逐字稿 好的面板不是\"能改所有参数\"，而是\"在当前配置下，只展示有意义的参数\"。",
-          "knowledgeFocus": {
-            "id": "knowledge-01",
-            "label": "条件显示技术",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：条件显示技术"
-          },
-          "animation": {
-            "type": "reveal-focus",
-            "durationMs": 420,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "pulse-once-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "条件显示技术",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 0.0,
-              "peak": 5.42,
-              "settle": 13.56,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": false,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "left hero concept",
-            "subject": "条件显示技术",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "0.00s-13.56s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“条件显示技术”，弱化其他内容；旁白：只给用户他需要的：智能 UI 联动 —— 逐字稿 好的面板不是\"能改所有参数\"，而是\"在当前配置下，只展示有意义的参数\"。",
-          "focusInstruction": {
-            "focus": "条件显示技术",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        },
-        {
-          "cueId": "cue-02",
-          "trigger": {
-            "type": "subtitle-segment",
-            "timecode": 13.56,
-            "segmentIndex": 1
-          },
-          "timeRange": {
-            "start": 13.56,
-            "end": 16.67,
-            "durationMs": 3110
-          },
-          "target": "content-beat",
-          "contentBeat": "Toggle/Enum 控制参数组显隐",
-          "sourceSubtitleText": "条件显示是专业感的核心来源。",
-          "knowledgeFocus": {
-            "id": "knowledge-02",
-            "label": "Toggle/Enum 控制参数组显隐",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：Toggle/Enum 控制参数组显隐"
-          },
-          "animation": {
-            "type": "reveal-focus",
-            "durationMs": 360,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "soft-blink-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "Toggle/Enum 控制参数组显隐",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 13.56,
-              "peak": 14.8,
-              "settle": 16.67,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": true,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "right support card top",
-            "subject": "Toggle/Enum 控制参数组显隐",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "13.56s-16.67s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“Toggle/Enum 控制参数组显隐”，弱化其他内容；旁白：条件显示是专业感的核心来源。",
-          "focusInstruction": {
-            "focus": "Toggle/Enum 控制参数组显隐",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        },
-        {
-          "cueId": "cue-03",
-          "trigger": {
-            "type": "subtitle-segment",
-            "timecode": 16.67,
-            "segmentIndex": 2
-          },
-          "timeRange": {
-            "start": 16.67,
-            "end": 34.22,
-            "durationMs": 17550
-          },
-          "target": "content-beat",
-          "contentBeat": "EditorGUI.DisabledScope 应用",
-          "sourceSubtitleText": "核心观点 问题：枚举切换后，某些参数对当前配置无意义，但还显示着，干扰判断 思路：监听关键属性（Toggle/Enum），用 EditorGUILayout.",
-          "knowledgeFocus": {
-            "id": "knowledge-03",
-            "label": "EditorGUI.DisabledScope 应用",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：EditorGUI.DisabledScope 应用"
-          },
-          "animation": {
-            "type": "reveal-focus",
-            "durationMs": 360,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "soft-blink-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "EditorGUI.DisabledScope 应用",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 16.67,
-              "peak": 23.69,
-              "settle": 34.22,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": true,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "right support card middle",
-            "subject": "EditorGUI.DisabledScope 应用",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "16.67s-34.22s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“EditorGUI.DisabledScope 应用”，弱化其他内容；旁白：核心观点 问题：枚举切换后，某些参数对当前配置无意义，但还显示着，干扰判断 思路：监听关键属性（Toggle/Enum），用 EditorGUILayout。",
-          "focusInstruction": {
-            "focus": "EditorGUI.DisabledScope 应用",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        }
-      ],
-      "performanceSpecs": [
-        {
-          "cueId": "deco-cue-01",
-          "trigger": {
-            "type": "subtitle-segment",
-            "timecode": 0.0,
-            "segmentIndex": 0
-          },
-          "timeRange": {
-            "start": 0.0,
-            "end": 13.56,
-            "durationMs": 13560
-          },
-          "type": "decoration",
-          "demo": null,
-          "payload": {
-            "particleType": "floating-cyan",
-            "count": 15,
-            "colors": [
-              "#67e8f9",
-              "#818cf8",
-              "#c084fc"
-            ],
-            "speedRange": [
-              0.2,
-              0.8
-            ],
-            "opacityRange": [
-              0.15,
-              0.4
-            ],
-            "mood": "clear, instructional, confident"
-          },
-          "zIndex": 10
-        },
-        {
-          "cueId": "deco-cue-02",
-          "trigger": {
-            "type": "subtitle-segment",
-            "timecode": 13.56,
-            "segmentIndex": 1
-          },
-          "timeRange": {
-            "start": 13.56,
-            "end": 16.67,
-            "durationMs": 3110
-          },
-          "type": "decoration",
-          "demo": null,
-          "payload": {
-            "particleType": "floating-cyan",
-            "count": 15,
-            "colors": [
-              "#67e8f9",
-              "#818cf8",
-              "#c084fc"
-            ],
-            "speedRange": [
-              0.2,
-              0.8
-            ],
-            "opacityRange": [
-              0.15,
-              0.4
-            ],
-            "mood": "clear, instructional, confident"
-          },
-          "zIndex": 10
-        },
-        {
-          "cueId": "deco-cue-03",
-          "trigger": {
-            "type": "subtitle-segment",
-            "timecode": 16.67,
-            "segmentIndex": 2
-          },
-          "timeRange": {
-            "start": 16.67,
-            "end": 34.22,
-            "durationMs": 17549
-          },
-          "type": "decoration",
-          "demo": null,
-          "payload": {
-            "particleType": "floating-cyan",
-            "count": 15,
-            "colors": [
-              "#67e8f9",
-              "#818cf8",
-              "#c084fc"
-            ],
-            "speedRange": [
-              0.2,
-              0.8
-            ],
-            "opacityRange": [
-              0.15,
-              0.4
-            ],
-            "mood": "clear, instructional, confident"
-          },
-          "zIndex": 10
-        }
-      ],
-      "animationHandoff": {
-        "target": "future-web-animation-module",
-        "triggerSource": "subtitle-events",
-        "subtitleEventPath": "/subtitles/Module_02/p01.json",
-        "bindingMode": "subtitle-time-range-with-knowledge-alignment",
-        "notes": [
-          "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
-          "Knowledge points are aligned to the closest subtitle segment by keyword overlap, with ordered fallback."
-        ]
-      },
-      "designDirectives": [
-        "Storyboard intent must guide layout hierarchy, color emphasis, and motion pacing.",
-        "Course production workflow text must not appear in the learner-facing slide canvas.",
-        "Animations must serve comprehension of teaching content, not decorative spectacle."
-      ]
-    },
-    {
-      "moduleId": "Module_02",
-      "slideId": "p02",
-      "route": "/module/Module_02/slide/p02",
-      "title": "拒绝代码重复：打造 ShaderGUI 工具箱",
-      "kind": "concept",
-      "sceneIndex": 2,
-      "audio": "/audio/Module_02/p02.mp3",
-      "subtitles": "/subtitles/Module_02/p02.json",
-      "transcript": "/transcripts/Module_02/Module_02-p02-封装工具类.md",
-      "storyPurpose": "Use this scene to make learners understand '拒绝代码重复：打造 ShaderGUI 工具箱' through the content beats: 封装 DrawProp / DrawTex / BeginGroup 工具类 / 提高编写效率 / 视觉统一性.",
-      "layoutIntent": {
-        "primaryFocus": "concept hierarchy and mental model",
-        "readingPath": "title -> core idea -> three supporting beats",
-        "density": "low-to-medium",
-        "emphasis": [
-          "封装 DrawProp / DrawTex / BeginGroup 工具类",
-          "提高编写效率",
-          "视觉统一性"
-        ]
-      },
-      "visualComposition": {
-        "aspectRatio": "16:9 responsive canvas, preserve 7% outer safe margin",
-        "shotType": "wide instructional concept board",
-        "frameGrid": {
-          "columns": "left 56% hero concept and explanation, right 44% supporting cards",
-          "rows": "top metadata band, center concept body, bottom learner focus",
-          "anchor": "hero concept anchors upper-left; supporting beats form right-side vertical rhythm"
-        },
-        "foreground": {
-          "subject": "封装 DrawProp / DrawTex / BeginGroup 工具类",
-          "position": "left-center hero area",
-          "scale": "largest text block after title; primary learner attention"
-        },
-        "midground": {
-          "subject": "secondary point cards",
-          "position": "right-center, staggered stack",
-          "role": "show the sequence of supporting ideas"
-        },
-        "background": {
-          "subject": "soft radial highlights and dark glass panels",
-          "position": "corners and far background",
-          "role": "separate layers without becoming content"
-        },
-        "negativeSpace": "leave a quiet diagonal corridor from title to focus card for eye travel",
-        "readingDirection": "upper-left title -> left hero concept -> right supporting cards -> bottom focus statement",
-        "safeArea": "keep subtitle overlay and player controls outside the composed slide frame",
-        "cameraPlan": {
-          "base": "locked camera with stable slide geometry",
-          "beatMotion": "progressive emphasis on the current point card only",
-          "avoid": [
-            "layout reflow during narration",
-            "large parallax shifts",
-            "decorative motion unrelated to current knowledge point"
-          ]
-        }
-      },
-      "paletteIntent": {
-        "mood": "clear, instructional, confident",
-        "contrastRole": "use accent color to separate principle, example, and learner takeaway",
-        "avoid": [
-          "monochrome sameness",
-          "presentation decoration",
-          "workflow labels"
-        ]
-      },
-      "motionCues": [
-        {
-          "cueId": "cue-01",
-          "trigger": {
-            "type": "subtitle-segment",
-            "segmentIndex": 0,
-            "subtitleEventPath": "/subtitles/Module_02/p02.json",
-            "subtitleEventId": "s00",
-            "timecode": 0.0
-          },
-          "timeRange": {
-            "start": 0.0,
-            "end": 16.89,
-            "durationMs": 16890
-          },
-          "target": "content-beat",
-          "contentBeat": "封装 DrawProp / DrawTex / BeginGroup 工具类",
-          "sourceSubtitleText": "阶段6：封装工具类（Refactoring Utility）—— 逐字稿 如果我们每个 ShaderGUI 都手写一遍 EditorGUILayout.",
-          "knowledgeFocus": {
-            "id": "knowledge-01",
-            "label": "封装 DrawProp / DrawTex / BeginGroup 工具类",
-            "source": "slide.points",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：封装 DrawProp / DrawTex / BeginGroup 工具类"
-          },
-          "animation": {
-            "name": "reveal-focus",
-            "durationMs": 420,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "pulse-once-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "封装 DrawProp / DrawTex / BeginGroup 工具类",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 0.0,
-              "peak": 6.76,
-              "settle": 16.89,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": false,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "left hero concept",
-            "subject": "封装 DrawProp / DrawTex / BeginGroup 工具类",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "0.00s-16.89s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“封装 DrawProp / DrawTex / BeginGroup 工具类”，弱化其他内容；旁白：阶段6：封装工具类（Refactoring Utility）—— 逐字稿 如果我们每个 ShaderGUI 都手写一遍 EditorGUILayout。",
-          "focusInstruction": {
-            "focus": "封装 DrawProp / DrawTex / BeginGroup 工具类",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        },
-        {
-          "cueId": "cue-02",
-          "trigger": {
-            "type": "subtitle-segment",
-            "segmentIndex": 1,
-            "subtitleEventPath": "/subtitles/Module_02/p02.json",
-            "subtitleEventId": "s01",
-            "timecode": 16.89
-          },
-          "timeRange": {
-            "start": 16.89,
-            "end": 24.44,
-            "durationMs": 7550
-          },
-          "target": "content-beat",
-          "contentBeat": "提高编写效率",
-          "sourceSubtitleText": "BeginVertical(\"box\")，代码会变得冗长且难以维护。",
-          "knowledgeFocus": {
-            "id": "knowledge-02",
-            "label": "提高编写效率",
-            "source": "slide.points",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：提高编写效率"
-          },
-          "animation": {
-            "name": "reveal-focus",
-            "durationMs": 360,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "soft-blink-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "提高编写效率",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 16.89,
-              "peak": 19.91,
-              "settle": 24.44,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": true,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "right support card top",
-            "subject": "提高编写效率",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "16.89s-24.44s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“提高编写效率”，弱化其他内容；旁白：BeginVertical(\"box\")，代码会变得冗长且难以维护。",
-          "focusInstruction": {
-            "focus": "提高编写效率",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        },
-        {
-          "cueId": "cue-03",
-          "trigger": {
-            "type": "subtitle-segment",
-            "segmentIndex": 2,
-            "subtitleEventPath": "/subtitles/Module_02/p02.json",
-            "subtitleEventId": "s02",
-            "timecode": 24.44
-          },
-          "timeRange": {
-            "start": 24.44,
-            "end": 27.56,
-            "durationMs": 3120
-          },
-          "target": "content-beat",
-          "contentBeat": "视觉统一性",
-          "sourceSubtitleText": "作为开发者，我们要学会抽象。",
-          "knowledgeFocus": {
-            "id": "knowledge-03",
-            "label": "视觉统一性",
-            "source": "slide.points",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：视觉统一性"
-          },
-          "animation": {
-            "name": "reveal-focus",
-            "durationMs": 360,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "soft-blink-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "视觉统一性",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 24.44,
-              "peak": 25.69,
-              "settle": 27.56,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": true,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "right support card middle",
-            "subject": "视觉统一性",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "24.44s-27.56s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“视觉统一性”，弱化其他内容；旁白：作为开发者，我们要学会抽象。",
-          "focusInstruction": {
-            "focus": "视觉统一性",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        }
-      ],
-      "visualSpecs": [
-        {
-          "cueId": "cue-01",
-          "trigger": {
-            "type": "subtitle-segment",
-            "timecode": 0.0,
-            "segmentIndex": 0
-          },
-          "timeRange": {
-            "start": 0.0,
-            "end": 16.89,
-            "durationMs": 16890
-          },
-          "target": "content-beat",
-          "contentBeat": "封装 DrawProp / DrawTex / BeginGroup 工具类",
-          "sourceSubtitleText": "阶段6：封装工具类（Refactoring Utility）—— 逐字稿 如果我们每个 ShaderGUI 都手写一遍 EditorGUILayout.",
-          "knowledgeFocus": {
-            "id": "knowledge-01",
-            "label": "封装 DrawProp / DrawTex / BeginGroup 工具类",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：封装 DrawProp / DrawTex / BeginGroup 工具类"
-          },
-          "animation": {
-            "type": "reveal-focus",
-            "durationMs": 420,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "pulse-once-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "封装 DrawProp / DrawTex / BeginGroup 工具类",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 0.0,
-              "peak": 6.76,
-              "settle": 16.89,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": false,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "left hero concept",
-            "subject": "封装 DrawProp / DrawTex / BeginGroup 工具类",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "0.00s-16.89s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“封装 DrawProp / DrawTex / BeginGroup 工具类”，弱化其他内容；旁白：阶段6：封装工具类（Refactoring Utility）—— 逐字稿 如果我们每个 ShaderGUI 都手写一遍 EditorGUILayout。",
-          "focusInstruction": {
-            "focus": "封装 DrawProp / DrawTex / BeginGroup 工具类",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        },
-        {
-          "cueId": "cue-02",
-          "trigger": {
-            "type": "subtitle-segment",
-            "timecode": 16.89,
-            "segmentIndex": 1
-          },
-          "timeRange": {
-            "start": 16.89,
-            "end": 24.44,
-            "durationMs": 7550
-          },
-          "target": "content-beat",
-          "contentBeat": "提高编写效率",
-          "sourceSubtitleText": "BeginVertical(\"box\")，代码会变得冗长且难以维护。",
-          "knowledgeFocus": {
-            "id": "knowledge-02",
-            "label": "提高编写效率",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：提高编写效率"
-          },
-          "animation": {
-            "type": "reveal-focus",
-            "durationMs": 360,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "soft-blink-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "提高编写效率",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 16.89,
-              "peak": 19.91,
-              "settle": 24.44,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": true,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "right support card top",
-            "subject": "提高编写效率",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "16.89s-24.44s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“提高编写效率”，弱化其他内容；旁白：BeginVertical(\"box\")，代码会变得冗长且难以维护。",
-          "focusInstruction": {
-            "focus": "提高编写效率",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        },
-        {
-          "cueId": "cue-03",
-          "trigger": {
-            "type": "subtitle-segment",
-            "timecode": 24.44,
-            "segmentIndex": 2
-          },
-          "timeRange": {
-            "start": 24.44,
-            "end": 27.56,
-            "durationMs": 3120
-          },
-          "target": "content-beat",
-          "contentBeat": "视觉统一性",
-          "sourceSubtitleText": "作为开发者，我们要学会抽象。",
-          "knowledgeFocus": {
-            "id": "knowledge-03",
-            "label": "视觉统一性",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：视觉统一性"
-          },
-          "animation": {
-            "type": "reveal-focus",
-            "durationMs": 360,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "soft-blink-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "视觉统一性",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 24.44,
-              "peak": 25.69,
-              "settle": 27.56,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": true,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "right support card middle",
-            "subject": "视觉统一性",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "24.44s-27.56s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“视觉统一性”，弱化其他内容；旁白：作为开发者，我们要学会抽象。",
-          "focusInstruction": {
-            "focus": "视觉统一性",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        }
-      ],
-      "performanceSpecs": [
-        {
-          "cueId": "deco-cue-01",
-          "trigger": {
-            "type": "subtitle-segment",
-            "timecode": 0.0,
-            "segmentIndex": 0
-          },
-          "timeRange": {
-            "start": 0.0,
-            "end": 16.89,
-            "durationMs": 16890
-          },
-          "type": "decoration",
-          "demo": null,
-          "payload": {
-            "particleType": "floating-cyan",
-            "count": 15,
-            "colors": [
-              "#67e8f9",
-              "#818cf8",
-              "#c084fc"
-            ],
-            "speedRange": [
-              0.2,
-              0.8
-            ],
-            "opacityRange": [
-              0.15,
-              0.4
-            ],
-            "mood": "clear, instructional, confident"
-          },
-          "zIndex": 10
-        },
-        {
-          "cueId": "deco-cue-02",
-          "trigger": {
-            "type": "subtitle-segment",
-            "timecode": 16.89,
-            "segmentIndex": 1
-          },
-          "timeRange": {
-            "start": 16.89,
-            "end": 24.44,
-            "durationMs": 7550
-          },
-          "type": "decoration",
-          "demo": null,
-          "payload": {
-            "particleType": "floating-cyan",
-            "count": 15,
-            "colors": [
-              "#67e8f9",
-              "#818cf8",
-              "#c084fc"
-            ],
-            "speedRange": [
-              0.2,
-              0.8
-            ],
-            "opacityRange": [
-              0.15,
-              0.4
-            ],
-            "mood": "clear, instructional, confident"
-          },
-          "zIndex": 10
-        },
-        {
-          "cueId": "deco-cue-03",
-          "trigger": {
-            "type": "subtitle-segment",
-            "timecode": 24.44,
-            "segmentIndex": 2
-          },
-          "timeRange": {
-            "start": 24.44,
-            "end": 27.56,
-            "durationMs": 3119
-          },
-          "type": "decoration",
-          "demo": null,
-          "payload": {
-            "particleType": "floating-cyan",
-            "count": 15,
-            "colors": [
-              "#67e8f9",
-              "#818cf8",
-              "#c084fc"
-            ],
-            "speedRange": [
-              0.2,
-              0.8
-            ],
-            "opacityRange": [
-              0.15,
-              0.4
-            ],
-            "mood": "clear, instructional, confident"
-          },
-          "zIndex": 10
-        }
-      ],
-      "animationHandoff": {
-        "target": "future-web-animation-module",
-        "triggerSource": "subtitle-events",
-        "subtitleEventPath": "/subtitles/Module_02/p02.json",
+        "subtitleEventPath": "/subtitles/Module_03/p01.json",
         "bindingMode": "subtitle-time-range-with-knowledge-alignment",
         "notes": [
           "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
@@ -2120,9 +1435,9 @@
   ],
   "interactiveScreens": [
     {
-      "moduleId": "Module_02",
+      "moduleId": "Module_03",
       "screenId": "quiz",
-      "route": "/module/Module_02/quiz",
+      "route": "/module/Module_03/quiz",
       "title": "做题页",
       "screenType": "realtime-quiz",
       "storyPurpose": "Let learners answer one focused question at a time, with randomized question order, randomized options, automatic progression, and a final score review.",
@@ -2278,7 +1593,7 @@
     }
   ],
   "_validation": {
-    "lastStoryboardCheck": "2026-05-05T11:47:27Z",
+    "lastStoryboardCheck": "2026-05-05T11:47:59Z",
     "cueBindingPolicy": "subtitle segment indexes bind to concrete timecodes after audio generation",
     "realtimeInteractionPolicy": "user actions and state changes bind to concrete Vue event handlers in QuizView"
   }
