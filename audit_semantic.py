@@ -24,8 +24,8 @@ for s in c["slides"]:
     # 检查 performanceSpecs 类型分布
     pts = {}
     for ps in s.get("performanceSpecs", []):
-        pt = ps.get("performanceType", "?")
-        dt = ps.get("demoType", "-")
+        pt = ps.get("type", "?")
+        dt = ps.get("demo", "-")
         pts.setdefault(pt, []).append(dt)
     print(f"  performance types: {pts}")
 

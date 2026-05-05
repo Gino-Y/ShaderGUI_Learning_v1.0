@@ -379,14 +379,14 @@ class StoryboardMCP:
                 valid_demo_types = {"flow-path", "shader-preview", None}
                 for pidx, pspec in enumerate(perf_specs):
                     pprefix = f"performanceSpecs[{pidx}]"
-                    for req_field in ("cueId", "trigger", "timeRange", "performanceType", "payload"):
+                    for req_field in ("cueId", "trigger", "timeRange", "type", "payload"):
                         if pspec.get(req_field) is None:
                             errors.append({"slideId": sid, "field": f"{pprefix}.{req_field}", "issue": "missing", "severity": "error"})
-                    pt = pspec.get("performanceType")
+                    pt = pspec.get("type")
                     if pt not in valid_perf_types:
-                        errors.append({"slideId": sid, "field": f"{pprefix}.performanceType", "issue": f"must be one of {valid_perf_types}", "severity": "error"})
-                    if pt == "demo" and pspec.get("demoType") not in {"flow-path", "shader-preview"}:
-                        errors.append({"slideId": sid, "field": f"{pprefix}.demoType", "issue": "must be a valid demo type for demo performance", "severity": "error"})
+                        errors.append({"slideId": sid, "field": f"{pprefix}.type", "issue": f"must be one of {valid_perf_types}", "severity": "error"})
+                    if pt == "demo" and pspec.get("demo") not in {"flow-path", "shader-preview"}:
+                        errors.append({"slideId": sid, "field": f"{pprefix}.demo", "issue": "must be a valid demo type for demo performance", "severity": "error"})
                     ptrigger = pspec.get("trigger", {})
                     if ptrigger.get("type") != "subtitle-segment":
                         errors.append({"slideId": sid, "field": f"{pprefix}.trigger.type", "issue": "must be subtitle-segment", "severity": "error"})
@@ -1153,8 +1153,8 @@ class StoryboardMCP:
                 "end": round(end, 2),
                 "durationMs": duration_ms,
             },
-            "performanceType": performance_type,
-            "demoType": demo_type if performance_type == "demo" else None,
+            "type": performance_type,
+            "demo": demo_type if performance_type == "demo" else None,
             "payload": payload,
             "zIndex": 10,
         }

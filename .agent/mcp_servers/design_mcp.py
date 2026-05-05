@@ -137,7 +137,7 @@ class DesignMCP:
             # Combine storyboard motion cues and slide kind into a component list.
             motion_cues = storyboard_slide.get("motionCues", [])
             has_performance = any(
-                cue.get("performanceType") == "demo" for cue in motion_cues
+                cue.get("type") == "demo" for cue in motion_cues
             )
             if has_performance:
                 component_list = list(DesignMCP.COMPONENT_SETS["concept_diagram"])

@@ -34,6 +34,6 @@ else:
 print("\n[3] Checking performanceSpecs types...")
 contract = json.loads(contract_path.read_text(encoding="utf-8"))
 for s in contract.get("slides", []):
-    types = set(p.get("performanceType") for p in s.get("performanceSpecs", []))
-    demo_types = [p.get("demoType") for p in s.get("performanceSpecs", []) if p.get("performanceType") == "demo"]
+    types = set(p.get("type") for p in s.get("performanceSpecs", []))
+    demo_types = [p.get("demo") for p in s.get("performanceSpecs", []) if p.get("type") == "demo"]
     print(f"    {s['slideId']}: performanceTypes={types}, demoTypes={demo_types}")
