@@ -15,10 +15,12 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
     sys.stdout.reconfigure(encoding="utf-8")
 
 sys.path.append(str(Path(__file__).resolve().parent))
+from mcp_servers.adp_mcp import ADPMCP
 from mcp_servers.app_mcp import AppMCP
 from mcp_servers.audit_mcp import AuditMCP
 from mcp_servers.build_mcp import BuildMCP
 from mcp_servers.course_mcp import CourseMCP
+from mcp_servers.design_mcp import DesignMCP
 from mcp_servers.mvp_mcp import MVPMCP
 from mcp_servers.design_mcp import DesignMCP
 from mcp_servers.storyboard_mcp import StoryboardMCP
@@ -76,7 +78,7 @@ class CorePipeline:
         state.status = next_status
         return state
 
-    def run(self, state: FlowState, stop_after_stage: str = "post") -> FlowState:
+    def run(self, state: FlowState, stop_after_stage: str = "post", mode: str = "mvp") -> FlowState:
         print("============== ShaderGUI Course DAG Runner ==============")
         print(f"[Task] module={state.module}")
 
@@ -104,8 +106,12 @@ class CorePipeline:
             state.status = "CLEANUP_BEFORE_MVP_READY"
 
         if state.status == "CLEANUP_BEFORE_MVP_READY":
-            print("-> [Prereq 3/3] 生成 MVP 产物（CourseApp / CourseContent / scripts）...")
-            res = MVPMCP.generate_products(self.workspace, state.module)
+            print("-> [Prereq 3/3] 生成产物（CourseApp / CourseContent / scripts）...")
+            if mode == "adp":
+                res = ADPMCP.generate_products(self.workspace, state.module)
+                print(f"[ADP] 使用 ADPMCP 生成完整产物")
+            else:
+                res = MVPMCP.generate_products(self.workspace, state.module)
             state = self._require_success(state, res, "MVP_PRODUCTS_READY")
             if state.status == "FAILED":
                 return state
@@ -290,10 +296,12 @@ def main() -> int:
     parser.add_argument("--module", default="Module_01")
     parser.add_argument("--basedir", default=str(Path(__file__).resolve().parents[1]))
     parser.add_argument("--max-retries", type=int, default=3, help="自检最大重试次数 (默认 3)")
+    parser.add_argument("--adp", action="store_true", help="使用 ADPMCP 生成完整产物（非 MVP）")
     args = parser.parse_args()
 
     workspace = assert_workspace(Path(args.basedir))
     targets = expand_targets(workspace, args.scope, args.module)
+    mode = "adp" if args.adp else "mvp"
 
     if args.mode == "test" and args.stage:
         for module in targets:
@@ -305,7 +313,7 @@ def main() -> int:
     failed = []
     engine = CorePipeline(workspace)
     for module in targets:
-        final_state = engine.run(FlowState(module=module, max_retries=args.max_retries), stop_after_stage="post")
+        final_state = engine.run(FlowState(module=module, max_retries=args.max_retries), stop_after_stage="post", mode=mode)
         print(f"[MODULE {module} END_STATE] {final_state.status}")
         if final_state.status == "FAILED":
             failed.append(module)
