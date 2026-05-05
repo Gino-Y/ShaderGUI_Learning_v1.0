@@ -21,7 +21,7 @@ class ADPMCP:
             source = ADPMCP._load_module_source(workspace, module)
             slide_ids = ADPMCP._resolve_adp_slide_ids(workspace, module, source["slides"])
             source["slides"] = [slide for slide in source["slides"] if slide["slideId"] in slide_ids]
-            cleaned = ADPMCP._clean_mvp_products(workspace, module)
+            cleaned = ADPMCP._clean_adp_products(workspace, module)
             ADPMCP._write_course_app(workspace, module, source)
             ADPMCP._copy_course_content(workspace, module, source["slides"])
             ADPMCP._write_scripts(workspace)
@@ -179,13 +179,13 @@ class ADPMCP:
         return source_ids
 
     @staticmethod
-    def _clean_mvp_products(workspace: Path, module: str) -> list[str]:
-        scope_file = workspace / ".agent" / "mvp-execution-scope.json"
-        contract_file = workspace / "docs" / "MVP_Execution_Contract.md"
+    def _clean_adp_products(workspace: Path, module: str) -> list[str]:
+        scope_file = workspace / ".agent" / "adp-execution-scope.json"
+        contract_file = workspace / "docs" / "ADP_Execution_Contract.md"
         if not scope_file.exists():
-            raise ValueError("missing .agent/mvp-execution-scope.json")
+            raise ValueError("missing .agent/adp-execution-scope.json")
         if not contract_file.exists():
-            raise ValueError("missing docs/MVP_Execution_Contract.md")
+            raise ValueError("missing docs/ADP_Execution_Contract.md")
         scope = json.loads(scope_file.read_text(encoding="utf-8"))
         allow = scope.get("clean", {}).get("allow", [])
         deny = scope.get("clean", {}).get("deny", [])

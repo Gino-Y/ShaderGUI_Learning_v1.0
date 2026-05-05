@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "description": "Machine-readable execution boundary for ADPMCP clean-first generation (full ADP, not MVP).",
+  "clean": {
+    "allow": [
+      "CourseApp/src",
+      "CourseApp/public",
+      "CourseApp/dist",
+      "CourseApp/package.json",
+      "CourseApp/index.html",
+      "CourseApp/vite.config.js",
+      "CourseApp/tailwind.config.js",
+      "CourseApp/postcss.config.js",
+      "scripts/generate_audio.py",
+      "scripts/verify_course.py"
+    ],
+    "deny": [
+      ".agent/**",
+      ".git/**",
+      "docs/**",
+      "CourseApp/node_modules/**",
+      "CourseApp/package-lock.json",
+      "node_modules/**",
+      ".env",
+      "**/.env"
+    ]
+  },
+  "readonly": [
+    ".agent/**",
+    "docs/**",
+    "CourseApp/node_modules/**",
+    "CourseApp/package-lock.json"
+  ],
+  "pipeline": {
+    "steps": [
+      "adp_generate",
+      "storyboard_prepare",
+      "storyboard_validate",
+      "design_prepare",
+      "design_validate",
+      "audio",
+      "stitch",
+      "verify",
+      "build"
+    ]
+  }
+}
