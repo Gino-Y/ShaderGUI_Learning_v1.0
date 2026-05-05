@@ -6,6 +6,20 @@ ADPMCP 平行 DAG 节点已创建完成，支持完整生产模式（非 MVP 裁
 
 ## Completed Work
 
+- **2026-05-05 (generate_audio.py clean_text 修复)**:
+  - **根因**：`clean_text()` 只清理了代码块和标题符号，未清理粗体/斜体/链接/引用/列表等 Markdown 符号，也未移除内部指导字段（`shotInstruction` 等），导致 TTS 生成 MP3 时会读出这些符号和文字
+  - **修复**：修改 `.agent/templates/scripts/generate_audio.py` 的 `clean_text()` 函数，新增：
+    - 移除粗体/斜体符号（`**bold**` `*italic*`）
+    - 移除链接/图片语法（`[text](url)` `![alt](url)`）
+    - 移除引用符号（`>`）
+    - 移除水平线（`---` `***` `___`）
+    - 移除列表符号（`-` `*` `1.`）
+    - 移除表格语法（`|`）
+    - 移除内部指导字段（`shotInstruction|focusInstruction|implementationHint|learnerTakeaway|Now focusing`）
+  - **验证**：重新运行 DAG（所有 4 个模块），`verify_course.py` ✅ 通过
+  - **提交**：`b19f42a`（fix: templates/generate_audio.py）
+  - **状态**：所有模块的音频已用修复后的 `clean_text()` 重新生成
+
 - **2026-05-05 (ADP scope fix)**:
   - **根因**：`adp_mcp.py` 复用了 `MVPMCP` 的清理函数 `_clean_mvp_products()`，读取的是 `mvp-execution-scope.json`，语义不对
   - **修复**：
