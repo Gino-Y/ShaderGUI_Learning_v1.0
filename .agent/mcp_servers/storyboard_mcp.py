@@ -3,6 +3,8 @@ from __future__ import annotations
 import itertools
 import json
 import re
+import subprocess
+import sys
 from datetime import datetime
 from pathlib import Path
 
@@ -49,6 +51,13 @@ class StoryboardMCP:
             
             storyboard_slides.append(
                 {
+            # 提前计算 paletteIntent 和 mood，避免重复调用
+            palette_intent = StoryboardMCP._palette_intent(kind)
+            mood = palette_intent.get("mood", "")
+            motion_cues = StoryboardMCP._motion_cues(workspace, kind, points, subtitle_path)
+
+            storyboard_slides.append(
+                {
                     "moduleId": module,
                     "slideId": slide_id,
                     "route": slide.get("route"),
@@ -62,15 +71,10 @@ class StoryboardMCP:
                     "storyPurpose": StoryboardMCP._story_purpose(title, points),
                     "layoutIntent": StoryboardMCP._layout_intent(kind, points),
                     "visualComposition": StoryboardMCP._visual_composition(kind, title, points, index),
-                    "paletteIntent": StoryboardMCP._palette_intent(kind),
-                    "motionCues": StoryboardMCP._motion_cues(workspace, kind, points, subtitle_path),
-                    "visualSpecs": StoryboardMCP.build_visual_specs_for_slide(
-                        StoryboardMCP._motion_cues(workspace, kind, points, subtitle_path)
-                    ),
-                    "performanceSpecs": StoryboardMCP.build_performance_specs_for_slide(
-                        StoryboardMCP._motion_cues(workspace, kind, points, subtitle_path),
-                        slide_kind=kind,
-                    ),
+                    "paletteIntent": palette_intent,
+                    "motionCues": motion_cues,
+                    "visualSpecs": StoryboardMCP.build_visual_specs_for_slide(motion_cues),
+                    "performanceSpecs": StoryboardMCP.build_performance_specs_for_slide(motion_cues, slide_kind=kind, mood=mood),
                     "animationHandoff": {
                         "target": "future-web-animation-module",
                         "triggerSource": "subtitle-events",
@@ -136,6 +140,27 @@ class StoryboardMCP:
             json.dumps(contract, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",
         )
+        # 后处理：修复 timeRange 对齐（调用 fix_timeRange.py）
+        fix_script = workspace / "fix_timeRange.py"
+        if fix_script.exists():
+            try:
+                fix_result = subprocess.run(
+                    [sys.executable, str(fix_script)],
+                    cwd=str(workspace),
+                    capture_output=True,
+                    text=True,
+                    encoding="utf-8",
+                    errors="replace",
+                    timeout=30,
+                )
+                if fix_result.returncode == 0:
+                    print(f"[Storyboard] fix_timeRange: {fix_result.stdout.strip()}")
+                else:
+                    print(f"[Storyboard] fix_timeRange failed (exit {fix_result.returncode}): {fix_result.stdout.strip()} {fix_result.stderr.strip()}")
+            except Exception as exc:
+                print(f"[Storyboard] fix_timeRange exception: {exc}")
+        else:
+            print("[Storyboard] fix_timeRange.py not found, skipping post-processing")
         brief_file.write_text(StoryboardMCP._brief(contract), encoding="utf-8")
 
         return {
@@ -597,6 +622,7 @@ class StoryboardMCP:
 
     @staticmethod
     def _motion_cues(workspace: Path, kind: str, points: list[str], subtitle_path: str | None) -> list[dict]:
+        print(f"DEBUG _motion_cues: workspace={workspace.absolute()}, subtitle_path='{subtitle_path}'")
         subtitle_events = StoryboardMCP._load_subtitle_events(workspace, subtitle_path)
         alignments = StoryboardMCP._align_points_to_subtitles(points[:4], subtitle_events)
         cues = []
@@ -604,6 +630,7 @@ class StoryboardMCP:
             event = alignments[index] if index < len(alignments) else None
             start = float(event.get("start", 0.0)) if event else 0.0
             end = float(event.get("end", start + 1.8)) if event else start + 1.8
+            print(f"DEBUG _motion_cues: point[{index}]='{point[:30]}', event={event['segmentIndex'] if event else None}, start={start}, end={end}")
             duration_ms = max(1, int(round((end - start) * 1000)))
             source_text = event.get("text", "") if event else point
             focus_id = f"knowledge-{index + 1:02d}"
@@ -795,26 +822,19 @@ class StoryboardMCP:
 
     @staticmethod
     def _align_points_to_subtitles(points: list[str], subtitle_events: list[dict]) -> list[dict | None]:
+        """将知识点 points 与字幕事件按秩序对齐（point[i] → subtitle[i]）"""
         if not points:
             return []
         if not subtitle_events:
             return [None for _ in points]
-        if len(subtitle_events) < len(points):
-            return [subtitle_events[min(index, len(subtitle_events) - 1)] for index, _ in enumerate(points)]
-
-        best_combo = None
-        best_score = -1.0
-        for combo in itertools.combinations(range(len(subtitle_events)), len(points)):
-            score = sum(
-                StoryboardMCP._text_match_score(point, subtitle_events[event_index].get("text", ""))
-                for point, event_index in zip(points, combo)
-            )
-            # Prefer earlier, stable matches when scores are equal.
-            score -= sum(combo) * 0.001
-            if score > best_score:
-                best_score = score
-                best_combo = combo
-        return [subtitle_events[index] for index in (best_combo or range(len(points)))]
+        # 简单按秩序对齐：point[i] 对齐到 subtitle_events[i]
+        alignments = []
+        for i in range(len(points)):
+            if i < len(subtitle_events):
+                alignments.append(subtitle_events[i])
+            else:
+                alignments.append(subtitle_events[-1] if subtitle_events else None)
+        return alignments
 
     @staticmethod
     def _text_match_score(point: str, subtitle_text: str) -> float:
@@ -1124,8 +1144,8 @@ class StoryboardMCP:
     # Performance Specs (表演层)
     # -------------------------------------------------------------------------
     @staticmethod
-    def build_performance_for_cue(cue: dict, performance_type: str = "demo", demo_type: str = "flow-path") -> dict:
-        """为单个 cue 构建 performanceSpec（嵌入版本）"""
+    def build_performance_for_cue(cue: dict, performance_type: str = "demo", demo_type: str = "flow-path", mood: str = "") -> dict:
+        """为单个 cue 构建 performanceSpec，mood 用于动态配色"""
         time_range = cue.get("timeRange", {})
         trigger = cue.get("trigger", {})
         start = float(time_range.get("start", 0))
@@ -1133,9 +1153,9 @@ class StoryboardMCP:
         duration_ms = int((end - start) * 1000)
 
         if performance_type == "demo" and demo_type == "flow-path":
-            payload = StoryboardMCP._build_flow_path_payload(cue)
+            payload = StoryboardMCP._build_flow_path_payload(cue, mood)
         elif performance_type == "decoration":
-            payload = StoryboardMCP._build_decoration_payload(cue)
+            payload = StoryboardMCP._build_decoration_payload(cue, mood)
         elif performance_type == "transition":
             payload = StoryboardMCP._build_transition_payload(cue)
         else:
@@ -1160,17 +1180,17 @@ class StoryboardMCP:
         }
 
     @staticmethod
-    def build_performance_specs_for_slide(cues: list[dict], slide_kind: str = "concept") -> list[dict]:
-        """为 slide 的所有 cues 生成 performanceSpecs（语义驱动）"""
+    def build_performance_specs_for_slide(cues: list[dict], slide_kind: str = "concept", mood: str = "") -> list[dict]:
+        """为 slide 的所有 cues 生成 performanceSpecs（语义驱动），mood 用于动态配色"""
         specs = []
         for i, cue in enumerate(cues):
             content = (cue.get("contentBeat") or "") + " " + (cue.get("knowledgeFocus", {}).get("label") or "")
             # 语义规则：涉及流程/过程/步骤的内容，才加 demo
             needs_demo = any(kw in content for kw in ["流程", "传递", "绑定", "过程", "步骤", "调用", "执行", "渲染", "绘制"])
             if needs_demo and i > 0:  # 移除 slide_kind 限制，所有类型都可以生成 demo
-                spec = StoryboardMCP.build_performance_for_cue(cue, performance_type="demo", demo_type="flow-path")
+                spec = StoryboardMCP.build_performance_for_cue(cue, performance_type="demo", demo_type="flow-path", mood=mood)
                 specs.append(spec)
-            deco = StoryboardMCP.build_performance_for_cue(cue, performance_type="decoration", demo_type="particle")
+            deco = StoryboardMCP.build_performance_for_cue(cue, performance_type="decoration", demo_type="particle", mood=mood)
             deco["cueId"] = f"deco-{cue.get('cueId', 'unknown')}"
             specs.append(deco)
         return specs
@@ -1211,14 +1231,29 @@ class StoryboardMCP:
         }
 
     @staticmethod
-    def _build_decoration_payload(cue: dict) -> dict:
-        """Build particle decoration payload"""
+    def _build_decoration_payload(cue: dict, mood: str = "") -> dict:
+        """Build particle decoration payload, with colors based on paletteIntent.mood"""
+        mood_lower = (mood or "").lower()
+
+        # Default: technical/focused mood (code slides)
+        colors = ["#67e8f9", "#6ee7b7", "#a78bfa"]
+
+        if "warm" in mood_lower:
+            colors = ["#f59e0b", "#fbbf24", "#67e8f9"]
+        elif "calm" in mood_lower or "focus" in mood_lower:
+            colors = ["#22d3ee", "#67e8f9", "#818cf8"]
+        elif "clear" in mood_lower or "confident" in mood_lower:
+            colors = ["#67e8f9", "#818cf8", "#c084fc"]
+
+        particle_type = "floating-warm" if "warm" in mood_lower else "floating-cyan"
+
         return {
-            "particleType": "floating-cyan",
+            "particleType": particle_type,
             "count": 15,
-            "colors": ["#67e8f9", "#6ee7b7", "#a78bfa"],
+            "colors": colors,
             "speedRange": [0.2, 0.8],
             "opacityRange": [0.15, 0.4],
+            "mood": mood or "default",
         }
 
     @staticmethod

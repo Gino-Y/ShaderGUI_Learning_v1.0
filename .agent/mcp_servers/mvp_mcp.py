@@ -41,6 +41,12 @@ class MVPMCP:
             audio_result = MVPMCP._ensure_audio(workspace, module)
             if audio_result["status"] != "success":
                 print(f"[MVP Harden] Audio generation failed: {audio_result.get('message')}")
+            # 加固：MVP 后修复 storyboard-contract.json 的 timeRange 对齐
+            fix_result = MVPMCP._fix_timeRange(workspace, module)
+            if fix_result["status"] == "error":
+                print(f"[MVP Harden] fix_timeRange failed: {fix_result.get('message')}")
+            elif fix_result["status"] == "success":
+                print(f"[MVP Harden] fix_timeRange: {fix_result.get('message')}")
         except Exception as exc:
             return {"status": "error", "message": f"MVP generation failed: {exc}"}
         return {
@@ -327,3 +333,28 @@ class MVPMCP:
             }
         
         return {"status": "success", "message": "所有音频文件已存在"}
+
+    @staticmethod
+    def _fix_timeRange(workspace: Path, module: str) -> dict:
+        """后处理：修复 storyboard-contract.json 中的 timeRange 对齐问题"""
+        fix_script = workspace / "fix_timeRange.py"
+        if not fix_script.exists():
+            return {"status": "skipped", "message": "fix_timeRange.py 不存在，跳过"}
+        try:
+            result = subprocess.run(
+                [sys.executable, str(fix_script)],
+                cwd=str(workspace),
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+                timeout=30,
+            )
+            if result.returncode != 0:
+                return {
+                    "status": "error",
+                    "message": f"fix_timeRange.py 失败 (exit {result.returncode}): {result.stdout.strip()} {result.stderr.strip()}",
+                }
+            return {"status": "success", "message": result.stdout.strip()}
+        except Exception as exc:
+            return {"status": "error", "message": f"运行 fix_timeRange.py 异常: {exc}"}
