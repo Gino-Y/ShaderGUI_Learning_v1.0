@@ -3,9 +3,6 @@
   "description": "Machine-readable execution boundary for ADPMCP clean-first generation (full ADP, not MVP).",
   "clean": {
     "allow": [
-      "CourseApp/public/audio/{module}",
-      "CourseApp/public/subtitles/{module}",
-      "CourseApp/public/transcripts/{module}",
       "CourseApp/dist",
       "CourseApp/package.json",
       "CourseApp/index.html",
