@@ -183,3 +183,4 @@ function handleTouchEnd(event) {
 
 </script>
 
+<!-- 节点漂移测试 v2：此注释应在 MVP 重新生成后保留 -->
