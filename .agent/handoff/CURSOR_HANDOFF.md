@@ -6,6 +6,15 @@ ADP 全量写入架构已落地，全部 4 模块 DEPLOY_READY。MVP 模式与 A
 
 ## Completed Work
 
+- **2026-05-06 (clean_text H1 标题泄露修复)**:
+  - **根因**：`generate_audio.py` 的 `clean_text()` 只移除 `#` 符号，H1 文档标题行（如 `# Managed Properties：面板的行政管理 —— 逐字稿`）被 TTS 朗读
+  - **修复**：`clean_text()` 开头新增正则移除匹配 `—— 逐字稿` 的 H1 元数据标题行
+  - **影响范围**：全部 4 模块（12 个音频 + 12 个字幕）已重新生成
+  - **DAG 影响**：无。仅修改模板脚本的文本预处理逻辑，不涉及 DAG 节点、流程或产物契约
+  - **验证**：`verify_course.py` ✅
+  - **提交**：`f818dab`
+  - **状态**：音频/字幕不再泄露文档标题
+
 - **2026-05-06 (ADP 全量写入架构重构)**:
   - **根因**：ADP 逐模块运行时，`_write_course_app` 跨运行合并依赖上一次的 `course.json`，但 `flow_engine.py` 的 `clear_stage_outputs("mvp", ...)` 删除整个 CourseApp/ 导致合并源消失
   - **修复（3 处）**：

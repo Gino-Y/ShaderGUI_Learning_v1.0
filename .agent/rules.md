@@ -7,6 +7,7 @@
 - [GIT_SNAPSHOT_BEFORE_MODIFY] **修改代码前必须创建Git快照**（详见第126行"Git快照与回滚规范"）；快照不是备份，是在重要节点创建的可回溯标记。
 - [GIT_COMMIT_AFTER_TASK] **任务完成后必须提交Git**（详见第223行"Git协作工作流规范"）；不得积累大量未提交改动。
 - [NO_CONTEXT_INFERENCE] **禁止通过上下文推测执行流程**：AI 不得从对话上下文、历史记录或推理中推断"应该做什么"或"下一步"。所有执行流程、触发条件、完成标准必须以文本形式写入规则文件（`rules.md`、`SKILL.md`、DAG、`STATE.md`、`CURSOR_HANDOFF.md`）。未写入规则文件的流程视为不存在，AI 不得自行假设执行。
+- [AGENT_SINGLE_SOURCE] `.agent` 是唯一可信源；禁止使用 `.cursor`、`.workbuddy` 作为规则、资产、Skill、workflow 或 prompt 来源。
 - [MVP_EXECUTION_CONTRACT] 执行 MVP 必须遵循 `docs/MVP_Execution_Contract.md` 和 `.agent/mvp-execution-scope.json`；禁止清理 `.agent`、`node_modules` 等禁区。
 - [NO_INTERNAL_GUIDANCE_UI] 前端学习页面不得展示内部生产指导：`shotInstruction`、`focusInstruction`、`implementationHint`、`learnerTakeaway`、`Now focusing` 一律禁止展示。
 - [TOKEN_LEVEL_ANIMATION] 代码类页面动效必须细化到代码字段/token，例如 `ShaderGUI`、`OnGUI`、`CustomEditor`、`FindProperty`、`ShaderProperty`；不得退化为整卡片或整块代码动画。
