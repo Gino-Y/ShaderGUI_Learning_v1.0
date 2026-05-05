@@ -108,13 +108,55 @@ class DesignMCP:
         if not module_slides:
             return {"status": "failed", "message": f"no slides found for {module}"}
 
-        design_slides = []
         for slide in module_slides:
             slide_id = slide.get("slideId")
             title = slide.get("title", "")
             points = slide.get("points", [])
             kind = slide.get("kind", "concept")
             storyboard_slide = storyboard_by_slide.get(slide_id, {})
+            # 优先使用 storyboard 的 visualComposition 来推导 layoutSpec
+            visual_comp = storyboard_slide.get("visualComposition") or {}
+            if visual_comp:
+                layout_spec = {
+                    "template": "title-body" if kind == "concept" else "title-code",
+                    "grid": visual_comp.get("frameGrid", {}).get("columns", "grid-cols-1"),
+                    "spacing": "gap-6",
+                    "typography": DesignMCP._infer_typography(visual_comp),
+                    "_source": "storyboard.visualComposition",
+                }
+            else:
+                template = DesignMCP.LAYOUT_TEMPLATES.get(kind, DesignMCP.LAYOUT_TEMPLATES["concept"])
+                layout_spec = dict(template)
+            # colorScheme：使用 storyboard 的 paletteIntent 来推导
+            palette = storyboard_slide.get("paletteIntent") or {}
+            if palette:
+                color_scheme = DesignMCP._infer_color_scheme(palette)
+            else:
+                color_scheme = dict(DesignMCP.COLOR_SCHEMES["default"])
+            # componentList：结合 storyboard 的 motionCues 和 visualComposition
+            motion_cues = storyboard_slide.get("motionCues", [])
+            has_performance = any(
+                cue.get("performanceType") == "demo" for cue in motion_cues
+            )
+            if has_performance:
+                component_list = list(DesignMCP.COMPONENT_SETS["concept_diagram"])
+            elif kind == "code":
+                src_code = ""
+                if len(points) > 0:
+                    # 尝试从 slides.json 获取代码
+                    pass  # 保持现有逻辑
+                if len(src_code) > 100:
+                    component_list = list(DesignMCP.COMPONENT_SETS["code_full"])
+                else:
+                    component_list = list(DesignMCP.COMPONENT_SETS["code_base"])
+            else:
+                has_diagram = any(
+                    any(kw in (title + " ".join(points)) for kw in ["图", "架构", "路线", "流程"])
+                )
+                if has_diagram:
+                    component_list = list(DesignMCP.COMPONENT_SETS["concept_diagram"])
+                else:
+                    component_list = list(DesignMCP.COMPONENT_SETS["concept_base"])
             design_slides.append(
                 {
                     "moduleId": module,
@@ -134,9 +176,9 @@ class DesignMCP:
                         "source": "CourseApp/src/data/storyboard-contract.json",
                         "storyPurpose": storyboard_slide.get("storyPurpose"),
                         "layoutIntent": storyboard_slide.get("layoutIntent"),
-                        "visualComposition": storyboard_slide.get("visualComposition"),
-                        "paletteIntent": storyboard_slide.get("paletteIntent"),
-                        "motionCueCount": len(storyboard_slide.get("motionCues", [])),
+                        "visualComposition": visual_comp,
+                        "paletteIntent": palette,
+                        "motionCueCount": len(motion_cues),
                     },
                     "animationHandoff": storyboard_slide.get("animationHandoff"),
                     "motionCues": storyboard_slide.get("motionCues", []),
@@ -153,9 +195,9 @@ class DesignMCP:
                         "router": "Vue Router",
                         "styling": "Tailwind CSS",
                     },
-                    "layoutSpec": None,
-                    "colorScheme": None,
-                    "componentList": None,
+                    "layoutSpec": layout_spec,
+                    "colorScheme": color_scheme,
+                    "componentList": component_list,
                 }
             )
 
