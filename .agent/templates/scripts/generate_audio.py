@@ -21,9 +21,30 @@ DEFAULT_VOICE = "zh-CN-XiaoxiaoNeural"
 
 def clean_text(path: Path) -> str:
     text = path.read_text(encoding="utf-8")
+    # 1. 移除代码块（```...```）
     text = re.sub(r"```[\s\S]*?```", " ", text)
+    # 2. 移除行内代码（`...`）
     text = re.sub(r"`([^`]+)`", r"\1", text)
+    # 3. 移除标题符号（# ## ###）
     text = re.sub(r"^#+\s*", "", text, flags=re.MULTILINE)
+    # 4. 移除粗体/斜体符号（**bold** *italic*）
+    text = re.sub(r"\*{1,2}([^\*]+)\*{1,2}", r"\1", text)
+    text = re.sub(r"_{1,2}([^_]+)_{1,2}", r"\1", text)
+    # 5. 移除链接/图片语法（[text](url) ![alt](url)）
+    text = re.sub(r"!\[([^\]]*)\]\([^\)]*\)", r"\1", text)  # 图片
+    text = re.sub(r"\[([^\]]*)\]\([^\)]*\)", r"\1", text)    # 链接
+    # 6. 移除引用符号（>）
+    text = re.sub(r"^\s*>+\s*", "", text, flags=re.MULTILINE)
+    # 7. 移除水平线（--- *** ___）
+    text = re.sub(r"^\s*(-{3,}|\*{3,}|_{3,})\s*$", "", text, flags=re.MULTILINE)
+    # 8. 移除列表符号（- * 1.）
+    text = re.sub(r"^\s*[-*+]\s+", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^\s*\d+\.\s+", "", text, flags=re.MULTILINE)
+    # 9. 移除表格语法（|）
+    text = text.replace("|", " ")
+    # 10. 移除内部指导字段（shotInstruction/focusInstruction/implementationHint/learnerTakeaway/Now focusing）
+    text = re.sub(r"(shotInstruction|focusInstruction|implementationHint|learnerTakeaway|Now focusing)\s*[:：]\s*[^\n]*", "", text)
+    # 11. 合并多余空白
     text = re.sub(r"\s+", " ", text)
     return text.strip()
 
