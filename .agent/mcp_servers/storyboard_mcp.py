@@ -639,6 +639,7 @@ class StoryboardMCP:
                 "parameters": {
                     "opacity": [0, 1],
                     "translateY": [12, 0],
+                    "scale": [0.96, 1.0],
                     "highlight": kind == "code",
                 },
             }

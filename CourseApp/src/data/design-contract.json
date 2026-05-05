@@ -2,7 +2,7 @@
   "provider": "design-v0-translated-spec",
   "status": "design_ready",
   "module": "Module_01",
-  "generatedAt": "2026-05-05T08:30:57Z",
+  "generatedAt": "2026-05-05T08:44:29Z",
   "source": {
     "slides": "CourseApp/src/data/slides.json",
     "storyboard": "CourseApp/src/data/storyboard-contract.json",
@@ -161,6 +161,10 @@
                 12,
                 0
               ],
+              "scale": [
+                0.96,
+                1.0
+              ],
               "highlight": false
             }
           },
@@ -241,6 +245,10 @@
                 12,
                 0
               ],
+              "scale": [
+                0.96,
+                1.0
+              ],
               "highlight": false
             }
           },
@@ -320,6 +328,10 @@
               "translateY": [
                 12,
                 0
+              ],
+              "scale": [
+                0.96,
+                1.0
               ],
               "highlight": false
             }
@@ -557,6 +569,10 @@
                 12,
                 0
               ],
+              "scale": [
+                0.96,
+                1.0
+              ],
               "highlight": true
             }
           },
@@ -646,6 +662,10 @@
                 12,
                 0
               ],
+              "scale": [
+                0.96,
+                1.0
+              ],
               "highlight": true
             }
           },
@@ -732,6 +752,10 @@
               "translateY": [
                 12,
                 0
+              ],
+              "scale": [
+                0.96,
+                1.0
               ],
               "highlight": true
             }
@@ -1208,7 +1232,7 @@
   ],
   "_validation": {
     "lastContractCheck": null,
-    "lastVisualRefCheck": "2026-05-05T08:30:57Z",
+    "lastVisualRefCheck": "2026-05-05T08:44:29Z",
     "contractCheckAttempts": 0,
     "visualRefCheckAttempts": 0
   }

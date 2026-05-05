@@ -2,7 +2,7 @@
   "provider": "storyboard-local-spec",
   "status": "storyboard_ready",
   "module": "Module_01",
-  "generatedAt": "2026-05-05T08:30:55Z",
+  "generatedAt": "2026-05-05T08:44:26Z",
   "source": {
     "slides": "CourseApp/src/data/slides.json",
     "explorations": "CourseApp/src/data/explorations.json",
@@ -114,6 +114,10 @@
                 12,
                 0
               ],
+              "scale": [
+                0.96,
+                1.0
+              ],
               "highlight": false
             }
           },
@@ -193,6 +197,10 @@
               "translateY": [
                 12,
                 0
+              ],
+              "scale": [
+                0.96,
+                1.0
               ],
               "highlight": false
             }
@@ -274,6 +282,10 @@
                 12,
                 0
               ],
+              "scale": [
+                0.96,
+                1.0
+              ],
               "highlight": false
             }
           },
@@ -353,6 +365,10 @@
                 12,
                 0
               ],
+              "scale": [
+                0.96,
+                1.0
+              ],
               "highlight": false
             }
           },
@@ -430,6 +446,10 @@
                 12,
                 0
               ],
+              "scale": [
+                0.96,
+                1.0
+              ],
               "highlight": false
             }
           },
@@ -506,6 +526,10 @@
               "translateY": [
                 12,
                 0
+              ],
+              "scale": [
+                0.96,
+                1.0
               ],
               "highlight": false
             }
@@ -774,6 +798,10 @@
                 12,
                 0
               ],
+              "scale": [
+                0.96,
+                1.0
+              ],
               "highlight": true
             }
           },
@@ -863,6 +891,10 @@
                 12,
                 0
               ],
+              "scale": [
+                0.96,
+                1.0
+              ],
               "highlight": true
             }
           },
@@ -949,6 +981,10 @@
               "translateY": [
                 12,
                 0
+              ],
+              "scale": [
+                0.96,
+                1.0
               ],
               "highlight": true
             }
@@ -1037,6 +1073,10 @@
                 12,
                 0
               ],
+              "scale": [
+                0.96,
+                1.0
+              ],
               "highlight": true
             }
           },
@@ -1114,6 +1154,10 @@
                 12,
                 0
               ],
+              "scale": [
+                0.96,
+                1.0
+              ],
               "highlight": true
             }
           },
@@ -1190,6 +1234,10 @@
               "translateY": [
                 12,
                 0
+              ],
+              "scale": [
+                0.96,
+                1.0
               ],
               "highlight": true
             }
@@ -1684,7 +1732,7 @@
     }
   ],
   "_validation": {
-    "lastStoryboardCheck": "2026-05-05T08:30:55Z",
+    "lastStoryboardCheck": "2026-05-05T08:44:26Z",
     "cueBindingPolicy": "subtitle segment indexes bind to concrete timecodes after audio generation",
     "realtimeInteractionPolicy": "user actions and state changes bind to concrete Vue event handlers in QuizView"
   }
