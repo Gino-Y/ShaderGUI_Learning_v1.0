@@ -1,6 +1,12 @@
 {
-  "moduleId": "Module_04",
   "title": "高级布局与实战技巧",
-  "description": "掌握复杂面板布局、条件显示与实战踩坑经验",
-  "slideCount": 2
+  "subtitle": "掌握复杂面板布局、条件显示与实战踩坑经验",
+  "modules": [
+    {
+      "id": "Module_04",
+      "title": "高级布局与实战技巧",
+      "summary": "掌握复杂面板布局、条件显示与实战踩坑经验",
+      "slideCount": 4
+    }
+  ]
 }
