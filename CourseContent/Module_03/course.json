@@ -1,6 +1,9 @@
 {
-  "moduleId": "Module_03",
-  "title": "自定义 ShaderGUI 开发",
-  "description": "从零编写自定义 ShaderGUI 类，掌控整个材质面板",
-  "slideCount": 2
+  "title": "ShaderGUI 专家成长之路",
+  "subtitle": "从工具使用者到工具定义者",
+  "module": {
+    "id": "Module_03",
+    "title": "模块三：进化",
+    "summary": "建立模块化复用与 Managed Properties 思维，让大型材质面板可维护、可扩展。"
+  }
 }

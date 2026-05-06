@@ -251,7 +251,7 @@ class MVPMCP:
         MVPMCP._copy_template_tree(MVPMCP._template_root(workspace) / "course-app", app)
 
         course_source = source["course"]
-        module_source = course_source.get("module") or {}
+        module_source = MVPMCP._module_metadata(course_source, module)
         course = {
             "title": course_source.get("title", "Course"),
             "subtitle": course_source.get("subtitle", ""),
@@ -259,7 +259,7 @@ class MVPMCP:
                 {
                     "id": module_source.get("id", module),
                     "title": module_source.get("title", module),
-                    "summary": module_source.get("summary", ""),
+                    "summary": module_source.get("summary") or module_source.get("description", ""),
                     "slideCount": len(source["slides"]),
                 }
             ],
@@ -289,6 +289,26 @@ class MVPMCP:
                     print(f"[MVP Harden] storyboard-contract.json exists but not ready (status={existing.get('status')}), leaving for storyboard step")
             except Exception as ex:
                 print(f"[MVP Harden] storyboard-contract.json exists but unreadable: {ex}")
+
+    @staticmethod
+    def _module_metadata(course_source: dict, module: str) -> dict:
+        module_source = course_source.get("module")
+        if isinstance(module_source, dict):
+            return module_source
+        modules = course_source.get("modules")
+        if isinstance(modules, list):
+            for item in modules:
+                if isinstance(item, dict) and item.get("id") == module:
+                    return item
+            if modules and isinstance(modules[0], dict):
+                return modules[0]
+        if course_source.get("moduleId") or course_source.get("title") or course_source.get("description"):
+            return {
+                "id": course_source.get("moduleId", module),
+                "title": course_source.get("title", module),
+                "summary": course_source.get("summary") or course_source.get("description", ""),
+            }
+        return {"id": module, "title": module, "summary": ""}
 
     @staticmethod
     def _copy_course_content(workspace: Path, module: str, slides: list[dict]) -> None:

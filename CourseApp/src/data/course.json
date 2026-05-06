@@ -4,26 +4,26 @@
   "modules": [
     {
       "id": "Module_01",
-      "title": "Module_01",
-      "summary": "",
+      "title": "模块一：解构",
+      "summary": "理解 ShaderGUI 的定位，并完成最小自定义材质面板架构。",
       "slideCount": 3
     },
     {
       "id": "Module_02",
-      "title": "Module_02",
-      "summary": "",
+      "title": "模块二：重构",
+      "summary": "用分组布局、条件显示与工具函数，把复杂参数整理成直观可用的材质面板。",
       "slideCount": 3
     },
     {
       "id": "Module_03",
-      "title": "Module_03",
-      "summary": "",
+      "title": "模块三：进化",
+      "summary": "建立模块化复用与 Managed Properties 思维，让大型材质面板可维护、可扩展。",
       "slideCount": 2
     },
     {
       "id": "Module_04",
-      "title": "高级布局与实战技巧",
-      "summary": "掌握复杂面板布局、条件显示与实战踩坑经验",
+      "title": "模块四：治理",
+      "summary": "掌握渲染状态同步、版本迁移与实战验收，让 ShaderGUI 能治理资产生命周期。",
       "slideCount": 4
     }
   ]

@@ -1,6 +1,9 @@
 {
-  "moduleId": "Module_02",
-  "title": "MaterialPropertyDrawer 基础",
-  "description": "掌握内置 Drawer 与自定义 Drawer 的用法",
-  "slideCount": 2
+  "title": "ShaderGUI 专家成长之路",
+  "subtitle": "从工具使用者到工具定义者",
+  "module": {
+    "id": "Module_02",
+    "title": "模块二：重构",
+    "summary": "用分组布局、条件显示与工具函数，把复杂参数整理成直观可用的材质面板。"
+  }
 }

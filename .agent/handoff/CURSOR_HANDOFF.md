@@ -189,3 +189,9 @@ ADP 管线已稳定。可根据需要进行课程内容迭代或前端体验优�
 - Rules updated: role is not hard-bound to platform. Explicit user phrase `你是 <role>` switches the active executor immediately.
 - Supported layers: workflow/DAG/工作流层, product/执行层/产物层, review/检查层.
 - Workflow layer changes rules/DAG/MCP/templates/verification/handoff; product layer runs MVP/ADP and product-facing checks via DAG path; review layer reports only unless repair is requested.
+
+## 2026-05-06 Course home module metadata alignment
+- Fixed homepage module metadata inconsistency: all modules now have semantic titles and summaries.
+- Source schema normalized for Module_02/03/04 course metadata; MVPMCP now normalizes `module`, `modules[]`, and legacy top-level metadata.
+- Current generated `CourseApp/src/data/course.json` was synced from the fixed metadata for immediate browser consistency.
+- Verified py_compile for MVPMCP and `npm --prefix CourseApp run build` passed. `verify_course.py` remains blocked by known storyboard/design/stitch coverage debt from old mixed ADP products.

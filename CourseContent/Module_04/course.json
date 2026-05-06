@@ -1,12 +1,9 @@
 {
-  "title": "高级布局与实战技巧",
-  "subtitle": "掌握复杂面板布局、条件显示与实战踩坑经验",
-  "modules": [
-    {
-      "id": "Module_04",
-      "title": "高级布局与实战技巧",
-      "summary": "掌握复杂面板布局、条件显示与实战踩坑经验",
-      "slideCount": 4
-    }
-  ]
+  "title": "ShaderGUI 专家成长之路",
+  "subtitle": "从工具使用者到工具定义者",
+  "module": {
+    "id": "Module_04",
+    "title": "模块四：治理",
+    "summary": "掌握渲染状态同步、版本迁移与实战验收，让 ShaderGUI 能治理资产生命周期。"
+  }
 }
