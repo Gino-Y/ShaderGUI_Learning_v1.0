@@ -1,5 +1,17 @@
 # Cursor Handoff
 
+## CURRENT ADP TRUTH - READ FIRST
+
+This section supersedes all older ADP notes below.
+
+- ADP is dispatcher-only, not a parallel generator and not a full-writer.
+- `flow_engine.py --adp` intentionally expands modules from `.agent/adp-scope.json`, then runs the normal `MVPMCP` complete-module pipeline for each module.
+- `clear_stage_outputs("mvp")` plus `MVPMCP.generate_products()` inside an ADP run is expected behavior, not a missing ADP cleanup branch.
+- Do not require `ADPMCP._clean_adp_products()` for the current ADP path.
+- `ADPMCP.generate_products()` is deprecated and fail-fast by design.
+- Older notes about ADP full-scan/full-write, ADP-specific cleanup, or ADPMCP as a production writer are historical only.
+- Current generated products may still reflect the old mixed ADP state until MVP/ADP is rerun; `verify_course.py` should fail on incomplete storyboard/design/stitch coverage until regeneration.
+
 ## Current Goal
 
 代码示例、做题页、探索页数据已填充。动效暂缓（仅 Module_04 有 storyboard-contract）。探索页 Lab 组件待创建。

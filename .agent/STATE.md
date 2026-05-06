@@ -1,5 +1,16 @@
 # Current Project State
 
+## CURRENT ADP TRUTH - READ FIRST
+
+This section supersedes older ADP state notes below.
+
+- ADP is now a dispatcher command, not an ADPMCP full-writer.
+- `--adp` reads `.agent/adp-scope.json` for module order and runs the standard `MVPMCP` complete-module pipeline for each module.
+- ADP intentionally uses MVP cleanup/generation semantics: `clear_stage_outputs("mvp")` and `MVPMCP.generate_products()`.
+- `ADPMCP.generate_products()` is deprecated/fail-fast. Do not restore the old full-scan/full-write path.
+- Any older text saying ADP is full-scan/full-write or should call ADP-specific cleanup is historical only.
+- Current generated products still need rerun; `verify_course.py` may fail until MVP/ADP regeneration replaces the old mixed ADP product state.
+
 ## DAG State
 
 Latest verified state: **全部 4 模块 DEPLOY_READY**（ADP 全量写入架构）。
