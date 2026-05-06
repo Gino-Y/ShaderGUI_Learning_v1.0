@@ -5,7 +5,7 @@ import SlideView from "../views/SlideView.vue";
 import ExploreView from "../views/ExploreView.vue";
 
 export default createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: "/", component: CourseHome },
     { path: "/module/:moduleId", redirect: "/" },

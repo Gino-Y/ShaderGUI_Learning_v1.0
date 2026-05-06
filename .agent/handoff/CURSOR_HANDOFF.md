@@ -49,6 +49,12 @@ This section supersedes all older ADP notes below.
 - Changed `.agent/templates/scripts/generate_audio.py` and synced `scripts/generate_audio.py` to remove metadata headings, outline headings, table rows, list labels, and internal production fields before subtitle/TTS generation.
 - Changed `scripts/verify_course.py` and `.agent/templates/scripts/verify_course.py` to validate cleaned narration text for forbidden outline labels.
 - Product artifacts were not hand-edited; execution layer must regenerate audio/subtitles via MVP/ADP.
+## 2026-05-06 GitHub Pages Deployment Config
+
+- Role: workflow/deploy layer.
+- Added Pages base path `/ShaderGUI_Learning_v1.0/` to current app and templates.
+- Vue Router now uses `createWebHistory(import.meta.env.BASE_URL)` in current app and templates.
+- Deployment should publish only `CourseApp/dist` to `gh-pages`, with `.nojekyll` and `404.html` fallback.
 ## Completed Work
 
 - **2026-05-06 (Lab 组件创建 + ADP 全量通过)**:

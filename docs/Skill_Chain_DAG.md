@@ -256,3 +256,19 @@ CourseContent/Module_XX/doc/*.md
 - 清洗必须移除元数据标题、二级结构标题、Markdown 表格和列表结构标签。
 - `核心观点`、`问题：`、`思路：`、`金句：`、`结论：` 等文档编辑标签不得出现在生成字幕或语音朗读文本中。
 - 此类问题不得通过手改 `CourseApp/public/audio` 或 `CourseApp/public/subtitles` 修复，必须改 `.agent/templates/scripts/generate_audio.py` 与验证门闸后重新生成。
+
+## GitHub Pages Deployment
+
+GitHub Pages 发布是构建 DAG 的交付出口，不改变课程内容契约：
+
+```text
+CourseApp source/templates
+  -> npm --prefix CourseApp run build
+  -> CourseApp/dist + .nojekyll + 404.html fallback
+  -> gh-pages branch
+```
+
+- 项目站点 base path 为 `/ShaderGUI_Learning_v1.0/`。
+- Vite `base` 与 Vue Router `createWebHistory(import.meta.env.BASE_URL)` 必须保持一致。
+- `404.html` 复制自 `index.html`，用于 GitHub Pages 下的 SPA 深链 fallback。
+- 只发布 `CourseApp/dist` 到 `gh-pages`，不把工作区脏改混入源码主分支。

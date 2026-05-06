@@ -557,3 +557,10 @@ Ordinary single-module MVP keeps its original cleanup and scoped output behavior
 - `generate_audio.py clean_text()` 必须移除逐字稿元数据标题、二级结构标题、表格行、列表标签和内部生产字段，再生成字幕和音频。
 - `scripts/verify_course.py` 必须检查清洗后的逐字稿不会把上述结构标签泄漏到语音或字幕。
 - 禁止通过手改 `CourseApp/public/audio` 或 `CourseApp/public/subtitles` 修复此类问题；必须改模板/验证门闸后重新生成。
+
+## GitHub Pages Deployment
+
+- [GITHUB_PAGES_BASE_PATH] GitHub Pages 项目站点部署到 `/ShaderGUI_Learning_v1.0/`，`CourseApp/vite.config.js` 和模板必须设置同一 `base`。
+- Vue Router 必须使用 `createWebHistory(import.meta.env.BASE_URL)`，避免 Pages 子路径下首页和深链路由错位。
+- Pages 发布产物必须包含 `.nojekyll`，并将 `dist/index.html` 复制为 `dist/404.html` 支持 SPA 深链刷新。
+- 部署只允许发布 `CourseApp/dist` 到 `gh-pages`，不得把执行层未确认的源码/产物脏改混入主分支。

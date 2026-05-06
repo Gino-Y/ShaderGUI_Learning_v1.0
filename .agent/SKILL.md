@@ -153,3 +153,7 @@ When ADP accumulates design contracts, coverage validation must compare `(module
 ## Transcript Narration Quality
 
 Transcript text that feeds subtitles and TTS must not speak document-outline labels such as `核心观点`, `问题：`, `思路：`, `金句：`, or `结论：`. `generate_audio.py clean_text()` must remove transcript metadata headings, outline section headings, table rows, list labels, and internal production fields before generating audio/subtitles. `scripts/verify_course.py` must guard this cleaned narration surface.
+
+## GitHub Pages Deployment
+
+GitHub Pages for this repository is a project site under `/ShaderGUI_Learning_v1.0/`. Vite and Vue Router must both use that base path (`base` in Vite, `createWebHistory(import.meta.env.BASE_URL)` in Router). Deploy only the built `CourseApp/dist` directory to `gh-pages`, include `.nojekyll`, and copy `index.html` to `404.html` for SPA deep-link fallback.
