@@ -1,0 +1,32 @@
+[
+  {
+    "start": 0.0,
+    "end": 9.33,
+    "text": "最后，我们将所有的知识点汇聚到 MOutlineFitting_h01 这个案例中。"
+  },
+  {
+    "start": 9.33,
+    "end": 17.56,
+    "text": "这不再是一个简单的 Shader 练习，而是一个符合工业化标准的材质工具。"
+  },
+  {
+    "start": 17.56,
+    "end": 26.44,
+    "text": "从这一刻起，你不再只是在\"写 Shader\"，你是在为团队定义一套\"创作标准\"。"
+  },
+  {
+    "start": 26.44,
+    "end": 33.56,
+    "text": "当我们把这份 GUI 交付给美术同学时，我们交付的是效率和信心。"
+  },
+  {
+    "start": 33.56,
+    "end": 63.56,
+    "text": "验收标准清单 完整示例代码 关键要点回顾 分组清晰：用 BeginVertical(\"box\") 建立视觉边界 Safe 查找：FindPropertySafe 防止属性缺失导致崩溃 ManagedProps 追踪：确保无遗漏、无重复 渲染状态同步：EditorGUI."
+  },
+  {
+    "start": 63.56,
+    "end": 76.89,
+    "text": "BeginChangeCheck() 检测变化并自动写入 兜底绘制：循环遍历 props，将未被管理的属性以默认方式显示"
+  }
+]
