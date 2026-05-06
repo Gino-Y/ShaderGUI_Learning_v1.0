@@ -1,25 +1,25 @@
 {
   "provider": "design-v0-translated-spec",
   "status": "design_ready",
-  "module": "Module_04",
-  "generatedAt": "2026-05-05T11:48:39Z",
+  "module": "Module_01",
+  "generatedAt": "2026-05-06T00:08:05Z",
   "source": {
     "slides": "CourseApp/src/data/slides.json",
     "storyboard": "CourseApp/src/data/storyboard-contract.json",
-    "v0Prototype": ".agent/v0/Module_04/react-prototype.json"
+    "v0Prototype": ".agent/v0/Module_01/react-prototype.json"
   },
-  "handoffBrief": ".agent/design/Module_04/design-brief.md",
+  "handoffBrief": ".agent/design/Module_01/design-brief.md",
   "slides": [
     {
-      "moduleId": "Module_04",
+      "moduleId": "Module_01",
       "slideId": "p00",
-      "route": "/module/Module_04/slide/p00",
-      "title": "渲染状态同步：让 GUI 替人思考",
+      "route": "/module/Module_01/slide/p00",
+      "title": "ShaderGUI：不仅仅是换个皮",
       "kind": "concept",
       "screenType": "course-slide-player",
-      "visualPrompt": "Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 渲染状态同步：让 GUI 替人思考. Key points: 在 OnGUI 末尾检测属性变化 / 自动同步 Blend、ZWrite、RenderQueue.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=2. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.",
+      "visualPrompt": "Design a focused Chinese technical course slide for Unity ShaderGUI. Title: ShaderGUI：不仅仅是换个皮. Key points: ShaderGUI 是 Shader 参数系统的前端工程层 / 不是简单的 UI 美化.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=2. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.",
       "v0PrototypeRef": {
-        "source": ".agent/v0/Module_04/react-prototype.json",
+        "source": ".agent/v0/Module_01/react-prototype.json",
         "chatUrl": null,
         "translationMode": "extract-layout-interaction-visual-rules-to-vue-tailwind",
         "designRules": {
@@ -37,46 +37,39 @@
           ],
           "slides": [
             {
-              "moduleId": "Module_04",
+              "moduleId": "Module_01",
               "slideId": "p00",
-              "title": "渲染状态同步：让 GUI 替人思考",
+              "title": "ShaderGUI：不仅仅是换个皮",
               "kind": null,
-              "route": "/module/Module_04/slide/p00"
+              "route": "/module/Module_01/slide/p00"
             },
             {
-              "moduleId": "Module_04",
+              "moduleId": "Module_01",
               "slideId": "p01",
-              "title": "版本迁移：如何让旧资产不碎掉？",
+              "title": "编写第一个自定义材质面板",
               "kind": null,
-              "route": "/module/Module_04/slide/p01"
+              "route": "/module/Module_01/slide/p01"
             },
             {
-              "moduleId": "Module_04",
+              "moduleId": "Module_01",
               "slideId": "p02",
-              "title": "最终实战：构建专业级描边材质面板",
+              "title": "如何安全地获取参数？",
               "kind": null,
-              "route": "/module/Module_04/slide/p02"
-            },
-            {
-              "moduleId": "Module_04",
-              "slideId": "p03",
-              "title": "ShaderGUI 进阶思维路线图",
-              "kind": null,
-              "route": "/module/Module_04/slide/p03"
+              "route": "/module/Module_01/slide/p02"
             }
           ]
         }
       },
       "storyboardRef": {
         "source": "CourseApp/src/data/storyboard-contract.json",
-        "storyPurpose": "Use this scene to make learners understand '渲染状态同步：让 GUI 替人思考' through the content beats: 在 OnGUI 末尾检测属性变化 / 自动同步 Blend、ZWrite、RenderQueue.",
+        "storyPurpose": "Use this scene to make learners understand 'ShaderGUI：不仅仅是换个皮' through the content beats: ShaderGUI 是 Shader 参数系统的前端工程层 / 不是简单的 UI 美化.",
         "layoutIntent": {
           "primaryFocus": "concept hierarchy and mental model",
           "readingPath": "title -> core idea -> three supporting beats",
           "density": "low-to-medium",
           "emphasis": [
-            "在 OnGUI 末尾检测属性变化",
-            "自动同步 Blend、ZWrite、RenderQueue"
+            "ShaderGUI 是 Shader 参数系统的前端工程层",
+            "不是简单的 UI 美化"
           ]
         },
         "visualComposition": {
@@ -88,7 +81,7 @@
             "anchor": "hero concept anchors upper-left; supporting beats form right-side vertical rhythm"
           },
           "foreground": {
-            "subject": "在 OnGUI 末尾检测属性变化",
+            "subject": "ShaderGUI 是 Shader 参数系统的前端工程层",
             "position": "left-center hero area",
             "scale": "largest text block after title; primary learner attention"
           },
@@ -129,7 +122,7 @@
       "animationHandoff": {
         "target": "future-web-animation-module",
         "triggerSource": "subtitle-events",
-        "subtitleEventPath": "/subtitles/Module_04/p00.json",
+        "subtitleEventPath": "/subtitles/Module_01/p00.json",
         "bindingMode": "subtitle-time-range-with-knowledge-alignment",
         "notes": [
           "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
@@ -142,24 +135,24 @@
           "trigger": {
             "type": "subtitle-segment",
             "segmentIndex": 0,
-            "subtitleEventPath": "/subtitles/Module_04/p00.json",
+            "subtitleEventPath": "/subtitles/Module_01/p00.json",
             "subtitleEventId": "s00",
             "timecode": 0.0
           },
           "timeRange": {
             "start": 0.0,
-            "end": 21.78,
-            "durationMs": 21780
+            "end": 9.56,
+            "durationMs": 9560
           },
           "target": "content-beat",
-          "contentBeat": "在 OnGUI 末尾检测属性变化",
-          "sourceSubtitleText": "渲染状态同步：让 GUI 替人思考 —— 逐字稿 你有没有遇到过这种情况：美术在面板里把混合模式从 Alpha 混合改成了加法混合，结果渲染出来颜色完全不对，一查才发现是 Blend 状态没同步。",
+          "contentBeat": "ShaderGUI 是 Shader 参数系统的前端工程层",
+          "sourceSubtitleText": "当我们谈论 ShaderGUI 时，先不要把它理解成给 Inspector 换一层皮。",
           "knowledgeFocus": {
             "id": "knowledge-01",
-            "label": "在 OnGUI 末尾检测属性变化",
+            "label": "ShaderGUI 是 Shader 参数系统的前端工程层",
             "source": "slide.points",
             "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：在 OnGUI 末尾检测属性变化"
+            "learnerTakeaway": "当前应聚焦理解：ShaderGUI 是 Shader 参数系统的前端工程层"
           },
           "animation": {
             "name": "reveal-focus",
@@ -185,12 +178,12 @@
             "primaryEffect": "knowledge-highlight",
             "attentionPattern": "pulse-once-then-hold",
             "highlightTarget": "point-card",
-            "highlightText": "在 OnGUI 末尾检测属性变化",
+            "highlightText": "ShaderGUI 是 Shader 参数系统的前端工程层",
             "deEmphasizeOthers": true,
             "timing": {
               "start": 0.0,
-              "peak": 8.71,
-              "settle": 21.78,
+              "peak": 3.82,
+              "settle": 9.56,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -202,14 +195,14 @@
           },
           "compositionBeat": {
             "frameZone": "left hero concept",
-            "subject": "在 OnGUI 末尾检测属性变化",
+            "subject": "ShaderGUI 是 Shader 参数系统的前端工程层",
             "cameraAction": "locked frame; reveal or pulse the current card in place",
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "0.00s-21.78s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“在 OnGUI 末尾检测属性变化”，弱化其他内容；旁白：渲染状态同步：让 GUI 替人思考 —— 逐字稿 你有没有遇到过这种情况：美术在面板里把混合模式从 Alpha 混合改成了加法混合，结果渲染出来颜色完全不对，一查才发现是 Blend 状态没同步。",
+          "shotInstruction": "0.00s-9.56s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“ShaderGUI 是 Shader 参数系统的前端工程层”，弱化其他内容；旁白：当我们谈论 ShaderGUI 时，先不要把它理解成给 Inspector 换一层皮。",
           "focusInstruction": {
-            "focus": "在 OnGUI 末尾检测属性变化",
+            "focus": "ShaderGUI 是 Shader 参数系统的前端工程层",
             "deEmphasize": "other point cards and non-current code callouts",
             "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
           },
@@ -226,24 +219,24 @@
           "trigger": {
             "type": "subtitle-segment",
             "segmentIndex": 1,
-            "subtitleEventPath": "/subtitles/Module_04/p00.json",
+            "subtitleEventPath": "/subtitles/Module_01/p00.json",
             "subtitleEventId": "s01",
-            "timecode": 21.78
+            "timecode": 9.56
           },
           "timeRange": {
-            "start": 21.78,
-            "end": 31.33,
-            "durationMs": 9550
+            "start": 9.56,
+            "end": 15.56,
+            "durationMs": 6000
           },
           "target": "content-beat",
-          "contentBeat": "自动同步 Blend、ZWrite、RenderQueue",
-          "sourceSubtitleText": "更糟糕的是，这种错误往往不会报错，只会在画面上留下难以察觉的瑕疵，直到上线前才被发现。",
+          "contentBeat": "不是简单的 UI 美化",
+          "sourceSubtitleText": "更准确地说，它是 Shader 参数系统的前端工程层。",
           "knowledgeFocus": {
             "id": "knowledge-02",
-            "label": "自动同步 Blend、ZWrite、RenderQueue",
+            "label": "不是简单的 UI 美化",
             "source": "slide.points",
             "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：自动同步 Blend、ZWrite、RenderQueue"
+            "learnerTakeaway": "当前应聚焦理解：不是简单的 UI 美化"
           },
           "animation": {
             "name": "reveal-focus",
@@ -269,12 +262,12 @@
             "primaryEffect": "knowledge-highlight",
             "attentionPattern": "soft-blink-then-hold",
             "highlightTarget": "point-card",
-            "highlightText": "自动同步 Blend、ZWrite、RenderQueue",
+            "highlightText": "不是简单的 UI 美化",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 21.78,
-              "peak": 25.6,
-              "settle": 31.33,
+              "start": 9.56,
+              "peak": 11.96,
+              "settle": 15.56,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -286,14 +279,14 @@
           },
           "compositionBeat": {
             "frameZone": "right support card top",
-            "subject": "自动同步 Blend、ZWrite、RenderQueue",
+            "subject": "不是简单的 UI 美化",
             "cameraAction": "locked frame; reveal or pulse the current card in place",
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "21.78s-31.33s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“自动同步 Blend、ZWrite、RenderQueue”，弱化其他内容；旁白：更糟糕的是，这种错误往往不会报错，只会在画面上留下难以察觉的瑕疵，直到上线前才被发现。",
+          "shotInstruction": "9.56s-15.56s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“不是简单的 UI 美化”，弱化其他内容；旁白：更准确地说，它是 Shader 参数系统的前端工程层。",
           "focusInstruction": {
-            "focus": "自动同步 Blend、ZWrite、RenderQueue",
+            "focus": "不是简单的 UI 美化",
             "deEmphasize": "other point cards and non-current code callouts",
             "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
           },
@@ -349,15 +342,15 @@
       ]
     },
     {
-      "moduleId": "Module_04",
+      "moduleId": "Module_01",
       "slideId": "p01",
-      "route": "/module/Module_04/slide/p01",
-      "title": "版本迁移：如何让旧资产不碎掉？",
+      "route": "/module/Module_01/slide/p01",
+      "title": "编写第一个自定义材质面板",
       "kind": "concept",
       "screenType": "course-slide-player",
-      "visualPrompt": "Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 版本迁移：如何让旧资产不碎掉？. Key points: 属性名 Fallback / 语义映射 / 静默升级策略.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.",
+      "visualPrompt": "Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 编写第一个自定义材质面板. Key points: 继承 ShaderGUI / 重写 OnGUI / 通过 CustomEditor 绑定.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.",
       "v0PrototypeRef": {
-        "source": ".agent/v0/Module_04/react-prototype.json",
+        "source": ".agent/v0/Module_01/react-prototype.json",
         "chatUrl": null,
         "translationMode": "extract-layout-interaction-visual-rules-to-vue-tailwind",
         "designRules": {
@@ -375,47 +368,40 @@
           ],
           "slides": [
             {
-              "moduleId": "Module_04",
+              "moduleId": "Module_01",
               "slideId": "p00",
-              "title": "渲染状态同步：让 GUI 替人思考",
+              "title": "ShaderGUI：不仅仅是换个皮",
               "kind": null,
-              "route": "/module/Module_04/slide/p00"
+              "route": "/module/Module_01/slide/p00"
             },
             {
-              "moduleId": "Module_04",
+              "moduleId": "Module_01",
               "slideId": "p01",
-              "title": "版本迁移：如何让旧资产不碎掉？",
+              "title": "编写第一个自定义材质面板",
               "kind": null,
-              "route": "/module/Module_04/slide/p01"
+              "route": "/module/Module_01/slide/p01"
             },
             {
-              "moduleId": "Module_04",
+              "moduleId": "Module_01",
               "slideId": "p02",
-              "title": "最终实战：构建专业级描边材质面板",
+              "title": "如何安全地获取参数？",
               "kind": null,
-              "route": "/module/Module_04/slide/p02"
-            },
-            {
-              "moduleId": "Module_04",
-              "slideId": "p03",
-              "title": "ShaderGUI 进阶思维路线图",
-              "kind": null,
-              "route": "/module/Module_04/slide/p03"
+              "route": "/module/Module_01/slide/p02"
             }
           ]
         }
       },
       "storyboardRef": {
         "source": "CourseApp/src/data/storyboard-contract.json",
-        "storyPurpose": "Use this scene to make learners understand '版本迁移：如何让旧资产不碎掉？' through the content beats: 属性名 Fallback / 语义映射 / 静默升级策略.",
+        "storyPurpose": "Use this scene to make learners understand '编写第一个自定义材质面板' through the content beats: 继承 ShaderGUI / 重写 OnGUI / 通过 CustomEditor 绑定.",
         "layoutIntent": {
           "primaryFocus": "concept hierarchy and mental model",
           "readingPath": "title -> core idea -> three supporting beats",
           "density": "low-to-medium",
           "emphasis": [
-            "属性名 Fallback",
-            "语义映射",
-            "静默升级策略"
+            "继承 ShaderGUI",
+            "重写 OnGUI",
+            "通过 CustomEditor 绑定"
           ]
         },
         "visualComposition": {
@@ -427,7 +413,7 @@
             "anchor": "hero concept anchors upper-left; supporting beats form right-side vertical rhythm"
           },
           "foreground": {
-            "subject": "属性名 Fallback",
+            "subject": "继承 ShaderGUI",
             "position": "left-center hero area",
             "scale": "largest text block after title; primary learner attention"
           },
@@ -468,7 +454,7 @@
       "animationHandoff": {
         "target": "future-web-animation-module",
         "triggerSource": "subtitle-events",
-        "subtitleEventPath": "/subtitles/Module_04/p01.json",
+        "subtitleEventPath": "/subtitles/Module_01/p01.json",
         "bindingMode": "subtitle-time-range-with-knowledge-alignment",
         "notes": [
           "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
@@ -481,24 +467,24 @@
           "trigger": {
             "type": "subtitle-segment",
             "segmentIndex": 0,
-            "subtitleEventPath": "/subtitles/Module_04/p01.json",
+            "subtitleEventPath": "/subtitles/Module_01/p01.json",
             "subtitleEventId": "s00",
             "timecode": 0.0
           },
           "timeRange": {
             "start": 0.0,
-            "end": 3.33,
-            "durationMs": 3330
+            "end": 5.56,
+            "durationMs": 5560
           },
           "target": "content-beat",
-          "contentBeat": "属性名 Fallback",
-          "sourceSubtitleText": "版本迁移：如何让旧资产不碎掉？",
+          "contentBeat": "继承 ShaderGUI",
+          "sourceSubtitleText": "自定义 ShaderGUI 的最小架构其实很直接。",
           "knowledgeFocus": {
             "id": "knowledge-01",
-            "label": "属性名 Fallback",
+            "label": "继承 ShaderGUI",
             "source": "slide.points",
             "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：属性名 Fallback"
+            "learnerTakeaway": "当前应聚焦理解：继承 ShaderGUI"
           },
           "animation": {
             "name": "reveal-focus",
@@ -524,12 +510,12 @@
             "primaryEffect": "knowledge-highlight",
             "attentionPattern": "pulse-once-then-hold",
             "highlightTarget": "point-card",
-            "highlightText": "属性名 Fallback",
+            "highlightText": "继承 ShaderGUI",
             "deEmphasizeOthers": true,
             "timing": {
               "start": 0.0,
-              "peak": 1.33,
-              "settle": 3.33,
+              "peak": 2.22,
+              "settle": 5.56,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -541,14 +527,14 @@
           },
           "compositionBeat": {
             "frameZone": "left hero concept",
-            "subject": "属性名 Fallback",
+            "subject": "继承 ShaderGUI",
             "cameraAction": "locked frame; reveal or pulse the current card in place",
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "0.00s-3.33s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“属性名 Fallback”，弱化其他内容；旁白：版本迁移：如何让旧资产不碎掉。",
+          "shotInstruction": "0.00s-5.56s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“继承 ShaderGUI”，弱化其他内容；旁白：自定义 ShaderGUI 的最小架构其实很直接。",
           "focusInstruction": {
-            "focus": "属性名 Fallback",
+            "focus": "继承 ShaderGUI",
             "deEmphasize": "other point cards and non-current code callouts",
             "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
           },
@@ -565,24 +551,24 @@
           "trigger": {
             "type": "subtitle-segment",
             "segmentIndex": 1,
-            "subtitleEventPath": "/subtitles/Module_04/p01.json",
+            "subtitleEventPath": "/subtitles/Module_01/p01.json",
             "subtitleEventId": "s01",
-            "timecode": 3.33
+            "timecode": 5.56
           },
           "timeRange": {
-            "start": 3.33,
-            "end": 9.78,
-            "durationMs": 6450
+            "start": 5.56,
+            "end": 14.67,
+            "durationMs": 9110
           },
           "target": "content-beat",
-          "contentBeat": "语义映射",
-          "sourceSubtitleText": "—— 逐字稿 在实际工程中，Shader 是会不断迭代的。",
+          "contentBeat": "重写 OnGUI",
+          "sourceSubtitleText": "C Sharp 侧创建一个类，继承 ShaderGUI，并重写 OnGUI 方法。",
           "knowledgeFocus": {
             "id": "knowledge-02",
-            "label": "语义映射",
+            "label": "重写 OnGUI",
             "source": "slide.points",
             "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：语义映射"
+            "learnerTakeaway": "当前应聚焦理解：重写 OnGUI"
           },
           "animation": {
             "name": "reveal-focus",
@@ -608,12 +594,12 @@
             "primaryEffect": "knowledge-highlight",
             "attentionPattern": "soft-blink-then-hold",
             "highlightTarget": "point-card",
-            "highlightText": "语义映射",
+            "highlightText": "重写 OnGUI",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 3.33,
-              "peak": 5.91,
-              "settle": 9.78,
+              "start": 5.56,
+              "peak": 9.2,
+              "settle": 14.67,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -625,14 +611,14 @@
           },
           "compositionBeat": {
             "frameZone": "right support card top",
-            "subject": "语义映射",
+            "subject": "重写 OnGUI",
             "cameraAction": "locked frame; reveal or pulse the current card in place",
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "3.33s-9.78s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“语义映射”，弱化其他内容；旁白：—— 逐字稿 在实际工程中，Shader 是会不断迭代的。",
+          "shotInstruction": "5.56s-14.67s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“重写 OnGUI”，弱化其他内容；旁白：C Sharp 侧创建一个类，继承 ShaderGUI，并重写 OnGUI 方法。",
           "focusInstruction": {
-            "focus": "语义映射",
+            "focus": "重写 OnGUI",
             "deEmphasize": "other point cards and non-current code callouts",
             "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
           },
@@ -649,24 +635,24 @@
           "trigger": {
             "type": "subtitle-segment",
             "segmentIndex": 2,
-            "subtitleEventPath": "/subtitles/Module_04/p01.json",
+            "subtitleEventPath": "/subtitles/Module_01/p01.json",
             "subtitleEventId": "s02",
-            "timecode": 9.78
+            "timecode": 14.67
           },
           "timeRange": {
-            "start": 9.78,
-            "end": 26.0,
-            "durationMs": 16220
+            "start": 14.67,
+            "end": 22.22,
+            "durationMs": 7550
           },
           "target": "content-beat",
-          "contentBeat": "静默升级策略",
-          "sourceSubtitleText": "我见过太多团队遇到这样的噩梦：某天改了 Shader 的一个属性名，结果整个项目几百个材质球全部报错，美术同学打开材质面板看到一片空白，直接崩溃。",
+          "contentBeat": "通过 CustomEditor 绑定",
+          "sourceSubtitleText": "Shader 侧在文件底部用 CustomEditor 绑定这个类。",
           "knowledgeFocus": {
             "id": "knowledge-03",
-            "label": "静默升级策略",
+            "label": "通过 CustomEditor 绑定",
             "source": "slide.points",
             "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：静默升级策略"
+            "learnerTakeaway": "当前应聚焦理解：通过 CustomEditor 绑定"
           },
           "animation": {
             "name": "reveal-focus",
@@ -692,12 +678,12 @@
             "primaryEffect": "knowledge-highlight",
             "attentionPattern": "soft-blink-then-hold",
             "highlightTarget": "point-card",
-            "highlightText": "静默升级策略",
+            "highlightText": "通过 CustomEditor 绑定",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 9.78,
-              "peak": 16.27,
-              "settle": 26.0,
+              "start": 14.67,
+              "peak": 17.69,
+              "settle": 22.22,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -709,14 +695,14 @@
           },
           "compositionBeat": {
             "frameZone": "right support card middle",
-            "subject": "静默升级策略",
+            "subject": "通过 CustomEditor 绑定",
             "cameraAction": "locked frame; reveal or pulse the current card in place",
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "9.78s-26.00s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“静默升级策略”，弱化其他内容；旁白：我见过太多团队遇到这样的噩梦：某天改了 Shader 的一个属性名，结果整个项目几百个材质球全部报错，美术同学打开材质面板看到一片空白，直接崩溃。",
+          "shotInstruction": "14.67s-22.22s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“通过 CustomEditor 绑定”，弱化其他内容；旁白：Shader 侧在文件底部用 CustomEditor 绑定这个类。",
           "focusInstruction": {
-            "focus": "静默升级策略",
+            "focus": "通过 CustomEditor 绑定",
             "deEmphasize": "other point cards and non-current code callouts",
             "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
           },
@@ -772,15 +758,15 @@
       ]
     },
     {
-      "moduleId": "Module_04",
+      "moduleId": "Module_01",
       "slideId": "p02",
-      "route": "/module/Module_04/slide/p02",
-      "title": "最终实战：构建专业级描边材质面板",
+      "route": "/module/Module_01/slide/p02",
+      "title": "如何安全地获取参数？",
       "kind": "concept",
       "screenType": "course-slide-player",
-      "visualPrompt": "Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 最终实战：构建专业级描边材质面板. Key points: 分组清晰 / 安全可靠 / 美术友好 / 性能同步.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=4. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.",
+      "visualPrompt": "Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 如何安全地获取参数？. Key points: Required 模式的风险 / Safe 模式的安全获取 / 封装 FindPropertySafe 工具函数.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.",
       "v0PrototypeRef": {
-        "source": ".agent/v0/Module_04/react-prototype.json",
+        "source": ".agent/v0/Module_01/react-prototype.json",
         "chatUrl": null,
         "translationMode": "extract-layout-interaction-visual-rules-to-vue-tailwind",
         "designRules": {
@@ -798,47 +784,40 @@
           ],
           "slides": [
             {
-              "moduleId": "Module_04",
+              "moduleId": "Module_01",
               "slideId": "p00",
-              "title": "渲染状态同步：让 GUI 替人思考",
+              "title": "ShaderGUI：不仅仅是换个皮",
               "kind": null,
-              "route": "/module/Module_04/slide/p00"
+              "route": "/module/Module_01/slide/p00"
             },
             {
-              "moduleId": "Module_04",
+              "moduleId": "Module_01",
               "slideId": "p01",
-              "title": "版本迁移：如何让旧资产不碎掉？",
+              "title": "编写第一个自定义材质面板",
               "kind": null,
-              "route": "/module/Module_04/slide/p01"
+              "route": "/module/Module_01/slide/p01"
             },
             {
-              "moduleId": "Module_04",
+              "moduleId": "Module_01",
               "slideId": "p02",
-              "title": "最终实战：构建专业级描边材质面板",
+              "title": "如何安全地获取参数？",
               "kind": null,
-              "route": "/module/Module_04/slide/p02"
-            },
-            {
-              "moduleId": "Module_04",
-              "slideId": "p03",
-              "title": "ShaderGUI 进阶思维路线图",
-              "kind": null,
-              "route": "/module/Module_04/slide/p03"
+              "route": "/module/Module_01/slide/p02"
             }
           ]
         }
       },
       "storyboardRef": {
         "source": "CourseApp/src/data/storyboard-contract.json",
-        "storyPurpose": "Use this scene to make learners understand '最终实战：构建专业级描边材质面板' through the content beats: 分组清晰 / 安全可靠 / 美术友好.",
+        "storyPurpose": "Use this scene to make learners understand '如何安全地获取参数？' through the content beats: Required 模式的风险 / Safe 模式的安全获取 / 封装 FindPropertySafe 工具函数.",
         "layoutIntent": {
           "primaryFocus": "concept hierarchy and mental model",
           "readingPath": "title -> core idea -> three supporting beats",
           "density": "low-to-medium",
           "emphasis": [
-            "分组清晰",
-            "安全可靠",
-            "美术友好"
+            "Required 模式的风险",
+            "Safe 模式的安全获取",
+            "封装 FindPropertySafe 工具函数"
           ]
         },
         "visualComposition": {
@@ -850,7 +829,7 @@
             "anchor": "hero concept anchors upper-left; supporting beats form right-side vertical rhythm"
           },
           "foreground": {
-            "subject": "分组清晰",
+            "subject": "Required 模式的风险",
             "position": "left-center hero area",
             "scale": "largest text block after title; primary learner attention"
           },
@@ -886,12 +865,12 @@
             "workflow labels"
           ]
         },
-        "motionCueCount": 4
+        "motionCueCount": 3
       },
       "animationHandoff": {
         "target": "future-web-animation-module",
         "triggerSource": "subtitle-events",
-        "subtitleEventPath": "/subtitles/Module_04/p02.json",
+        "subtitleEventPath": "/subtitles/Module_01/p02.json",
         "bindingMode": "subtitle-time-range-with-knowledge-alignment",
         "notes": [
           "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
@@ -904,24 +883,24 @@
           "trigger": {
             "type": "subtitle-segment",
             "segmentIndex": 0,
-            "subtitleEventPath": "/subtitles/Module_04/p02.json",
+            "subtitleEventPath": "/subtitles/Module_01/p02.json",
             "subtitleEventId": "s00",
             "timecode": 0.0
           },
           "timeRange": {
             "start": 0.0,
-            "end": 17.11,
-            "durationMs": 17110
+            "end": 4.89,
+            "durationMs": 4890
           },
           "target": "content-beat",
-          "contentBeat": "分组清晰",
-          "sourceSubtitleText": "阶段11：实战验收：MOutlineFittingh01 —— 逐字稿 最后，我们将所有的知识点汇聚到 MOutlineFittingh01 这个案例中。",
+          "contentBeat": "Required 模式的风险",
+          "sourceSubtitleText": "在实际工程中，我们推荐使用 Safe 模式。",
           "knowledgeFocus": {
             "id": "knowledge-01",
-            "label": "分组清晰",
+            "label": "Required 模式的风险",
             "source": "slide.points",
             "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：分组清晰"
+            "learnerTakeaway": "当前应聚焦理解：Required 模式的风险"
           },
           "animation": {
             "name": "reveal-focus",
@@ -947,12 +926,12 @@
             "primaryEffect": "knowledge-highlight",
             "attentionPattern": "pulse-once-then-hold",
             "highlightTarget": "point-card",
-            "highlightText": "分组清晰",
+            "highlightText": "Required 模式的风险",
             "deEmphasizeOthers": true,
             "timing": {
               "start": 0.0,
-              "peak": 6.84,
-              "settle": 17.11,
+              "peak": 1.96,
+              "settle": 4.89,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -964,14 +943,14 @@
           },
           "compositionBeat": {
             "frameZone": "left hero concept",
-            "subject": "分组清晰",
+            "subject": "Required 模式的风险",
             "cameraAction": "locked frame; reveal or pulse the current card in place",
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "0.00s-17.11s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“分组清晰”，弱化其他内容；旁白：阶段11：实战验收：MOutlineFittingh01 —— 逐字稿 最后，我们将所有的知识点汇聚到 MOutlineFittingh01 这个案例中。",
+          "shotInstruction": "0.00s-4.89s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“Required 模式的风险”，弱化其他内容；旁白：在实际工程中，我们推荐使用 Safe 模式。",
           "focusInstruction": {
-            "focus": "分组清晰",
+            "focus": "Required 模式的风险",
             "deEmphasize": "other point cards and non-current code callouts",
             "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
           },
@@ -988,699 +967,24 @@
           "trigger": {
             "type": "subtitle-segment",
             "segmentIndex": 1,
-            "subtitleEventPath": "/subtitles/Module_04/p02.json",
+            "subtitleEventPath": "/subtitles/Module_01/p02.json",
             "subtitleEventId": "s01",
-            "timecode": 17.11
+            "timecode": 4.89
           },
           "timeRange": {
-            "start": 17.11,
-            "end": 25.33,
-            "durationMs": 8220
-          },
-          "target": "content-beat",
-          "contentBeat": "安全可靠",
-          "sourceSubtitleText": "这不再是一个简单的 Shader 练习，而是一个符合工业化标准的材质工具。",
-          "knowledgeFocus": {
-            "id": "knowledge-02",
-            "label": "安全可靠",
-            "source": "slide.points",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：安全可靠"
-          },
-          "animation": {
-            "name": "reveal-focus",
-            "durationMs": 360,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "soft-blink-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "安全可靠",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 17.11,
-              "peak": 20.4,
-              "settle": 25.33,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": true,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "right support card top",
-            "subject": "安全可靠",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "17.11s-25.33s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“安全可靠”，弱化其他内容；旁白：这不再是一个简单的 Shader 练习，而是一个符合工业化标准的材质工具。",
-          "focusInstruction": {
-            "focus": "安全可靠",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        },
-        {
-          "cueId": "cue-03",
-          "trigger": {
-            "type": "subtitle-segment",
-            "segmentIndex": 2,
-            "subtitleEventPath": "/subtitles/Module_04/p02.json",
-            "subtitleEventId": "s02",
-            "timecode": 25.33
-          },
-          "timeRange": {
-            "start": 25.33,
-            "end": 34.22,
-            "durationMs": 8890
-          },
-          "target": "content-beat",
-          "contentBeat": "美术友好",
-          "sourceSubtitleText": "从这一刻起，你不再只是在\"写 Shader\"，你是在为团队定义一套\"创作标准\"。",
-          "knowledgeFocus": {
-            "id": "knowledge-03",
-            "label": "美术友好",
-            "source": "slide.points",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：美术友好"
-          },
-          "animation": {
-            "name": "reveal-focus",
-            "durationMs": 360,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "soft-blink-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "美术友好",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 25.33,
-              "peak": 28.89,
-              "settle": 34.22,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": true,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "right support card middle",
-            "subject": "美术友好",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "25.33s-34.22s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“美术友好”，弱化其他内容；旁白：从这一刻起，你不再只是在\"写 Shader\"，你是在为团队定义一套\"创作标准\"。",
-          "focusInstruction": {
-            "focus": "美术友好",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        },
-        {
-          "cueId": "cue-04",
-          "trigger": {
-            "type": "subtitle-segment",
-            "segmentIndex": 3,
-            "subtitleEventPath": "/subtitles/Module_04/p02.json",
-            "subtitleEventId": "s03",
-            "timecode": 34.22
-          },
-          "timeRange": {
-            "start": 34.22,
-            "end": 41.33,
-            "durationMs": 7110
-          },
-          "target": "content-beat",
-          "contentBeat": "性能同步",
-          "sourceSubtitleText": "当我们把这份 GUI 交付给美术同学时，我们交付的是效率和信心。",
-          "knowledgeFocus": {
-            "id": "knowledge-04",
-            "label": "性能同步",
-            "source": "slide.points",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：性能同步"
-          },
-          "animation": {
-            "name": "reveal-focus",
-            "durationMs": 360,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "soft-blink-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "性能同步",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 34.22,
-              "peak": 37.06,
-              "settle": 41.33,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": true,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "right support card bottom",
-            "subject": "性能同步",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "34.22s-41.33s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“性能同步”，弱化其他内容；旁白：当我们把这份 GUI 交付给美术同学时，我们交付的是效率和信心。",
-          "focusInstruction": {
-            "focus": "性能同步",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        }
-      ],
-      "contentConstraints": [
-        "Only show ShaderGUI course content in the slide canvas.",
-        "Do not render full transcript text as a panel.",
-        "Subtitles must appear only as audio-time events.",
-        "Keep player controls outside the slide canvas.",
-        "Follow storyboard layout, palette, and motion intent before inventing new visual behavior.",
-        "Translate v0 React prototype rules into Vue and Tailwind; do not copy React/shadcn code directly."
-      ],
-      "implementationTarget": {
-        "framework": "Vue 3",
-        "router": "Vue Router",
-        "styling": "Tailwind CSS"
-      },
-      "layoutSpec": {
-        "template": "title-body",
-        "grid": "grid-cols-1",
-        "spacing": "gap-6",
-        "typography": {
-          "title": "text-3xl font-bold",
-          "subtitle": "text-lg text-slate-400",
-          "body": "text-base leading-relaxed",
-          "caption": "text-sm text-slate-500"
-        }
-      },
-      "colorScheme": {
-        "bg": "#0f172a",
-        "surface": "#1e293b",
-        "textPrimary": "#f8fafc",
-        "textSecondary": "#94a3b8",
-        "accent": "#38bdf8",
-        "accentSecondary": "#818cf8",
-        "codeBg": "#0d1117",
-        "codeKeyword": "#ff7b72",
-        "codeString": "#a5d6ff",
-        "codeComment": "#8b949e"
-      },
-      "componentList": [
-        "SlideTitle",
-        "PointList",
-        "SlideNav"
-      ]
-    },
-    {
-      "moduleId": "Module_04",
-      "slideId": "p03",
-      "route": "/module/Module_04/slide/p03",
-      "title": "ShaderGUI 进阶思维路线图",
-      "kind": "concept",
-      "screenType": "course-slide-player",
-      "visualPrompt": "Design a focused Chinese technical course slide for Unity ShaderGUI. Title: ShaderGUI 进阶思维路线图. Key points: 解构阶段 / 重构阶段 / 进化阶段 / 治理阶段.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=4. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.",
-      "v0PrototypeRef": {
-        "source": ".agent/v0/Module_04/react-prototype.json",
-        "chatUrl": null,
-        "translationMode": "extract-layout-interaction-visual-rules-to-vue-tailwind",
-        "designRules": {
-          "layout": [
-            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
-            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
-          ],
-          "visual": [
-            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
-            "Reserve strong accents for the current teaching beat or code callout."
-          ],
-          "interaction": [
-            "Use storyboard motionCues as the interaction and animation source.",
-            "Quiz and exploration screens remain data-driven Vue Router pages."
-          ],
-          "slides": [
-            {
-              "moduleId": "Module_04",
-              "slideId": "p00",
-              "title": "渲染状态同步：让 GUI 替人思考",
-              "kind": null,
-              "route": "/module/Module_04/slide/p00"
-            },
-            {
-              "moduleId": "Module_04",
-              "slideId": "p01",
-              "title": "版本迁移：如何让旧资产不碎掉？",
-              "kind": null,
-              "route": "/module/Module_04/slide/p01"
-            },
-            {
-              "moduleId": "Module_04",
-              "slideId": "p02",
-              "title": "最终实战：构建专业级描边材质面板",
-              "kind": null,
-              "route": "/module/Module_04/slide/p02"
-            },
-            {
-              "moduleId": "Module_04",
-              "slideId": "p03",
-              "title": "ShaderGUI 进阶思维路线图",
-              "kind": null,
-              "route": "/module/Module_04/slide/p03"
-            }
-          ]
-        }
-      },
-      "storyboardRef": {
-        "source": "CourseApp/src/data/storyboard-contract.json",
-        "storyPurpose": "Use this scene to make learners understand 'ShaderGUI 进阶思维路线图' through the content beats: 解构阶段 / 重构阶段 / 进化阶段.",
-        "layoutIntent": {
-          "primaryFocus": "concept hierarchy and mental model",
-          "readingPath": "title -> core idea -> three supporting beats",
-          "density": "low-to-medium",
-          "emphasis": [
-            "解构阶段",
-            "重构阶段",
-            "进化阶段"
-          ]
-        },
-        "visualComposition": {
-          "aspectRatio": "16:9 responsive canvas, preserve 7% outer safe margin",
-          "shotType": "wide instructional concept board",
-          "frameGrid": {
-            "columns": "left 56% hero concept and explanation, right 44% supporting cards",
-            "rows": "top metadata band, center concept body, bottom learner focus",
-            "anchor": "hero concept anchors upper-left; supporting beats form right-side vertical rhythm"
-          },
-          "foreground": {
-            "subject": "解构阶段",
-            "position": "left-center hero area",
-            "scale": "largest text block after title; primary learner attention"
-          },
-          "midground": {
-            "subject": "secondary point cards",
-            "position": "right-center, staggered stack",
-            "role": "show the sequence of supporting ideas"
-          },
-          "background": {
-            "subject": "soft radial highlights and dark glass panels",
-            "position": "corners and far background",
-            "role": "separate layers without becoming content"
-          },
-          "negativeSpace": "leave a quiet diagonal corridor from title to focus card for eye travel",
-          "readingDirection": "upper-left title -> left hero concept -> right supporting cards -> bottom focus statement",
-          "safeArea": "keep subtitle overlay and player controls outside the composed slide frame",
-          "cameraPlan": {
-            "base": "locked camera with stable slide geometry",
-            "beatMotion": "progressive emphasis on the current point card only",
-            "avoid": [
-              "layout reflow during narration",
-              "large parallax shifts",
-              "decorative motion unrelated to current knowledge point"
-            ]
-          }
-        },
-        "paletteIntent": {
-          "mood": "clear, instructional, confident",
-          "contrastRole": "use accent color to separate principle, example, and learner takeaway",
-          "avoid": [
-            "monochrome sameness",
-            "presentation decoration",
-            "workflow labels"
-          ]
-        },
-        "motionCueCount": 4
-      },
-      "animationHandoff": {
-        "target": "future-web-animation-module",
-        "triggerSource": "subtitle-events",
-        "subtitleEventPath": "/subtitles/Module_04/p03.json",
-        "bindingMode": "subtitle-time-range-with-knowledge-alignment",
-        "notes": [
-          "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
-          "Knowledge points are aligned to the closest subtitle segment by keyword overlap, with ordered fallback."
-        ]
-      },
-      "motionCues": [
-        {
-          "cueId": "cue-01",
-          "trigger": {
-            "type": "subtitle-segment",
-            "segmentIndex": 0,
-            "subtitleEventPath": "/subtitles/Module_04/p03.json",
-            "subtitleEventId": "s00",
-            "timecode": 0.0
-          },
-          "timeRange": {
-            "start": 0.0,
-            "end": 16.44,
-            "durationMs": 16440
-          },
-          "target": "content-beat",
-          "contentBeat": "解构阶段",
-          "sourceSubtitleText": "阶段12：ShaderGUI 进阶思维路线图 —— 逐字稿 学习 ShaderGUI 的过程，本质上是学习如何处理\"人、机器、资产\"三者关系的过程。",
-          "knowledgeFocus": {
-            "id": "knowledge-01",
-            "label": "解构阶段",
-            "source": "slide.points",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：解构阶段"
-          },
-          "animation": {
-            "name": "reveal-focus",
-            "durationMs": 420,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "pulse-once-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "解构阶段",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 0.0,
-              "peak": 6.58,
-              "settle": 16.44,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": false,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "left hero concept",
-            "subject": "解构阶段",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "0.00s-16.44s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“解构阶段”，弱化其他内容；旁白：阶段12：ShaderGUI 进阶思维路线图 —— 逐字稿 学习 ShaderGUI 的过程，本质上是学习如何处理\"人、机器、资产\"三者关系的过程。",
-          "focusInstruction": {
-            "focus": "解构阶段",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        },
-        {
-          "cueId": "cue-02",
-          "trigger": {
-            "type": "subtitle-segment",
-            "segmentIndex": 1,
-            "subtitleEventPath": "/subtitles/Module_04/p03.json",
-            "subtitleEventId": "s01",
-            "timecode": 16.44
-          },
-          "timeRange": {
-            "start": 16.44,
-            "end": 19.78,
-            "durationMs": 3340
-          },
-          "target": "content-beat",
-          "contentBeat": "重构阶段",
-          "sourceSubtitleText": "代码是死的，但交互逻辑是活的。",
-          "knowledgeFocus": {
-            "id": "knowledge-02",
-            "label": "重构阶段",
-            "source": "slide.points",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：重构阶段"
-          },
-          "animation": {
-            "name": "reveal-focus",
-            "durationMs": 360,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "soft-blink-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "重构阶段",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 16.44,
-              "peak": 17.78,
-              "settle": 19.78,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": true,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "right support card top",
-            "subject": "重构阶段",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "16.44s-19.78s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“重构阶段”，弱化其他内容；旁白：代码是死的，但交互逻辑是活的。",
-          "focusInstruction": {
-            "focus": "重构阶段",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        },
-        {
-          "cueId": "cue-03",
-          "trigger": {
-            "type": "subtitle-segment",
-            "segmentIndex": 2,
-            "subtitleEventPath": "/subtitles/Module_04/p03.json",
-            "subtitleEventId": "s02",
-            "timecode": 19.78
-          },
-          "timeRange": {
-            "start": 19.78,
-            "end": 32.0,
-            "durationMs": 12220
-          },
-          "target": "content-beat",
-          "contentBeat": "进化阶段",
-          "sourceSubtitleText": "希望这门课能帮你开启\"工程化开发\"的大门，让你在 TA 的道路上不仅能做出绚丽的特效，更能搭建出稳健的流水线。",
-          "knowledgeFocus": {
-            "id": "knowledge-03",
-            "label": "进化阶段",
-            "source": "slide.points",
-            "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：进化阶段"
-          },
-          "animation": {
-            "name": "reveal-focus",
-            "durationMs": 360,
-            "easing": "ease-out",
-            "parameters": {
-              "opacity": [
-                0,
-                1
-              ],
-              "translateY": [
-                12,
-                0
-              ],
-              "scale": [
-                0.96,
-                1.0
-              ],
-              "highlight": false
-            }
-          },
-          "dynamicGuidance": {
-            "primaryEffect": "knowledge-highlight",
-            "attentionPattern": "soft-blink-then-hold",
-            "highlightTarget": "point-card",
-            "highlightText": "进化阶段",
-            "deEmphasizeOthers": true,
-            "timing": {
-              "start": 19.78,
-              "peak": 24.67,
-              "settle": 32.0,
-              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
-            },
-            "visualTreatment": {
-              "accent": "cyan",
-              "glow": true,
-              "blink": true,
-              "outline": true
-            }
-          },
-          "compositionBeat": {
-            "frameZone": "right support card middle",
-            "subject": "进化阶段",
-            "cameraAction": "locked frame; reveal or pulse the current card in place",
-            "spatialChange": "raise contrast on point-card and dim sibling cards",
-            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
-          },
-          "shotInstruction": "19.78s-32.00s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“进化阶段”，弱化其他内容；旁白：希望这门课能帮你开启\"工程化开发\"的大门，让你在 TA 的道路上不仅能做出绚丽的特效，更能搭建出稳健的流水线。",
-          "focusInstruction": {
-            "focus": "进化阶段",
-            "deEmphasize": "other point cards and non-current code callouts",
-            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
-          },
-          "implementationHint": {
-            "componentRegion": "SlideCanvas",
-            "targetSelector": "point-card",
-            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
-            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
-          },
-          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
-        },
-        {
-          "cueId": "cue-04",
-          "trigger": {
-            "type": "subtitle-segment",
-            "segmentIndex": 3,
-            "subtitleEventPath": "/subtitles/Module_04/p03.json",
-            "subtitleEventId": "s03",
-            "timecode": 32.0
-          },
-          "timeRange": {
-            "start": 32.0,
-            "end": 33.2,
+            "start": 4.89,
+            "end": 6.09,
             "durationMs": 1200
           },
           "target": "content-beat",
-          "contentBeat": "治理阶段",
-          "sourceSubtitleText": "谢谢大家！",
+          "contentBeat": "Safe 模式的安全获取",
+          "sourceSubtitleText": "为什么？",
           "knowledgeFocus": {
-            "id": "knowledge-04",
-            "label": "治理阶段",
+            "id": "knowledge-02",
+            "label": "Safe 模式的安全获取",
             "source": "slide.points",
             "semanticRole": "concept-beat",
-            "learnerTakeaway": "当前应聚焦理解：治理阶段"
+            "learnerTakeaway": "当前应聚焦理解：Safe 模式的安全获取"
           },
           "animation": {
             "name": "reveal-focus",
@@ -1706,12 +1010,12 @@
             "primaryEffect": "knowledge-highlight",
             "attentionPattern": "soft-blink-then-hold",
             "highlightTarget": "point-card",
-            "highlightText": "治理阶段",
+            "highlightText": "Safe 模式的安全获取",
             "deEmphasizeOthers": true,
             "timing": {
-              "start": 32.0,
-              "peak": 32.48,
-              "settle": 33.2,
+              "start": 4.89,
+              "peak": 5.37,
+              "settle": 6.09,
               "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
             },
             "visualTreatment": {
@@ -1722,15 +1026,99 @@
             }
           },
           "compositionBeat": {
-            "frameZone": "right support card bottom",
-            "subject": "治理阶段",
+            "frameZone": "right support card top",
+            "subject": "Safe 模式的安全获取",
             "cameraAction": "locked frame; reveal or pulse the current card in place",
             "spatialChange": "raise contrast on point-card and dim sibling cards",
             "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
           },
-          "shotInstruction": "32.00s-33.20s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“治理阶段”，弱化其他内容；旁白：谢谢大家。",
+          "shotInstruction": "4.89s-6.09s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“Safe 模式的安全获取”，弱化其他内容；旁白：为什么。",
           "focusInstruction": {
-            "focus": "治理阶段",
+            "focus": "Safe 模式的安全获取",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-03",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 2,
+            "subtitleEventPath": "/subtitles/Module_01/p02.json",
+            "subtitleEventId": "s02",
+            "timecode": 6.09
+          },
+          "timeRange": {
+            "start": 6.09,
+            "end": 9.2,
+            "durationMs": 3110
+          },
+          "target": "content-beat",
+          "contentBeat": "封装 FindPropertySafe 工具函数",
+          "sourceSubtitleText": "因为 Shader 会迭代。",
+          "knowledgeFocus": {
+            "id": "knowledge-03",
+            "label": "封装 FindPropertySafe 工具函数",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：封装 FindPropertySafe 工具函数"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "封装 FindPropertySafe 工具函数",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 6.09,
+              "peak": 7.33,
+              "settle": 9.2,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card middle",
+            "subject": "封装 FindPropertySafe 工具函数",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "6.09s-9.20s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“封装 FindPropertySafe 工具函数”，弱化其他内容；旁白：因为 Shader 会迭代。",
+          "focusInstruction": {
+            "focus": "封装 FindPropertySafe 工具函数",
             "deEmphasize": "other point cards and non-current code callouts",
             "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
           },
@@ -1782,21 +1170,376 @@
       "componentList": [
         "SlideTitle",
         "PointList",
-        "DiagramPlaceholder",
         "SlideNav"
       ]
     }
   ],
   "interactiveScreens": [
     {
-      "moduleId": "Module_04",
+      "moduleId": "Module_01",
+      "screenId": "explore-p01-property-grouping",
+      "route": "/module/Module_01/slide/p01/explore",
+      "title": "探索页",
+      "screenType": "course-exploration-subpage",
+      "visualPrompt": "Design the exploration as a child page of the current lesson, not as a numbered slide. The layout must foreground manipulable controls, linked visible feedback, and a clear return path to the parent lesson. Realtime storyboard actions to preserve: load-exploration-contract, manipulate-variable, return-to-parent-slide.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_01/react-prototype.json",
+        "chatUrl": null,
+        "translationMode": "extract-exploration-subpage-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+          ],
+          "visual": [
+            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+            "Reserve strong accents for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Use storyboard motionCues as the interaction and animation source.",
+            "Quiz and exploration screens remain data-driven Vue Router pages."
+          ],
+          "slides": [
+            {
+              "moduleId": "Module_01",
+              "slideId": "p00",
+              "title": "ShaderGUI：不仅仅是换个皮",
+              "kind": null,
+              "route": "/module/Module_01/slide/p00"
+            },
+            {
+              "moduleId": "Module_01",
+              "slideId": "p01",
+              "title": "编写第一个自定义材质面板",
+              "kind": null,
+              "route": "/module/Module_01/slide/p01"
+            },
+            {
+              "moduleId": "Module_01",
+              "slideId": "p02",
+              "title": "如何安全地获取参数？",
+              "kind": null,
+              "route": "/module/Module_01/slide/p02"
+            }
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Let learners manipulate ShaderGUI property grouping variables as a subpage of the current lesson, without consuming a main slide number.",
+        "layoutIntent": {
+          "primaryFocus": "interactive property grouping lab",
+          "readingPath": "parent lesson -> exploration controls -> linked feedback -> return to lesson",
+          "density": "medium",
+          "emphasis": []
+        },
+        "visualComposition": {
+          "aspectRatio": "full viewport lab surface with 7% safe margin",
+          "shotType": "wide interactive workbench",
+          "frameGrid": {
+            "columns": "left controls 36%, right live material-panel feedback 64%",
+            "rows": "breadcrumb/header, interactive body, return affordance",
+            "anchor": "live feedback panel is the visual center; controls stay left"
+          },
+          "foreground": {
+            "subject": "active lab controls",
+            "position": "left-center",
+            "scale": "touch-friendly controls"
+          },
+          "midground": {
+            "subject": "material panel preview and code snippet",
+            "position": "right-center",
+            "role": "show immediate consequence"
+          },
+          "background": {
+            "subject": "dark neutral lab shell",
+            "position": "full frame",
+            "role": "keep focus on interactive cause/effect"
+          },
+          "negativeSpace": "space between controls and feedback prevents the lab from feeling like a form",
+          "readingDirection": "breadcrumb -> controls -> live feedback -> return to lesson",
+          "safeArea": "no content under footer/player controls; keep return path visible",
+          "cameraPlan": {
+            "base": "locked wide frame",
+            "beatMotion": "feedback regions update in place",
+            "avoid": [
+              "modal overlays",
+              "hidden return navigation"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "focused, experimental, immediate",
+          "contrastRole": "use emerald for active controls and cyan for linked feedback",
+          "avoid": [
+            "standalone slide numbering",
+            "audio transcript panel",
+            "decorative-only interaction"
+          ]
+        },
+        "realtimeCueCount": 3,
+        "parentSlideId": "p01"
+      },
+      "realtimeInteractionCues": [
+        {
+          "cueId": "explore-cue-01",
+          "trigger": {
+            "type": "page-load",
+            "event": "exploration-mounted"
+          },
+          "action": "load-exploration-contract",
+          "target": "PropertyGroupingLab",
+          "runtimeBinding": "slides.json explore + concept-model.json",
+          "feedback": "Render the lab as a child route of the parent lesson.",
+          "purpose": "Keep exploration outside the pxx slide sequence."
+        },
+        {
+          "cueId": "explore-cue-02",
+          "trigger": {
+            "type": "user-action",
+            "event": "input"
+          },
+          "action": "manipulate-variable",
+          "target": "lab-controls",
+          "runtimeBinding": "PropertyGroupingLab local state",
+          "feedback": "Visible properties, risk level, explanation, and code snippet update immediately.",
+          "purpose": "Show why grouping and conditional display reduce cognitive load."
+        },
+        {
+          "cueId": "explore-cue-03",
+          "trigger": {
+            "type": "user-action",
+            "event": "click"
+          },
+          "action": "return-to-parent-slide",
+          "target": "PageNav return link",
+          "runtimeBinding": "/module/Module_01/slide/p01",
+          "feedback": "Learner returns to the current lesson without changing the slide range.",
+          "purpose": "Preserve pxx as the main course spine."
+        }
+      ],
+      "runtimeGuidance": {
+        "target": "CourseApp/src/views/ExplorationView.vue",
+        "stateModel": [
+          "explore",
+          "labControls",
+          "linkedFeedback"
+        ],
+        "eventHandlers": [
+          "resolveParentSlide",
+          "updateLabState",
+          "returnToParentSlide"
+        ],
+        "mustRenderFromStoryboard": true
+      },
+      "componentList": [
+        "ExplorationShell",
+        "PropertyGroupingLab",
+        "LinkedFeedbackPanel",
+        "ReturnToParentSlide"
+      ],
+      "contentConstraints": [
+        "Exploration must not appear in slides.json and must not consume a pxx number.",
+        "The route must be a child of the parent slide route.",
+        "Interaction exists only because interaction-necessity-gate decided insert.",
+        "Provide an obvious return path to the parent lesson."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS",
+        "data": "CourseApp/src/data/explorations.json"
+      }
+    },
+    {
+      "moduleId": "Module_01",
+      "screenId": "explore-p02-property-grouping",
+      "route": "/module/Module_01/slide/p02/explore",
+      "title": "属性查找实战",
+      "screenType": "course-exploration-subpage",
+      "visualPrompt": "Design the exploration as a child page of the current lesson, not as a numbered slide. The layout must foreground manipulable controls, linked visible feedback, and a clear return path to the parent lesson. Realtime storyboard actions to preserve: load-exploration-contract, manipulate-variable, return-to-parent-slide.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_01/react-prototype.json",
+        "chatUrl": null,
+        "translationMode": "extract-exploration-subpage-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+          ],
+          "visual": [
+            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+            "Reserve strong accents for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Use storyboard motionCues as the interaction and animation source.",
+            "Quiz and exploration screens remain data-driven Vue Router pages."
+          ],
+          "slides": [
+            {
+              "moduleId": "Module_01",
+              "slideId": "p00",
+              "title": "ShaderGUI：不仅仅是换个皮",
+              "kind": null,
+              "route": "/module/Module_01/slide/p00"
+            },
+            {
+              "moduleId": "Module_01",
+              "slideId": "p01",
+              "title": "编写第一个自定义材质面板",
+              "kind": null,
+              "route": "/module/Module_01/slide/p01"
+            },
+            {
+              "moduleId": "Module_01",
+              "slideId": "p02",
+              "title": "如何安全地获取参数？",
+              "kind": null,
+              "route": "/module/Module_01/slide/p02"
+            }
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Let learners manipulate ShaderGUI property grouping variables as a subpage of the current lesson, without consuming a main slide number.",
+        "layoutIntent": {
+          "primaryFocus": "interactive property grouping lab",
+          "readingPath": "parent lesson -> exploration controls -> linked feedback -> return to lesson",
+          "density": "medium",
+          "emphasis": [
+            "Required 模式的风险",
+            "Safe 模式的安全获取",
+            "封装 FindPropertySafe 工具函数"
+          ]
+        },
+        "visualComposition": {
+          "aspectRatio": "full viewport lab surface with 7% safe margin",
+          "shotType": "wide interactive workbench",
+          "frameGrid": {
+            "columns": "left controls 36%, right live material-panel feedback 64%",
+            "rows": "breadcrumb/header, interactive body, return affordance",
+            "anchor": "live feedback panel is the visual center; controls stay left"
+          },
+          "foreground": {
+            "subject": "active lab controls",
+            "position": "left-center",
+            "scale": "touch-friendly controls"
+          },
+          "midground": {
+            "subject": "material panel preview and code snippet",
+            "position": "right-center",
+            "role": "show immediate consequence"
+          },
+          "background": {
+            "subject": "dark neutral lab shell",
+            "position": "full frame",
+            "role": "keep focus on interactive cause/effect"
+          },
+          "negativeSpace": "space between controls and feedback prevents the lab from feeling like a form",
+          "readingDirection": "breadcrumb -> controls -> live feedback -> return to lesson",
+          "safeArea": "no content under footer/player controls; keep return path visible",
+          "cameraPlan": {
+            "base": "locked wide frame",
+            "beatMotion": "feedback regions update in place",
+            "avoid": [
+              "modal overlays",
+              "hidden return navigation"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "focused, experimental, immediate",
+          "contrastRole": "use emerald for active controls and cyan for linked feedback",
+          "avoid": [
+            "standalone slide numbering",
+            "audio transcript panel",
+            "decorative-only interaction"
+          ]
+        },
+        "realtimeCueCount": 3,
+        "parentSlideId": "p02"
+      },
+      "realtimeInteractionCues": [
+        {
+          "cueId": "explore-cue-01",
+          "trigger": {
+            "type": "page-load",
+            "event": "exploration-mounted"
+          },
+          "action": "load-exploration-contract",
+          "target": null,
+          "runtimeBinding": "slides.json explore + concept-model.json",
+          "feedback": "Render the lab as a child route of the parent lesson.",
+          "purpose": "Keep exploration outside the pxx slide sequence."
+        },
+        {
+          "cueId": "explore-cue-02",
+          "trigger": {
+            "type": "user-action",
+            "event": "input"
+          },
+          "action": "manipulate-variable",
+          "target": "lab-controls",
+          "runtimeBinding": "PropertyGroupingLab local state",
+          "feedback": "Visible properties, risk level, explanation, and code snippet update immediately.",
+          "purpose": "Show why grouping and conditional display reduce cognitive load."
+        },
+        {
+          "cueId": "explore-cue-03",
+          "trigger": {
+            "type": "user-action",
+            "event": "click"
+          },
+          "action": "return-to-parent-slide",
+          "target": "PageNav return link",
+          "runtimeBinding": "/module/Module_01/slide/p02",
+          "feedback": "Learner returns to the current lesson without changing the slide range.",
+          "purpose": "Preserve pxx as the main course spine."
+        }
+      ],
+      "runtimeGuidance": {
+        "target": "CourseApp/src/views/ExplorationView.vue",
+        "stateModel": [
+          "explore",
+          "labControls",
+          "linkedFeedback"
+        ],
+        "eventHandlers": [
+          "resolveParentSlide",
+          "updateLabState",
+          "returnToParentSlide"
+        ],
+        "mustRenderFromStoryboard": true
+      },
+      "componentList": [
+        "ExplorationShell",
+        "PropertyGroupingLab",
+        "LinkedFeedbackPanel",
+        "ReturnToParentSlide"
+      ],
+      "contentConstraints": [
+        "Exploration must not appear in slides.json and must not consume a pxx number.",
+        "The route must be a child of the parent slide route.",
+        "Interaction exists only because interaction-necessity-gate decided insert.",
+        "Provide an obvious return path to the parent lesson."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS",
+        "data": "CourseApp/src/data/explorations.json"
+      }
+    },
+    {
+      "moduleId": "Module_01",
       "screenId": "quiz",
-      "route": "/module/Module_04/quiz",
+      "route": "/module/Module_01/quiz",
       "title": "做题页",
       "screenType": "course-quiz-runtime",
       "visualPrompt": "Design the quiz page as a live assessment workspace. The layout must foreground the question bank table, then answer cards, then immediate result feedback. Realtime storyboard actions to preserve: shuffle-question-bank, shuffle-options, select-answer, submit-answer, show-score. Interactions must feel immediate and data-driven, with no page reload after answer selection, option swapping, submission, or reset.",
       "v0PrototypeRef": {
-        "source": ".agent/v0/Module_04/react-prototype.json",
+        "source": ".agent/v0/Module_01/react-prototype.json",
         "chatUrl": null,
         "translationMode": "extract-live-quiz-interaction-rules-to-vue-tailwind",
         "designRules": {
@@ -1814,32 +1557,25 @@
           ],
           "slides": [
             {
-              "moduleId": "Module_04",
+              "moduleId": "Module_01",
               "slideId": "p00",
-              "title": "渲染状态同步：让 GUI 替人思考",
+              "title": "ShaderGUI：不仅仅是换个皮",
               "kind": null,
-              "route": "/module/Module_04/slide/p00"
+              "route": "/module/Module_01/slide/p00"
             },
             {
-              "moduleId": "Module_04",
+              "moduleId": "Module_01",
               "slideId": "p01",
-              "title": "版本迁移：如何让旧资产不碎掉？",
+              "title": "编写第一个自定义材质面板",
               "kind": null,
-              "route": "/module/Module_04/slide/p01"
+              "route": "/module/Module_01/slide/p01"
             },
             {
-              "moduleId": "Module_04",
+              "moduleId": "Module_01",
               "slideId": "p02",
-              "title": "最终实战：构建专业级描边材质面板",
+              "title": "如何安全地获取参数？",
               "kind": null,
-              "route": "/module/Module_04/slide/p02"
-            },
-            {
-              "moduleId": "Module_04",
-              "slideId": "p03",
-              "title": "ShaderGUI 进阶思维路线图",
-              "kind": null,
-              "route": "/module/Module_04/slide/p03"
+              "route": "/module/Module_01/slide/p02"
             }
           ]
         }
@@ -2011,7 +1747,7 @@
   ],
   "_validation": {
     "lastContractCheck": null,
-    "lastVisualRefCheck": "2026-05-05T11:48:39Z",
+    "lastVisualRefCheck": "2026-05-06T00:08:05Z",
     "contractCheckAttempts": 0,
     "visualRefCheckAttempts": 0
   }

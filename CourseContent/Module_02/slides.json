@@ -11,6 +11,13 @@
       "信息架构设计",
       "BeginVertical 创建视觉边界",
       "按渲染逻辑排列参数"
+    ],
+    "codeBlocks": [
+      {
+        "title": "GroupedGUI.cs",
+        "badge": "C# side",
+        "code": "// ✅ 按渲染逻辑分组\npublic override void OnGUI(MaterialEditor editor, MaterialProperty[] props)\n{\n    // 第一层：主贴图与颜色\n    EditorGUILayout.BeginVertical(EditorStyles.helpBox);\n    MaterialEditor.TextureProperty(\"_MainTex\");\n    MaterialEditor.ColorProperty(\"_Color\");\n    EditorGUILayout.EndVertical();\n\n    // 第二层：光照参数\n    EditorGUILayout.BeginVertical(EditorStyles.helpBox);\n    MaterialEditor.RangeProperty(\"_Glossiness\");\n    MaterialEditor.RangeProperty(\"_Metallic\");\n    EditorGUILayout.EndVertical();\n}"
+      }
     ]
   },
   {
@@ -25,6 +32,18 @@
       "条件显示技术",
       "Toggle/Enum 控制参数组显隐",
       "EditorGUI.DisabledScope 应用"
+    ],
+    "explore": {
+      "id": "smart-ui-linkage",
+      "route": "/module/Module_02/slide/p01/explore",
+      "title": "智能 UI 联动实验"
+    },
+    "codeBlocks": [
+      {
+        "title": "SmartUI.cs",
+        "badge": "C# side",
+        "code": "// ✅ 智能联动：Enum 切换控制参数组显隐\nbool useRamp = (_RampMode.floatValue == 1);\nEditorGUILayout.BeginFadeGroup(ref useRamp);\n{\n    MaterialEditor.TextureProperty(\"_RampTex\");\n    MaterialEditor.ColorProperty(\"_RampColor\");\n}\nEditorGUILayout.EndFadeGroup();\n\n// ✅ 安全禁用：参数存在但当前配置不适用\nusing (new EditorGUILayout.DisabledScope(!useRamp))\n{\n    MaterialEditor.RangeProperty(\"_RampBlend\", \"Ramp 混合\");\n}"
+      }
     ]
   },
   {
@@ -39,6 +58,13 @@
       "封装 DrawProp / DrawTex / BeginGroup 工具类",
       "提高编写效率",
       "视觉统一性"
+    ],
+    "codeBlocks": [
+      {
+        "title": "ShaderGUIUtil.cs",
+        "badge": "C# side",
+        "code": "public static class ShaderGUIUtil\n{\n    public static void DrawProp(MaterialProperty prop, string label)\n    {\n        if (prop == null) return;\n        EditorGUILayout.PropertyField(prop, new GUIContent(label));\n    }\n\n    public static void DrawTex(MaterialProperty tex, string label)\n    {\n        if (tex == null) return;\n        editor.TextureProperty(tex, label);\n    }\n\n    public static void BeginGroup(string title)\n    {\n        EditorGUILayout.BeginVertical(\"box\");\n        EditorGUILayout.LabelField(title, EditorStyles.boldLabel);\n    }\n\n    public static void EndGroup()\n    {\n        EditorGUILayout.EndVertical();\n    }\n}"
+      }
     ]
   }
 ]

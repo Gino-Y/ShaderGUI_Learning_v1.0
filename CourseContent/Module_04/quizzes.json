@@ -1,22 +1,33 @@
 [
   {
     "moduleId": "Module_04",
-    "question": "以下哪个操作在 OnGUI 中应该避免？",
-    "options": [
-      "耗时计算/网络请求",
-      "ShaderProperty",
-      "LabelField"
-    ],
-    "answer": 0
-  },
-  {
-    "moduleId": "Module_04",
-    "question": "支持撤销需要调用哪个方法？",
-    "options": [
-      "RegisterPropertyChangeUndo",
-      "Undo.RecordObject",
-      "EditorUtility.SetDirty"
-    ],
-    "answer": 0
+    "title": "模块四测试：渲染同步与版本迁移",
+    "passingScore": 60,
+    "questions": [
+      {
+        "id": "m04-q01",
+        "type": "single",
+        "prompt": "以下哪个操作在 OnGUI 中应该避免？",
+        "options": [
+          { "id": "a", "text": "耗时计算/网络请求" },
+          { "id": "b", "text": "ShaderProperty" },
+          { "id": "c", "text": "LabelField" }
+        ],
+        "answer": ["a"],
+        "explanation": "OnGUI 每帧调用多次，耗时操作会导致编辑器卡顿。"
+      },
+      {
+        "id": "m04-q02",
+        "type": "single",
+        "prompt": "支持撤销需要调用哪个方法？",
+        "options": [
+          { "id": "a", "text": "RegisterPropertyChangeUndo" },
+          { "id": "b", "text": "Undo.RecordObject" },
+          { "id": "c", "text": "EditorUtility.SetDirty" }
+        ],
+        "answer": ["a"],
+        "explanation": "MaterialEditor.RegisterPropertyChangeUndo 是 ShaderGUI 中实现撤销的标准方法。"
+      }
+    ]
   }
 ]

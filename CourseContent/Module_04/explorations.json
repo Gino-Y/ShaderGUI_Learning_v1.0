@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "moduleId": "Module_04",
+    "parentSlideId": "p02",
+    "explorationId": "render-state-playground",
+    "route": "/module/Module_04/slide/p02/explore",
+    "title": "渲染状态调试试验场",
+    "component": "RenderStatePlayground",
+    "gateDecision": {
+      "status": "inserted",
+      "gate": "interaction-necessity-gate",
+      "reason": "渲染状态同步需要实时调节参数观察效果。"
+    }
+  }
+]

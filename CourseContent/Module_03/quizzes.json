@@ -1,22 +1,33 @@
 [
   {
     "moduleId": "Module_03",
-    "question": "ShaderGUI 中哪个方法负责绘制面板？",
-    "options": [
-      "OnGUI",
-      "OnInspectorGUI",
-      "OnSceneGUI"
-    ],
-    "answer": 0
-  },
-  {
-    "moduleId": "Module_03",
-    "question": "FindProperty 的第二个参数是？",
-    "options": [
-      "MaterialProperty[]",
-      "Material",
-      "Shader"
-    ],
-    "answer": 0
+    "title": "模块三测试：模块化与 Managed Properties",
+    "passingScore": 60,
+    "questions": [
+      {
+        "id": "m03-q01",
+        "type": "single",
+        "prompt": "ShaderGUI 中哪个方法负责绘制面板？",
+        "options": [
+          { "id": "a", "text": "OnGUI" },
+          { "id": "b", "text": "OnInspectorGUI" },
+          { "id": "c", "text": "OnSceneGUI" }
+        ],
+        "answer": ["a"],
+        "explanation": "ShaderGUI 通过重写 OnGUI(MaterialEditor, MaterialProperty[]) 方法来绘制材质面板。"
+      },
+      {
+        "id": "m03-q02",
+        "type": "single",
+        "prompt": "FindProperty 的第二个参数是？",
+        "options": [
+          { "id": "a", "text": "MaterialProperty[]" },
+          { "id": "b", "text": "Material" },
+          { "id": "c", "text": "Shader" }
+        ],
+        "answer": ["a"],
+        "explanation": "FindProperty(string name, MaterialProperty[] props) 的第二个参数是当前材质的所有属性数组。"
+      }
+    ]
   }
 ]

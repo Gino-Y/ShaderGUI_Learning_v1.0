@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "moduleId": "Module_02",
+    "parentSlideId": "p01",
+    "explorationId": "smart-ui-linkage",
+    "route": "/module/Module_02/slide/p01/explore",
+    "title": "智能 UI 联动实验",
+    "component": "SmartUILinkageLab",
+    "gateDecision": {
+      "status": "inserted",
+      "gate": "interaction-necessity-gate",
+      "reason": "UI 联动需要实际操作理解 Toggle/Enum 控制逻辑。"
+    }
+  }
+]

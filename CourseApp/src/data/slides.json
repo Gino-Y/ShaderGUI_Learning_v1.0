@@ -29,6 +29,18 @@
       "重写 OnGUI",
       "通过 CustomEditor 绑定"
     ],
+    "codeBlocks": [
+      {
+        "title": "MyShaderGUI.cs",
+        "badge": "C# side",
+        "code": "using UnityEditor;\nusing UnityEngine;\n\npublic class MyShaderGUI : ShaderGUI\n{\n    public override void OnGUI(MaterialEditor editor, MaterialProperty[] props)\n    {\n        // 自定义材质面板绘制逻辑\n        base.OnGUI(editor, props);\n    }\n}"
+      },
+      {
+        "title": "MyShader.shader",
+        "badge": "Shader side",
+        "code": "Shader \"Custom/MyShader\"\n{\n    Properties\n    {\n        _Color (\"Color\", Color) = (1,1,1,1)\n        _MainTex (\"Texture\", 2D) = \"white\" {}\n    }\n    SubShader\n    {\n        // ... pass ...\n    }\n    CustomEditor \"MyShaderGUI\"\n}"
+      }
+    ],
     "route": "/module/Module_01/slide/p01",
     "audio": "/audio/Module_01/p01.mp3",
     "subtitles": "/subtitles/Module_01/p01.json",
@@ -52,6 +64,13 @@
       "route": "/module/Module_01/slide/p02/explore",
       "title": "属性查找实战"
     },
+    "codeBlocks": [
+      {
+        "title": "FindPropertySafe.cs",
+        "badge": "C# side",
+        "code": "// ❌ Required 模式（危险）\nvar prop = FindProperty(\"_Color\", props);  // 属性不存在直接崩\n\n// ✅ Safe 模式（推荐）\nMaterialProperty FindPropertySafe(string name, MaterialProperty[] props)\n{\n    int idx = FindPropertyIndex(name, props);\n    return idx >= 0 ? props[idx] : null;\n}"
+      }
+    ],
     "route": "/module/Module_01/slide/p02",
     "audio": "/audio/Module_01/p02.mp3",
     "subtitles": "/subtitles/Module_01/p02.json",
@@ -69,6 +88,13 @@
       "信息架构设计",
       "BeginVertical 创建视觉边界",
       "按渲染逻辑排列参数"
+    ],
+    "codeBlocks": [
+      {
+        "title": "GroupedGUI.cs",
+        "badge": "C# side",
+        "code": "// ✅ 按渲染逻辑分组\npublic override void OnGUI(MaterialEditor editor, MaterialProperty[] props)\n{\n    // 第一层：主贴图与颜色\n    EditorGUILayout.BeginVertical(EditorStyles.helpBox);\n    MaterialEditor.TextureProperty(\"_MainTex\");\n    MaterialEditor.ColorProperty(\"_Color\");\n    EditorGUILayout.EndVertical();\n\n    // 第二层：光照参数\n    EditorGUILayout.BeginVertical(EditorStyles.helpBox);\n    MaterialEditor.RangeProperty(\"_Glossiness\");\n    MaterialEditor.RangeProperty(\"_Metallic\");\n    EditorGUILayout.EndVertical();\n}"
+      }
     ],
     "route": "/module/Module_02/slide/p00",
     "audio": "/audio/Module_02/p00.mp3",
@@ -88,6 +114,18 @@
       "Toggle/Enum 控制参数组显隐",
       "EditorGUI.DisabledScope 应用"
     ],
+    "explore": {
+      "id": "smart-ui-linkage",
+      "route": "/module/Module_02/slide/p01/explore",
+      "title": "智能 UI 联动实验"
+    },
+    "codeBlocks": [
+      {
+        "title": "SmartUI.cs",
+        "badge": "C# side",
+        "code": "// ✅ 智能联动：Enum 切换控制参数组显隐\nbool useRamp = (_RampMode.floatValue == 1);\nEditorGUILayout.BeginFadeGroup(ref useRamp);\n{\n    MaterialEditor.TextureProperty(\"_RampTex\");\n    MaterialEditor.ColorProperty(\"_RampColor\");\n}\nEditorGUILayout.EndFadeGroup();\n\n// ✅ 安全禁用：参数存在但当前配置不适用\nusing (new EditorGUILayout.DisabledScope(!useRamp))\n{\n    MaterialEditor.RangeProperty(\"_RampBlend\", \"Ramp 混合\");\n}"
+      }
+    ],
     "route": "/module/Module_02/slide/p01",
     "audio": "/audio/Module_02/p01.mp3",
     "subtitles": "/subtitles/Module_02/p01.json",
@@ -105,6 +143,13 @@
       "封装 DrawProp / DrawTex / BeginGroup 工具类",
       "提高编写效率",
       "视觉统一性"
+    ],
+    "codeBlocks": [
+      {
+        "title": "ShaderGUIUtil.cs",
+        "badge": "C# side",
+        "code": "public static class ShaderGUIUtil\n{\n    public static void DrawProp(MaterialProperty prop, string label)\n    {\n        if (prop == null) return;\n        EditorGUILayout.PropertyField(prop, new GUIContent(label));\n    }\n\n    public static void DrawTex(MaterialProperty tex, string label)\n    {\n        if (tex == null) return;\n        editor.TextureProperty(tex, label);\n    }\n\n    public static void BeginGroup(string title)\n    {\n        EditorGUILayout.BeginVertical(\"box\");\n        EditorGUILayout.LabelField(title, EditorStyles.boldLabel);\n    }\n\n    public static void EndGroup()\n    {\n        EditorGUILayout.EndVertical();\n    }\n}"
+      }
     ],
     "route": "/module/Module_02/slide/p02",
     "audio": "/audio/Module_02/p02.mp3",
@@ -124,6 +169,18 @@
       "静态功能类设计",
       "DrawProperties 静态方法"
     ],
+    "explore": {
+      "id": "modular-assembly",
+      "route": "/module/Module_03/slide/p00/explore",
+      "title": "模块化组装实验"
+    },
+    "codeBlocks": [
+      {
+        "title": "BaseColorModule.cs",
+        "badge": "C# side",
+        "code": "// 模块一：基础颜色模块\npublic static class BaseColorModule\n{\n    public static void DrawProperties(MaterialProperty[] props, MaterialEditor editor)\n    {\n        MaterialProperty color = FindPropertySafe(\"_Color\", props);\n        if (color != null)\n            editor.ColorProperty(color, \"Base Color\");\n    }\n}\n\n// 模块二：法线贴图模块\npublic static class NormalMapModule\n{\n    public static void DrawProperties(MaterialProperty[] props, MaterialEditor editor)\n    {\n        MaterialProperty normalMap = FindPropertySafe(\"_NormalMap\", props);\n        if (normalMap != null)\n            editor.TextureProperty(normalMap, \"Normal Map\");\n    }\n}\n\n// 主 GUI：像搭积木一样组装\npublic override void OnGUI(MaterialEditor editor, MaterialProperty[] props)\n{\n    BaseColorModule.DrawProperties(props, editor);\n    NormalMapModule.DrawProperties(props, editor);\n}"
+      }
+    ],
     "route": "/module/Module_03/slide/p00",
     "audio": "/audio/Module_03/p00.mp3",
     "subtitles": "/subtitles/Module_03/p00.json",
@@ -142,6 +199,13 @@
       "确保不漏掉参数",
       "不重复绘制"
     ],
+    "codeBlocks": [
+      {
+        "title": "ManagedProps.cs",
+        "badge": "C# side",
+        "code": "// 注册机制核心：记录哪些属性已经被管理\nprivate HashSet<string> _managedProps = new HashSet<string>();\n\nvoid RegisterProp(string name)\n{\n    _managedProps.Add(name);\n}\n\n// 自动补位：绘制所有未被管理的属性\nvoid DrawUnmanagedProps(MaterialProperty[] props)\n{\n    foreach (var prop in props)\n    {\n        if (!_managedProps.Contains(prop.name))\n            MaterialEditor.DefaultShaderProperty(prop);\n    }\n}"
+      }
+    ],
     "route": "/module/Module_03/slide/p01",
     "audio": "/audio/Module_03/p01.mp3",
     "subtitles": "/subtitles/Module_03/p01.json",
@@ -158,6 +222,18 @@
     "points": [
       "在 OnGUI 末尾检测属性变化",
       "自动同步 Blend、ZWrite、RenderQueue"
+    ],
+    "codeBlocks": [
+      {
+        "title": "RenderStateSync.cs",
+        "badge": "C# side",
+        "code": "// 在 OnGUI 末尾调用同步方法\npublic override void OnGUI(MaterialEditor editor, MaterialProperty[] props)\n{\n    // ... 绘制自定义属性 ...\n\n    // 末尾同步渲染状态\n    SyncRenderState(targets);\n}\n\nvoid SyncRenderState(Object[] targets)\n{\n    foreach (Material m in targets)\n    {\n        // 根据 _BlendMode 的值自动设置 Blend\n        int blendMode = (int)m.GetFloat(\"_BlendMode\");\n        switch (blendMode)\n        {\n            case 0: // Alpha 混合\n                m.SetFloat(\"_SrcBlend\", (float)UnityEngine.Rendering.BlendMode.SrcAlpha);\n                m.SetFloat(\"_DstBlend\", (float)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);\n                break;\n            case 1: // 加法混合\n                m.SetFloat(\"_SrcBlend\", (float)UnityEngine.Rendering.BlendMode.One);\n                m.SetFloat(\"_DstBlend\", (float)UnityEngine.Rendering.BlendMode.One);\n                break;\n            case 2: // 乘法混合\n                m.SetFloat(\"_SrcBlend\", (float)UnityEngine.Rendering.BlendMode.DstColor);\n                m.SetFloat(\"_DstBlend\", (float)UnityEngine.Rendering.BlendMode.Zero);\n                break;\n        }\n\n        // 同步 ZWrite\n        int zwrite = (int)m.GetFloat(\"_ZWriteMode\");\n        m.SetFloat(\"_ZWrite\", zwrite > 0 ? 1 : 0);\n\n        // 同步 RenderQueue\n        int queue = (int)m.GetFloat(\"_RenderQueue\");\n        m.renderQueue = queue;\n    }\n}"
+      },
+      {
+        "title": "MyShader.shader",
+        "badge": "HLSL side",
+        "code": "Properties\n{\n    [HideInInspector] _SrcBlend (\"__SrcBlend\", Float) = 1\n    [HideInInspector] _DstBlend (\"__DstBlend\", Float) = 0\n    [HideInInspector] _ZWrite (\"__ZWrite\", Float) = 1\n}\n\nSubShader\n{\n    Blend [_SrcBlend] [_DstBlend]\n    ZWrite [_ZWrite]\n    // ... pass ...\n}"
+      }
     ],
     "route": "/module/Module_04/slide/p00",
     "audio": "/audio/Module_04/p00.mp3",
@@ -176,6 +252,18 @@
       "属性名 Fallback",
       "语义映射",
       "静默升级策略"
+    ],
+    "codeBlocks": [
+      {
+        "title": "FallbackStrategy.cs",
+        "badge": "C# side",
+        "code": "// Fallback 查找策略\nMaterialProperty colorProp = FindPropertySafe(\"_BaseColor\", props)\n                        ?? FindPropertySafe(\"_Color\", props);\n\nif (colorProp != null)\n{\n    editor.ShaderProperty(colorProp, \"Base Color\");\n}"
+      },
+      {
+        "title": "VersionMigration.cs",
+        "badge": "C# side",
+        "code": "// 静默升级策略\nvoid CheckAndUpgradeMaterial(Material material)\n{\n    int version = material.GetInt(\"_Version\");\n\n    if (version < 2)\n    {\n        // 执行版本 1 到 2 的迁移\n        if (material.HasProperty(\"_Shininess\"))\n        {\n            float shininess = material.GetFloat(\"_Shininess\");\n            material.SetFloat(\"_Smoothness\", shininess / 128.0f);\n        }\n        material.SetInt(\"_Version\", 2);\n    }\n}"
+      }
     ],
     "route": "/module/Module_04/slide/p01",
     "audio": "/audio/Module_04/p01.mp3",
@@ -196,6 +284,18 @@
       "美术友好",
       "性能同步"
     ],
+    "explore": {
+      "id": "render-state-playground",
+      "route": "/module/Module_04/slide/p02/explore",
+      "title": "渲染状态调试试验场"
+    },
+    "codeBlocks": [
+      {
+        "title": "M_Outline_Fitting_h01_GUI.cs",
+        "badge": "C# side",
+        "code": "public class M_Outline_Fitting_h01_GUI : ShaderGUI\n{\n    private static readonly HashSet<string> ManagedProps = new HashSet<string>();\n\n    public override void OnGUI(MaterialEditor editor, MaterialProperty[] props)\n    {\n        ManagedProps.Clear();\n\n        // 形体组\n        EditorGUILayout.BeginVertical(\"box\");\n        EditorGUILayout.LabelField(\"Shape\", EditorStyles.boldLabel);\n        DrawProp(FindPropertySafe(\"_OutlineWidth\", props), \"描边宽度\", ManagedProps);\n        DrawProp(FindPropertySafe(\"_OutlineColor\", props), \"描边颜色\", ManagedProps);\n        EditorGUILayout.EndVertical();\n\n        // 裁剪组\n        EditorGUILayout.BeginVertical(\"box\");\n        EditorGUILayout.LabelField(\"Clip\", EditorStyles.boldLabel);\n        DrawProp(FindPropertySafe(\"_ClipThreshold\", props), \"裁剪阈值\", ManagedProps);\n        EditorGUILayout.EndVertical();\n\n        // 动态组\n        EditorGUILayout.BeginVertical(\"box\");\n        EditorGUILayout.LabelField(\"Motion\", EditorStyles.boldLabel);\n        DrawProp(FindPropertySafe(\"_MotionSpeed\", props), \"运动速度\", ManagedProps);\n        EditorGUILayout.EndVertical();\n\n        // 颜色组\n        EditorGUILayout.BeginVertical(\"box\");\n        EditorGUILayout.LabelField(\"Color\", EditorStyles.boldLabel);\n        DrawProp(FindPropertySafe(\"_Color\", props), \"主颜色\", ManagedProps);\n        DrawProp(FindPropertySafe(\"_UseRainbow\", props), \"启用彩虹色\", ManagedProps);\n        EditorGUILayout.EndVertical();\n\n        // 渲染状态同步\n        EditorGUI.BeginChangeCheck();\n        editor.PropertiesGUI(props);\n        if (EditorGUI.EndChangeCheck())\n        {\n            foreach (var target in editor.targets)\n            {\n                SyncRenderState(target as Material);\n            }\n        }\n\n        // 兜底：绘制未被管理的属性\n        foreach (var prop in props)\n        {\n            if (!ManagedProps.Contains(prop.name))\n                editor.ShaderProperty(prop, prop.displayName);\n        }\n    }\n\n    private static void SyncRenderState(Material mat)\n    {\n        bool isTransparent = mat.GetFloat(\"_Mode\") > 0.5f;\n        mat.SetInt(\"_SrcBlend\", isTransparent ? (int)BlendMode.SrcAlpha : (int)BlendMode.One);\n        mat.SetInt(\"_DstBlend\", isTransparent ? (int)BlendMode.OneMinusSrcAlpha : (int)BlendMode.Zero);\n        mat.SetInt(\"_ZWrite\", isTransparent ? 0 : 1);\n        mat.renderQueue = isTransparent ? 3000 : 2000;\n    }\n}"
+      }
+    ],
     "route": "/module/Module_04/slide/p02",
     "audio": "/audio/Module_04/p02.mp3",
     "subtitles": "/subtitles/Module_04/p02.json",
@@ -214,6 +314,13 @@
       "重构阶段",
       "进化阶段",
       "治理阶段"
+    ],
+    "codeBlocks": [
+      {
+        "title": "GrowthPath",
+        "badge": "思维路线图",
+        "code": "第一步（解构）  ──>  理解属性契约，实现 FindProperty\n     ↓\n第二步（重构）  ──>  建立信息架构，实现分组与联动\n     ↓\n第三步（进化）  ──>  组件化思考，实现模块化复用\n     ↓\n第四步（治理）  ──>  关注生命周期，实现状态同步与版本迁移"
+      }
     ],
     "route": "/module/Module_04/slide/p03",
     "audio": "/audio/Module_04/p03.mp3",

@@ -1,22 +1,33 @@
 [
   {
     "moduleId": "Module_02",
-    "question": "以下哪个 Drawer 可以实现开关效果？",
-    "options": [
-      "[Toggle]",
-      "[Slider]",
-      "[IntRange]"
-    ],
-    "answer": 0
-  },
-  {
-    "moduleId": "Module_02",
-    "question": "自定义 Drawer 需要继承哪个类？",
-    "options": [
-      "MaterialPropertyDrawer",
-      "ShaderGUI",
-      "Editor"
-    ],
-    "answer": 0
+    "title": "模块二测试：分组、联动与工具箱",
+    "passingScore": 60,
+    "questions": [
+      {
+        "id": "m02-q01",
+        "type": "single",
+        "prompt": "以下哪个 Drawer 可以实现开关效果？",
+        "options": [
+          { "id": "a", "text": "[Toggle]" },
+          { "id": "b", "text": "[Slider]" },
+          { "id": "c", "text": "[IntRange]" }
+        ],
+        "answer": ["a"],
+        "explanation": "[Toggle] Drawer 可以在属性名前渲染开关，控制属性组的启用/禁用。"
+      },
+      {
+        "id": "m02-q02",
+        "type": "single",
+        "prompt": "自定义 Drawer 需要继承哪个类？",
+        "options": [
+          { "id": "a", "text": "MaterialPropertyDrawer" },
+          { "id": "b", "text": "ShaderGUI" },
+          { "id": "c", "text": "Editor" }
+        ],
+        "answer": ["a"],
+        "explanation": "MaterialPropertyDrawer 是自定义属性 Drawer 的基类，通过 [PropertyDrawer] 特性绑定。"
+      }
+    ]
   }
 ]

@@ -118,62 +118,161 @@
   },
   {
     "moduleId": "Module_02",
-    "question": "以下哪个 Drawer 可以实现开关效果？",
-    "options": [
-      "[Toggle]",
-      "[Slider]",
-      "[IntRange]"
-    ],
-    "answer": 0
-  },
-  {
-    "moduleId": "Module_02",
-    "question": "自定义 Drawer 需要继承哪个类？",
-    "options": [
-      "MaterialPropertyDrawer",
-      "ShaderGUI",
-      "Editor"
-    ],
-    "answer": 0
+    "title": "模块二测试：分组、联动与工具箱",
+    "passingScore": 60,
+    "questions": [
+      {
+        "id": "m02-q01",
+        "type": "single",
+        "prompt": "以下哪个 Drawer 可以实现开关效果？",
+        "options": [
+          {
+            "id": "a",
+            "text": "[Toggle]"
+          },
+          {
+            "id": "b",
+            "text": "[Slider]"
+          },
+          {
+            "id": "c",
+            "text": "[IntRange]"
+          }
+        ],
+        "answer": [
+          "a"
+        ],
+        "explanation": "[Toggle] Drawer 可以在属性名前渲染开关，控制属性组的启用/禁用。"
+      },
+      {
+        "id": "m02-q02",
+        "type": "single",
+        "prompt": "自定义 Drawer 需要继承哪个类？",
+        "options": [
+          {
+            "id": "a",
+            "text": "MaterialPropertyDrawer"
+          },
+          {
+            "id": "b",
+            "text": "ShaderGUI"
+          },
+          {
+            "id": "c",
+            "text": "Editor"
+          }
+        ],
+        "answer": [
+          "a"
+        ],
+        "explanation": "MaterialPropertyDrawer 是自定义属性 Drawer 的基类，通过 [PropertyDrawer] 特性绑定。"
+      }
+    ]
   },
   {
     "moduleId": "Module_03",
-    "question": "ShaderGUI 中哪个方法负责绘制面板？",
-    "options": [
-      "OnGUI",
-      "OnInspectorGUI",
-      "OnSceneGUI"
-    ],
-    "answer": 0
-  },
-  {
-    "moduleId": "Module_03",
-    "question": "FindProperty 的第二个参数是？",
-    "options": [
-      "MaterialProperty[]",
-      "Material",
-      "Shader"
-    ],
-    "answer": 0
+    "title": "模块三测试：模块化与 Managed Properties",
+    "passingScore": 60,
+    "questions": [
+      {
+        "id": "m03-q01",
+        "type": "single",
+        "prompt": "ShaderGUI 中哪个方法负责绘制面板？",
+        "options": [
+          {
+            "id": "a",
+            "text": "OnGUI"
+          },
+          {
+            "id": "b",
+            "text": "OnInspectorGUI"
+          },
+          {
+            "id": "c",
+            "text": "OnSceneGUI"
+          }
+        ],
+        "answer": [
+          "a"
+        ],
+        "explanation": "ShaderGUI 通过重写 OnGUI(MaterialEditor, MaterialProperty[]) 方法来绘制材质面板。"
+      },
+      {
+        "id": "m03-q02",
+        "type": "single",
+        "prompt": "FindProperty 的第二个参数是？",
+        "options": [
+          {
+            "id": "a",
+            "text": "MaterialProperty[]"
+          },
+          {
+            "id": "b",
+            "text": "Material"
+          },
+          {
+            "id": "c",
+            "text": "Shader"
+          }
+        ],
+        "answer": [
+          "a"
+        ],
+        "explanation": "FindProperty(string name, MaterialProperty[] props) 的第二个参数是当前材质的所有属性数组。"
+      }
+    ]
   },
   {
     "moduleId": "Module_04",
-    "question": "以下哪个操作在 OnGUI 中应该避免？",
-    "options": [
-      "耗时计算/网络请求",
-      "ShaderProperty",
-      "LabelField"
-    ],
-    "answer": 0
-  },
-  {
-    "moduleId": "Module_04",
-    "question": "支持撤销需要调用哪个方法？",
-    "options": [
-      "RegisterPropertyChangeUndo",
-      "Undo.RecordObject",
-      "EditorUtility.SetDirty"
-    ],
-    "answer": 0
+    "title": "模块四测试：渲染同步与版本迁移",
+    "passingScore": 60,
+    "questions": [
+      {
+        "id": "m04-q01",
+        "type": "single",
+        "prompt": "以下哪个操作在 OnGUI 中应该避免？",
+        "options": [
+          {
+            "id": "a",
+            "text": "耗时计算/网络请求"
+          },
+          {
+            "id": "b",
+            "text": "ShaderProperty"
+          },
+          {
+            "id": "c",
+            "text": "LabelField"
+          }
+        ],
+        "answer": [
+          "a"
+        ],
+        "explanation": "OnGUI 每帧调用多次，耗时操作会导致编辑器卡顿。"
+      },
+      {
+        "id": "m04-q02",
+        "type": "single",
+        "prompt": "支持撤销需要调用哪个方法？",
+        "options": [
+          {
+            "id": "a",
+            "text": "RegisterPropertyChangeUndo"
+          },
+          {
+            "id": "b",
+            "text": "Undo.RecordObject"
+          },
+          {
+            "id": "c",
+            "text": "EditorUtility.SetDirty"
+          }
+        ],
+        "answer": [
+          "a"
+        ],
+        "explanation": "MaterialEditor.RegisterPropertyChangeUndo 是 ShaderGUI 中实现撤销的标准方法。"
+      }
+    ]
   }
 ]

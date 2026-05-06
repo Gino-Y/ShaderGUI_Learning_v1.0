@@ -11,6 +11,18 @@
       "模块化思维",
       "静态功能类设计",
       "DrawProperties 静态方法"
+    ],
+    "explore": {
+      "id": "modular-assembly",
+      "route": "/module/Module_03/slide/p00/explore",
+      "title": "模块化组装实验"
+    },
+    "codeBlocks": [
+      {
+        "title": "BaseColorModule.cs",
+        "badge": "C# side",
+        "code": "// 模块一：基础颜色模块\npublic static class BaseColorModule\n{\n    public static void DrawProperties(MaterialProperty[] props, MaterialEditor editor)\n    {\n        MaterialProperty color = FindPropertySafe(\"_Color\", props);\n        if (color != null)\n            editor.ColorProperty(color, \"Base Color\");\n    }\n}\n\n// 模块二：法线贴图模块\npublic static class NormalMapModule\n{\n    public static void DrawProperties(MaterialProperty[] props, MaterialEditor editor)\n    {\n        MaterialProperty normalMap = FindPropertySafe(\"_NormalMap\", props);\n        if (normalMap != null)\n            editor.TextureProperty(normalMap, \"Normal Map\");\n    }\n}\n\n// 主 GUI：像搭积木一样组装\npublic override void OnGUI(MaterialEditor editor, MaterialProperty[] props)\n{\n    BaseColorModule.DrawProperties(props, editor);\n    NormalMapModule.DrawProperties(props, editor);\n}"
+      }
     ]
   },
   {
@@ -25,6 +37,13 @@
       "注册机制与自动补位",
       "确保不漏掉参数",
       "不重复绘制"
+    ],
+    "codeBlocks": [
+      {
+        "title": "ManagedProps.cs",
+        "badge": "C# side",
+        "code": "// 注册机制核心：记录哪些属性已经被管理\nprivate HashSet<string> _managedProps = new HashSet<string>();\n\nvoid RegisterProp(string name)\n{\n    _managedProps.Add(name);\n}\n\n// 自动补位：绘制所有未被管理的属性\nvoid DrawUnmanagedProps(MaterialProperty[] props)\n{\n    foreach (var prop in props)\n    {\n        if (!_managedProps.Contains(prop.name))\n            MaterialEditor.DefaultShaderProperty(prop);\n    }\n}"
+      }
     ]
   }
 ]

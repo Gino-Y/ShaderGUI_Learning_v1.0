@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "moduleId": "Module_03",
+    "parentSlideId": "p00",
+    "explorationId": "modular-assembly",
+    "route": "/module/Module_03/slide/p00/explore",
+    "title": "模块化组装实验",
+    "component": "ModularAssemblyLab",
+    "gateDecision": {
+      "status": "inserted",
+      "gate": "interaction-necessity-gate",
+      "reason": "模块化思维需要通过拖拽组装来加深理解。"
+    }
+  }
+]

@@ -2,9 +2,25 @@
 
 ## Current Goal
 
-ADP 全量写入架构已落地，全部 4 模块 DEPLOY_READY。MVP 模式与 ADP 模式已完全分离。
+代码示例、做题页、探索页数据已填充。动效暂缓（仅 Module_04 有 storyboard-contract）。探索页 Lab 组件待创建。
 
 ## Completed Work
+
+- **2026-05-06 (代码示例 + 做题页 + 探索页数据填充)**:
+  - **修改文件**：
+    - `CourseContent/Module_01/slides.json`（添加 p01 手写代码 + p02 codeBlocks）
+    - `CourseContent/Module_02/slides.json`（添加 p00/p01/p02 codeBlocks + p01 explore 入口）
+    - `CourseContent/Module_03/slides.json`（添加 p00/p01 codeBlocks + p00 explore 入口）
+    - `CourseContent/Module_04/slides.json`（添加 p00 2个 codeBlocks + p01 2个 + p02 + p03 + p02 explore 入口）
+    - `CourseContent/Module_02/quizzes.json`（格式转换：扁平→嵌套 questions[]）
+    - `CourseContent/Module_03/quizzes.json`（格式转换）
+    - `CourseContent/Module_04/quizzes.json`（格式转换）
+    - `CourseContent/Module_02/explorations.json`（添加 SmartUILinkageLab 探索）
+    - `CourseContent/Module_03/explorations.json`（添加 ModularAssemblyLab 探索）
+    - `CourseContent/Module_04/explorations.json`（添加 RenderStatePlayground 探索）
+  - **DAG 影响**：无。仅 CourseContent/ 源数据变更
+  - **验证**：`npm run build` ✅，`verify_course.py` 报 storyboard 覆盖不全（已知遗留）
+  - **待办**：创建 SmartUILinkageLab、ModularAssemblyLab、RenderStatePlayground 组件
 
 - **2026-05-06 (clean_text H1 标题泄露修复)**:
   - **根因**：`generate_audio.py` 的 `clean_text()` 只移除 `#` 符号，H1 文档标题行（如 `# Managed Properties：面板的行政管理 —— 逐字稿`）被 TTS 朗读
@@ -135,3 +151,15 @@ Yes. 2026-05-06 架构重构影响 DAG 清理策略和写入策略：
 ## Next Step
 
 ADP 管线已稳定。可根据需要进行课程内容迭代或前端体验优化。
+
+## 2026-05-06 flow_engine ADP CLI guard
+- `flow_engine.py` test cleanup is now mode-aware for `--adp --stage mvp`: it calls `ADPMCP._clean_adp_products()` and prints cleanup stage `adp`.
+- This closes the remaining accidental MVP cleanup path at the CLI entrypoint.
+- Verified with `python -m py_compile .agent\flow_engine.py .agent\run_guard.py .agent\mcp_servers\adp_mcp.py .agent\mcp_servers\mvp_mcp.py .agent\mcp_servers\v0_mcp.py .agent\mcp_servers\design_mcp.py` and `python .agent\platform_violation_guard.py --basedir .`.
+- Full product verification/build was intentionally not rerun during this lightweight engine audit.
+
+## 2026-05-06 ADP root cause / verify gap
+- ADP imperfection is not explained by MVP success: ADPMCP writes full global `slides.json`, while storyboard/design/stitch still write current-module-only data into global files.
+- Confirmed current generated data: slides cover Module_01~04, but storyboard/design/stitch manifests only cover Module_04; Module_01~03 lack contract coverage.
+- Updated `scripts/verify_course.py` and `.agent/templates/scripts/verify_course.py` to fail when storyboard/design/stitch do not cover all generated slides.
+- Next fix should make StoryboardMCP/DesignMCP/StitchMCP either aggregate all modules in ADP mode or emit per-module contract files that runtime resolves by module.

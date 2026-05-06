@@ -10,9 +10,20 @@ Latest verified state: **全部 4 模块 DEPLOY_READY**（ADP 全量写入架构
 
 ## Current Focus
 
-ADP 全量写入架构已落地并验证通过。MVP 模式与 ADP 模式已分离，清理策略、写入策略各自独立。
+代码示例、做题页、探索页数据已填充完成。动效（storyboard-contract）仅覆盖 Module_04，其余模块暂缓。
 
 ## Recent Changes
+
+- **2026-05-06 (代码示例 + 做题页 + 探索页数据填充)**:
+  - **根因**：CourseContent/ 源数据缺失 codeBlocks、quizzes 格式不兼容、explorations 为空
+  - **修复**：
+    1. 4 个模块 slides.json 添加 codeBlocks（12 个代码块，从 doc/*.md 提取）
+    2. Module_02/03/04 quizzes.json 转换为嵌套格式（匹配 QuizView schema）
+    3. Module_02/03/04 explorations.json 添加探索记录 + slides.json 添加 explore 入口
+  - **DAG 影响**：无。仅修改 CourseContent/ 源数据，不涉及 DAG 节点/流程
+  - **验证**：`npm run build` ✅（verify_course.py 报 storyboard 覆盖不全，属已知遗留问题）
+  - **待办**：Module_02/03/04 的 SmartUILinkageLab、ModularAssemblyLab、RenderStatePlayground 组件尚未创建，探索页显示"探索组件未找到"占位
+  - **提交**：pending
 
 - **2026-05-06 (clean_text H1 标题泄露修复)**:
   - **根因**：`generate_audio.py` 的 `clean_text()` 只移除 `#` 符号，H1 文档标题行（如 `# Managed Properties：面板的行政管理 —— 逐字稿`）被 TTS 朗读

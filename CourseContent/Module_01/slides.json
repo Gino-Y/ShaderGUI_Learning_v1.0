@@ -24,6 +24,18 @@
       "继承 ShaderGUI",
       "重写 OnGUI",
       "通过 CustomEditor 绑定"
+    ],
+    "codeBlocks": [
+      {
+        "title": "MyShaderGUI.cs",
+        "badge": "C# side",
+        "code": "using UnityEditor;\nusing UnityEngine;\n\npublic class MyShaderGUI : ShaderGUI\n{\n    public override void OnGUI(MaterialEditor editor, MaterialProperty[] props)\n    {\n        // 自定义材质面板绘制逻辑\n        base.OnGUI(editor, props);\n    }\n}"
+      },
+      {
+        "title": "MyShader.shader",
+        "badge": "Shader side",
+        "code": "Shader \"Custom/MyShader\"\n{\n    Properties\n    {\n        _Color (\"Color\", Color) = (1,1,1,1)\n        _MainTex (\"Texture\", 2D) = \"white\" {}\n    }\n    SubShader\n    {\n        // ... pass ...\n    }\n    CustomEditor \"MyShaderGUI\"\n}"
+      }
     ]
   },
   {
@@ -43,6 +55,13 @@
       "id": "property-grouping",
       "route": "/module/Module_01/slide/p02/explore",
       "title": "属性查找实战"
-    }
+    },
+    "codeBlocks": [
+      {
+        "title": "FindPropertySafe.cs",
+        "badge": "C# side",
+        "code": "// ❌ Required 模式（危险）\nvar prop = FindProperty(\"_Color\", props);  // 属性不存在直接崩\n\n// ✅ Safe 模式（推荐）\nMaterialProperty FindPropertySafe(string name, MaterialProperty[] props)\n{\n    int idx = FindPropertyIndex(name, props);\n    return idx >= 0 ? props[idx] : null;\n}"
+      }
+    ]
   }
 ]

@@ -10,6 +10,18 @@
     "points": [
       "在 OnGUI 末尾检测属性变化",
       "自动同步 Blend、ZWrite、RenderQueue"
+    ],
+    "codeBlocks": [
+      {
+        "title": "RenderStateSync.cs",
+        "badge": "C# side",
+        "code": "// 在 OnGUI 末尾调用同步方法\npublic override void OnGUI(MaterialEditor editor, MaterialProperty[] props)\n{\n    // ... 绘制自定义属性 ...\n\n    // 末尾同步渲染状态\n    SyncRenderState(targets);\n}\n\nvoid SyncRenderState(Object[] targets)\n{\n    foreach (Material m in targets)\n    {\n        // 根据 _BlendMode 的值自动设置 Blend\n        int blendMode = (int)m.GetFloat(\"_BlendMode\");\n        switch (blendMode)\n        {\n            case 0: // Alpha 混合\n                m.SetFloat(\"_SrcBlend\", (float)UnityEngine.Rendering.BlendMode.SrcAlpha);\n                m.SetFloat(\"_DstBlend\", (float)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);\n                break;\n            case 1: // 加法混合\n                m.SetFloat(\"_SrcBlend\", (float)UnityEngine.Rendering.BlendMode.One);\n                m.SetFloat(\"_DstBlend\", (float)UnityEngine.Rendering.BlendMode.One);\n                break;\n            case 2: // 乘法混合\n                m.SetFloat(\"_SrcBlend\", (float)UnityEngine.Rendering.BlendMode.DstColor);\n                m.SetFloat(\"_DstBlend\", (float)UnityEngine.Rendering.BlendMode.Zero);\n                break;\n        }\n\n        // 同步 ZWrite\n        int zwrite = (int)m.GetFloat(\"_ZWriteMode\");\n        m.SetFloat(\"_ZWrite\", zwrite > 0 ? 1 : 0);\n\n        // 同步 RenderQueue\n        int queue = (int)m.GetFloat(\"_RenderQueue\");\n        m.renderQueue = queue;\n    }\n}"
+      },
+      {
+        "title": "MyShader.shader",
+        "badge": "HLSL side",
+        "code": "Properties\n{\n    [HideInInspector] _SrcBlend (\"__SrcBlend\", Float) = 1\n    [HideInInspector] _DstBlend (\"__DstBlend\", Float) = 0\n    [HideInInspector] _ZWrite (\"__ZWrite\", Float) = 1\n}\n\nSubShader\n{\n    Blend [_SrcBlend] [_DstBlend]\n    ZWrite [_ZWrite]\n    // ... pass ...\n}"
+      }
     ]
   },
   {
@@ -24,6 +36,18 @@
       "属性名 Fallback",
       "语义映射",
       "静默升级策略"
+    ],
+    "codeBlocks": [
+      {
+        "title": "FallbackStrategy.cs",
+        "badge": "C# side",
+        "code": "// Fallback 查找策略\nMaterialProperty colorProp = FindPropertySafe(\"_BaseColor\", props)\n                        ?? FindPropertySafe(\"_Color\", props);\n\nif (colorProp != null)\n{\n    editor.ShaderProperty(colorProp, \"Base Color\");\n}"
+      },
+      {
+        "title": "VersionMigration.cs",
+        "badge": "C# side",
+        "code": "// 静默升级策略\nvoid CheckAndUpgradeMaterial(Material material)\n{\n    int version = material.GetInt(\"_Version\");\n\n    if (version < 2)\n    {\n        // 执行版本 1 到 2 的迁移\n        if (material.HasProperty(\"_Shininess\"))\n        {\n            float shininess = material.GetFloat(\"_Shininess\");\n            material.SetFloat(\"_Smoothness\", shininess / 128.0f);\n        }\n        material.SetInt(\"_Version\", 2);\n    }\n}"
+      }
     ]
   },
   {
@@ -39,6 +63,18 @@
       "安全可靠",
       "美术友好",
       "性能同步"
+    ],
+    "explore": {
+      "id": "render-state-playground",
+      "route": "/module/Module_04/slide/p02/explore",
+      "title": "渲染状态调试试验场"
+    },
+    "codeBlocks": [
+      {
+        "title": "M_Outline_Fitting_h01_GUI.cs",
+        "badge": "C# side",
+        "code": "public class M_Outline_Fitting_h01_GUI : ShaderGUI\n{\n    private static readonly HashSet<string> ManagedProps = new HashSet<string>();\n\n    public override void OnGUI(MaterialEditor editor, MaterialProperty[] props)\n    {\n        ManagedProps.Clear();\n\n        // 形体组\n        EditorGUILayout.BeginVertical(\"box\");\n        EditorGUILayout.LabelField(\"Shape\", EditorStyles.boldLabel);\n        DrawProp(FindPropertySafe(\"_OutlineWidth\", props), \"描边宽度\", ManagedProps);\n        DrawProp(FindPropertySafe(\"_OutlineColor\", props), \"描边颜色\", ManagedProps);\n        EditorGUILayout.EndVertical();\n\n        // 裁剪组\n        EditorGUILayout.BeginVertical(\"box\");\n        EditorGUILayout.LabelField(\"Clip\", EditorStyles.boldLabel);\n        DrawProp(FindPropertySafe(\"_ClipThreshold\", props), \"裁剪阈值\", ManagedProps);\n        EditorGUILayout.EndVertical();\n\n        // 动态组\n        EditorGUILayout.BeginVertical(\"box\");\n        EditorGUILayout.LabelField(\"Motion\", EditorStyles.boldLabel);\n        DrawProp(FindPropertySafe(\"_MotionSpeed\", props), \"运动速度\", ManagedProps);\n        EditorGUILayout.EndVertical();\n\n        // 颜色组\n        EditorGUILayout.BeginVertical(\"box\");\n        EditorGUILayout.LabelField(\"Color\", EditorStyles.boldLabel);\n        DrawProp(FindPropertySafe(\"_Color\", props), \"主颜色\", ManagedProps);\n        DrawProp(FindPropertySafe(\"_UseRainbow\", props), \"启用彩虹色\", ManagedProps);\n        EditorGUILayout.EndVertical();\n\n        // 渲染状态同步\n        EditorGUI.BeginChangeCheck();\n        editor.PropertiesGUI(props);\n        if (EditorGUI.EndChangeCheck())\n        {\n            foreach (var target in editor.targets)\n            {\n                SyncRenderState(target as Material);\n            }\n        }\n\n        // 兜底：绘制未被管理的属性\n        foreach (var prop in props)\n        {\n            if (!ManagedProps.Contains(prop.name))\n                editor.ShaderProperty(prop, prop.displayName);\n        }\n    }\n\n    private static void SyncRenderState(Material mat)\n    {\n        bool isTransparent = mat.GetFloat(\"_Mode\") > 0.5f;\n        mat.SetInt(\"_SrcBlend\", isTransparent ? (int)BlendMode.SrcAlpha : (int)BlendMode.One);\n        mat.SetInt(\"_DstBlend\", isTransparent ? (int)BlendMode.OneMinusSrcAlpha : (int)BlendMode.Zero);\n        mat.SetInt(\"_ZWrite\", isTransparent ? 0 : 1);\n        mat.renderQueue = isTransparent ? 3000 : 2000;\n    }\n}"
+      }
     ]
   },
   {
@@ -54,6 +90,13 @@
       "重构阶段",
       "进化阶段",
       "治理阶段"
+    ],
+    "codeBlocks": [
+      {
+        "title": "GrowthPath",
+        "badge": "思维路线图",
+        "code": "第一步（解构）  ──>  理解属性契约，实现 FindProperty\n     ↓\n第二步（重构）  ──>  建立信息架构，实现分组与联动\n     ↓\n第三步（进化）  ──>  组件化思考，实现模块化复用\n     ↓\n第四步（治理）  ──>  关注生命周期，实现状态同步与版本迁移"
+      }
     ]
   }
 ]
