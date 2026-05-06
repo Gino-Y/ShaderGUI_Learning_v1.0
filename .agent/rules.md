@@ -482,3 +482,36 @@ handoff 必须列出修改文件、验证命令、验证结果、DAG 是否受�
 小而确定、低风险的一致性问题由当前执行方直接修复，不得要求用户手动处理。范围包括日期过期、路径不一致、遗漏 handoff/memory/STATE、验证模板漂移、规则短句重复、明显笔误和 UTF-8 编码问题。
 
 如果其它工具已经在同一文件或同一任务范围内执行，当前执行方不得制造冲突；必须输出可直接交给该工具的清晰指令，包含文件、改法和验证命令。
+
+## ADP 执行
+
+[ADP_AS_MVP_DISPATCHER] ADP 不是第二套生成器。`--adp` 只负责按 `.agent/adp-scope.json` 调度模块列表；每个模块必须进入同一条 `MVPMCP` 完整模块 pipeline。
+
+ADP 入口：
+
+```powershell
+python .agent\flow_engine.py --mode production --scope all-content --basedir . --max-retries 5 --adp
+```
+
+- ADP 不得调用全量写入式 `ADPMCP.generate_products()`。
+- ADP 不得产出 all-module `slides.json` 搭配 current-module `storyboard/design/stitch` 的混合状态。
+- workbuddy、Cursor、Codex 只能作为执行器运行 MVP/ADP 命令；不得创建或依赖 `.workbuddy/`、`.cursor/` 私有规则资产。
+- 执行后必须以 `scripts/verify_course.py`、`npm --prefix CourseApp run build`、handoff 和 memory 作为完成依据。
+
+## Runtime Role Switching
+
+[ROLE_SWITCH_NOT_PLATFORM_BINDING] Roles are runtime responsibilities, not permanent platform bindings. Codex, Cursor, workbuddy, or any other executor is not inherently tied to one role. The user may switch the current platform role by saying `你是 <role>` or an equivalent explicit instruction.
+
+Supported roles:
+
+- `workflow` / `DAG` / `架构层` / `工作流层`: the current platform may edit only workflow-layer assets such as `.agent/`, `docs/`, DAG contracts, MCP orchestration, templates, verification gates, handoff, memory, and rules. It must not directly edit generated product files except for verification or clearly marked temporary inspection.
+- `product` / `产物层` / `执行层` / `workbuddy`: the current platform may execute MVP/ADP commands, inspect generated output, and fix product-facing defects only through the approved DAG/template/MCP path. It must not invent new workflow rules, prompts, private assets, or hidden platform memory.
+- `review` / `检查层`: the current platform only inspects, reports risks, and proposes or records fixes. It must not modify files unless the user then switches role or explicitly asks for repair.
+
+Switching rules:
+
+- The switch is immediate for the current platform after the user's explicit role sentence.
+- The switch is not sticky across all future platforms; every executor must read `.agent/STATE.md`, `.agent/handoff/CURSOR_HANDOFF.md`, and this rules file before acting.
+- If a requested action crosses role boundaries, the current platform must either stop and ask for a role switch or write a copyable instruction for the executor that should perform the other layer.
+- No role may create `.cursor/` or `.workbuddy/` project knowledge directories. All durable coordination must be written under `.agent/`.
+- Small deterministic consistency fixes inside the active role remain owned by the current executor and should be fixed directly.

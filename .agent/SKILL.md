@@ -110,3 +110,26 @@ npm --prefix CourseApp run build
 ## Small Fix Ownership
 
 小而确定、低风险的一致性问题由当前执行方直接修复，不再要求用户手动处理。若 Cursor 或其它工具正在同一文件/同一任务范围内执行，当前执行方不直接抢改，必须给用户一段可复制给 Cursor 的明确指令，写清文件、改法和验证命令。只有当问题涉及产品行为、DAG 契约、运行时代码、数据语义或设计取舍时，才向用户确认。
+
+## ADP 工作流
+
+ADP 是调度命令，不是独立产物生成器：
+
+```powershell
+python .agent\flow_engine.py --mode production --scope all-content --basedir . --max-retries 5 --adp
+```
+
+- `--adp` 读取 `.agent/adp-scope.json` 的模块列表。
+- 每个模块按完整模块范围运行同一条 MVP pipeline。
+- ADP 不再使用全量写入式 `ADPMCP.generate_products()`。
+- workbuddy、Cursor、Codex 都只是执行器；规则、DAG、handoff、memory 仍只来自 `.agent/`。
+
+## Runtime Role Switching
+
+Roles are not permanently bound to platforms. When the user says `你是 <role>`, the current platform immediately follows that role until the user switches again or the task ends.
+
+- workflow/DAG/工作流层: edit `.agent/`, docs, DAG contracts, MCP orchestration, templates, verification gates, handoff, memory, and rules. Avoid direct product edits.
+- product/执行层/workbuddy: execute MVP/ADP, inspect generated output, and fix product-facing defects through the approved DAG/template/MCP path. Do not create workflow rules or private platform assets.
+- review/检查层: inspect and report only unless the user explicitly asks for repair.
+
+This is a role switch, not platform binding. Codex, Cursor, and workbuddy can each serve any role when the user explicitly assigns it.

@@ -3,52 +3,26 @@ from __future__ import annotations
 import fnmatch
 import json
 import shutil
-import subprocess
-import sys
 from pathlib import Path
 
 
 class ADPMCP:
-    """Generate ALL course slides for production (full ADP, not MVP).
+    """Deprecated ADP full-writer helpers.
 
-    This is a parallel DAG node to MVPMCP.
-    Reads from adp-scope.json and generates all slides for each module.
+    ADP execution is now handled by flow_engine.py as a dispatcher that runs
+    MVPMCP per module. generate_products() intentionally fails fast so the old
+    all-module writer cannot be called by accident.
     """
 
     @staticmethod
     def generate_products(workspace: Path, module: str) -> dict:
-        try:
-            source = ADPMCP._load_module_source(workspace, module)
-            slide_ids = ADPMCP._resolve_adp_slide_ids(workspace, module, source["slides"])
-            source["slides"] = [slide for slide in source["slides"] if slide["slideId"] in slide_ids]
-            # 清理由 flow engine 统一管理（_clean_adp_products），此处不再重复
-            # 先复制所有模块的逐字稿（为新逻辑全量扫描做准备）
-            ADPMCP._copy_all_course_content(workspace)
-            ADPMCP._write_course_app(workspace, module, source)
-            ADPMCP._write_scripts(workspace)
-            install = subprocess.run(
-                ["npm.cmd", "install"],
-                cwd=str(workspace / "CourseApp"),
-                text=True,
-                encoding="utf-8",
-                errors="replace",
-                capture_output=True,
-            )
-            if install.returncode != 0:
-                return {"status": "error", "message": install.stdout.strip() + "\n" + install.stderr.strip()}
-            audio_result = ADPMCP._ensure_audio(workspace, module)
-            if audio_result["status"] != "success":
-                print(f"[ADP] Audio: {audio_result.get('message')}")
-        except Exception as exc:
-            return {"status": "error", "message": f"ADP generation failed: {exc}"}
         return {
-            "status": "success",
+            "status": "error",
             "module": module,
-            "app": str(workspace / "CourseApp"),
-            "content": str(workspace / "CourseContent" / module),
-            "scripts": str(workspace / "scripts"),
-            "slide_ids": slide_ids,
-            "slide_count": len(slide_ids),
+            "message": (
+                "ADPMCP.generate_products is deprecated. "
+                "Use flow_engine.py --adp, which dispatches MVPMCP per module."
+            ),
         }
 
     @staticmethod

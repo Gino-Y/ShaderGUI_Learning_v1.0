@@ -80,6 +80,8 @@ def main() -> int:
         APP / "src" / "data" / "slides.json",
         APP / "src" / "data" / "quizzes.json",
         APP / "src" / "data" / "storyboard-contract.json",
+        APP / "src" / "data" / "design-contract.json",
+        APP / "src" / "data" / "stitch-manifest.json",
         APP / "src" / "views" / "QuizView.vue",
         APP / "src" / "components" / "CoursePlayer.vue",
         APP / "src" / "components" / "SlideNav.vue",
@@ -174,6 +176,32 @@ def main() -> int:
                             errors.append(
                                 f"code slide motionCue must define codeHighlightTokens for code-highlight: {sid} {cue.get('cueId')}",
                             )
+    design = load_json(APP / "src" / "data" / "design-contract.json", errors)
+    stitch = load_json(APP / "src" / "data" / "stitch-manifest.json", errors)
+
+    def check_contract_slide_coverage(name: str, contract: dict | None) -> None:
+        if not contract:
+            return
+        contract_ids = {
+            (slide.get("moduleId"), slide.get("slideId"))
+            for slide in contract.get("slides", [])
+            if slide.get("moduleId") and slide.get("slideId")
+        }
+        source_ids = {
+            (slide.get("moduleId"), slide.get("slideId"))
+            for slide in slides
+            if slide.get("moduleId") and slide.get("slideId")
+        }
+        missing = sorted(source_ids - contract_ids)
+        if missing:
+            preview = ", ".join(f"{module}/{slide}" for module, slide in missing[:12])
+            if len(missing) > 12:
+                preview += f", ... (+{len(missing) - 12})"
+            errors.append(f"{name} does not cover all generated slides: {preview}")
+
+    check_contract_slide_coverage("storyboard-contract.json", storyboard)
+    check_contract_slide_coverage("design-contract.json", design)
+    check_contract_slide_coverage("stitch-manifest.json", stitch)
 
     for component, markers in {
         APP / "src" / "components" / "CoursePlayer.vue": [

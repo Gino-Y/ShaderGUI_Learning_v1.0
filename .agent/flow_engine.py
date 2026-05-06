@@ -7,6 +7,7 @@ FlowState + CorePipeline + MCP nodes + runtime guard.
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -15,12 +16,10 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
     sys.stdout.reconfigure(encoding="utf-8")
 
 sys.path.append(str(Path(__file__).resolve().parent))
-from mcp_servers.adp_mcp import ADPMCP
 from mcp_servers.app_mcp import AppMCP
 from mcp_servers.audit_mcp import AuditMCP
 from mcp_servers.build_mcp import BuildMCP
 from mcp_servers.course_mcp import CourseMCP
-from mcp_servers.design_mcp import DesignMCP
 from mcp_servers.mvp_mcp import MVPMCP
 from mcp_servers.design_mcp import DesignMCP
 from mcp_servers.storyboard_mcp import StoryboardMCP
@@ -81,6 +80,8 @@ class CorePipeline:
     def run(self, state: FlowState, stop_after_stage: str = "post", mode: str = "mvp") -> FlowState:
         print("============== ShaderGUI Course DAG Runner ==============")
         print(f"[Task] module={state.module}")
+        if mode == "adp":
+            print("[ADP DISPATCH] running module through the MVP full-module pipeline")
 
         if state.status == "IDLE":
             print("-> [Prereq 1/3] 检查源材料与 .agent 规则...")
@@ -100,22 +101,14 @@ class CorePipeline:
             print("[Prereq 2/4 OK] v0 API reachable")
 
         if state.status == "V0_READY":
-            if mode == "adp":
-                print("-> [Prereq 3/4] CLEANUP_BEFORE_ADP：清理旧产物（ADP scope）...")
-                deleted = ADPMCP._clean_adp_products(self.workspace, state.module)
-            else:
-                print("-> [Prereq 3/4] CLEANUP_BEFORE_MVP：清理旧产物...")
-                deleted = clear_stage_outputs(self.workspace, "mvp", state.module)
+            print("-> [Prereq 3/4] CLEANUP_BEFORE_MVP：清理旧产物...")
+            deleted = clear_stage_outputs(self.workspace, "mvp", state.module)
             print(f"[Prereq 3/4 OK] cleaned={len(deleted)}")
             state.status = "CLEANUP_BEFORE_MVP_READY"
 
         if state.status == "CLEANUP_BEFORE_MVP_READY":
             print("-> [Prereq 3/3] 生成产物（CourseApp / CourseContent / scripts）...")
-            if mode == "adp":
-                res = ADPMCP.generate_products(self.workspace, state.module)
-                print(f"[ADP] 使用 ADPMCP 生成完整产物")
-            else:
-                res = MVPMCP.generate_products(self.workspace, state.module)
+            res = MVPMCP.generate_products(self.workspace, state.module)
             state = self._require_success(state, res, "MVP_PRODUCTS_READY")
             if state.status == "FAILED":
                 return state
@@ -292,6 +285,23 @@ class CorePipeline:
         return state
 
 
+def expand_adp_targets(workspace: Path, scope: str, module: str | None = None) -> list[str]:
+    if scope == "module":
+        return expand_targets(workspace, scope, module)
+    scope_file = workspace / ".agent" / "adp-scope.json"
+    if not scope_file.exists():
+        return expand_targets(workspace, scope, module)
+    scope_data = json.loads(scope_file.read_text(encoding="utf-8-sig"))
+    modules = [
+        item.get("module")
+        for item in scope_data.get("modules", [])
+        if isinstance(item, dict) and item.get("module")
+    ]
+    if not modules:
+        return expand_targets(workspace, scope, module)
+    return list(dict.fromkeys(modules))
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="ShaderGUI course skill-chain runner.")
     parser.add_argument("--mode", choices=["test", "production"], required=True)
@@ -300,11 +310,11 @@ def main() -> int:
     parser.add_argument("--module", default="Module_01")
     parser.add_argument("--basedir", default=str(Path(__file__).resolve().parents[1]))
     parser.add_argument("--max-retries", type=int, default=3, help="自检最大重试次数 (默认 3)")
-    parser.add_argument("--adp", action="store_true", help="使用 ADPMCP 生成完整产物（非 MVP）")
+    parser.add_argument("--adp", action="store_true", help="ADP 调度模式：按模块执行完整范围 MVP")
     args = parser.parse_args()
 
     workspace = assert_workspace(Path(args.basedir))
-    targets = expand_targets(workspace, args.scope, args.module)
+    targets = expand_adp_targets(workspace, args.scope, args.module) if args.adp else expand_targets(workspace, args.scope, args.module)
     mode = "adp" if args.adp else "mvp"
 
     if args.mode == "test" and args.stage:

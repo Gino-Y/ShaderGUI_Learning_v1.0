@@ -166,6 +166,15 @@ class MVPMCP:
         if not scope_file.exists():
             return source_ids
         scope = json.loads(scope_file.read_text(encoding="utf-8"))
+        for mod_entry in scope.get("modules", []):
+            if isinstance(mod_entry, dict) and mod_entry.get("module") == module:
+                slide_ids = mod_entry.get("slideIds") or mod_entry.get("slides") or source_ids
+                if not isinstance(slide_ids, list) or not all(isinstance(item, str) for item in slide_ids):
+                    raise ValueError(".agent/mvp-scope.json module entries must contain slideIds: string[]")
+                unknown = [slide_id for slide_id in slide_ids if slide_id not in source_ids]
+                if unknown:
+                    raise ValueError(f".agent/mvp-scope.json references unknown slides: {unknown}")
+                return list(dict.fromkeys(slide_ids))
         if scope.get("module", module) != module:
             return source_ids
         slide_ids = scope.get("slideIds") or scope.get("slides") or source_ids

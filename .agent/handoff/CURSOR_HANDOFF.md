@@ -163,3 +163,17 @@ ADP 管线已稳定。可根据需要进行课程内容迭代或前端体验优�
 - Confirmed current generated data: slides cover Module_01~04, but storyboard/design/stitch manifests only cover Module_04; Module_01~03 lack contract coverage.
 - Updated `scripts/verify_course.py` and `.agent/templates/scripts/verify_course.py` to fail when storyboard/design/stitch do not cover all generated slides.
 - Next fix should make StoryboardMCP/DesignMCP/StitchMCP either aggregate all modules in ADP mode or emit per-module contract files that runtime resolves by module.
+
+## 2026-05-06 ADP as MVP dispatcher
+- DAG upgraded: ADP is now a command/dispatcher, not a second generator.
+- `python .agent\flow_engine.py --mode production --scope all-content --basedir . --max-retries 5 --adp` reads `.agent/adp-scope.json` and runs the normal MVPMCP full-module pipeline for each module.
+- `ADPMCP.generate_products()` now returns an error explaining it is deprecated, preventing accidental old full-writer use.
+- `.agent/mvp-scope.json` now contains complete module slide ranges.
+- workbuddy/Cursor/Codex may execute MVP or ADP commands only; all rules/handoff/memory remain in `.agent/`, no `.workbuddy/` source directory.
+- Verified: `python -m py_compile ...` passed; platform guard passed; ADP target expansion returns Module_01~Module_04.
+- Current product verification still fails until regenerated: existing products are old mixed ADP state, and `verify_course.py` correctly blocks missing storyboard/design/stitch coverage.
+
+## 2026-05-06 Runtime role switching
+- Rules updated: role is not hard-bound to platform. Explicit user phrase `你是 <role>` switches the active executor immediately.
+- Supported layers: workflow/DAG/工作流层, product/执行层/workbuddy, review/检查层.
+- Workflow layer changes rules/DAG/MCP/templates/verification/handoff; product layer runs MVP/ADP and product-facing checks via DAG path; review layer reports only unless repair is requested.

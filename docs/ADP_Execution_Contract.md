@@ -1,5 +1,17 @@
 # ADP Execution Contract
 
+## 2026-05-06 Status
+
+Deprecated as a generation contract. ADP is now a dispatcher command, not an ADPMCP full-writer.
+
+Use:
+
+```powershell
+python .agent\flow_engine.py --mode production --scope all-content --basedir . --max-retries 5 --adp
+```
+
+The command reads `.agent/adp-scope.json` for module ordering and runs the normal `MVPMCP` complete-module pipeline for each module. The historical full-scan `ADPMCP.generate_products()` path must not be used.
+
 ## Purpose
 This contract defines the execution boundaries and cleanup scope for ADPMCP (full ADP generation, not MVP).
 

@@ -85,3 +85,16 @@ Latest verified state: **全部 4 模块 DEPLOY_READY**（ADP 全量写入架构
   - **修复**：新建 `.agent/adp-execution-scope.json`，修改 `adp_mcp.py`
   - **验证**：`verify_course.py` ✅ 通过
   - 提交：`3308675` + `c945fdc`
+
+## 2026-05-06 ADP Dispatcher State
+
+Current DAG focus: ADP has been changed from a full-writer node into a dispatcher command that runs the normal complete-module MVP pipeline per module.
+
+Commands:
+
+```powershell
+python .agent\flow_engine.py --mode production --scope module --module Module_01 --basedir . --max-retries 5
+python .agent\flow_engine.py --mode production --scope all-content --basedir . --max-retries 5 --adp
+```
+
+Current product status: generated products still need rerun. `verify_course.py` intentionally fails on the old mixed ADP product state until MVP/ADP is executed again.

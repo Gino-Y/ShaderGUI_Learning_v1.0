@@ -58,6 +58,33 @@ flowchart TD
 2. 扫描所有 `CourseContent/Module_*/` 目录
 3. 一次性写全量 `course.json`（含所有模块）、`slides.json`（含所有 slide）、`quizzes.json`、`explorations.json`
 
+## 2026-05-06 ADP Dispatcher Override
+
+ADP is no longer a parallel full-writer node. `--adp` is now a dispatcher command:
+
+```text
+ADP = for each module declared in .agent/adp-scope.json:
+        run the normal MVP pipeline for that module's complete module scope
+```
+
+This supersedes the older ADPMCP full-scan/full-write design. The reason is structural: `slides.json` was written as all-module data while `storyboard-contract.json`, `design-contract.json`, and `stitch-manifest.json` stayed current-module-only global files. That made the last module overwrite earlier module contracts. The stable boundary is now:
+
+- `MVPMCP`: owns one complete module production run.
+- `ADP command`: owns module scheduling only; it must not produce a second CourseApp writing model.
+- workbuddy/Cursor/Codex: may execute MVP or ADP commands, but must read rules and handoff only from `.agent/`.
+
+Current ADP command:
+
+```powershell
+python .agent\flow_engine.py --mode production --scope all-content --basedir . --max-retries 5 --adp
+```
+
+Single-module full MVP command:
+
+```powershell
+python .agent\flow_engine.py --mode production --scope module --module Module_01 --basedir . --max-retries 5
+```
+
 ## MVP Scope
 
 当前 MVP scope 由 `.agent/mvp-scope.json` 控制：
