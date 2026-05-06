@@ -57,6 +57,14 @@ Latest verified state: **全部 4 模块 DEPLOY_READY**（ADP dispatcher 模式�
 - Changed current app and templates so Vite base and Vue Router base match the Pages subpath.
 - Deployment artifact must include `.nojekyll` and `404.html` copied from `index.html` for SPA fallback.
 - Publish only `CourseApp/dist` to `gh-pages`; do not mix execution-layer dirty changes into source branches.
+
+## 2026-05-06 Cross-Role Completion Report Rule
+
+- Workflow-layer rule added: every completed task must report the active role, work performed, verification/inspection result, impact boundary, and guidance for other roles.
+- Applies to workflow/DAG, product/execution, and review roles equally.
+- If no other role needs follow-up, the executor must explicitly say no cross-role handoff is needed.
+- Purpose: prevent Codex/Cursor or any executor from inferring missing next steps from chat-only context.
+
 ## Recent Changes
 
 - **2026-05-06 (Lab 组件创建 + ADP 全量通过)**:

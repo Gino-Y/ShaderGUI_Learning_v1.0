@@ -200,6 +200,20 @@ npm --prefix CourseApp run build
 
 不影响 DAG 时也要记录判断理由。
 
+## Cross-Role Completion Report
+
+Every role must finish with a cross-role report, regardless of whether the current executor is acting as workflow/DAG, product/execution, or review.
+
+Required report fields:
+
+- Current role.
+- Work performed and verification or inspection result.
+- DAG/rules/product impact.
+- Guidance for other roles: for example, workflow updates rules/templates, execution reruns MVP/ADP, review checks a named risk.
+- Explicit statement when no cross-role handoff is needed.
+
+This is a workflow completion gate, not a platform binding rule. It keeps cross-agent execution from depending on unrecorded chat context.
+
 ## Small Fix Ownership
 
 小而确定、低风险的一致性问题由当前执行方直接修复，不得要求用户手动处理。包括路径不一致、编码问题、handoff/memory/STATE 漏写、验证脚本漂移和明显笔误。

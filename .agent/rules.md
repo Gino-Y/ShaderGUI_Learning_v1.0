@@ -516,6 +516,20 @@ Switching rules:
 - No role may create `.cursor/` or `.workbuddy/` project knowledge directories. All durable coordination must be written under `.agent/`.
 - Small deterministic consistency fixes inside the active role remain owned by the current executor and should be fixed directly.
 
+## Cross-Role Completion Report
+
+[ROLE_COMPLETION_REPORT] Every task completion must include a role-aware report, regardless of whether the current role is workflow/DAG, product/execution, or review.
+
+The final report must state:
+
+- Current role used for the task.
+- What this executor changed, ran, verified, or inspected.
+- Whether DAG/rules/product artifacts were affected.
+- What other roles should do next, if anything. Examples: workflow layer should update rules/templates; execution layer should rerun MVP/ADP; review layer should inspect a named risk.
+- If no other role has follow-up work, explicitly state that no cross-role handoff is needed.
+
+This report is a completion requirement and does not bind a platform to a permanent role. It is a handoff guard so the next executor does not infer missing work from chat context.
+
 ## ADP Accumulation Semantics
 
 ADP controls MVP in accumulation mode:

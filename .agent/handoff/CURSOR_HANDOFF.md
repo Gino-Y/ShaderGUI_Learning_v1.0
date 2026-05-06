@@ -55,6 +55,14 @@ This section supersedes all older ADP notes below.
 - Added Pages base path `/ShaderGUI_Learning_v1.0/` to current app and templates.
 - Vue Router now uses `createWebHistory(import.meta.env.BASE_URL)` in current app and templates.
 - Deployment should publish only `CourseApp/dist` to `gh-pages`, with `.nojekyll` and `404.html` fallback.
+
+## 2026-05-06 Cross-Role Completion Report Rule
+
+- Role: workflow/DAG layer.
+- Added a platform-neutral completion rule: every task must end by reporting the active role, what was done, what was verified or inspected, impact boundary, and guidance for other roles.
+- Applies to workflow/DAG, product/execution, and review roles; it does not bind any platform permanently.
+- If there is no next role action, the executor must say no cross-role handoff is needed.
+
 ## Completed Work
 
 - **2026-05-06 (Lab 组件创建 + ADP 全量通过)**:
