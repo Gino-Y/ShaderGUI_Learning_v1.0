@@ -137,3 +137,7 @@ This is a role switch, not platform binding. Codex, Cursor, and any other execut
 ## ADP Accumulation Semantics
 
 `--adp` performs one initial cleanup, then accumulates module outputs across the normal MVP pipeline. Course data, storyboard, design, and stitch manifests must merge by `moduleId`; ordinary MVP remains single-module and clean-first.
+
+## Course Home Module Progress State
+
+Course home module cards must expose optional local progress states: `看过`, `学过`, `已做题`, and `掌握`. The state model is ordered: selecting a later state implies all earlier states, and the UI must avoid broken combinations such as mastered without practiced. Persist this as learner runtime state in `localStorage`, not in course source or generated JSON contracts. Implement it in `.agent/templates/course-app/src/views/CourseHome.vue` and verify it through `scripts/verify_course.py`.

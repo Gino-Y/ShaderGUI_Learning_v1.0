@@ -92,6 +92,7 @@ def main() -> int:
         ROOT / ".agent" / "templates" / "course-app" / "package.json",
         ROOT / ".agent" / "templates" / "course-app" / "src" / "components" / "CoursePlayer.vue",
         ROOT / ".agent" / "templates" / "course-app" / "src" / "components" / "SlideCanvas.vue",
+        ROOT / ".agent" / "templates" / "course-app" / "src" / "views" / "CourseHome.vue",
         ROOT / ".agent" / "templates" / "course-app" / "src" / "views" / "QuizView.vue",
         ROOT / ".agent" / "templates" / "scripts" / "generate_audio.py",
         ROOT / ".agent" / "templates" / "scripts" / "verify_course.py",
@@ -152,10 +153,33 @@ def main() -> int:
             "进入做题页",
             "slide.explore.route",
             "sm:grid-cols-[2.75rem_minmax(0,1fr)_5rem_8rem]",
+            "shadergui-module-progress-v1",
+            "progressSteps",
+            "看过",
+            "学过",
+            "已做题",
+            "掌握",
+            "localStorage",
         ]:
             if marker not in text:
                 errors.append(f"CourseHome missing unified menu marker: {marker}")
 
+    course_home_template = ROOT / ".agent" / "templates" / "course-app" / "src" / "views" / "CourseHome.vue"
+    if course_home_template.exists():
+        text = course_home_template.read_text(encoding="utf-8")
+        for marker in [
+            "shadergui-module-progress-v1",
+            "progressSteps",
+            "setModuleProgress",
+            "isStepReached",
+            "localStorage",
+            "看过",
+            "学过",
+            "已做题",
+            "掌握",
+        ]:
+            if marker not in text:
+                errors.append(f"CourseHome template missing module progress marker: {marker}")
     storyboard = load_json(APP / "src" / "data" / "storyboard-contract.json", errors)
     if storyboard and storyboard.get("status") != "storyboard_ready":
         errors.append("storyboard-contract.json must be storyboard_ready")

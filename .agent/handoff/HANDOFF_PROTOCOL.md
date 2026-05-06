@@ -80,3 +80,11 @@ Roles are runtime responsibilities, not platform identities. If the user says `�
 - review/检查层: inspect and report unless repair is explicitly requested.
 
 Do not store durable role instructions in `.cursor/` or `.workbuddy/`; write all persistent coordination under `.agent/`.
+
+## Course Home Module Progress State
+
+- Course home module cards include local learner status: `看过 -> 学过 -> 已做题 -> 掌握`.
+- This is generated from `.agent/templates/course-app/src/views/CourseHome.vue`.
+- The state is persisted in browser `localStorage` under `shadergui-module-progress-v1`.
+- Do not write learner progress into course source JSON or DAG contracts.
+- If the current generated `CourseApp` lacks this UI, rerun MVP/ADP from the execution layer instead of hand-editing the product file.

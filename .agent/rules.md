@@ -530,3 +530,11 @@ ADP = one initial cleanup
 ```
 
 Ordinary single-module MVP keeps its original cleanup and scoped output behavior. ADP must not remove the previous module while progressing through later modules.
+
+## Course Home Module Progress State
+
+- [COURSE_HOME_MODULE_PROGRESS_STATE] 课程首页模块卡片必须提供可选学习状态选择：`看过`、`学过`、`已做题`、`掌握`。
+- 状态必须按阶梯依赖表达：后一级状态表示前序状态已达成；运行时不得产生“掌握但未做题”之类的断裂状态。
+- 状态属于学习者本地交互数据，默认使用浏览器 `localStorage` 持久化；不得写入 `CourseContent/`、`course.json`、`slides.json`、`storyboard-contract.json`、`design-contract.json` 或 `stitch-manifest.json`。
+- 该能力必须从 `.agent/templates/course-app/src/views/CourseHome.vue` 生成，禁止只手改 `CourseApp/src/views/CourseHome.vue` 产物。
+- `scripts/verify_course.py` 必须检查首页与模板包含模块状态持久化、四个状态标签和阶梯状态函数标记。

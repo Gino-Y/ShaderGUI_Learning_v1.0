@@ -16,6 +16,14 @@ This section supersedes all older ADP notes below.
 
 代码示例、做题页、探索页数据已填充。三个 Lab 组件已创建。动效暂缓（仅 Module_04 有 storyboard-contract）。
 
+## 2026-05-06 Course Home Module Progress State
+
+- Role: workflow/design workflow layer.
+- Added a template-level module progress selector on course home cards: `看过 -> 学过 -> 已做题 -> 掌握`.
+- Dependency semantics: the state is one ordered level, so later states imply earlier states.
+- Persistence: browser `localStorage` key `shadergui-module-progress-v1`; no learner progress is written into course source or generated contract JSON.
+- Source of truth: `.agent/templates/course-app/src/views/CourseHome.vue` plus verification gates in `scripts/verify_course.py` and `.agent/templates/scripts/verify_course.py`.
+- Product update path: rerun MVP/ADP from the execution layer. Do not hand-edit `CourseApp/src/views/CourseHome.vue`.
 ## Completed Work
 
 - **2026-05-06 (Lab 组件创建 + ADP 全量通过)**:

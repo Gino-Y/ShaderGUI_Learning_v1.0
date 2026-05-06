@@ -23,6 +23,13 @@ Latest verified state: **全部 4 模块 DEPLOY_READY**（ADP dispatcher 模式�
 
 代码示例、做题页、探索页数据已填充完成。三个 Lab 组件已创建并接入 ExploreView。动效（storyboard-contract）仅覆盖 Module_04，其余模块暂缓。
 
+## 2026-05-06 Course Home Module Progress State
+
+- Workflow-layer decision: course home module cards must expose optional local learner progress states: `看过 -> 学过 -> 已做题 -> 掌握`.
+- The state is an ordered dependency chain. Selecting a later state implies earlier states; broken states such as mastered without practiced are invalid.
+- Persistence lives in browser `localStorage` (`shadergui-module-progress-v1`) and must not be written into course source or generated data contracts.
+- Implementation source is `.agent/templates/course-app/src/views/CourseHome.vue`; generated CourseApp should be updated by rerunning MVP/ADP, not by direct product edits.
+- Verification was expanded in `scripts/verify_course.py` and `.agent/templates/scripts/verify_course.py`.
 ## Recent Changes
 
 - **2026-05-06 (Lab 组件创建 + ADP 全量通过)**:
