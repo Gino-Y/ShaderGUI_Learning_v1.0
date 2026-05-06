@@ -2,6 +2,8 @@
 
 > **AI 驱动的课程生成与学习平台** — 基于 `.agent/` 流水线自动生成交互式 ShaderGUI 编程课程
 
+> **在线访问：** [https://gino-y.github.io/ShaderGUI_Learning_v1.0/](https://gino-y.github.io/ShaderGUI_Learning_v1.0/)
+
 ---
 
 ## 项目简介
