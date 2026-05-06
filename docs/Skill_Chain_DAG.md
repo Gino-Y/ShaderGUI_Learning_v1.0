@@ -71,7 +71,7 @@ This supersedes the older ADPMCP full-scan/full-write design. The reason is stru
 
 - `MVPMCP`: owns one complete module production run.
 - `ADP command`: owns module scheduling only; it must not produce a second CourseApp writing model.
-- workbuddy/Cursor/Codex: may execute MVP or ADP commands, but must read rules and handoff only from `.agent/`.
+- The current platform assigned to the execution layer may execute MVP or ADP commands, but must read rules and handoff only from `.agent/`.
 
 Current ADP command:
 

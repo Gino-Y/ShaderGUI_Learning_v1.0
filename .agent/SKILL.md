@@ -122,14 +122,14 @@ python .agent\flow_engine.py --mode production --scope all-content --basedir . -
 - `--adp` 读取 `.agent/adp-scope.json` 的模块列表。
 - 每个模块按完整模块范围运行同一条 MVP pipeline。
 - ADP 不再使用全量写入式 `ADPMCP.generate_products()`。
-- workbuddy、Cursor、Codex 都只是执行器；规则、DAG、handoff、memory 仍只来自 `.agent/`。
+- 当前被用户指定为执行层的平台只是执行器；规则、DAG、handoff、memory 仍只来自 `.agent/`。
 
 ## Runtime Role Switching
 
 Roles are not permanently bound to platforms. When the user says `你是 <role>`, the current platform immediately follows that role until the user switches again or the task ends.
 
 - workflow/DAG/工作流层: edit `.agent/`, docs, DAG contracts, MCP orchestration, templates, verification gates, handoff, memory, and rules. Avoid direct product edits.
-- product/执行层/workbuddy: execute MVP/ADP, inspect generated output, and fix product-facing defects through the approved DAG/template/MCP path. Do not create workflow rules or private platform assets.
+- product/执行层/产物层: execute MVP/ADP, inspect generated output, and fix product-facing defects through the approved DAG/template/MCP path. Do not create workflow rules or private platform assets.
 - review/检查层: inspect and report only unless the user explicitly asks for repair.
 
-This is a role switch, not platform binding. Codex, Cursor, and workbuddy can each serve any role when the user explicitly assigns it.
+This is a role switch, not platform binding. Codex, Cursor, and any other executor can serve any role when the user explicitly assigns it.

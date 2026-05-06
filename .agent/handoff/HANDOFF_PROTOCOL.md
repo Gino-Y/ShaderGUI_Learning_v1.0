@@ -68,7 +68,7 @@ Small, deterministic consistency problems must be fixed by the current executor 
 
 - MVP executes one module through the normal complete module pipeline.
 - ADP is a dispatcher command that runs MVP module-by-module from `.agent/adp-scope.json`.
-- workbuddy, Cursor, Codex, or any other platform may execute MVP/ADP commands, but must not be used as a source of rules, prompts, workflow, DAG, or generated assets.
+- The current platform assigned to the execution layer may execute MVP/ADP commands, but must not be used as a source of rules, prompts, workflow, DAG, or generated assets.
 - Do not create `.workbuddy/` or `.cursor/` project knowledge directories; record all cross-agent state in `.agent/handoff/` and `.agent/memory/`.
 
 ## Runtime Role Switching
@@ -76,7 +76,7 @@ Small, deterministic consistency problems must be fixed by the current executor 
 Roles are runtime responsibilities, not platform identities. If the user says `你是 <role>`, the active executor immediately switches to that role.
 
 - workflow/DAG/工作流层: workflow assets only (`.agent/`, docs, MCP orchestration, templates, verification, handoff, memory, rules).
-- product/执行层/workbuddy: execute MVP/ADP and handle product-facing output through the DAG/template/MCP path.
+- product/执行层/产物层: execute MVP/ADP and handle product-facing output through the DAG/template/MCP path.
 - review/检查层: inspect and report unless repair is explicitly requested.
 
 Do not store durable role instructions in `.cursor/` or `.workbuddy/`; write all persistent coordination under `.agent/`.

@@ -495,17 +495,17 @@ python .agent\flow_engine.py --mode production --scope all-content --basedir . -
 
 - ADP 不得调用全量写入式 `ADPMCP.generate_products()`。
 - ADP 不得产出 all-module `slides.json` 搭配 current-module `storyboard/design/stitch` 的混合状态。
-- workbuddy、Cursor、Codex 只能作为执行器运行 MVP/ADP 命令；不得创建或依赖 `.workbuddy/`、`.cursor/` 私有规则资产。
+- 当前被用户指定为执行层的平台只能作为执行器运行 MVP/ADP 命令；不得创建或依赖 `.workbuddy/`、`.cursor/` 私有规则资产。
 - 执行后必须以 `scripts/verify_course.py`、`npm --prefix CourseApp run build`、handoff 和 memory 作为完成依据。
 
 ## Runtime Role Switching
 
-[ROLE_SWITCH_NOT_PLATFORM_BINDING] Roles are runtime responsibilities, not permanent platform bindings. Codex, Cursor, workbuddy, or any other executor is not inherently tied to one role. The user may switch the current platform role by saying `你是 <role>` or an equivalent explicit instruction.
+[ROLE_SWITCH_NOT_PLATFORM_BINDING] Roles are runtime responsibilities, not permanent platform bindings. Codex, Cursor, or any other executor is not inherently tied to one role. The user may switch the current platform role by saying `你是 <role>` or an equivalent explicit instruction.
 
 Supported roles:
 
 - `workflow` / `DAG` / `架构层` / `工作流层`: the current platform may edit only workflow-layer assets such as `.agent/`, `docs/`, DAG contracts, MCP orchestration, templates, verification gates, handoff, memory, and rules. It must not directly edit generated product files except for verification or clearly marked temporary inspection.
-- `product` / `产物层` / `执行层` / `workbuddy`: the current platform may execute MVP/ADP commands, inspect generated output, and fix product-facing defects only through the approved DAG/template/MCP path. It must not invent new workflow rules, prompts, private assets, or hidden platform memory.
+- `product` / `产物层` / `执行层`: the current platform may execute MVP/ADP commands, inspect generated output, and fix product-facing defects only through the approved DAG/template/MCP path. It must not invent new workflow rules, prompts, private assets, or hidden platform memory.
 - `review` / `检查层`: the current platform only inspects, reports risks, and proposes or records fixes. It must not modify files unless the user then switches role or explicitly asks for repair.
 
 Switching rules:
