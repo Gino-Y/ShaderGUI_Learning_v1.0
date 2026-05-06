@@ -1,8 +1,8 @@
 {
   "provider": "design-v0-translated-spec",
   "status": "design_ready",
-  "module": "Module_04",
-  "generatedAt": "2026-05-06T00:42:54Z",
+  "module": "ADP_ACCUMULATED",
+  "generatedAt": "2026-05-06T07:52:26Z",
   "source": {
     "slides": "CourseApp/src/data/slides.json",
     "storyboard": "CourseApp/src/data/storyboard-contract.json",
@@ -10,6 +10,3235 @@
   },
   "handoffBrief": ".agent/design/Module_04/design-brief.md",
   "slides": [
+    {
+      "moduleId": "Module_01",
+      "slideId": "p00",
+      "route": "/module/Module_01/slide/p00",
+      "title": "ShaderGUI：不仅仅是换个皮",
+      "kind": "concept",
+      "screenType": "course-slide-player",
+      "visualPrompt": "Design a focused Chinese technical course slide for Unity ShaderGUI. Title: ShaderGUI：不仅仅是换个皮. Key points: ShaderGUI 是 Shader 参数系统的前端工程层 / 不是简单的 UI 美化.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=2. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_01/react-prototype.json",
+        "chatUrl": null,
+        "translationMode": "extract-layout-interaction-visual-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+          ],
+          "visual": [
+            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+            "Reserve strong accents for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Use storyboard motionCues as the interaction and animation source.",
+            "Quiz and exploration screens remain data-driven Vue Router pages."
+          ],
+          "slides": [
+            {
+              "moduleId": "Module_01",
+              "slideId": "p00",
+              "title": "ShaderGUI：不仅仅是换个皮",
+              "kind": null,
+              "route": "/module/Module_01/slide/p00"
+            },
+            {
+              "moduleId": "Module_01",
+              "slideId": "p01",
+              "title": "编写第一个自定义材质面板",
+              "kind": null,
+              "route": "/module/Module_01/slide/p01"
+            },
+            {
+              "moduleId": "Module_01",
+              "slideId": "p02",
+              "title": "如何安全地获取参数？",
+              "kind": null,
+              "route": "/module/Module_01/slide/p02"
+            }
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Use this scene to make learners understand 'ShaderGUI：不仅仅是换个皮' through the content beats: ShaderGUI 是 Shader 参数系统的前端工程层 / 不是简单的 UI 美化.",
+        "layoutIntent": {
+          "primaryFocus": "concept hierarchy and mental model",
+          "readingPath": "title -> core idea -> three supporting beats",
+          "density": "low-to-medium",
+          "emphasis": [
+            "ShaderGUI 是 Shader 参数系统的前端工程层",
+            "不是简单的 UI 美化"
+          ]
+        },
+        "visualComposition": {
+          "aspectRatio": "16:9 responsive canvas, preserve 7% outer safe margin",
+          "shotType": "wide instructional concept board",
+          "frameGrid": {
+            "columns": "left 56% hero concept and explanation, right 44% supporting cards",
+            "rows": "top metadata band, center concept body, bottom learner focus",
+            "anchor": "hero concept anchors upper-left; supporting beats form right-side vertical rhythm"
+          },
+          "foreground": {
+            "subject": "ShaderGUI 是 Shader 参数系统的前端工程层",
+            "position": "left-center hero area",
+            "scale": "largest text block after title; primary learner attention"
+          },
+          "midground": {
+            "subject": "secondary point cards",
+            "position": "right-center, staggered stack",
+            "role": "show the sequence of supporting ideas"
+          },
+          "background": {
+            "subject": "soft radial highlights and dark glass panels",
+            "position": "corners and far background",
+            "role": "separate layers without becoming content"
+          },
+          "negativeSpace": "leave a quiet diagonal corridor from title to focus card for eye travel",
+          "readingDirection": "upper-left title -> left hero concept -> right supporting cards -> bottom focus statement",
+          "safeArea": "keep subtitle overlay and player controls outside the composed slide frame",
+          "cameraPlan": {
+            "base": "locked camera with stable slide geometry",
+            "beatMotion": "progressive emphasis on the current point card only",
+            "avoid": [
+              "layout reflow during narration",
+              "large parallax shifts",
+              "decorative motion unrelated to current knowledge point"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "clear, instructional, confident",
+          "contrastRole": "use accent color to separate principle, example, and learner takeaway",
+          "avoid": [
+            "monochrome sameness",
+            "presentation decoration",
+            "workflow labels"
+          ]
+        },
+        "motionCueCount": 2
+      },
+      "animationHandoff": {
+        "target": "future-web-animation-module",
+        "triggerSource": "subtitle-events",
+        "subtitleEventPath": "/subtitles/Module_01/p00.json",
+        "bindingMode": "subtitle-time-range-with-knowledge-alignment",
+        "notes": [
+          "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
+          "Knowledge points are aligned to the closest subtitle segment by keyword overlap, with ordered fallback."
+        ]
+      },
+      "motionCues": [
+        {
+          "cueId": "cue-01",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 0,
+            "subtitleEventPath": "/subtitles/Module_01/p00.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "ShaderGUI 是 Shader 参数系统的前端工程层",
+          "sourceSubtitleText": "ShaderGUI 是 Shader 参数系统的前端工程层",
+          "knowledgeFocus": {
+            "id": "knowledge-01",
+            "label": "ShaderGUI 是 Shader 参数系统的前端工程层",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：ShaderGUI 是 Shader 参数系统的前端工程层"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 420,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "pulse-once-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "ShaderGUI 是 Shader 参数系统的前端工程层",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": false,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "left hero concept",
+            "subject": "ShaderGUI 是 Shader 参数系统的前端工程层",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“ShaderGUI 是 Shader 参数系统的前端工程层”，弱化其他内容；旁白：ShaderGUI 是 Shader 参数系统的前端工程层。",
+          "focusInstruction": {
+            "focus": "ShaderGUI 是 Shader 参数系统的前端工程层",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-02",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 1,
+            "subtitleEventPath": "/subtitles/Module_01/p00.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "不是简单的 UI 美化",
+          "sourceSubtitleText": "不是简单的 UI 美化",
+          "knowledgeFocus": {
+            "id": "knowledge-02",
+            "label": "不是简单的 UI 美化",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：不是简单的 UI 美化"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "不是简单的 UI 美化",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card top",
+            "subject": "不是简单的 UI 美化",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“不是简单的 UI 美化”，弱化其他内容；旁白：不是简单的 UI 美化。",
+          "focusInstruction": {
+            "focus": "不是简单的 UI 美化",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        }
+      ],
+      "contentConstraints": [
+        "Only show ShaderGUI course content in the slide canvas.",
+        "Do not render full transcript text as a panel.",
+        "Subtitles must appear only as audio-time events.",
+        "Keep player controls outside the slide canvas.",
+        "Follow storyboard layout, palette, and motion intent before inventing new visual behavior.",
+        "Translate v0 React prototype rules into Vue and Tailwind; do not copy React/shadcn code directly."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS"
+      },
+      "layoutSpec": {
+        "template": "title-body",
+        "grid": "grid-cols-1",
+        "spacing": "gap-6",
+        "typography": {
+          "title": "text-3xl font-bold",
+          "subtitle": "text-lg text-slate-400",
+          "body": "text-base leading-relaxed",
+          "caption": "text-sm text-slate-500"
+        }
+      },
+      "colorScheme": {
+        "bg": "#0f172a",
+        "surface": "#1e293b",
+        "textPrimary": "#f8fafc",
+        "textSecondary": "#94a3b8",
+        "accent": "#38bdf8",
+        "accentSecondary": "#818cf8",
+        "codeBg": "#0d1117",
+        "codeKeyword": "#ff7b72",
+        "codeString": "#a5d6ff",
+        "codeComment": "#8b949e"
+      },
+      "componentList": [
+        "SlideTitle",
+        "PointList",
+        "SlideNav"
+      ]
+    },
+    {
+      "moduleId": "Module_01",
+      "slideId": "p01",
+      "route": "/module/Module_01/slide/p01",
+      "title": "编写第一个自定义材质面板",
+      "kind": "concept",
+      "screenType": "course-slide-player",
+      "visualPrompt": "Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 编写第一个自定义材质面板. Key points: 继承 ShaderGUI / 重写 OnGUI / 通过 CustomEditor 绑定.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_01/react-prototype.json",
+        "chatUrl": null,
+        "translationMode": "extract-layout-interaction-visual-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+          ],
+          "visual": [
+            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+            "Reserve strong accents for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Use storyboard motionCues as the interaction and animation source.",
+            "Quiz and exploration screens remain data-driven Vue Router pages."
+          ],
+          "slides": [
+            {
+              "moduleId": "Module_01",
+              "slideId": "p00",
+              "title": "ShaderGUI：不仅仅是换个皮",
+              "kind": null,
+              "route": "/module/Module_01/slide/p00"
+            },
+            {
+              "moduleId": "Module_01",
+              "slideId": "p01",
+              "title": "编写第一个自定义材质面板",
+              "kind": null,
+              "route": "/module/Module_01/slide/p01"
+            },
+            {
+              "moduleId": "Module_01",
+              "slideId": "p02",
+              "title": "如何安全地获取参数？",
+              "kind": null,
+              "route": "/module/Module_01/slide/p02"
+            }
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Use this scene to make learners understand '编写第一个自定义材质面板' through the content beats: 继承 ShaderGUI / 重写 OnGUI / 通过 CustomEditor 绑定.",
+        "layoutIntent": {
+          "primaryFocus": "concept hierarchy and mental model",
+          "readingPath": "title -> core idea -> three supporting beats",
+          "density": "low-to-medium",
+          "emphasis": [
+            "继承 ShaderGUI",
+            "重写 OnGUI",
+            "通过 CustomEditor 绑定"
+          ]
+        },
+        "visualComposition": {
+          "aspectRatio": "16:9 responsive canvas, preserve 7% outer safe margin",
+          "shotType": "wide instructional concept board",
+          "frameGrid": {
+            "columns": "left 56% hero concept and explanation, right 44% supporting cards",
+            "rows": "top metadata band, center concept body, bottom learner focus",
+            "anchor": "hero concept anchors upper-left; supporting beats form right-side vertical rhythm"
+          },
+          "foreground": {
+            "subject": "继承 ShaderGUI",
+            "position": "left-center hero area",
+            "scale": "largest text block after title; primary learner attention"
+          },
+          "midground": {
+            "subject": "secondary point cards",
+            "position": "right-center, staggered stack",
+            "role": "show the sequence of supporting ideas"
+          },
+          "background": {
+            "subject": "soft radial highlights and dark glass panels",
+            "position": "corners and far background",
+            "role": "separate layers without becoming content"
+          },
+          "negativeSpace": "leave a quiet diagonal corridor from title to focus card for eye travel",
+          "readingDirection": "upper-left title -> left hero concept -> right supporting cards -> bottom focus statement",
+          "safeArea": "keep subtitle overlay and player controls outside the composed slide frame",
+          "cameraPlan": {
+            "base": "locked camera with stable slide geometry",
+            "beatMotion": "progressive emphasis on the current point card only",
+            "avoid": [
+              "layout reflow during narration",
+              "large parallax shifts",
+              "decorative motion unrelated to current knowledge point"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "clear, instructional, confident",
+          "contrastRole": "use accent color to separate principle, example, and learner takeaway",
+          "avoid": [
+            "monochrome sameness",
+            "presentation decoration",
+            "workflow labels"
+          ]
+        },
+        "motionCueCount": 3
+      },
+      "animationHandoff": {
+        "target": "future-web-animation-module",
+        "triggerSource": "subtitle-events",
+        "subtitleEventPath": "/subtitles/Module_01/p01.json",
+        "bindingMode": "subtitle-time-range-with-knowledge-alignment",
+        "notes": [
+          "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
+          "Knowledge points are aligned to the closest subtitle segment by keyword overlap, with ordered fallback."
+        ]
+      },
+      "motionCues": [
+        {
+          "cueId": "cue-01",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 0,
+            "subtitleEventPath": "/subtitles/Module_01/p01.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "继承 ShaderGUI",
+          "sourceSubtitleText": "继承 ShaderGUI",
+          "knowledgeFocus": {
+            "id": "knowledge-01",
+            "label": "继承 ShaderGUI",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：继承 ShaderGUI"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 420,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "pulse-once-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "继承 ShaderGUI",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": false,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "left hero concept",
+            "subject": "继承 ShaderGUI",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“继承 ShaderGUI”，弱化其他内容；旁白：继承 ShaderGUI。",
+          "focusInstruction": {
+            "focus": "继承 ShaderGUI",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-02",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 1,
+            "subtitleEventPath": "/subtitles/Module_01/p01.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "重写 OnGUI",
+          "sourceSubtitleText": "重写 OnGUI",
+          "knowledgeFocus": {
+            "id": "knowledge-02",
+            "label": "重写 OnGUI",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：重写 OnGUI"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "重写 OnGUI",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card top",
+            "subject": "重写 OnGUI",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“重写 OnGUI”，弱化其他内容；旁白：重写 OnGUI。",
+          "focusInstruction": {
+            "focus": "重写 OnGUI",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-03",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 2,
+            "subtitleEventPath": "/subtitles/Module_01/p01.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "通过 CustomEditor 绑定",
+          "sourceSubtitleText": "通过 CustomEditor 绑定",
+          "knowledgeFocus": {
+            "id": "knowledge-03",
+            "label": "通过 CustomEditor 绑定",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：通过 CustomEditor 绑定"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "通过 CustomEditor 绑定",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card middle",
+            "subject": "通过 CustomEditor 绑定",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“通过 CustomEditor 绑定”，弱化其他内容；旁白：通过 CustomEditor 绑定。",
+          "focusInstruction": {
+            "focus": "通过 CustomEditor 绑定",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        }
+      ],
+      "contentConstraints": [
+        "Only show ShaderGUI course content in the slide canvas.",
+        "Do not render full transcript text as a panel.",
+        "Subtitles must appear only as audio-time events.",
+        "Keep player controls outside the slide canvas.",
+        "Follow storyboard layout, palette, and motion intent before inventing new visual behavior.",
+        "Translate v0 React prototype rules into Vue and Tailwind; do not copy React/shadcn code directly."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS"
+      },
+      "layoutSpec": {
+        "template": "title-body",
+        "grid": "grid-cols-1",
+        "spacing": "gap-6",
+        "typography": {
+          "title": "text-3xl font-bold",
+          "subtitle": "text-lg text-slate-400",
+          "body": "text-base leading-relaxed",
+          "caption": "text-sm text-slate-500"
+        }
+      },
+      "colorScheme": {
+        "bg": "#0f172a",
+        "surface": "#1e293b",
+        "textPrimary": "#f8fafc",
+        "textSecondary": "#94a3b8",
+        "accent": "#38bdf8",
+        "accentSecondary": "#818cf8",
+        "codeBg": "#0d1117",
+        "codeKeyword": "#ff7b72",
+        "codeString": "#a5d6ff",
+        "codeComment": "#8b949e"
+      },
+      "componentList": [
+        "SlideTitle",
+        "PointList",
+        "SlideNav"
+      ]
+    },
+    {
+      "moduleId": "Module_01",
+      "slideId": "p02",
+      "route": "/module/Module_01/slide/p02",
+      "title": "如何安全地获取参数？",
+      "kind": "concept",
+      "screenType": "course-slide-player",
+      "visualPrompt": "Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 如何安全地获取参数？. Key points: Required 模式的风险 / Safe 模式的安全获取 / 封装 FindPropertySafe 工具函数.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_01/react-prototype.json",
+        "chatUrl": null,
+        "translationMode": "extract-layout-interaction-visual-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+          ],
+          "visual": [
+            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+            "Reserve strong accents for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Use storyboard motionCues as the interaction and animation source.",
+            "Quiz and exploration screens remain data-driven Vue Router pages."
+          ],
+          "slides": [
+            {
+              "moduleId": "Module_01",
+              "slideId": "p00",
+              "title": "ShaderGUI：不仅仅是换个皮",
+              "kind": null,
+              "route": "/module/Module_01/slide/p00"
+            },
+            {
+              "moduleId": "Module_01",
+              "slideId": "p01",
+              "title": "编写第一个自定义材质面板",
+              "kind": null,
+              "route": "/module/Module_01/slide/p01"
+            },
+            {
+              "moduleId": "Module_01",
+              "slideId": "p02",
+              "title": "如何安全地获取参数？",
+              "kind": null,
+              "route": "/module/Module_01/slide/p02"
+            }
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Use this scene to make learners understand '如何安全地获取参数？' through the content beats: Required 模式的风险 / Safe 模式的安全获取 / 封装 FindPropertySafe 工具函数.",
+        "layoutIntent": {
+          "primaryFocus": "concept hierarchy and mental model",
+          "readingPath": "title -> core idea -> three supporting beats",
+          "density": "low-to-medium",
+          "emphasis": [
+            "Required 模式的风险",
+            "Safe 模式的安全获取",
+            "封装 FindPropertySafe 工具函数"
+          ]
+        },
+        "visualComposition": {
+          "aspectRatio": "16:9 responsive canvas, preserve 7% outer safe margin",
+          "shotType": "wide instructional concept board",
+          "frameGrid": {
+            "columns": "left 56% hero concept and explanation, right 44% supporting cards",
+            "rows": "top metadata band, center concept body, bottom learner focus",
+            "anchor": "hero concept anchors upper-left; supporting beats form right-side vertical rhythm"
+          },
+          "foreground": {
+            "subject": "Required 模式的风险",
+            "position": "left-center hero area",
+            "scale": "largest text block after title; primary learner attention"
+          },
+          "midground": {
+            "subject": "secondary point cards",
+            "position": "right-center, staggered stack",
+            "role": "show the sequence of supporting ideas"
+          },
+          "background": {
+            "subject": "soft radial highlights and dark glass panels",
+            "position": "corners and far background",
+            "role": "separate layers without becoming content"
+          },
+          "negativeSpace": "leave a quiet diagonal corridor from title to focus card for eye travel",
+          "readingDirection": "upper-left title -> left hero concept -> right supporting cards -> bottom focus statement",
+          "safeArea": "keep subtitle overlay and player controls outside the composed slide frame",
+          "cameraPlan": {
+            "base": "locked camera with stable slide geometry",
+            "beatMotion": "progressive emphasis on the current point card only",
+            "avoid": [
+              "layout reflow during narration",
+              "large parallax shifts",
+              "decorative motion unrelated to current knowledge point"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "clear, instructional, confident",
+          "contrastRole": "use accent color to separate principle, example, and learner takeaway",
+          "avoid": [
+            "monochrome sameness",
+            "presentation decoration",
+            "workflow labels"
+          ]
+        },
+        "motionCueCount": 3
+      },
+      "animationHandoff": {
+        "target": "future-web-animation-module",
+        "triggerSource": "subtitle-events",
+        "subtitleEventPath": "/subtitles/Module_01/p02.json",
+        "bindingMode": "subtitle-time-range-with-knowledge-alignment",
+        "notes": [
+          "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
+          "Knowledge points are aligned to the closest subtitle segment by keyword overlap, with ordered fallback."
+        ]
+      },
+      "motionCues": [
+        {
+          "cueId": "cue-01",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 0,
+            "subtitleEventPath": "/subtitles/Module_01/p02.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "Required 模式的风险",
+          "sourceSubtitleText": "Required 模式的风险",
+          "knowledgeFocus": {
+            "id": "knowledge-01",
+            "label": "Required 模式的风险",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：Required 模式的风险"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 420,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "pulse-once-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "Required 模式的风险",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": false,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "left hero concept",
+            "subject": "Required 模式的风险",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“Required 模式的风险”，弱化其他内容；旁白：Required 模式的风险。",
+          "focusInstruction": {
+            "focus": "Required 模式的风险",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-02",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 1,
+            "subtitleEventPath": "/subtitles/Module_01/p02.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "Safe 模式的安全获取",
+          "sourceSubtitleText": "Safe 模式的安全获取",
+          "knowledgeFocus": {
+            "id": "knowledge-02",
+            "label": "Safe 模式的安全获取",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：Safe 模式的安全获取"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "Safe 模式的安全获取",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card top",
+            "subject": "Safe 模式的安全获取",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“Safe 模式的安全获取”，弱化其他内容；旁白：Safe 模式的安全获取。",
+          "focusInstruction": {
+            "focus": "Safe 模式的安全获取",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-03",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 2,
+            "subtitleEventPath": "/subtitles/Module_01/p02.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "封装 FindPropertySafe 工具函数",
+          "sourceSubtitleText": "封装 FindPropertySafe 工具函数",
+          "knowledgeFocus": {
+            "id": "knowledge-03",
+            "label": "封装 FindPropertySafe 工具函数",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：封装 FindPropertySafe 工具函数"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "封装 FindPropertySafe 工具函数",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card middle",
+            "subject": "封装 FindPropertySafe 工具函数",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“封装 FindPropertySafe 工具函数”，弱化其他内容；旁白：封装 FindPropertySafe 工具函数。",
+          "focusInstruction": {
+            "focus": "封装 FindPropertySafe 工具函数",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        }
+      ],
+      "contentConstraints": [
+        "Only show ShaderGUI course content in the slide canvas.",
+        "Do not render full transcript text as a panel.",
+        "Subtitles must appear only as audio-time events.",
+        "Keep player controls outside the slide canvas.",
+        "Follow storyboard layout, palette, and motion intent before inventing new visual behavior.",
+        "Translate v0 React prototype rules into Vue and Tailwind; do not copy React/shadcn code directly."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS"
+      },
+      "layoutSpec": {
+        "template": "title-body",
+        "grid": "grid-cols-1",
+        "spacing": "gap-6",
+        "typography": {
+          "title": "text-3xl font-bold",
+          "subtitle": "text-lg text-slate-400",
+          "body": "text-base leading-relaxed",
+          "caption": "text-sm text-slate-500"
+        }
+      },
+      "colorScheme": {
+        "bg": "#0f172a",
+        "surface": "#1e293b",
+        "textPrimary": "#f8fafc",
+        "textSecondary": "#94a3b8",
+        "accent": "#38bdf8",
+        "accentSecondary": "#818cf8",
+        "codeBg": "#0d1117",
+        "codeKeyword": "#ff7b72",
+        "codeString": "#a5d6ff",
+        "codeComment": "#8b949e"
+      },
+      "componentList": [
+        "SlideTitle",
+        "PointList",
+        "SlideNav"
+      ]
+    },
+    {
+      "moduleId": "Module_02",
+      "slideId": "p00",
+      "route": "/module/Module_02/slide/p00",
+      "title": "告别参数地狱：逻辑化的分组设计",
+      "kind": "concept",
+      "screenType": "course-slide-player",
+      "visualPrompt": "Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 告别参数地狱：逻辑化的分组设计. Key points: 信息架构设计 / BeginVertical 创建视觉边界 / 按渲染逻辑排列参数.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_02/react-prototype.json",
+        "chatUrl": null,
+        "translationMode": "extract-layout-interaction-visual-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+          ],
+          "visual": [
+            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+            "Reserve strong accents for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Use storyboard motionCues as the interaction and animation source.",
+            "Quiz and exploration screens remain data-driven Vue Router pages."
+          ],
+          "slides": [
+            {
+              "moduleId": "Module_02",
+              "slideId": "p00",
+              "title": "告别参数地狱：逻辑化的分组设计",
+              "kind": null,
+              "route": "/module/Module_02/slide/p00"
+            },
+            {
+              "moduleId": "Module_02",
+              "slideId": "p01",
+              "title": "只给用户他需要的：智能 UI 联动",
+              "kind": null,
+              "route": "/module/Module_02/slide/p01"
+            },
+            {
+              "moduleId": "Module_02",
+              "slideId": "p02",
+              "title": "拒绝代码重复：打造 ShaderGUI 工具箱",
+              "kind": null,
+              "route": "/module/Module_02/slide/p02"
+            }
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Use this scene to make learners understand '告别参数地狱：逻辑化的分组设计' through the content beats: 信息架构设计 / BeginVertical 创建视觉边界 / 按渲染逻辑排列参数.",
+        "layoutIntent": {
+          "primaryFocus": "concept hierarchy and mental model",
+          "readingPath": "title -> core idea -> three supporting beats",
+          "density": "low-to-medium",
+          "emphasis": [
+            "信息架构设计",
+            "BeginVertical 创建视觉边界",
+            "按渲染逻辑排列参数"
+          ]
+        },
+        "visualComposition": {
+          "aspectRatio": "16:9 responsive canvas, preserve 7% outer safe margin",
+          "shotType": "wide instructional concept board",
+          "frameGrid": {
+            "columns": "left 56% hero concept and explanation, right 44% supporting cards",
+            "rows": "top metadata band, center concept body, bottom learner focus",
+            "anchor": "hero concept anchors upper-left; supporting beats form right-side vertical rhythm"
+          },
+          "foreground": {
+            "subject": "信息架构设计",
+            "position": "left-center hero area",
+            "scale": "largest text block after title; primary learner attention"
+          },
+          "midground": {
+            "subject": "secondary point cards",
+            "position": "right-center, staggered stack",
+            "role": "show the sequence of supporting ideas"
+          },
+          "background": {
+            "subject": "soft radial highlights and dark glass panels",
+            "position": "corners and far background",
+            "role": "separate layers without becoming content"
+          },
+          "negativeSpace": "leave a quiet diagonal corridor from title to focus card for eye travel",
+          "readingDirection": "upper-left title -> left hero concept -> right supporting cards -> bottom focus statement",
+          "safeArea": "keep subtitle overlay and player controls outside the composed slide frame",
+          "cameraPlan": {
+            "base": "locked camera with stable slide geometry",
+            "beatMotion": "progressive emphasis on the current point card only",
+            "avoid": [
+              "layout reflow during narration",
+              "large parallax shifts",
+              "decorative motion unrelated to current knowledge point"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "clear, instructional, confident",
+          "contrastRole": "use accent color to separate principle, example, and learner takeaway",
+          "avoid": [
+            "monochrome sameness",
+            "presentation decoration",
+            "workflow labels"
+          ]
+        },
+        "motionCueCount": 3
+      },
+      "animationHandoff": {
+        "target": "future-web-animation-module",
+        "triggerSource": "subtitle-events",
+        "subtitleEventPath": "/subtitles/Module_02/p00.json",
+        "bindingMode": "subtitle-time-range-with-knowledge-alignment",
+        "notes": [
+          "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
+          "Knowledge points are aligned to the closest subtitle segment by keyword overlap, with ordered fallback."
+        ]
+      },
+      "motionCues": [
+        {
+          "cueId": "cue-01",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 0,
+            "subtitleEventPath": "/subtitles/Module_02/p00.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "信息架构设计",
+          "sourceSubtitleText": "信息架构设计",
+          "knowledgeFocus": {
+            "id": "knowledge-01",
+            "label": "信息架构设计",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：信息架构设计"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 420,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "pulse-once-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "信息架构设计",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": false,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "left hero concept",
+            "subject": "信息架构设计",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“信息架构设计”，弱化其他内容；旁白：信息架构设计。",
+          "focusInstruction": {
+            "focus": "信息架构设计",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-02",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 1,
+            "subtitleEventPath": "/subtitles/Module_02/p00.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "BeginVertical 创建视觉边界",
+          "sourceSubtitleText": "BeginVertical 创建视觉边界",
+          "knowledgeFocus": {
+            "id": "knowledge-02",
+            "label": "BeginVertical 创建视觉边界",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：BeginVertical 创建视觉边界"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "BeginVertical 创建视觉边界",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card top",
+            "subject": "BeginVertical 创建视觉边界",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“BeginVertical 创建视觉边界”，弱化其他内容；旁白：BeginVertical 创建视觉边界。",
+          "focusInstruction": {
+            "focus": "BeginVertical 创建视觉边界",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-03",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 2,
+            "subtitleEventPath": "/subtitles/Module_02/p00.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "按渲染逻辑排列参数",
+          "sourceSubtitleText": "按渲染逻辑排列参数",
+          "knowledgeFocus": {
+            "id": "knowledge-03",
+            "label": "按渲染逻辑排列参数",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：按渲染逻辑排列参数"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "按渲染逻辑排列参数",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card middle",
+            "subject": "按渲染逻辑排列参数",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“按渲染逻辑排列参数”，弱化其他内容；旁白：按渲染逻辑排列参数。",
+          "focusInstruction": {
+            "focus": "按渲染逻辑排列参数",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        }
+      ],
+      "contentConstraints": [
+        "Only show ShaderGUI course content in the slide canvas.",
+        "Do not render full transcript text as a panel.",
+        "Subtitles must appear only as audio-time events.",
+        "Keep player controls outside the slide canvas.",
+        "Follow storyboard layout, palette, and motion intent before inventing new visual behavior.",
+        "Translate v0 React prototype rules into Vue and Tailwind; do not copy React/shadcn code directly."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS"
+      },
+      "layoutSpec": {
+        "template": "title-body",
+        "grid": "grid-cols-1",
+        "spacing": "gap-6",
+        "typography": {
+          "title": "text-3xl font-bold",
+          "subtitle": "text-lg text-slate-400",
+          "body": "text-base leading-relaxed",
+          "caption": "text-sm text-slate-500"
+        }
+      },
+      "colorScheme": {
+        "bg": "#0f172a",
+        "surface": "#1e293b",
+        "textPrimary": "#f8fafc",
+        "textSecondary": "#94a3b8",
+        "accent": "#38bdf8",
+        "accentSecondary": "#818cf8",
+        "codeBg": "#0d1117",
+        "codeKeyword": "#ff7b72",
+        "codeString": "#a5d6ff",
+        "codeComment": "#8b949e"
+      },
+      "componentList": [
+        "SlideTitle",
+        "PointList",
+        "SlideNav"
+      ]
+    },
+    {
+      "moduleId": "Module_02",
+      "slideId": "p01",
+      "route": "/module/Module_02/slide/p01",
+      "title": "只给用户他需要的：智能 UI 联动",
+      "kind": "concept",
+      "screenType": "course-slide-player",
+      "visualPrompt": "Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 只给用户他需要的：智能 UI 联动. Key points: 条件显示技术 / Toggle/Enum 控制参数组显隐 / EditorGUI.DisabledScope 应用.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_02/react-prototype.json",
+        "chatUrl": null,
+        "translationMode": "extract-layout-interaction-visual-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+          ],
+          "visual": [
+            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+            "Reserve strong accents for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Use storyboard motionCues as the interaction and animation source.",
+            "Quiz and exploration screens remain data-driven Vue Router pages."
+          ],
+          "slides": [
+            {
+              "moduleId": "Module_02",
+              "slideId": "p00",
+              "title": "告别参数地狱：逻辑化的分组设计",
+              "kind": null,
+              "route": "/module/Module_02/slide/p00"
+            },
+            {
+              "moduleId": "Module_02",
+              "slideId": "p01",
+              "title": "只给用户他需要的：智能 UI 联动",
+              "kind": null,
+              "route": "/module/Module_02/slide/p01"
+            },
+            {
+              "moduleId": "Module_02",
+              "slideId": "p02",
+              "title": "拒绝代码重复：打造 ShaderGUI 工具箱",
+              "kind": null,
+              "route": "/module/Module_02/slide/p02"
+            }
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Use this scene to make learners understand '只给用户他需要的：智能 UI 联动' through the content beats: 条件显示技术 / Toggle/Enum 控制参数组显隐 / EditorGUI.DisabledScope 应用.",
+        "layoutIntent": {
+          "primaryFocus": "concept hierarchy and mental model",
+          "readingPath": "title -> core idea -> three supporting beats",
+          "density": "low-to-medium",
+          "emphasis": [
+            "条件显示技术",
+            "Toggle/Enum 控制参数组显隐",
+            "EditorGUI.DisabledScope 应用"
+          ]
+        },
+        "visualComposition": {
+          "aspectRatio": "16:9 responsive canvas, preserve 7% outer safe margin",
+          "shotType": "wide instructional concept board",
+          "frameGrid": {
+            "columns": "left 56% hero concept and explanation, right 44% supporting cards",
+            "rows": "top metadata band, center concept body, bottom learner focus",
+            "anchor": "hero concept anchors upper-left; supporting beats form right-side vertical rhythm"
+          },
+          "foreground": {
+            "subject": "条件显示技术",
+            "position": "left-center hero area",
+            "scale": "largest text block after title; primary learner attention"
+          },
+          "midground": {
+            "subject": "secondary point cards",
+            "position": "right-center, staggered stack",
+            "role": "show the sequence of supporting ideas"
+          },
+          "background": {
+            "subject": "soft radial highlights and dark glass panels",
+            "position": "corners and far background",
+            "role": "separate layers without becoming content"
+          },
+          "negativeSpace": "leave a quiet diagonal corridor from title to focus card for eye travel",
+          "readingDirection": "upper-left title -> left hero concept -> right supporting cards -> bottom focus statement",
+          "safeArea": "keep subtitle overlay and player controls outside the composed slide frame",
+          "cameraPlan": {
+            "base": "locked camera with stable slide geometry",
+            "beatMotion": "progressive emphasis on the current point card only",
+            "avoid": [
+              "layout reflow during narration",
+              "large parallax shifts",
+              "decorative motion unrelated to current knowledge point"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "clear, instructional, confident",
+          "contrastRole": "use accent color to separate principle, example, and learner takeaway",
+          "avoid": [
+            "monochrome sameness",
+            "presentation decoration",
+            "workflow labels"
+          ]
+        },
+        "motionCueCount": 3
+      },
+      "animationHandoff": {
+        "target": "future-web-animation-module",
+        "triggerSource": "subtitle-events",
+        "subtitleEventPath": "/subtitles/Module_02/p01.json",
+        "bindingMode": "subtitle-time-range-with-knowledge-alignment",
+        "notes": [
+          "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
+          "Knowledge points are aligned to the closest subtitle segment by keyword overlap, with ordered fallback."
+        ]
+      },
+      "motionCues": [
+        {
+          "cueId": "cue-01",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 0,
+            "subtitleEventPath": "/subtitles/Module_02/p01.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "条件显示技术",
+          "sourceSubtitleText": "条件显示技术",
+          "knowledgeFocus": {
+            "id": "knowledge-01",
+            "label": "条件显示技术",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：条件显示技术"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 420,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "pulse-once-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "条件显示技术",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": false,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "left hero concept",
+            "subject": "条件显示技术",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“条件显示技术”，弱化其他内容；旁白：条件显示技术。",
+          "focusInstruction": {
+            "focus": "条件显示技术",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-02",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 1,
+            "subtitleEventPath": "/subtitles/Module_02/p01.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "Toggle/Enum 控制参数组显隐",
+          "sourceSubtitleText": "Toggle/Enum 控制参数组显隐",
+          "knowledgeFocus": {
+            "id": "knowledge-02",
+            "label": "Toggle/Enum 控制参数组显隐",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：Toggle/Enum 控制参数组显隐"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "Toggle/Enum 控制参数组显隐",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card top",
+            "subject": "Toggle/Enum 控制参数组显隐",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“Toggle/Enum 控制参数组显隐”，弱化其他内容；旁白：Toggle/Enum 控制参数组显隐。",
+          "focusInstruction": {
+            "focus": "Toggle/Enum 控制参数组显隐",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-03",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 2,
+            "subtitleEventPath": "/subtitles/Module_02/p01.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "EditorGUI.DisabledScope 应用",
+          "sourceSubtitleText": "EditorGUI.DisabledScope 应用",
+          "knowledgeFocus": {
+            "id": "knowledge-03",
+            "label": "EditorGUI.DisabledScope 应用",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：EditorGUI.DisabledScope 应用"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "EditorGUI.DisabledScope 应用",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card middle",
+            "subject": "EditorGUI.DisabledScope 应用",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“EditorGUI.DisabledScope 应用”，弱化其他内容；旁白：EditorGUI.DisabledScope 应用。",
+          "focusInstruction": {
+            "focus": "EditorGUI.DisabledScope 应用",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        }
+      ],
+      "contentConstraints": [
+        "Only show ShaderGUI course content in the slide canvas.",
+        "Do not render full transcript text as a panel.",
+        "Subtitles must appear only as audio-time events.",
+        "Keep player controls outside the slide canvas.",
+        "Follow storyboard layout, palette, and motion intent before inventing new visual behavior.",
+        "Translate v0 React prototype rules into Vue and Tailwind; do not copy React/shadcn code directly."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS"
+      },
+      "layoutSpec": {
+        "template": "title-body",
+        "grid": "grid-cols-1",
+        "spacing": "gap-6",
+        "typography": {
+          "title": "text-3xl font-bold",
+          "subtitle": "text-lg text-slate-400",
+          "body": "text-base leading-relaxed",
+          "caption": "text-sm text-slate-500"
+        }
+      },
+      "colorScheme": {
+        "bg": "#0f172a",
+        "surface": "#1e293b",
+        "textPrimary": "#f8fafc",
+        "textSecondary": "#94a3b8",
+        "accent": "#38bdf8",
+        "accentSecondary": "#818cf8",
+        "codeBg": "#0d1117",
+        "codeKeyword": "#ff7b72",
+        "codeString": "#a5d6ff",
+        "codeComment": "#8b949e"
+      },
+      "componentList": [
+        "SlideTitle",
+        "PointList",
+        "SlideNav"
+      ]
+    },
+    {
+      "moduleId": "Module_02",
+      "slideId": "p02",
+      "route": "/module/Module_02/slide/p02",
+      "title": "拒绝代码重复：打造 ShaderGUI 工具箱",
+      "kind": "concept",
+      "screenType": "course-slide-player",
+      "visualPrompt": "Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 拒绝代码重复：打造 ShaderGUI 工具箱. Key points: 封装 DrawProp / DrawTex / BeginGroup 工具类 / 提高编写效率 / 视觉统一性.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_02/react-prototype.json",
+        "chatUrl": null,
+        "translationMode": "extract-layout-interaction-visual-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+          ],
+          "visual": [
+            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+            "Reserve strong accents for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Use storyboard motionCues as the interaction and animation source.",
+            "Quiz and exploration screens remain data-driven Vue Router pages."
+          ],
+          "slides": [
+            {
+              "moduleId": "Module_02",
+              "slideId": "p00",
+              "title": "告别参数地狱：逻辑化的分组设计",
+              "kind": null,
+              "route": "/module/Module_02/slide/p00"
+            },
+            {
+              "moduleId": "Module_02",
+              "slideId": "p01",
+              "title": "只给用户他需要的：智能 UI 联动",
+              "kind": null,
+              "route": "/module/Module_02/slide/p01"
+            },
+            {
+              "moduleId": "Module_02",
+              "slideId": "p02",
+              "title": "拒绝代码重复：打造 ShaderGUI 工具箱",
+              "kind": null,
+              "route": "/module/Module_02/slide/p02"
+            }
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Use this scene to make learners understand '拒绝代码重复：打造 ShaderGUI 工具箱' through the content beats: 封装 DrawProp / DrawTex / BeginGroup 工具类 / 提高编写效率 / 视觉统一性.",
+        "layoutIntent": {
+          "primaryFocus": "concept hierarchy and mental model",
+          "readingPath": "title -> core idea -> three supporting beats",
+          "density": "low-to-medium",
+          "emphasis": [
+            "封装 DrawProp / DrawTex / BeginGroup 工具类",
+            "提高编写效率",
+            "视觉统一性"
+          ]
+        },
+        "visualComposition": {
+          "aspectRatio": "16:9 responsive canvas, preserve 7% outer safe margin",
+          "shotType": "wide instructional concept board",
+          "frameGrid": {
+            "columns": "left 56% hero concept and explanation, right 44% supporting cards",
+            "rows": "top metadata band, center concept body, bottom learner focus",
+            "anchor": "hero concept anchors upper-left; supporting beats form right-side vertical rhythm"
+          },
+          "foreground": {
+            "subject": "封装 DrawProp / DrawTex / BeginGroup 工具类",
+            "position": "left-center hero area",
+            "scale": "largest text block after title; primary learner attention"
+          },
+          "midground": {
+            "subject": "secondary point cards",
+            "position": "right-center, staggered stack",
+            "role": "show the sequence of supporting ideas"
+          },
+          "background": {
+            "subject": "soft radial highlights and dark glass panels",
+            "position": "corners and far background",
+            "role": "separate layers without becoming content"
+          },
+          "negativeSpace": "leave a quiet diagonal corridor from title to focus card for eye travel",
+          "readingDirection": "upper-left title -> left hero concept -> right supporting cards -> bottom focus statement",
+          "safeArea": "keep subtitle overlay and player controls outside the composed slide frame",
+          "cameraPlan": {
+            "base": "locked camera with stable slide geometry",
+            "beatMotion": "progressive emphasis on the current point card only",
+            "avoid": [
+              "layout reflow during narration",
+              "large parallax shifts",
+              "decorative motion unrelated to current knowledge point"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "clear, instructional, confident",
+          "contrastRole": "use accent color to separate principle, example, and learner takeaway",
+          "avoid": [
+            "monochrome sameness",
+            "presentation decoration",
+            "workflow labels"
+          ]
+        },
+        "motionCueCount": 3
+      },
+      "animationHandoff": {
+        "target": "future-web-animation-module",
+        "triggerSource": "subtitle-events",
+        "subtitleEventPath": "/subtitles/Module_02/p02.json",
+        "bindingMode": "subtitle-time-range-with-knowledge-alignment",
+        "notes": [
+          "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
+          "Knowledge points are aligned to the closest subtitle segment by keyword overlap, with ordered fallback."
+        ]
+      },
+      "motionCues": [
+        {
+          "cueId": "cue-01",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 0,
+            "subtitleEventPath": "/subtitles/Module_02/p02.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "封装 DrawProp / DrawTex / BeginGroup 工具类",
+          "sourceSubtitleText": "封装 DrawProp / DrawTex / BeginGroup 工具类",
+          "knowledgeFocus": {
+            "id": "knowledge-01",
+            "label": "封装 DrawProp / DrawTex / BeginGroup 工具类",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：封装 DrawProp / DrawTex / BeginGroup 工具类"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 420,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "pulse-once-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "封装 DrawProp / DrawTex / BeginGroup 工具类",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": false,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "left hero concept",
+            "subject": "封装 DrawProp / DrawTex / BeginGroup 工具类",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“封装 DrawProp / DrawTex / BeginGroup 工具类”，弱化其他内容；旁白：封装 DrawProp / DrawTex / BeginGroup 工具类。",
+          "focusInstruction": {
+            "focus": "封装 DrawProp / DrawTex / BeginGroup 工具类",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-02",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 1,
+            "subtitleEventPath": "/subtitles/Module_02/p02.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "提高编写效率",
+          "sourceSubtitleText": "提高编写效率",
+          "knowledgeFocus": {
+            "id": "knowledge-02",
+            "label": "提高编写效率",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：提高编写效率"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "提高编写效率",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card top",
+            "subject": "提高编写效率",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“提高编写效率”，弱化其他内容；旁白：提高编写效率。",
+          "focusInstruction": {
+            "focus": "提高编写效率",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-03",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 2,
+            "subtitleEventPath": "/subtitles/Module_02/p02.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "视觉统一性",
+          "sourceSubtitleText": "视觉统一性",
+          "knowledgeFocus": {
+            "id": "knowledge-03",
+            "label": "视觉统一性",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：视觉统一性"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "视觉统一性",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card middle",
+            "subject": "视觉统一性",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“视觉统一性”，弱化其他内容；旁白：视觉统一性。",
+          "focusInstruction": {
+            "focus": "视觉统一性",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        }
+      ],
+      "contentConstraints": [
+        "Only show ShaderGUI course content in the slide canvas.",
+        "Do not render full transcript text as a panel.",
+        "Subtitles must appear only as audio-time events.",
+        "Keep player controls outside the slide canvas.",
+        "Follow storyboard layout, palette, and motion intent before inventing new visual behavior.",
+        "Translate v0 React prototype rules into Vue and Tailwind; do not copy React/shadcn code directly."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS"
+      },
+      "layoutSpec": {
+        "template": "title-body",
+        "grid": "grid-cols-1",
+        "spacing": "gap-6",
+        "typography": {
+          "title": "text-3xl font-bold",
+          "subtitle": "text-lg text-slate-400",
+          "body": "text-base leading-relaxed",
+          "caption": "text-sm text-slate-500"
+        }
+      },
+      "colorScheme": {
+        "bg": "#0f172a",
+        "surface": "#1e293b",
+        "textPrimary": "#f8fafc",
+        "textSecondary": "#94a3b8",
+        "accent": "#38bdf8",
+        "accentSecondary": "#818cf8",
+        "codeBg": "#0d1117",
+        "codeKeyword": "#ff7b72",
+        "codeString": "#a5d6ff",
+        "codeComment": "#8b949e"
+      },
+      "componentList": [
+        "SlideTitle",
+        "PointList",
+        "SlideNav"
+      ]
+    },
+    {
+      "moduleId": "Module_03",
+      "slideId": "p00",
+      "route": "/module/Module_03/slide/p00",
+      "title": "像搭积木一样构建材质面板",
+      "kind": "concept",
+      "screenType": "course-slide-player",
+      "visualPrompt": "Design a focused Chinese technical course slide for Unity ShaderGUI. Title: 像搭积木一样构建材质面板. Key points: 模块化思维 / 静态功能类设计 / DrawProperties 静态方法.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_03/react-prototype.json",
+        "chatUrl": null,
+        "translationMode": "extract-layout-interaction-visual-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+          ],
+          "visual": [
+            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+            "Reserve strong accents for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Use storyboard motionCues as the interaction and animation source.",
+            "Quiz and exploration screens remain data-driven Vue Router pages."
+          ],
+          "slides": [
+            {
+              "moduleId": "Module_03",
+              "slideId": "p00",
+              "title": "像搭积木一样构建材质面板",
+              "kind": null,
+              "route": "/module/Module_03/slide/p00"
+            },
+            {
+              "moduleId": "Module_03",
+              "slideId": "p01",
+              "title": "Managed Properties：面板的行政管理",
+              "kind": null,
+              "route": "/module/Module_03/slide/p01"
+            }
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Use this scene to make learners understand '像搭积木一样构建材质面板' through the content beats: 模块化思维 / 静态功能类设计 / DrawProperties 静态方法.",
+        "layoutIntent": {
+          "primaryFocus": "concept hierarchy and mental model",
+          "readingPath": "title -> core idea -> three supporting beats",
+          "density": "low-to-medium",
+          "emphasis": [
+            "模块化思维",
+            "静态功能类设计",
+            "DrawProperties 静态方法"
+          ]
+        },
+        "visualComposition": {
+          "aspectRatio": "16:9 responsive canvas, preserve 7% outer safe margin",
+          "shotType": "wide instructional concept board",
+          "frameGrid": {
+            "columns": "left 56% hero concept and explanation, right 44% supporting cards",
+            "rows": "top metadata band, center concept body, bottom learner focus",
+            "anchor": "hero concept anchors upper-left; supporting beats form right-side vertical rhythm"
+          },
+          "foreground": {
+            "subject": "模块化思维",
+            "position": "left-center hero area",
+            "scale": "largest text block after title; primary learner attention"
+          },
+          "midground": {
+            "subject": "secondary point cards",
+            "position": "right-center, staggered stack",
+            "role": "show the sequence of supporting ideas"
+          },
+          "background": {
+            "subject": "soft radial highlights and dark glass panels",
+            "position": "corners and far background",
+            "role": "separate layers without becoming content"
+          },
+          "negativeSpace": "leave a quiet diagonal corridor from title to focus card for eye travel",
+          "readingDirection": "upper-left title -> left hero concept -> right supporting cards -> bottom focus statement",
+          "safeArea": "keep subtitle overlay and player controls outside the composed slide frame",
+          "cameraPlan": {
+            "base": "locked camera with stable slide geometry",
+            "beatMotion": "progressive emphasis on the current point card only",
+            "avoid": [
+              "layout reflow during narration",
+              "large parallax shifts",
+              "decorative motion unrelated to current knowledge point"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "clear, instructional, confident",
+          "contrastRole": "use accent color to separate principle, example, and learner takeaway",
+          "avoid": [
+            "monochrome sameness",
+            "presentation decoration",
+            "workflow labels"
+          ]
+        },
+        "motionCueCount": 3
+      },
+      "animationHandoff": {
+        "target": "future-web-animation-module",
+        "triggerSource": "subtitle-events",
+        "subtitleEventPath": "/subtitles/Module_03/p00.json",
+        "bindingMode": "subtitle-time-range-with-knowledge-alignment",
+        "notes": [
+          "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
+          "Knowledge points are aligned to the closest subtitle segment by keyword overlap, with ordered fallback."
+        ]
+      },
+      "motionCues": [
+        {
+          "cueId": "cue-01",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 0,
+            "subtitleEventPath": "/subtitles/Module_03/p00.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "模块化思维",
+          "sourceSubtitleText": "模块化思维",
+          "knowledgeFocus": {
+            "id": "knowledge-01",
+            "label": "模块化思维",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：模块化思维"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 420,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "pulse-once-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "模块化思维",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": false,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "left hero concept",
+            "subject": "模块化思维",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“模块化思维”，弱化其他内容；旁白：模块化思维。",
+          "focusInstruction": {
+            "focus": "模块化思维",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-02",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 1,
+            "subtitleEventPath": "/subtitles/Module_03/p00.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "静态功能类设计",
+          "sourceSubtitleText": "静态功能类设计",
+          "knowledgeFocus": {
+            "id": "knowledge-02",
+            "label": "静态功能类设计",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：静态功能类设计"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "静态功能类设计",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card top",
+            "subject": "静态功能类设计",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“静态功能类设计”，弱化其他内容；旁白：静态功能类设计。",
+          "focusInstruction": {
+            "focus": "静态功能类设计",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-03",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 2,
+            "subtitleEventPath": "/subtitles/Module_03/p00.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "DrawProperties 静态方法",
+          "sourceSubtitleText": "DrawProperties 静态方法",
+          "knowledgeFocus": {
+            "id": "knowledge-03",
+            "label": "DrawProperties 静态方法",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：DrawProperties 静态方法"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "DrawProperties 静态方法",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card middle",
+            "subject": "DrawProperties 静态方法",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“DrawProperties 静态方法”，弱化其他内容；旁白：DrawProperties 静态方法。",
+          "focusInstruction": {
+            "focus": "DrawProperties 静态方法",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        }
+      ],
+      "contentConstraints": [
+        "Only show ShaderGUI course content in the slide canvas.",
+        "Do not render full transcript text as a panel.",
+        "Subtitles must appear only as audio-time events.",
+        "Keep player controls outside the slide canvas.",
+        "Follow storyboard layout, palette, and motion intent before inventing new visual behavior.",
+        "Translate v0 React prototype rules into Vue and Tailwind; do not copy React/shadcn code directly."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS"
+      },
+      "layoutSpec": {
+        "template": "title-body",
+        "grid": "grid-cols-1",
+        "spacing": "gap-6",
+        "typography": {
+          "title": "text-3xl font-bold",
+          "subtitle": "text-lg text-slate-400",
+          "body": "text-base leading-relaxed",
+          "caption": "text-sm text-slate-500"
+        }
+      },
+      "colorScheme": {
+        "bg": "#0f172a",
+        "surface": "#1e293b",
+        "textPrimary": "#f8fafc",
+        "textSecondary": "#94a3b8",
+        "accent": "#38bdf8",
+        "accentSecondary": "#818cf8",
+        "codeBg": "#0d1117",
+        "codeKeyword": "#ff7b72",
+        "codeString": "#a5d6ff",
+        "codeComment": "#8b949e"
+      },
+      "componentList": [
+        "SlideTitle",
+        "PointList",
+        "SlideNav"
+      ]
+    },
+    {
+      "moduleId": "Module_03",
+      "slideId": "p01",
+      "route": "/module/Module_03/slide/p01",
+      "title": "Managed Properties：面板的行政管理",
+      "kind": "concept",
+      "screenType": "course-slide-player",
+      "visualPrompt": "Design a focused Chinese technical course slide for Unity ShaderGUI. Title: Managed Properties：面板的行政管理. Key points: 注册机制与自动补位 / 确保不漏掉参数 / 不重复绘制.  Storyboard intent: layout focus=concept hierarchy and mental model; palette mood=clear, instructional, confident; composition=wide instructional concept board / upper-left title -> left hero concept -> right supporting cards -> bottom focus statement; foreground=left-center hero area; midground=right-center, staggered stack; negative space=leave a quiet diagonal corridor from title to focus card for eye travel; subtitle-triggered motion cues=3. Use the v0 React prototype as design inspiration only, translating its layout, interaction and visual rules into Vue + Tailwind. The visual should feel like a professional engineering training player: clear hierarchy, restrained controls, readable subtitles, and no internal workflow text.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_03/react-prototype.json",
+        "chatUrl": null,
+        "translationMode": "extract-layout-interaction-visual-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+          ],
+          "visual": [
+            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+            "Reserve strong accents for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Use storyboard motionCues as the interaction and animation source.",
+            "Quiz and exploration screens remain data-driven Vue Router pages."
+          ],
+          "slides": [
+            {
+              "moduleId": "Module_03",
+              "slideId": "p00",
+              "title": "像搭积木一样构建材质面板",
+              "kind": null,
+              "route": "/module/Module_03/slide/p00"
+            },
+            {
+              "moduleId": "Module_03",
+              "slideId": "p01",
+              "title": "Managed Properties：面板的行政管理",
+              "kind": null,
+              "route": "/module/Module_03/slide/p01"
+            }
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Use this scene to make learners understand 'Managed Properties：面板的行政管理' through the content beats: 注册机制与自动补位 / 确保不漏掉参数 / 不重复绘制.",
+        "layoutIntent": {
+          "primaryFocus": "concept hierarchy and mental model",
+          "readingPath": "title -> core idea -> three supporting beats",
+          "density": "low-to-medium",
+          "emphasis": [
+            "注册机制与自动补位",
+            "确保不漏掉参数",
+            "不重复绘制"
+          ]
+        },
+        "visualComposition": {
+          "aspectRatio": "16:9 responsive canvas, preserve 7% outer safe margin",
+          "shotType": "wide instructional concept board",
+          "frameGrid": {
+            "columns": "left 56% hero concept and explanation, right 44% supporting cards",
+            "rows": "top metadata band, center concept body, bottom learner focus",
+            "anchor": "hero concept anchors upper-left; supporting beats form right-side vertical rhythm"
+          },
+          "foreground": {
+            "subject": "注册机制与自动补位",
+            "position": "left-center hero area",
+            "scale": "largest text block after title; primary learner attention"
+          },
+          "midground": {
+            "subject": "secondary point cards",
+            "position": "right-center, staggered stack",
+            "role": "show the sequence of supporting ideas"
+          },
+          "background": {
+            "subject": "soft radial highlights and dark glass panels",
+            "position": "corners and far background",
+            "role": "separate layers without becoming content"
+          },
+          "negativeSpace": "leave a quiet diagonal corridor from title to focus card for eye travel",
+          "readingDirection": "upper-left title -> left hero concept -> right supporting cards -> bottom focus statement",
+          "safeArea": "keep subtitle overlay and player controls outside the composed slide frame",
+          "cameraPlan": {
+            "base": "locked camera with stable slide geometry",
+            "beatMotion": "progressive emphasis on the current point card only",
+            "avoid": [
+              "layout reflow during narration",
+              "large parallax shifts",
+              "decorative motion unrelated to current knowledge point"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "clear, instructional, confident",
+          "contrastRole": "use accent color to separate principle, example, and learner takeaway",
+          "avoid": [
+            "monochrome sameness",
+            "presentation decoration",
+            "workflow labels"
+          ]
+        },
+        "motionCueCount": 3
+      },
+      "animationHandoff": {
+        "target": "future-web-animation-module",
+        "triggerSource": "subtitle-events",
+        "subtitleEventPath": "/subtitles/Module_03/p01.json",
+        "bindingMode": "subtitle-time-range-with-knowledge-alignment",
+        "notes": [
+          "Each cue binds to a concrete subtitle start/end range when subtitle events exist.",
+          "Knowledge points are aligned to the closest subtitle segment by keyword overlap, with ordered fallback."
+        ]
+      },
+      "motionCues": [
+        {
+          "cueId": "cue-01",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 0,
+            "subtitleEventPath": "/subtitles/Module_03/p01.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "注册机制与自动补位",
+          "sourceSubtitleText": "注册机制与自动补位",
+          "knowledgeFocus": {
+            "id": "knowledge-01",
+            "label": "注册机制与自动补位",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：注册机制与自动补位"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 420,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "pulse-once-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "注册机制与自动补位",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": false,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "left hero concept",
+            "subject": "注册机制与自动补位",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“注册机制与自动补位”，弱化其他内容；旁白：注册机制与自动补位。",
+          "focusInstruction": {
+            "focus": "注册机制与自动补位",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-02",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 1,
+            "subtitleEventPath": "/subtitles/Module_03/p01.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "确保不漏掉参数",
+          "sourceSubtitleText": "确保不漏掉参数",
+          "knowledgeFocus": {
+            "id": "knowledge-02",
+            "label": "确保不漏掉参数",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：确保不漏掉参数"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "确保不漏掉参数",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card top",
+            "subject": "确保不漏掉参数",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“确保不漏掉参数”，弱化其他内容；旁白：确保不漏掉参数。",
+          "focusInstruction": {
+            "focus": "确保不漏掉参数",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        },
+        {
+          "cueId": "cue-03",
+          "trigger": {
+            "type": "subtitle-segment",
+            "segmentIndex": 2,
+            "subtitleEventPath": "/subtitles/Module_03/p01.json",
+            "subtitleEventId": null,
+            "timecode": 0.0
+          },
+          "timeRange": {
+            "start": 0.0,
+            "end": 1.8,
+            "durationMs": 1800
+          },
+          "target": "content-beat",
+          "contentBeat": "不重复绘制",
+          "sourceSubtitleText": "不重复绘制",
+          "knowledgeFocus": {
+            "id": "knowledge-03",
+            "label": "不重复绘制",
+            "source": "slide.points",
+            "semanticRole": "concept-beat",
+            "learnerTakeaway": "当前应聚焦理解：不重复绘制"
+          },
+          "animation": {
+            "name": "reveal-focus",
+            "durationMs": 360,
+            "easing": "ease-out",
+            "parameters": {
+              "opacity": [
+                0,
+                1
+              ],
+              "translateY": [
+                12,
+                0
+              ],
+              "scale": [
+                0.96,
+                1.0
+              ],
+              "highlight": false
+            }
+          },
+          "dynamicGuidance": {
+            "primaryEffect": "knowledge-highlight",
+            "attentionPattern": "soft-blink-then-hold",
+            "highlightTarget": "point-card",
+            "highlightText": "不重复绘制",
+            "deEmphasizeOthers": true,
+            "timing": {
+              "start": 0.0,
+              "peak": 0.72,
+              "settle": 1.8,
+              "policy": "start at subtitle segment start, peak in first 40%, settle at segment end"
+            },
+            "visualTreatment": {
+              "accent": "cyan",
+              "glow": true,
+              "blink": true,
+              "outline": true
+            }
+          },
+          "compositionBeat": {
+            "frameZone": "right support card middle",
+            "subject": "不重复绘制",
+            "cameraAction": "locked frame; reveal or pulse the current card in place",
+            "spatialChange": "raise contrast on point-card and dim sibling cards",
+            "continuityRule": "keep hero title, card stack, and background fixed so learners perceive a stable board"
+          },
+          "shotInstruction": "0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“不重复绘制”，弱化其他内容；旁白：不重复绘制。",
+          "focusInstruction": {
+            "focus": "不重复绘制",
+            "deEmphasize": "other point cards and non-current code callouts",
+            "learnerAction": "follow the highlighted knowledge point while the matching narration plays"
+          },
+          "implementationHint": {
+            "componentRegion": "SlideCanvas",
+            "targetSelector": "point-card",
+            "binding": "subtitle timeRange drives visual emphasis and compositionBeat drives frame-zone emphasis",
+            "runtimeStatus": "implemented-by-SlideCanvas-activeCue-and-visualComposition"
+          },
+          "purpose": "Synchronize visual emphasis with the spoken teaching beat."
+        }
+      ],
+      "contentConstraints": [
+        "Only show ShaderGUI course content in the slide canvas.",
+        "Do not render full transcript text as a panel.",
+        "Subtitles must appear only as audio-time events.",
+        "Keep player controls outside the slide canvas.",
+        "Follow storyboard layout, palette, and motion intent before inventing new visual behavior.",
+        "Translate v0 React prototype rules into Vue and Tailwind; do not copy React/shadcn code directly."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS"
+      },
+      "layoutSpec": {
+        "template": "title-body",
+        "grid": "grid-cols-1",
+        "spacing": "gap-6",
+        "typography": {
+          "title": "text-3xl font-bold",
+          "subtitle": "text-lg text-slate-400",
+          "body": "text-base leading-relaxed",
+          "caption": "text-sm text-slate-500"
+        }
+      },
+      "colorScheme": {
+        "bg": "#0f172a",
+        "surface": "#1e293b",
+        "textPrimary": "#f8fafc",
+        "textSecondary": "#94a3b8",
+        "accent": "#38bdf8",
+        "accentSecondary": "#818cf8",
+        "codeBg": "#0d1117",
+        "codeKeyword": "#ff7b72",
+        "codeString": "#a5d6ff",
+        "codeComment": "#8b949e"
+      },
+      "componentList": [
+        "SlideTitle",
+        "PointList",
+        "SlideNav"
+      ]
+    },
     {
       "moduleId": "Module_04",
       "slideId": "p00",
@@ -1789,6 +5018,1339 @@
   ],
   "interactiveScreens": [
     {
+      "moduleId": "Module_01",
+      "screenId": "explore-p01-property-grouping",
+      "route": "/module/Module_01/slide/p01/explore",
+      "title": "探索页",
+      "screenType": "course-exploration-subpage",
+      "visualPrompt": "Design the exploration as a child page of the current lesson, not as a numbered slide. The layout must foreground manipulable controls, linked visible feedback, and a clear return path to the parent lesson. Realtime storyboard actions to preserve: load-exploration-contract, manipulate-variable, return-to-parent-slide.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_01/react-prototype.json",
+        "chatUrl": null,
+        "translationMode": "extract-exploration-subpage-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+          ],
+          "visual": [
+            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+            "Reserve strong accents for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Use storyboard motionCues as the interaction and animation source.",
+            "Quiz and exploration screens remain data-driven Vue Router pages."
+          ],
+          "slides": [
+            {
+              "moduleId": "Module_01",
+              "slideId": "p00",
+              "title": "ShaderGUI：不仅仅是换个皮",
+              "kind": null,
+              "route": "/module/Module_01/slide/p00"
+            },
+            {
+              "moduleId": "Module_01",
+              "slideId": "p01",
+              "title": "编写第一个自定义材质面板",
+              "kind": null,
+              "route": "/module/Module_01/slide/p01"
+            },
+            {
+              "moduleId": "Module_01",
+              "slideId": "p02",
+              "title": "如何安全地获取参数？",
+              "kind": null,
+              "route": "/module/Module_01/slide/p02"
+            }
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Let learners manipulate ShaderGUI property grouping variables as a subpage of the current lesson, without consuming a main slide number.",
+        "layoutIntent": {
+          "primaryFocus": "interactive property grouping lab",
+          "readingPath": "parent lesson -> exploration controls -> linked feedback -> return to lesson",
+          "density": "medium",
+          "emphasis": []
+        },
+        "visualComposition": {
+          "aspectRatio": "full viewport lab surface with 7% safe margin",
+          "shotType": "wide interactive workbench",
+          "frameGrid": {
+            "columns": "left controls 36%, right live material-panel feedback 64%",
+            "rows": "breadcrumb/header, interactive body, return affordance",
+            "anchor": "live feedback panel is the visual center; controls stay left"
+          },
+          "foreground": {
+            "subject": "active lab controls",
+            "position": "left-center",
+            "scale": "touch-friendly controls"
+          },
+          "midground": {
+            "subject": "material panel preview and code snippet",
+            "position": "right-center",
+            "role": "show immediate consequence"
+          },
+          "background": {
+            "subject": "dark neutral lab shell",
+            "position": "full frame",
+            "role": "keep focus on interactive cause/effect"
+          },
+          "negativeSpace": "space between controls and feedback prevents the lab from feeling like a form",
+          "readingDirection": "breadcrumb -> controls -> live feedback -> return to lesson",
+          "safeArea": "no content under footer/player controls; keep return path visible",
+          "cameraPlan": {
+            "base": "locked wide frame",
+            "beatMotion": "feedback regions update in place",
+            "avoid": [
+              "modal overlays",
+              "hidden return navigation"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "focused, experimental, immediate",
+          "contrastRole": "use emerald for active controls and cyan for linked feedback",
+          "avoid": [
+            "standalone slide numbering",
+            "audio transcript panel",
+            "decorative-only interaction"
+          ]
+        },
+        "realtimeCueCount": 3,
+        "parentSlideId": "p01"
+      },
+      "realtimeInteractionCues": [
+        {
+          "cueId": "explore-cue-01",
+          "trigger": {
+            "type": "page-load",
+            "event": "exploration-mounted"
+          },
+          "action": "load-exploration-contract",
+          "target": "PropertyGroupingLab",
+          "runtimeBinding": "slides.json explore + concept-model.json",
+          "feedback": "Render the lab as a child route of the parent lesson.",
+          "purpose": "Keep exploration outside the pxx slide sequence."
+        },
+        {
+          "cueId": "explore-cue-02",
+          "trigger": {
+            "type": "user-action",
+            "event": "input"
+          },
+          "action": "manipulate-variable",
+          "target": "lab-controls",
+          "runtimeBinding": "PropertyGroupingLab local state",
+          "feedback": "Visible properties, risk level, explanation, and code snippet update immediately.",
+          "purpose": "Show why grouping and conditional display reduce cognitive load."
+        },
+        {
+          "cueId": "explore-cue-03",
+          "trigger": {
+            "type": "user-action",
+            "event": "click"
+          },
+          "action": "return-to-parent-slide",
+          "target": "PageNav return link",
+          "runtimeBinding": "/module/Module_01/slide/p01",
+          "feedback": "Learner returns to the current lesson without changing the slide range.",
+          "purpose": "Preserve pxx as the main course spine."
+        }
+      ],
+      "runtimeGuidance": {
+        "target": "CourseApp/src/views/ExplorationView.vue",
+        "stateModel": [
+          "explore",
+          "labControls",
+          "linkedFeedback"
+        ],
+        "eventHandlers": [
+          "resolveParentSlide",
+          "updateLabState",
+          "returnToParentSlide"
+        ],
+        "mustRenderFromStoryboard": true
+      },
+      "componentList": [
+        "ExplorationShell",
+        "PropertyGroupingLab",
+        "LinkedFeedbackPanel",
+        "ReturnToParentSlide"
+      ],
+      "contentConstraints": [
+        "Exploration must not appear in slides.json and must not consume a pxx number.",
+        "The route must be a child of the parent slide route.",
+        "Interaction exists only because interaction-necessity-gate decided insert.",
+        "Provide an obvious return path to the parent lesson."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS",
+        "data": "CourseApp/src/data/explorations.json"
+      }
+    },
+    {
+      "moduleId": "Module_01",
+      "screenId": "explore-p02-property-grouping",
+      "route": "/module/Module_01/slide/p02/explore",
+      "title": "属性查找实战",
+      "screenType": "course-exploration-subpage",
+      "visualPrompt": "Design the exploration as a child page of the current lesson, not as a numbered slide. The layout must foreground manipulable controls, linked visible feedback, and a clear return path to the parent lesson. Realtime storyboard actions to preserve: load-exploration-contract, manipulate-variable, return-to-parent-slide.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_01/react-prototype.json",
+        "chatUrl": null,
+        "translationMode": "extract-exploration-subpage-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+          ],
+          "visual": [
+            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+            "Reserve strong accents for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Use storyboard motionCues as the interaction and animation source.",
+            "Quiz and exploration screens remain data-driven Vue Router pages."
+          ],
+          "slides": [
+            {
+              "moduleId": "Module_01",
+              "slideId": "p00",
+              "title": "ShaderGUI：不仅仅是换个皮",
+              "kind": null,
+              "route": "/module/Module_01/slide/p00"
+            },
+            {
+              "moduleId": "Module_01",
+              "slideId": "p01",
+              "title": "编写第一个自定义材质面板",
+              "kind": null,
+              "route": "/module/Module_01/slide/p01"
+            },
+            {
+              "moduleId": "Module_01",
+              "slideId": "p02",
+              "title": "如何安全地获取参数？",
+              "kind": null,
+              "route": "/module/Module_01/slide/p02"
+            }
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Let learners manipulate ShaderGUI property grouping variables as a subpage of the current lesson, without consuming a main slide number.",
+        "layoutIntent": {
+          "primaryFocus": "interactive property grouping lab",
+          "readingPath": "parent lesson -> exploration controls -> linked feedback -> return to lesson",
+          "density": "medium",
+          "emphasis": [
+            "Required 模式的风险",
+            "Safe 模式的安全获取",
+            "封装 FindPropertySafe 工具函数"
+          ]
+        },
+        "visualComposition": {
+          "aspectRatio": "full viewport lab surface with 7% safe margin",
+          "shotType": "wide interactive workbench",
+          "frameGrid": {
+            "columns": "left controls 36%, right live material-panel feedback 64%",
+            "rows": "breadcrumb/header, interactive body, return affordance",
+            "anchor": "live feedback panel is the visual center; controls stay left"
+          },
+          "foreground": {
+            "subject": "active lab controls",
+            "position": "left-center",
+            "scale": "touch-friendly controls"
+          },
+          "midground": {
+            "subject": "material panel preview and code snippet",
+            "position": "right-center",
+            "role": "show immediate consequence"
+          },
+          "background": {
+            "subject": "dark neutral lab shell",
+            "position": "full frame",
+            "role": "keep focus on interactive cause/effect"
+          },
+          "negativeSpace": "space between controls and feedback prevents the lab from feeling like a form",
+          "readingDirection": "breadcrumb -> controls -> live feedback -> return to lesson",
+          "safeArea": "no content under footer/player controls; keep return path visible",
+          "cameraPlan": {
+            "base": "locked wide frame",
+            "beatMotion": "feedback regions update in place",
+            "avoid": [
+              "modal overlays",
+              "hidden return navigation"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "focused, experimental, immediate",
+          "contrastRole": "use emerald for active controls and cyan for linked feedback",
+          "avoid": [
+            "standalone slide numbering",
+            "audio transcript panel",
+            "decorative-only interaction"
+          ]
+        },
+        "realtimeCueCount": 3,
+        "parentSlideId": "p02"
+      },
+      "realtimeInteractionCues": [
+        {
+          "cueId": "explore-cue-01",
+          "trigger": {
+            "type": "page-load",
+            "event": "exploration-mounted"
+          },
+          "action": "load-exploration-contract",
+          "target": null,
+          "runtimeBinding": "slides.json explore + concept-model.json",
+          "feedback": "Render the lab as a child route of the parent lesson.",
+          "purpose": "Keep exploration outside the pxx slide sequence."
+        },
+        {
+          "cueId": "explore-cue-02",
+          "trigger": {
+            "type": "user-action",
+            "event": "input"
+          },
+          "action": "manipulate-variable",
+          "target": "lab-controls",
+          "runtimeBinding": "PropertyGroupingLab local state",
+          "feedback": "Visible properties, risk level, explanation, and code snippet update immediately.",
+          "purpose": "Show why grouping and conditional display reduce cognitive load."
+        },
+        {
+          "cueId": "explore-cue-03",
+          "trigger": {
+            "type": "user-action",
+            "event": "click"
+          },
+          "action": "return-to-parent-slide",
+          "target": "PageNav return link",
+          "runtimeBinding": "/module/Module_01/slide/p02",
+          "feedback": "Learner returns to the current lesson without changing the slide range.",
+          "purpose": "Preserve pxx as the main course spine."
+        }
+      ],
+      "runtimeGuidance": {
+        "target": "CourseApp/src/views/ExplorationView.vue",
+        "stateModel": [
+          "explore",
+          "labControls",
+          "linkedFeedback"
+        ],
+        "eventHandlers": [
+          "resolveParentSlide",
+          "updateLabState",
+          "returnToParentSlide"
+        ],
+        "mustRenderFromStoryboard": true
+      },
+      "componentList": [
+        "ExplorationShell",
+        "PropertyGroupingLab",
+        "LinkedFeedbackPanel",
+        "ReturnToParentSlide"
+      ],
+      "contentConstraints": [
+        "Exploration must not appear in slides.json and must not consume a pxx number.",
+        "The route must be a child of the parent slide route.",
+        "Interaction exists only because interaction-necessity-gate decided insert.",
+        "Provide an obvious return path to the parent lesson."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS",
+        "data": "CourseApp/src/data/explorations.json"
+      }
+    },
+    {
+      "moduleId": "Module_01",
+      "screenId": "quiz",
+      "route": "/module/Module_01/quiz",
+      "title": "做题页",
+      "screenType": "course-quiz-runtime",
+      "visualPrompt": "Design the quiz page as a live assessment workspace. The layout must foreground the question bank table, then answer cards, then immediate result feedback. Realtime storyboard actions to preserve: shuffle-question-bank, shuffle-options, select-answer, submit-answer, show-score. Interactions must feel immediate and data-driven, with no page reload after answer selection, option swapping, submission, or reset.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_01/react-prototype.json",
+        "chatUrl": null,
+        "translationMode": "extract-live-quiz-interaction-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+          ],
+          "visual": [
+            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+            "Reserve strong accents for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Use storyboard motionCues as the interaction and animation source.",
+            "Quiz and exploration screens remain data-driven Vue Router pages."
+          ],
+          "slides": [
+            {
+              "moduleId": "Module_01",
+              "slideId": "p00",
+              "title": "ShaderGUI：不仅仅是换个皮",
+              "kind": null,
+              "route": "/module/Module_01/slide/p00"
+            },
+            {
+              "moduleId": "Module_01",
+              "slideId": "p01",
+              "title": "编写第一个自定义材质面板",
+              "kind": null,
+              "route": "/module/Module_01/slide/p01"
+            },
+            {
+              "moduleId": "Module_01",
+              "slideId": "p02",
+              "title": "如何安全地获取参数？",
+              "kind": null,
+              "route": "/module/Module_01/slide/p02"
+            }
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Let learners answer one focused question at a time, with randomized question order, randomized options, automatic progression, and a final score review.",
+        "layoutIntent": {
+          "primaryFocus": "single active question card",
+          "readingPath": "navigation -> current question -> answer controls -> submit -> next question or score card",
+          "density": "medium",
+          "emphasis": [
+            "单题卡片",
+            "随机题库",
+            "随机选项",
+            "提交后自动下一题",
+            "成绩复盘"
+          ]
+        },
+        "visualComposition": {
+          "aspectRatio": "centered full viewport assessment screen",
+          "shotType": "medium close assessment card",
+          "frameGrid": {
+            "columns": "single centered card, max readable width",
+            "rows": "breadcrumb, question header, answer list, action row, score review",
+            "anchor": "current question card anchors the center; score card replaces it after completion"
+          },
+          "foreground": {
+            "subject": "current question and selected options",
+            "position": "center",
+            "scale": "dominant single-task card"
+          },
+          "midground": {
+            "subject": "submit/reset actions and progress count",
+            "position": "inside card edges",
+            "role": "support decision flow"
+          },
+          "background": {
+            "subject": "quiet dark course shell",
+            "position": "full viewport",
+            "role": "reduce distraction during assessment"
+          },
+          "negativeSpace": "generous margins around the card keep the learner focused on one decision",
+          "readingDirection": "breadcrumb -> question type/progress -> question stem -> options -> submit",
+          "safeArea": "keep all answer controls above fold on common laptop viewport",
+          "cameraPlan": {
+            "base": "locked centered card",
+            "beatMotion": "card content changes, frame remains stable",
+            "avoid": [
+              "table-like all-question layout",
+              "competing sidebars"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "focused, responsive, assessment-oriented",
+          "contrastRole": "use emerald for active choices and correct feedback, rose for remediation feedback",
+          "avoid": [
+            "question bank table",
+            "question-number navigation",
+            "internal production guidance"
+          ]
+        },
+        "realtimeCueCount": 5
+      },
+      "realtimeInteractionCues": [
+        {
+          "cueId": "quiz-cue-01",
+          "trigger": {
+            "type": "page-load",
+            "event": "quiz-mounted"
+          },
+          "action": "shuffle-question-bank",
+          "target": "questionOrder",
+          "runtimeBinding": "restartQuiz()",
+          "feedback": "Question order is randomized when entering or restarting the quiz.",
+          "purpose": "Prevent answer memorization by fixed order."
+        },
+        {
+          "cueId": "quiz-cue-02",
+          "trigger": {
+            "type": "user-action",
+            "event": "change"
+          },
+          "action": "shuffle-options",
+          "target": "optionOrder[currentQuestion.id]",
+          "runtimeBinding": "shuffle(question.options)",
+          "feedback": "Each visible question renders options in a randomized order.",
+          "purpose": "Keep option display data-driven while preserving answer identity by id."
+        },
+        {
+          "cueId": "quiz-cue-03",
+          "trigger": {
+            "type": "user-action",
+            "event": "click"
+          },
+          "action": "select-answer",
+          "target": "radio-or-checkbox-inputs",
+          "runtimeBinding": "toggleAnswer(question, option.id)",
+          "feedback": "Selected options update local answer state without page reload.",
+          "purpose": "Single and multiple choice interactions stay visibly responsive."
+        },
+        {
+          "cueId": "quiz-cue-04",
+          "trigger": {
+            "type": "user-action",
+            "event": "click"
+          },
+          "action": "submit-answer",
+          "target": "submit-button",
+          "runtimeBinding": "submitAnswer(question)",
+          "feedback": "Compute correctness and advance to the next question automatically.",
+          "purpose": "Keep the quiz focused on one decision at a time."
+        },
+        {
+          "cueId": "quiz-cue-05",
+          "trigger": {
+            "type": "state-change",
+            "event": "results-updated"
+          },
+          "action": "show-score",
+          "target": "score-card",
+          "runtimeBinding": "finished + scoreCount",
+          "feedback": "Show final score, review states, restart, practice, and navigation actions.",
+          "purpose": "Close the assessment loop after all questions are answered."
+        }
+      ],
+      "runtimeGuidance": {
+        "target": "CourseApp/src/views/QuizView.vue",
+        "stateModel": [
+          "questionOrder",
+          "answers",
+          "results",
+          "optionOrder",
+          "currentIndex"
+        ],
+        "eventHandlers": [
+          "restartQuiz",
+          "continuePractice",
+          "toggleAnswer",
+          "submitAnswer",
+          "resetAnswer"
+        ],
+        "mustRenderFromStoryboard": true
+      },
+      "componentList": [
+        "QuestionBankTable",
+        "QuizQuestionCard",
+        "SingleChoiceInput",
+        "MultipleChoiceInput",
+        "OptionSwapControls",
+        "SubmitAnswerButton",
+        "ResultFeedback"
+      ],
+      "contentConstraints": [
+        "Use learner-facing quiz terminology in the UI.",
+        "Render storyboard realtime cues as visible guidance or behavior.",
+        "Do not hard-code question rows outside quizzes.json.",
+        "Keep answer identity tied to option id when options are reordered.",
+        "Submission feedback must be immediate and visible."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS",
+        "data": "CourseApp/src/data/quizzes.json"
+      }
+    },
+    {
+      "moduleId": "Module_02",
+      "screenId": "explore-p01-smart-ui-linkage",
+      "route": "/module/Module_02/slide/p01/explore",
+      "title": "智能 UI 联动实验",
+      "screenType": "course-exploration-subpage",
+      "visualPrompt": "Design the exploration as a child page of the current lesson, not as a numbered slide. The layout must foreground manipulable controls, linked visible feedback, and a clear return path to the parent lesson. Realtime storyboard actions to preserve: load-exploration-contract, manipulate-variable, return-to-parent-slide.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_02/react-prototype.json",
+        "chatUrl": null,
+        "translationMode": "extract-exploration-subpage-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+          ],
+          "visual": [
+            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+            "Reserve strong accents for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Use storyboard motionCues as the interaction and animation source.",
+            "Quiz and exploration screens remain data-driven Vue Router pages."
+          ],
+          "slides": [
+            {
+              "moduleId": "Module_02",
+              "slideId": "p00",
+              "title": "告别参数地狱：逻辑化的分组设计",
+              "kind": null,
+              "route": "/module/Module_02/slide/p00"
+            },
+            {
+              "moduleId": "Module_02",
+              "slideId": "p01",
+              "title": "只给用户他需要的：智能 UI 联动",
+              "kind": null,
+              "route": "/module/Module_02/slide/p01"
+            },
+            {
+              "moduleId": "Module_02",
+              "slideId": "p02",
+              "title": "拒绝代码重复：打造 ShaderGUI 工具箱",
+              "kind": null,
+              "route": "/module/Module_02/slide/p02"
+            }
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Let learners manipulate ShaderGUI property grouping variables as a subpage of the current lesson, without consuming a main slide number.",
+        "layoutIntent": {
+          "primaryFocus": "interactive property grouping lab",
+          "readingPath": "parent lesson -> exploration controls -> linked feedback -> return to lesson",
+          "density": "medium",
+          "emphasis": []
+        },
+        "visualComposition": {
+          "aspectRatio": "full viewport lab surface with 7% safe margin",
+          "shotType": "wide interactive workbench",
+          "frameGrid": {
+            "columns": "left controls 36%, right live material-panel feedback 64%",
+            "rows": "breadcrumb/header, interactive body, return affordance",
+            "anchor": "live feedback panel is the visual center; controls stay left"
+          },
+          "foreground": {
+            "subject": "active lab controls",
+            "position": "left-center",
+            "scale": "touch-friendly controls"
+          },
+          "midground": {
+            "subject": "material panel preview and code snippet",
+            "position": "right-center",
+            "role": "show immediate consequence"
+          },
+          "background": {
+            "subject": "dark neutral lab shell",
+            "position": "full frame",
+            "role": "keep focus on interactive cause/effect"
+          },
+          "negativeSpace": "space between controls and feedback prevents the lab from feeling like a form",
+          "readingDirection": "breadcrumb -> controls -> live feedback -> return to lesson",
+          "safeArea": "no content under footer/player controls; keep return path visible",
+          "cameraPlan": {
+            "base": "locked wide frame",
+            "beatMotion": "feedback regions update in place",
+            "avoid": [
+              "modal overlays",
+              "hidden return navigation"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "focused, experimental, immediate",
+          "contrastRole": "use emerald for active controls and cyan for linked feedback",
+          "avoid": [
+            "standalone slide numbering",
+            "audio transcript panel",
+            "decorative-only interaction"
+          ]
+        },
+        "realtimeCueCount": 3,
+        "parentSlideId": "p01"
+      },
+      "realtimeInteractionCues": [
+        {
+          "cueId": "explore-cue-01",
+          "trigger": {
+            "type": "page-load",
+            "event": "exploration-mounted"
+          },
+          "action": "load-exploration-contract",
+          "target": "SmartUILinkageLab",
+          "runtimeBinding": "slides.json explore + concept-model.json",
+          "feedback": "Render the lab as a child route of the parent lesson.",
+          "purpose": "Keep exploration outside the pxx slide sequence."
+        },
+        {
+          "cueId": "explore-cue-02",
+          "trigger": {
+            "type": "user-action",
+            "event": "input"
+          },
+          "action": "manipulate-variable",
+          "target": "lab-controls",
+          "runtimeBinding": "PropertyGroupingLab local state",
+          "feedback": "Visible properties, risk level, explanation, and code snippet update immediately.",
+          "purpose": "Show why grouping and conditional display reduce cognitive load."
+        },
+        {
+          "cueId": "explore-cue-03",
+          "trigger": {
+            "type": "user-action",
+            "event": "click"
+          },
+          "action": "return-to-parent-slide",
+          "target": "PageNav return link",
+          "runtimeBinding": "/module/Module_02/slide/p01",
+          "feedback": "Learner returns to the current lesson without changing the slide range.",
+          "purpose": "Preserve pxx as the main course spine."
+        }
+      ],
+      "runtimeGuidance": {
+        "target": "CourseApp/src/views/ExplorationView.vue",
+        "stateModel": [
+          "explore",
+          "labControls",
+          "linkedFeedback"
+        ],
+        "eventHandlers": [
+          "resolveParentSlide",
+          "updateLabState",
+          "returnToParentSlide"
+        ],
+        "mustRenderFromStoryboard": true
+      },
+      "componentList": [
+        "ExplorationShell",
+        "PropertyGroupingLab",
+        "LinkedFeedbackPanel",
+        "ReturnToParentSlide"
+      ],
+      "contentConstraints": [
+        "Exploration must not appear in slides.json and must not consume a pxx number.",
+        "The route must be a child of the parent slide route.",
+        "Interaction exists only because interaction-necessity-gate decided insert.",
+        "Provide an obvious return path to the parent lesson."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS",
+        "data": "CourseApp/src/data/explorations.json"
+      }
+    },
+    {
+      "moduleId": "Module_02",
+      "screenId": "quiz",
+      "route": "/module/Module_02/quiz",
+      "title": "做题页",
+      "screenType": "course-quiz-runtime",
+      "visualPrompt": "Design the quiz page as a live assessment workspace. The layout must foreground the question bank table, then answer cards, then immediate result feedback. Realtime storyboard actions to preserve: shuffle-question-bank, shuffle-options, select-answer, submit-answer, show-score. Interactions must feel immediate and data-driven, with no page reload after answer selection, option swapping, submission, or reset.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_02/react-prototype.json",
+        "chatUrl": null,
+        "translationMode": "extract-live-quiz-interaction-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+          ],
+          "visual": [
+            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+            "Reserve strong accents for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Use storyboard motionCues as the interaction and animation source.",
+            "Quiz and exploration screens remain data-driven Vue Router pages."
+          ],
+          "slides": [
+            {
+              "moduleId": "Module_02",
+              "slideId": "p00",
+              "title": "告别参数地狱：逻辑化的分组设计",
+              "kind": null,
+              "route": "/module/Module_02/slide/p00"
+            },
+            {
+              "moduleId": "Module_02",
+              "slideId": "p01",
+              "title": "只给用户他需要的：智能 UI 联动",
+              "kind": null,
+              "route": "/module/Module_02/slide/p01"
+            },
+            {
+              "moduleId": "Module_02",
+              "slideId": "p02",
+              "title": "拒绝代码重复：打造 ShaderGUI 工具箱",
+              "kind": null,
+              "route": "/module/Module_02/slide/p02"
+            }
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Let learners answer one focused question at a time, with randomized question order, randomized options, automatic progression, and a final score review.",
+        "layoutIntent": {
+          "primaryFocus": "single active question card",
+          "readingPath": "navigation -> current question -> answer controls -> submit -> next question or score card",
+          "density": "medium",
+          "emphasis": [
+            "单题卡片",
+            "随机题库",
+            "随机选项",
+            "提交后自动下一题",
+            "成绩复盘"
+          ]
+        },
+        "visualComposition": {
+          "aspectRatio": "centered full viewport assessment screen",
+          "shotType": "medium close assessment card",
+          "frameGrid": {
+            "columns": "single centered card, max readable width",
+            "rows": "breadcrumb, question header, answer list, action row, score review",
+            "anchor": "current question card anchors the center; score card replaces it after completion"
+          },
+          "foreground": {
+            "subject": "current question and selected options",
+            "position": "center",
+            "scale": "dominant single-task card"
+          },
+          "midground": {
+            "subject": "submit/reset actions and progress count",
+            "position": "inside card edges",
+            "role": "support decision flow"
+          },
+          "background": {
+            "subject": "quiet dark course shell",
+            "position": "full viewport",
+            "role": "reduce distraction during assessment"
+          },
+          "negativeSpace": "generous margins around the card keep the learner focused on one decision",
+          "readingDirection": "breadcrumb -> question type/progress -> question stem -> options -> submit",
+          "safeArea": "keep all answer controls above fold on common laptop viewport",
+          "cameraPlan": {
+            "base": "locked centered card",
+            "beatMotion": "card content changes, frame remains stable",
+            "avoid": [
+              "table-like all-question layout",
+              "competing sidebars"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "focused, responsive, assessment-oriented",
+          "contrastRole": "use emerald for active choices and correct feedback, rose for remediation feedback",
+          "avoid": [
+            "question bank table",
+            "question-number navigation",
+            "internal production guidance"
+          ]
+        },
+        "realtimeCueCount": 5
+      },
+      "realtimeInteractionCues": [
+        {
+          "cueId": "quiz-cue-01",
+          "trigger": {
+            "type": "page-load",
+            "event": "quiz-mounted"
+          },
+          "action": "shuffle-question-bank",
+          "target": "questionOrder",
+          "runtimeBinding": "restartQuiz()",
+          "feedback": "Question order is randomized when entering or restarting the quiz.",
+          "purpose": "Prevent answer memorization by fixed order."
+        },
+        {
+          "cueId": "quiz-cue-02",
+          "trigger": {
+            "type": "user-action",
+            "event": "change"
+          },
+          "action": "shuffle-options",
+          "target": "optionOrder[currentQuestion.id]",
+          "runtimeBinding": "shuffle(question.options)",
+          "feedback": "Each visible question renders options in a randomized order.",
+          "purpose": "Keep option display data-driven while preserving answer identity by id."
+        },
+        {
+          "cueId": "quiz-cue-03",
+          "trigger": {
+            "type": "user-action",
+            "event": "click"
+          },
+          "action": "select-answer",
+          "target": "radio-or-checkbox-inputs",
+          "runtimeBinding": "toggleAnswer(question, option.id)",
+          "feedback": "Selected options update local answer state without page reload.",
+          "purpose": "Single and multiple choice interactions stay visibly responsive."
+        },
+        {
+          "cueId": "quiz-cue-04",
+          "trigger": {
+            "type": "user-action",
+            "event": "click"
+          },
+          "action": "submit-answer",
+          "target": "submit-button",
+          "runtimeBinding": "submitAnswer(question)",
+          "feedback": "Compute correctness and advance to the next question automatically.",
+          "purpose": "Keep the quiz focused on one decision at a time."
+        },
+        {
+          "cueId": "quiz-cue-05",
+          "trigger": {
+            "type": "state-change",
+            "event": "results-updated"
+          },
+          "action": "show-score",
+          "target": "score-card",
+          "runtimeBinding": "finished + scoreCount",
+          "feedback": "Show final score, review states, restart, practice, and navigation actions.",
+          "purpose": "Close the assessment loop after all questions are answered."
+        }
+      ],
+      "runtimeGuidance": {
+        "target": "CourseApp/src/views/QuizView.vue",
+        "stateModel": [
+          "questionOrder",
+          "answers",
+          "results",
+          "optionOrder",
+          "currentIndex"
+        ],
+        "eventHandlers": [
+          "restartQuiz",
+          "continuePractice",
+          "toggleAnswer",
+          "submitAnswer",
+          "resetAnswer"
+        ],
+        "mustRenderFromStoryboard": true
+      },
+      "componentList": [
+        "QuestionBankTable",
+        "QuizQuestionCard",
+        "SingleChoiceInput",
+        "MultipleChoiceInput",
+        "OptionSwapControls",
+        "SubmitAnswerButton",
+        "ResultFeedback"
+      ],
+      "contentConstraints": [
+        "Use learner-facing quiz terminology in the UI.",
+        "Render storyboard realtime cues as visible guidance or behavior.",
+        "Do not hard-code question rows outside quizzes.json.",
+        "Keep answer identity tied to option id when options are reordered.",
+        "Submission feedback must be immediate and visible."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS",
+        "data": "CourseApp/src/data/quizzes.json"
+      }
+    },
+    {
+      "moduleId": "Module_03",
+      "screenId": "explore-p00-modular-assembly",
+      "route": "/module/Module_03/slide/p00/explore",
+      "title": "模块化组装实验",
+      "screenType": "course-exploration-subpage",
+      "visualPrompt": "Design the exploration as a child page of the current lesson, not as a numbered slide. The layout must foreground manipulable controls, linked visible feedback, and a clear return path to the parent lesson. Realtime storyboard actions to preserve: load-exploration-contract, manipulate-variable, return-to-parent-slide.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_03/react-prototype.json",
+        "chatUrl": null,
+        "translationMode": "extract-exploration-subpage-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+          ],
+          "visual": [
+            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+            "Reserve strong accents for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Use storyboard motionCues as the interaction and animation source.",
+            "Quiz and exploration screens remain data-driven Vue Router pages."
+          ],
+          "slides": [
+            {
+              "moduleId": "Module_03",
+              "slideId": "p00",
+              "title": "像搭积木一样构建材质面板",
+              "kind": null,
+              "route": "/module/Module_03/slide/p00"
+            },
+            {
+              "moduleId": "Module_03",
+              "slideId": "p01",
+              "title": "Managed Properties：面板的行政管理",
+              "kind": null,
+              "route": "/module/Module_03/slide/p01"
+            }
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Let learners manipulate ShaderGUI property grouping variables as a subpage of the current lesson, without consuming a main slide number.",
+        "layoutIntent": {
+          "primaryFocus": "interactive property grouping lab",
+          "readingPath": "parent lesson -> exploration controls -> linked feedback -> return to lesson",
+          "density": "medium",
+          "emphasis": []
+        },
+        "visualComposition": {
+          "aspectRatio": "full viewport lab surface with 7% safe margin",
+          "shotType": "wide interactive workbench",
+          "frameGrid": {
+            "columns": "left controls 36%, right live material-panel feedback 64%",
+            "rows": "breadcrumb/header, interactive body, return affordance",
+            "anchor": "live feedback panel is the visual center; controls stay left"
+          },
+          "foreground": {
+            "subject": "active lab controls",
+            "position": "left-center",
+            "scale": "touch-friendly controls"
+          },
+          "midground": {
+            "subject": "material panel preview and code snippet",
+            "position": "right-center",
+            "role": "show immediate consequence"
+          },
+          "background": {
+            "subject": "dark neutral lab shell",
+            "position": "full frame",
+            "role": "keep focus on interactive cause/effect"
+          },
+          "negativeSpace": "space between controls and feedback prevents the lab from feeling like a form",
+          "readingDirection": "breadcrumb -> controls -> live feedback -> return to lesson",
+          "safeArea": "no content under footer/player controls; keep return path visible",
+          "cameraPlan": {
+            "base": "locked wide frame",
+            "beatMotion": "feedback regions update in place",
+            "avoid": [
+              "modal overlays",
+              "hidden return navigation"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "focused, experimental, immediate",
+          "contrastRole": "use emerald for active controls and cyan for linked feedback",
+          "avoid": [
+            "standalone slide numbering",
+            "audio transcript panel",
+            "decorative-only interaction"
+          ]
+        },
+        "realtimeCueCount": 3,
+        "parentSlideId": "p00"
+      },
+      "realtimeInteractionCues": [
+        {
+          "cueId": "explore-cue-01",
+          "trigger": {
+            "type": "page-load",
+            "event": "exploration-mounted"
+          },
+          "action": "load-exploration-contract",
+          "target": "ModularAssemblyLab",
+          "runtimeBinding": "slides.json explore + concept-model.json",
+          "feedback": "Render the lab as a child route of the parent lesson.",
+          "purpose": "Keep exploration outside the pxx slide sequence."
+        },
+        {
+          "cueId": "explore-cue-02",
+          "trigger": {
+            "type": "user-action",
+            "event": "input"
+          },
+          "action": "manipulate-variable",
+          "target": "lab-controls",
+          "runtimeBinding": "PropertyGroupingLab local state",
+          "feedback": "Visible properties, risk level, explanation, and code snippet update immediately.",
+          "purpose": "Show why grouping and conditional display reduce cognitive load."
+        },
+        {
+          "cueId": "explore-cue-03",
+          "trigger": {
+            "type": "user-action",
+            "event": "click"
+          },
+          "action": "return-to-parent-slide",
+          "target": "PageNav return link",
+          "runtimeBinding": "/module/Module_03/slide/p00",
+          "feedback": "Learner returns to the current lesson without changing the slide range.",
+          "purpose": "Preserve pxx as the main course spine."
+        }
+      ],
+      "runtimeGuidance": {
+        "target": "CourseApp/src/views/ExplorationView.vue",
+        "stateModel": [
+          "explore",
+          "labControls",
+          "linkedFeedback"
+        ],
+        "eventHandlers": [
+          "resolveParentSlide",
+          "updateLabState",
+          "returnToParentSlide"
+        ],
+        "mustRenderFromStoryboard": true
+      },
+      "componentList": [
+        "ExplorationShell",
+        "PropertyGroupingLab",
+        "LinkedFeedbackPanel",
+        "ReturnToParentSlide"
+      ],
+      "contentConstraints": [
+        "Exploration must not appear in slides.json and must not consume a pxx number.",
+        "The route must be a child of the parent slide route.",
+        "Interaction exists only because interaction-necessity-gate decided insert.",
+        "Provide an obvious return path to the parent lesson."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS",
+        "data": "CourseApp/src/data/explorations.json"
+      }
+    },
+    {
+      "moduleId": "Module_03",
+      "screenId": "quiz",
+      "route": "/module/Module_03/quiz",
+      "title": "做题页",
+      "screenType": "course-quiz-runtime",
+      "visualPrompt": "Design the quiz page as a live assessment workspace. The layout must foreground the question bank table, then answer cards, then immediate result feedback. Realtime storyboard actions to preserve: shuffle-question-bank, shuffle-options, select-answer, submit-answer, show-score. Interactions must feel immediate and data-driven, with no page reload after answer selection, option swapping, submission, or reset.",
+      "v0PrototypeRef": {
+        "source": ".agent/v0/Module_03/react-prototype.json",
+        "chatUrl": null,
+        "translationMode": "extract-live-quiz-interaction-rules-to-vue-tailwind",
+        "designRules": {
+          "layout": [
+            "Dark course-player layout with a large slide canvas, subtitle band, and compact bottom controls.",
+            "Concept slides use progressive content cards; code slides keep readable DOM code blocks."
+          ],
+          "visual": [
+            "Use storyboard visualComposition and paletteIntent before inventing new visual behavior.",
+            "Reserve strong accents for the current teaching beat or code callout."
+          ],
+          "interaction": [
+            "Use storyboard motionCues as the interaction and animation source.",
+            "Quiz and exploration screens remain data-driven Vue Router pages."
+          ],
+          "slides": [
+            {
+              "moduleId": "Module_03",
+              "slideId": "p00",
+              "title": "像搭积木一样构建材质面板",
+              "kind": null,
+              "route": "/module/Module_03/slide/p00"
+            },
+            {
+              "moduleId": "Module_03",
+              "slideId": "p01",
+              "title": "Managed Properties：面板的行政管理",
+              "kind": null,
+              "route": "/module/Module_03/slide/p01"
+            }
+          ]
+        }
+      },
+      "storyboardRef": {
+        "source": "CourseApp/src/data/storyboard-contract.json",
+        "storyPurpose": "Let learners answer one focused question at a time, with randomized question order, randomized options, automatic progression, and a final score review.",
+        "layoutIntent": {
+          "primaryFocus": "single active question card",
+          "readingPath": "navigation -> current question -> answer controls -> submit -> next question or score card",
+          "density": "medium",
+          "emphasis": [
+            "单题卡片",
+            "随机题库",
+            "随机选项",
+            "提交后自动下一题",
+            "成绩复盘"
+          ]
+        },
+        "visualComposition": {
+          "aspectRatio": "centered full viewport assessment screen",
+          "shotType": "medium close assessment card",
+          "frameGrid": {
+            "columns": "single centered card, max readable width",
+            "rows": "breadcrumb, question header, answer list, action row, score review",
+            "anchor": "current question card anchors the center; score card replaces it after completion"
+          },
+          "foreground": {
+            "subject": "current question and selected options",
+            "position": "center",
+            "scale": "dominant single-task card"
+          },
+          "midground": {
+            "subject": "submit/reset actions and progress count",
+            "position": "inside card edges",
+            "role": "support decision flow"
+          },
+          "background": {
+            "subject": "quiet dark course shell",
+            "position": "full viewport",
+            "role": "reduce distraction during assessment"
+          },
+          "negativeSpace": "generous margins around the card keep the learner focused on one decision",
+          "readingDirection": "breadcrumb -> question type/progress -> question stem -> options -> submit",
+          "safeArea": "keep all answer controls above fold on common laptop viewport",
+          "cameraPlan": {
+            "base": "locked centered card",
+            "beatMotion": "card content changes, frame remains stable",
+            "avoid": [
+              "table-like all-question layout",
+              "competing sidebars"
+            ]
+          }
+        },
+        "paletteIntent": {
+          "mood": "focused, responsive, assessment-oriented",
+          "contrastRole": "use emerald for active choices and correct feedback, rose for remediation feedback",
+          "avoid": [
+            "question bank table",
+            "question-number navigation",
+            "internal production guidance"
+          ]
+        },
+        "realtimeCueCount": 5
+      },
+      "realtimeInteractionCues": [
+        {
+          "cueId": "quiz-cue-01",
+          "trigger": {
+            "type": "page-load",
+            "event": "quiz-mounted"
+          },
+          "action": "shuffle-question-bank",
+          "target": "questionOrder",
+          "runtimeBinding": "restartQuiz()",
+          "feedback": "Question order is randomized when entering or restarting the quiz.",
+          "purpose": "Prevent answer memorization by fixed order."
+        },
+        {
+          "cueId": "quiz-cue-02",
+          "trigger": {
+            "type": "user-action",
+            "event": "change"
+          },
+          "action": "shuffle-options",
+          "target": "optionOrder[currentQuestion.id]",
+          "runtimeBinding": "shuffle(question.options)",
+          "feedback": "Each visible question renders options in a randomized order.",
+          "purpose": "Keep option display data-driven while preserving answer identity by id."
+        },
+        {
+          "cueId": "quiz-cue-03",
+          "trigger": {
+            "type": "user-action",
+            "event": "click"
+          },
+          "action": "select-answer",
+          "target": "radio-or-checkbox-inputs",
+          "runtimeBinding": "toggleAnswer(question, option.id)",
+          "feedback": "Selected options update local answer state without page reload.",
+          "purpose": "Single and multiple choice interactions stay visibly responsive."
+        },
+        {
+          "cueId": "quiz-cue-04",
+          "trigger": {
+            "type": "user-action",
+            "event": "click"
+          },
+          "action": "submit-answer",
+          "target": "submit-button",
+          "runtimeBinding": "submitAnswer(question)",
+          "feedback": "Compute correctness and advance to the next question automatically.",
+          "purpose": "Keep the quiz focused on one decision at a time."
+        },
+        {
+          "cueId": "quiz-cue-05",
+          "trigger": {
+            "type": "state-change",
+            "event": "results-updated"
+          },
+          "action": "show-score",
+          "target": "score-card",
+          "runtimeBinding": "finished + scoreCount",
+          "feedback": "Show final score, review states, restart, practice, and navigation actions.",
+          "purpose": "Close the assessment loop after all questions are answered."
+        }
+      ],
+      "runtimeGuidance": {
+        "target": "CourseApp/src/views/QuizView.vue",
+        "stateModel": [
+          "questionOrder",
+          "answers",
+          "results",
+          "optionOrder",
+          "currentIndex"
+        ],
+        "eventHandlers": [
+          "restartQuiz",
+          "continuePractice",
+          "toggleAnswer",
+          "submitAnswer",
+          "resetAnswer"
+        ],
+        "mustRenderFromStoryboard": true
+      },
+      "componentList": [
+        "QuestionBankTable",
+        "QuizQuestionCard",
+        "SingleChoiceInput",
+        "MultipleChoiceInput",
+        "OptionSwapControls",
+        "SubmitAnswerButton",
+        "ResultFeedback"
+      ],
+      "contentConstraints": [
+        "Use learner-facing quiz terminology in the UI.",
+        "Render storyboard realtime cues as visible guidance or behavior.",
+        "Do not hard-code question rows outside quizzes.json.",
+        "Keep answer identity tied to option id when options are reordered.",
+        "Submission feedback must be immediate and visible."
+      ],
+      "implementationTarget": {
+        "framework": "Vue 3",
+        "router": "Vue Router",
+        "styling": "Tailwind CSS",
+        "data": "CourseApp/src/data/quizzes.json"
+      }
+    },
+    {
       "moduleId": "Module_04",
       "screenId": "explore-p02-render-state-playground",
       "route": "/module/Module_04/slide/p02/explore",
@@ -2194,7 +6756,7 @@
   ],
   "_validation": {
     "lastContractCheck": null,
-    "lastVisualRefCheck": "2026-05-06T00:42:54Z",
+    "lastVisualRefCheck": "2026-05-06T07:52:26Z",
     "contractCheckAttempts": 0,
     "visualRefCheckAttempts": 0
   }

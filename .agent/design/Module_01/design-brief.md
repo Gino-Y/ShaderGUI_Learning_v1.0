@@ -1,7 +1,7 @@
 # Design Brief
 
 - Provider mode: `design-v0-translated-spec`
-- Module: `Module_01`
+- Module: `ADP_ACCUMULATED`
 - Source: `{'slides': 'CourseApp/src/data/slides.json', 'storyboard': 'CourseApp/src/data/storyboard-contract.json', 'v0Prototype': '.agent/v0/Module_01/react-prototype.json'}`
 - Goal: Generate or refine high-fidelity course-player UI screens for the Vue SPA.
 - Storyboard source: `CourseApp/src/data/storyboard-contract.json`.

@@ -14,13 +14,29 @@
           :key="module.id"
           class="rounded-[1.5rem] border border-white/10 bg-slate-900/80 p-5"
         >
-          <!-- 移动端：卡片堆叠 -->
           <div class="sm:hidden">
             <div>
               <p class="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">{{ module.id }}</p>
               <h2 class="mt-2 text-2xl font-semibold">{{ module.title }}</h2>
               <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-300">{{ module.summary }}</p>
             </div>
+
+            <div class="mt-4">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">学习状态</p>
+              <div class="mt-2 grid grid-cols-2 gap-2" :aria-label="`${module.title} 学习状态`">
+                <button
+                  v-for="step in progressSteps"
+                  :key="step.key"
+                  type="button"
+                  :aria-pressed="isStepReached(module.id, step.level)"
+                  :class="progressButtonClass(module.id, step.level)"
+                  @click="setModuleProgress(module.id, step.level)"
+                >
+                  {{ step.label }}
+                </button>
+              </div>
+            </div>
+
             <RouterLink
               :to="`/module/${module.id}/quiz`"
               class="mt-4 block w-full rounded-xl border border-emerald-300/40 bg-emerald-300/10 px-4 py-2 text-center text-sm font-semibold text-emerald-100 transition hover:bg-emerald-300/20"
@@ -53,10 +69,7 @@
             </div>
           </div>
 
-          <!-- sm+：模块头 + 所有幻灯片共用一套四列隐形网格 -->
-          <div
-            class="hidden gap-x-3 gap-y-4 sm:grid sm:grid-cols-[2.75rem_minmax(0,1fr)_5rem_8rem]"
-          >
+          <div class="hidden gap-x-3 gap-y-4 sm:grid sm:grid-cols-[2.75rem_minmax(0,1fr)_5rem_8rem]">
             <div class="min-w-0 sm:col-span-3 sm:pb-1">
               <p class="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">{{ module.id }}</p>
               <h2 class="mt-2 text-2xl font-semibold">{{ module.title }}</h2>
@@ -68,6 +81,22 @@
             >
               进入做题页
             </RouterLink>
+
+            <div class="col-span-4 grid gap-2 rounded-xl border border-white/10 bg-white/[0.03] p-3 md:grid-cols-[5rem_1fr] md:items-center">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">学习状态</p>
+              <div class="grid grid-cols-4 gap-2" :aria-label="`${module.title} 学习状态`">
+                <button
+                  v-for="step in progressSteps"
+                  :key="step.key"
+                  type="button"
+                  :aria-pressed="isStepReached(module.id, step.level)"
+                  :class="progressButtonClass(module.id, step.level)"
+                  @click="setModuleProgress(module.id, step.level)"
+                >
+                  {{ step.label }}
+                </button>
+              </div>
+            </div>
 
             <template v-for="(slide, idx) in slidesForModule(module.id)" :key="slide.slideId">
               <hr v-if="idx > 0" class="col-span-4 m-0 h-0 border-0 border-t border-white/15" />
@@ -106,11 +135,61 @@
   </main>
 </template>
 <script setup>
+import { onMounted, ref, watch } from "vue";
 import BreadcrumbNav from "../components/BreadcrumbNav.vue";
 import course from "../data/course.json";
 import slides from "../data/slides.json";
 
+const STORAGE_KEY = "shadergui-module-progress-v1";
+const progressSteps = [
+  { key: "watched", label: "看过", level: 1 },
+  { key: "learned", label: "学过", level: 2 },
+  { key: "practiced", label: "已做题", level: 3 },
+  { key: "mastered", label: "掌握", level: 4 },
+];
+const moduleProgress = ref({});
+
 function slidesForModule(moduleId) {
   return slides.filter((slide) => slide.moduleId === moduleId).sort((a, b) => a.order - b.order);
 }
+
+function isStepReached(moduleId, level) {
+  return Number(moduleProgress.value[moduleId] || 0) >= level;
+}
+
+function progressButtonClass(moduleId, level) {
+  const base =
+    "min-h-10 rounded-md border px-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-cyan-200/70";
+  if (isStepReached(moduleId, level)) {
+    return `${base} border-emerald-300/70 bg-emerald-300/20 text-emerald-50`;
+  }
+  return `${base} border-white/10 bg-slate-950/40 text-slate-300 hover:border-cyan-300/60 hover:text-cyan-100`;
+}
+
+function setModuleProgress(moduleId, level) {
+  const current = Number(moduleProgress.value[moduleId] || 0);
+  moduleProgress.value = {
+    ...moduleProgress.value,
+    [moduleId]: current === level ? Math.max(0, level - 1) : level,
+  };
+}
+
+onMounted(() => {
+  try {
+    const saved = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "{}");
+    moduleProgress.value = Object.fromEntries(
+      Object.entries(saved).map(([moduleId, level]) => [moduleId, Math.min(4, Math.max(0, Number(level) || 0))]),
+    );
+  } catch {
+    moduleProgress.value = {};
+  }
+});
+
+watch(
+  moduleProgress,
+  (value) => {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
+  },
+  { deep: true },
+);
 </script>

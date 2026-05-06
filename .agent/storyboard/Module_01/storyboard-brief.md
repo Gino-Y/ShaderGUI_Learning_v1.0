@@ -1,7 +1,7 @@
 # Storyboard Brief
 
 - Provider mode: `storyboard-local-spec`
-- Module: `Module_01`
+- Module: `ADP_ACCUMULATED`
 - Source: `{'slides': 'CourseApp/src/data/slides.json', 'explorations': 'CourseApp/src/data/explorations.json', 'quizzes': 'CourseApp/src/data/quizzes.json'}`
 - Role: Film-style storyboard layer before visual design.
 - Goal: Guide layout, palette, and subtitle-triggered motion for teaching expression.

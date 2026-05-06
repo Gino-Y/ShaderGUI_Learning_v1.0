@@ -1,5 +1,44 @@
 [
   {
+    "moduleId": "Module_01",
+    "parentSlideId": "p01",
+    "explorationId": "property-grouping",
+    "route": "/module/Module_01/slide/p01/explore",
+    "title": "探索页",
+    "component": "PropertyGroupingLab",
+    "gateDecision": {
+      "status": "inserted",
+      "gate": "interaction-necessity-gate",
+      "reason": "MVP scope requested this parent-slide child exploration."
+    }
+  },
+  {
+    "moduleId": "Module_02",
+    "parentSlideId": "p01",
+    "explorationId": "smart-ui-linkage",
+    "route": "/module/Module_02/slide/p01/explore",
+    "title": "智能 UI 联动实验",
+    "component": "SmartUILinkageLab",
+    "gateDecision": {
+      "status": "inserted",
+      "gate": "interaction-necessity-gate",
+      "reason": "UI 联动需要实际操作理解 Toggle/Enum 控制逻辑。"
+    }
+  },
+  {
+    "moduleId": "Module_03",
+    "parentSlideId": "p00",
+    "explorationId": "modular-assembly",
+    "route": "/module/Module_03/slide/p00/explore",
+    "title": "模块化组装实验",
+    "component": "ModularAssemblyLab",
+    "gateDecision": {
+      "status": "inserted",
+      "gate": "interaction-necessity-gate",
+      "reason": "模块化思维需要通过拖拽组装来加深理解。"
+    }
+  },
+  {
     "moduleId": "Module_04",
     "parentSlideId": "p02",
     "explorationId": "render-state-playground",
