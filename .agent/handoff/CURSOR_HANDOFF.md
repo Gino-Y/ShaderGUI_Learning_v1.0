@@ -6,17 +6,28 @@ This section supersedes all older ADP notes below.
 
 - ADP is dispatcher-only, not a parallel generator and not a full-writer.
 - `flow_engine.py --adp` intentionally expands modules from `.agent/adp-scope.json`, then runs the normal `MVPMCP` complete-module pipeline for each module.
-- `clear_stage_outputs("mvp")` plus `MVPMCP.generate_products()` inside an ADP run is expected behavior, not a missing ADP cleanup branch.
+- ADP performs one initial accumulation cleanup, then each module runs `MVPMCP.generate_products(accumulate=True, clean=False, scope_file_name="adp-scope.json")`.
 - Do not require `ADPMCP._clean_adp_products()` for the current ADP path.
 - `ADPMCP.generate_products()` is deprecated and fail-fast by design.
 - Older notes about ADP full-scan/full-write, ADP-specific cleanup, or ADPMCP as a production writer are historical only.
-- Current generated products may still reflect the old mixed ADP state until MVP/ADP is rerun; `verify_course.py` should fail on incomplete storyboard/design/stitch coverage until regeneration.
+- ADP must accumulate CourseApp data, storyboard, design, and stitch manifests across modules. Ordinary MVP keeps its original cleanup and scoped output behavior.
 
 ## Current Goal
 
-代码示例、做题页、探索页数据已填充。动效暂缓（仅 Module_04 有 storyboard-contract）。探索页 Lab 组件待创建。
+代码示例、做题页、探索页数据已填充。三个 Lab 组件已创建。动效暂缓（仅 Module_04 有 storyboard-contract）。
 
 ## Completed Work
+
+- **2026-05-06 (Lab 组件创建 + ADP 全量通过)**:
+  - **修改文件**：
+    - `.agent/templates/course-app/src/components/labs/SmartUILinkageLab.vue`（新建：Toggle/Enum/联动控制面板）
+    - `.agent/templates/course-app/src/components/labs/ModularAssemblyLab.vue`（新建：BaseColor/RenderState/组装模块面板）
+    - `.agent/templates/course-app/src/components/labs/RenderStatePlayground.vue`（新建：透明/镂空/叠加渲染状态面板）
+    - `.agent/templates/course-app/src/views/ExploreView.vue`（注册 3 个新 Lab 组件）
+  - **DAG 影响**：无。仅添加模板组件
+  - **验证**：ADP 全量 4 模块 DEPLOY_READY ✅，`verify_course.py` ✅，`npm run build` ✅（537ms）
+  - **提交**：`f9d42e2`
+  - **状态**：探索页 Lab 组件完整可用
 
 - **2026-05-06 (代码示例 + 做题页 + 探索页数据填充)**:
   - **修改文件**：
@@ -195,3 +206,8 @@ ADP 管线已稳定。可根据需要进行课程内容迭代或前端体验优�
 - Source schema normalized for Module_02/03/04 course metadata; MVPMCP now normalizes `module`, `modules[]`, and legacy top-level metadata.
 - Current generated `CourseApp/src/data/course.json` was synced from the fixed metadata for immediate browser consistency.
 - Verified py_compile for MVPMCP and `npm --prefix CourseApp run build` passed. `verify_course.py` remains blocked by known storyboard/design/stitch coverage debt from old mixed ADP products.
+
+## 2026-05-06 ADP accumulation semantics
+- ADP no longer replaces the previous module while looping.
+- It performs one initial cleanup, then accumulates CourseApp data, storyboard, design, and stitch manifests by module.
+- Ordinary MVP remains unchanged: clean-first, scoped, single-module output.

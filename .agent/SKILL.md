@@ -133,3 +133,7 @@ Roles are not permanently bound to platforms. When the user says `你是 <role>`
 - review/检查层: inspect and report only unless the user explicitly asks for repair.
 
 This is a role switch, not platform binding. Codex, Cursor, and any other executor can serve any role when the user explicitly assigns it.
+
+## ADP Accumulation Semantics
+
+`--adp` performs one initial cleanup, then accumulates module outputs across the normal MVP pipeline. Course data, storyboard, design, and stitch manifests must merge by `moduleId`; ordinary MVP remains single-module and clean-first.

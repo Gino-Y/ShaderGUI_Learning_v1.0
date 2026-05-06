@@ -9,7 +9,7 @@ from pathlib import Path
 
 class StitchMCP:
     @staticmethod
-    def stitch_runtime(root_workspace: Path, module: str) -> dict:
+    def stitch_runtime(root_workspace: Path, module: str, accumulate: bool = False) -> dict:
         app = root_workspace / "CourseApp"
         slides_file = app / "src" / "data" / "slides.json"
         explorations_file = app / "src" / "data" / "explorations.json"
@@ -180,14 +180,46 @@ class StitchMCP:
         if errors:
             return {"status": "error", "message": "; ".join(errors)}
 
-        out_file = app / "src" / "data" / "stitch-manifest.json"
-        out_file.write_text(json.dumps({
+        manifest = {
             "module": module,
             "player": "CoursePlayer.vue",
             "navigation": "SlideNav.vue",
             "subtitleOverlay": "SubtitleOverlay.vue",
             "slides": stitched,
             "interactiveScreens": stitched_interactions,
-        }, ensure_ascii=False, indent=2), encoding="utf-8")
+        }
+        out_file = app / "src" / "data" / "stitch-manifest.json"
+        if accumulate:
+            manifest = StitchMCP._merge_manifest(out_file, manifest, module)
+        out_file.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
 
         return {"status": "success", "file": str(out_file), "slide_count": len(stitched)}
+
+    @staticmethod
+    def _merge_manifest(out_file: Path, manifest: dict, module: str) -> dict:
+        if not out_file.exists():
+            manifest["module"] = "ADP_ACCUMULATED"
+            return manifest
+        try:
+            existing = json.loads(out_file.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            manifest["module"] = "ADP_ACCUMULATED"
+            return manifest
+        existing_slides = [
+            item for item in existing.get("slides", [])
+            if item.get("moduleId") != module
+        ]
+        existing_screens = [
+            item for item in existing.get("interactiveScreens", [])
+            if item.get("moduleId") != module
+        ]
+        manifest["slides"] = sorted(
+            [*existing_slides, *manifest.get("slides", [])],
+            key=lambda item: (item.get("moduleId", ""), item.get("slideId", "")),
+        )
+        manifest["interactiveScreens"] = sorted(
+            [*existing_screens, *manifest.get("interactiveScreens", [])],
+            key=lambda item: (item.get("moduleId", ""), item.get("screenId", "")),
+        )
+        manifest["module"] = "ADP_ACCUMULATED"
+        return manifest

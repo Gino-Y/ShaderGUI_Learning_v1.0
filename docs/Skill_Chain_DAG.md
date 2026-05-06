@@ -203,3 +203,7 @@ npm --prefix CourseApp run build
 ## Small Fix Ownership
 
 小而确定、低风险的一致性问题由当前执行方直接修复，不得要求用户手动处理。包括路径不一致、编码问题、handoff/memory/STATE 漏写、验证脚本漂移和明显笔误。
+
+## ADP Accumulation Update
+
+ADP dispatcher now accumulates module products instead of replacing prior module output. This supersedes earlier dispatcher notes that implied cleanup/generation happened independently inside every module run.

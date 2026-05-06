@@ -515,3 +515,18 @@ Switching rules:
 - If a requested action crosses role boundaries, the current platform must either stop and ask for a role switch or write a copyable instruction for the executor that should perform the other layer.
 - No role may create `.cursor/` or `.workbuddy/` project knowledge directories. All durable coordination must be written under `.agent/`.
 - Small deterministic consistency fixes inside the active role remain owned by the current executor and should be fixed directly.
+
+## ADP Accumulation Semantics
+
+ADP controls MVP in accumulation mode:
+
+```text
+ADP = one initial cleanup
+    + for each module in .agent/adp-scope.json:
+        MVPMCP.generate_products(accumulate=True, clean=False, scope_file_name="adp-scope.json")
+        StoryboardMCP.prepare_storyboard_contract(accumulate=True)
+        DesignMCP.prepare_design_contract(accumulate=True)
+        StitchMCP.stitch_runtime(accumulate=True)
+```
+
+Ordinary single-module MVP keeps its original cleanup and scoped output behavior. ADP must not remove the previous module while progressing through later modules.

@@ -6,24 +6,37 @@ This section supersedes older ADP state notes below.
 
 - ADP is now a dispatcher command, not an ADPMCP full-writer.
 - `--adp` reads `.agent/adp-scope.json` for module order and runs the standard `MVPMCP` complete-module pipeline for each module.
-- ADP intentionally uses MVP cleanup/generation semantics: `clear_stage_outputs("mvp")` and `MVPMCP.generate_products()`.
+- ADP intentionally uses MVP generation semantics with accumulation: one initial ADP cleanup, then `MVPMCP.generate_products(accumulate=True, clean=False, scope_file_name="adp-scope.json")` per module.
 - `ADPMCP.generate_products()` is deprecated/fail-fast. Do not restore the old full-scan/full-write path.
 - Any older text saying ADP is full-scan/full-write or should call ADP-specific cleanup is historical only.
-- Current generated products still need rerun; `verify_course.py` may fail until MVP/ADP regeneration replaces the old mixed ADP product state.
+- ADP must accumulate CourseApp data, storyboard, design, and stitch manifests across modules. Ordinary single-module MVP keeps its original cleanup and scoped output behavior.
 
 ## DAG State
 
-Latest verified state: **全部 4 模块 DEPLOY_READY**（ADP 全量写入架构）。
+Latest verified state: **全部 4 模块 DEPLOY_READY**（ADP dispatcher 模式全量通过）。
 
 ## Active Module
 
-全部模块（Module_01 ~ Module_04）已完成 ADP 生产管线。
+全部模块（Module_01 ~ Module_04）已完成 ADP dispatcher 全量执行。
 
 ## Current Focus
 
-代码示例、做题页、探索页数据已填充完成。动效（storyboard-contract）仅覆盖 Module_04，其余模块暂缓。
+代码示例、做题页、探索页数据已填充完成。三个 Lab 组件已创建并接入 ExploreView。动效（storyboard-contract）仅覆盖 Module_04，其余模块暂缓。
 
 ## Recent Changes
+
+- **2026-05-06 (Lab 组件创建 + ADP 全量通过)**:
+  - **根因**：Module_02/03/04 的 explorations.json 引用了不存在的 Lab 组件，导致 StitchMCP 失败
+  - **修复**：
+    1. 创建 SmartUILinkageLab.vue（Module_02/p01 智能UI联动实验）
+    2. 创建 ModularAssemblyLab.vue（Module_03/p00 模块化组装实验）
+    3. 创建 RenderStatePlayground.vue（Module_04/p02 渲染状态调试试验场）
+    4. 同步到 `.agent/templates/course-app/src/components/labs/`
+    5. 更新模板 ExploreView.vue 注册新组件
+  - **DAG 影响**：无。仅添加模板组件，未修改 DAG 节点/流程/规则
+  - **验证**：ADP 全量 4 模块 DEPLOY_READY ✅，`verify_course.py` ✅，`npm run build` ✅（537ms）
+  - **提交**：`f9d42e2`
+  - **状态**：探索页 Lab 组件完整可用
 
 - **2026-05-06 (代码示例 + 做题页 + 探索页数据填充)**:
   - **根因**：CourseContent/ 源数据缺失 codeBlocks、quizzes 格式不兼容、explorations 为空

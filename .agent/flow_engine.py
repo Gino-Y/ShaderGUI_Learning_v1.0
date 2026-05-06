@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -101,14 +102,23 @@ class CorePipeline:
             print("[Prereq 2/4 OK] v0 API reachable")
 
         if state.status == "V0_READY":
-            print("-> [Prereq 3/4] CLEANUP_BEFORE_MVP：清理旧产物...")
-            deleted = clear_stage_outputs(self.workspace, "mvp", state.module)
-            print(f"[Prereq 3/4 OK] cleaned={len(deleted)}")
+            if mode == "adp":
+                print("-> [Prereq 3/4] CLEANUP_BEFORE_MVP：ADP 累加模式已在调度入口完成一次性清理")
+            else:
+                print("-> [Prereq 3/4] CLEANUP_BEFORE_MVP：清理旧产物...")
+                deleted = clear_stage_outputs(self.workspace, "mvp", state.module)
+                print(f"[Prereq 3/4 OK] cleaned={len(deleted)}")
             state.status = "CLEANUP_BEFORE_MVP_READY"
 
         if state.status == "CLEANUP_BEFORE_MVP_READY":
             print("-> [Prereq 3/3] 生成产物（CourseApp / CourseContent / scripts）...")
-            res = MVPMCP.generate_products(self.workspace, state.module)
+            res = MVPMCP.generate_products(
+                self.workspace,
+                state.module,
+                accumulate=(mode == "adp"),
+                clean=(mode != "adp"),
+                scope_file_name="adp-scope.json" if mode == "adp" else "mvp-scope.json",
+            )
             state = self._require_success(state, res, "MVP_PRODUCTS_READY")
             if state.status == "FAILED":
                 return state
@@ -129,7 +139,11 @@ class CorePipeline:
 
         if state.status == "MANIFEST_READY":
             print("-> [Storyboard 0/1] Preparing narrative storyboard contract...")
-            res = StoryboardMCP.prepare_storyboard_contract(self.workspace, state.module)
+            res = StoryboardMCP.prepare_storyboard_contract(
+                self.workspace,
+                state.module,
+                accumulate=(mode == "adp"),
+            )
             state = self._require_success(state, res, "STORYBOARD_READY")
             if state.status == "FAILED":
                 return state
@@ -157,7 +171,11 @@ class CorePipeline:
 
         if state.status == "V0_PROTOTYPE_READY":
             print("-> [Design 0/2] Preparing design contract...")
-            res = DesignMCP.prepare_design_contract(self.workspace, state.module)
+            res = DesignMCP.prepare_design_contract(
+                self.workspace,
+                state.module,
+                accumulate=(mode == "adp"),
+            )
             state = self._require_success(state, res, "DESIGN_READY")
             if state.status == "FAILED":
                 return state
@@ -247,7 +265,7 @@ class CorePipeline:
 
         if state.status == "AUDIO_READY":
             print("-> [Dev 3/3] Stitch 音频、字幕与播放器运行时...")
-            res = StitchMCP.stitch_runtime(self.workspace, state.module)
+            res = StitchMCP.stitch_runtime(self.workspace, state.module, accumulate=(mode == "adp"))
             state = self._require_success(state, res, "STITCHED")
             if state.status == "FAILED":
                 return state
@@ -302,6 +320,35 @@ def expand_adp_targets(workspace: Path, scope: str, module: str | None = None) -
     return list(dict.fromkeys(modules))
 
 
+def clear_adp_accumulation_outputs(workspace: Path, modules: list[str]) -> list[str]:
+    deleted: list[str] = []
+    scripts = workspace / "scripts"
+    if scripts.exists():
+        shutil.rmtree(scripts)
+        deleted.append(str(scripts.relative_to(workspace)).replace("\\", "/"))
+    app = workspace / "CourseApp"
+    if app.exists():
+        deleted.append(str(app.relative_to(workspace)).replace("\\", "/"))
+        for child in sorted(app.iterdir()):
+            if child.name == "node_modules":
+                continue
+            if child.is_dir():
+                shutil.rmtree(child)
+            else:
+                child.unlink(missing_ok=True)
+            deleted.append(str(child.relative_to(workspace)).replace("\\", "/"))
+    for module in modules:
+        for base in (
+            workspace / ".agent" / "storyboard" / module,
+            workspace / ".agent" / "v0" / module,
+            workspace / ".agent" / "design" / module,
+        ):
+            if base.exists():
+                shutil.rmtree(base)
+                deleted.append(str(base.relative_to(workspace)).replace("\\", "/"))
+    return deleted
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="ShaderGUI course skill-chain runner.")
     parser.add_argument("--mode", choices=["test", "production"], required=True)
@@ -318,11 +365,18 @@ def main() -> int:
     mode = "adp" if args.adp else "mvp"
 
     if args.mode == "test" and args.stage:
-        for module in targets:
-            deleted = clear_stage_outputs(workspace, args.stage, module)
-            print(f"[TEST CLEANUP] {module}/{args.stage}: deleted={len(deleted)}")
+        if args.adp and args.stage == "mvp":
+            deleted = clear_adp_accumulation_outputs(workspace, targets)
+            print(f"[TEST CLEANUP] ADP_ACCUMULATION/{args.stage}: deleted={len(deleted)}")
+        else:
+            for module in targets:
+                deleted = clear_stage_outputs(workspace, args.stage, module)
+                print(f"[TEST CLEANUP] {module}/{args.stage}: deleted={len(deleted)}")
     elif args.mode == "production" and args.stage:
         parser.error("production 模式不允许提供 --stage")
+    elif args.mode == "production" and args.adp:
+        deleted = clear_adp_accumulation_outputs(workspace, targets)
+        print(f"[ADP CLEANUP ONCE] modules={len(targets)} deleted={len(deleted)}")
 
     failed = []
     engine = CorePipeline(workspace)

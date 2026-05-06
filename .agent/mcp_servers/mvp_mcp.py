@@ -17,14 +17,20 @@ class MVPMCP:
     """
 
     @staticmethod
-    @staticmethod
-    def generate_products(workspace: Path, module: str) -> dict:
+    def generate_products(
+        workspace: Path,
+        module: str,
+        *,
+        accumulate: bool = False,
+        clean: bool = True,
+        scope_file_name: str = "mvp-scope.json",
+    ) -> dict:
         try:
-            source = MVPMCP._load_module_source(workspace, module)
-            slide_ids = MVPMCP._resolve_mvp_slide_ids(workspace, module, source["slides"])
+            source = MVPMCP._load_module_source(workspace, module, scope_file_name=scope_file_name)
+            slide_ids = MVPMCP._resolve_mvp_slide_ids(workspace, module, source["slides"], scope_file_name=scope_file_name)
             source["slides"] = [slide for slide in source["slides"] if slide["slideId"] in slide_ids]
-            cleaned = MVPMCP._clean_mvp_products(workspace, module)
-            MVPMCP._write_course_app(workspace, module, source)
+            cleaned = MVPMCP._clean_mvp_products(workspace, module) if clean else []
+            MVPMCP._write_course_app(workspace, module, source, accumulate=accumulate)
             MVPMCP._copy_course_content(workspace, module, source["slides"])
             MVPMCP._write_scripts(workspace)
             install = subprocess.run(
@@ -62,7 +68,7 @@ class MVPMCP:
         return json.loads(path.read_text(encoding="utf-8-sig"))
 
     @staticmethod
-    def _load_module_source(workspace: Path, module: str) -> dict:
+    def _load_module_source(workspace: Path, module: str, scope_file_name: str = "mvp-scope.json") -> dict:
         root = workspace / "CourseContent" / module
         course_source = MVPMCP._load_json(root / "course.json")
         slides = MVPMCP._load_json(root / "slides.json")
@@ -89,7 +95,7 @@ class MVPMCP:
             if transcript:
                 normalized["transcript"] = f"/transcripts/{module}/{transcript.name}"
             normalized_slides.append(normalized)
-        scope_explorations = MVPMCP._scope_explorations(workspace, module)
+        scope_explorations = MVPMCP._scope_explorations(workspace, module, scope_file_name=scope_file_name)
         explorations = MVPMCP._normalize_explorations(module, explorations or scope_explorations)
         by_slide = {slide["slideId"]: slide for slide in normalized_slides}
         for exploration in explorations:
@@ -110,11 +116,14 @@ class MVPMCP:
         }
 
     @staticmethod
-    def _scope_explorations(workspace: Path, module: str) -> list[dict]:
-        scope_file = workspace / ".agent" / "mvp-scope.json"
+    def _scope_explorations(workspace: Path, module: str, scope_file_name: str = "mvp-scope.json") -> list[dict]:
+        scope_file = workspace / ".agent" / scope_file_name
         if not scope_file.exists():
             return []
         scope = json.loads(scope_file.read_text(encoding="utf-8-sig"))
+        for mod_entry in scope.get("modules", []):
+            if isinstance(mod_entry, dict) and mod_entry.get("module") == module:
+                return mod_entry.get("explorations") or []
         if scope.get("module", module) != module:
             return []
         return scope.get("explorations") or []
@@ -160,9 +169,14 @@ class MVPMCP:
         return matches[0] if matches else None
 
     @staticmethod
-    def _resolve_mvp_slide_ids(workspace: Path, module: str, slides: list[dict]) -> list[str]:
+    def _resolve_mvp_slide_ids(
+        workspace: Path,
+        module: str,
+        slides: list[dict],
+        scope_file_name: str = "mvp-scope.json",
+    ) -> list[str]:
         source_ids = [slide["slideId"] for slide in slides]
-        scope_file = workspace / ".agent" / "mvp-scope.json"
+        scope_file = workspace / ".agent" / scope_file_name
         if not scope_file.exists():
             return source_ids
         scope = json.loads(scope_file.read_text(encoding="utf-8"))
@@ -170,19 +184,19 @@ class MVPMCP:
             if isinstance(mod_entry, dict) and mod_entry.get("module") == module:
                 slide_ids = mod_entry.get("slideIds") or mod_entry.get("slides") or source_ids
                 if not isinstance(slide_ids, list) or not all(isinstance(item, str) for item in slide_ids):
-                    raise ValueError(".agent/mvp-scope.json module entries must contain slideIds: string[]")
+                    raise ValueError(f".agent/{scope_file_name} module entries must contain slideIds: string[]")
                 unknown = [slide_id for slide_id in slide_ids if slide_id not in source_ids]
                 if unknown:
-                    raise ValueError(f".agent/mvp-scope.json references unknown slides: {unknown}")
+                    raise ValueError(f".agent/{scope_file_name} references unknown slides: {unknown}")
                 return list(dict.fromkeys(slide_ids))
         if scope.get("module", module) != module:
             return source_ids
         slide_ids = scope.get("slideIds") or scope.get("slides") or source_ids
         if not isinstance(slide_ids, list) or not all(isinstance(item, str) for item in slide_ids):
-            raise ValueError(".agent/mvp-scope.json must contain slideIds: string[]")
+            raise ValueError(f".agent/{scope_file_name} must contain slideIds: string[]")
         unknown = [slide_id for slide_id in slide_ids if slide_id not in source_ids]
         if unknown:
-            raise ValueError(f".agent/mvp-scope.json references unknown slides: {unknown}")
+            raise ValueError(f".agent/{scope_file_name} references unknown slides: {unknown}")
         return list(dict.fromkeys(slide_ids))
 
     @staticmethod
@@ -246,28 +260,40 @@ class MVPMCP:
             shutil.copy2(src, dst)
 
     @staticmethod
-    def _write_course_app(workspace: Path, module: str, source: dict) -> None:
+    def _write_course_app(workspace: Path, module: str, source: dict, accumulate: bool = False) -> None:
         app = workspace / "CourseApp"
         MVPMCP._copy_template_tree(MVPMCP._template_root(workspace) / "course-app", app)
 
         course_source = source["course"]
         module_source = MVPMCP._module_metadata(course_source, module)
-        course = {
-            "title": course_source.get("title", "Course"),
-            "subtitle": course_source.get("subtitle", ""),
-            "modules": [
-                {
-                    "id": module_source.get("id", module),
-                    "title": module_source.get("title", module),
-                    "summary": module_source.get("summary") or module_source.get("description", ""),
-                    "slideCount": len(source["slides"]),
-                }
-            ],
+        module_entry = {
+            "id": module_source.get("id", module),
+            "title": module_source.get("title", module),
+            "summary": module_source.get("summary") or module_source.get("description", ""),
+            "slideCount": len(source["slides"]),
         }
+        if accumulate:
+            course = MVPMCP._merge_course_data(app, course_source, module, module_entry)
+            slides = MVPMCP._merge_module_items(app / "src" / "data" / "slides.json", source["slides"], module)
+            quizzes = MVPMCP._merge_module_items(app / "src" / "data" / "quizzes.json", source["quizzes"], module)
+            explorations = MVPMCP._merge_module_items(
+                app / "src" / "data" / "explorations.json",
+                source["explorations"],
+                module,
+            )
+        else:
+            course = {
+                "title": course_source.get("title", "Course"),
+                "subtitle": course_source.get("subtitle", ""),
+                "modules": [module_entry],
+            }
+            slides = source["slides"]
+            quizzes = source["quizzes"]
+            explorations = source["explorations"]
         MVPMCP._write_json(app / "src" / "data" / "course.json", course)
-        MVPMCP._write_json(app / "src" / "data" / "slides.json", source["slides"])
-        MVPMCP._write_json(app / "src" / "data" / "quizzes.json", source["quizzes"])
-        MVPMCP._write_json(app / "src" / "data" / "explorations.json", source["explorations"])
+        MVPMCP._write_json(app / "src" / "data" / "slides.json", slides)
+        MVPMCP._write_json(app / "src" / "data" / "quizzes.json", quizzes)
+        MVPMCP._write_json(app / "src" / "data" / "explorations.json", explorations)
         # 加固：只在文件不存在时才写占位符，避免覆盖已有真实数据
         contract_path = app / "src" / "data" / "storyboard-contract.json"
         if not contract_path.exists():
@@ -289,6 +315,42 @@ class MVPMCP:
                     print(f"[MVP Harden] storyboard-contract.json exists but not ready (status={existing.get('status')}), leaving for storyboard step")
             except Exception as ex:
                 print(f"[MVP Harden] storyboard-contract.json exists but unreadable: {ex}")
+
+    @staticmethod
+    def _merge_course_data(app: Path, course_source: dict, module: str, module_entry: dict) -> dict:
+        course_file = app / "src" / "data" / "course.json"
+        if course_file.exists():
+            try:
+                course = json.loads(course_file.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                course = {}
+        else:
+            course = {}
+        course["title"] = course.get("title") or course_source.get("title", "Course")
+        course["subtitle"] = course.get("subtitle") or course_source.get("subtitle", "")
+        modules = [item for item in course.get("modules", []) if item.get("id") != module]
+        modules.append(module_entry)
+        course["modules"] = sorted(modules, key=lambda item: item.get("id", ""))
+        return course
+
+    @staticmethod
+    def _merge_module_items(path: Path, new_items: list, module: str) -> list:
+        existing = []
+        if path.exists():
+            try:
+                existing = json.loads(path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                existing = []
+        existing = [item for item in existing if not isinstance(item, dict) or item.get("moduleId") != module]
+        merged = [*existing, *new_items]
+        return sorted(
+            merged,
+            key=lambda item: (
+                item.get("moduleId", "") if isinstance(item, dict) else "",
+                item.get("order", 999) if isinstance(item, dict) else 999,
+                item.get("slideId", item.get("parentSlideId", "")) if isinstance(item, dict) else "",
+            ),
+        )
 
     @staticmethod
     def _module_metadata(course_source: dict, module: str) -> dict:

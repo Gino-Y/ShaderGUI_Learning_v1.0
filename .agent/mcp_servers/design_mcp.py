@@ -66,7 +66,7 @@ class DesignMCP:
     }
 
     @staticmethod
-    def prepare_design_contract(workspace: Path, module: str) -> dict:
+    def prepare_design_contract(workspace: Path, module: str, accumulate: bool = False) -> dict:
         app = workspace / "CourseApp"
         slides_file = app / "src" / "data" / "slides.json"
         if not slides_file.exists():
@@ -241,6 +241,8 @@ class DesignMCP:
                 "visualRefCheckAttempts": 0,
             },
         }
+        if accumulate:
+            contract = DesignMCP._merge_contract(design_file, contract, module)
 
         design_file.write_text(
             json.dumps(contract, ensure_ascii=False, indent=2) + "\n",
@@ -255,6 +257,35 @@ class DesignMCP:
             "brief_file": str(brief_file),
             "slide_count": len(design_slides),
         }
+
+    @staticmethod
+    def _merge_contract(design_file: Path, contract: dict, module: str) -> dict:
+        if not design_file.exists():
+            contract["module"] = "ADP_ACCUMULATED"
+            return contract
+        try:
+            existing = json.loads(design_file.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            contract["module"] = "ADP_ACCUMULATED"
+            return contract
+        existing_slides = [
+            item for item in existing.get("slides", [])
+            if item.get("moduleId") != module
+        ]
+        existing_screens = [
+            item for item in existing.get("interactiveScreens", [])
+            if item.get("moduleId") != module
+        ]
+        contract["slides"] = sorted(
+            [*existing_slides, *contract.get("slides", [])],
+            key=lambda item: (item.get("moduleId", ""), item.get("slideId", "")),
+        )
+        contract["interactiveScreens"] = sorted(
+            [*existing_screens, *contract.get("interactiveScreens", [])],
+            key=lambda item: (item.get("moduleId", ""), item.get("screenId", "")),
+        )
+        contract["module"] = "ADP_ACCUMULATED"
+        return contract
 
     @staticmethod
     def _infer_typography(visual_comp: dict) -> dict:
