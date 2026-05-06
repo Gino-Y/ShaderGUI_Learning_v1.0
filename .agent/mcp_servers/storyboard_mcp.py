@@ -219,7 +219,7 @@ class StoryboardMCP:
         return deduped
 
     @staticmethod
-    def validate_storyboard_contract(workspace: Path, module: str, storyboard_file: str | None) -> dict:
+    def validate_storyboard_contract(workspace: Path, module: str, storyboard_file: str | None, accumulate: bool = False) -> dict:
         if not storyboard_file:
             return {"status": "failed", "message": "storyboard_file is None", "errors": []}
 
@@ -492,14 +492,48 @@ class StoryboardMCP:
         if slides_file.exists():
             try:
                 source_slides = json.loads(slides_file.read_text(encoding="utf-8"))
-                source_ids = {s.get("slideId") for s in source_slides if s.get("moduleId") == module}
-                storyboard_ids = {s.get("slideId") for s in slides}
+                source_ids = {
+                    (s.get("moduleId"), s.get("slideId"))
+                    for s in source_slides
+                    if s.get("moduleId") == module and s.get("slideId")
+                }
+                storyboard_ids = {
+                    (s.get("moduleId"), s.get("slideId"))
+                    for s in slides
+                    if s.get("moduleId") == module and s.get("slideId")
+                }
                 missing = source_ids - storyboard_ids
                 extra = storyboard_ids - source_ids
                 if missing:
-                    errors.append({"field": "slides.coverage", "issue": f"missing slideIds: {sorted(missing)}", "severity": "error"})
+                    errors.append({
+                        "field": "slides.coverage",
+                        "issue": f"missing slideIds: {StoryboardMCP._format_slide_ids(missing)}",
+                        "severity": "error",
+                    })
                 if extra:
-                    errors.append({"field": "slides.coverage", "issue": f"extra slideIds: {sorted(extra)}", "severity": "warning"})
+                    errors.append({
+                        "field": "slides.coverage",
+                        "issue": f"extra slideIds: {StoryboardMCP._format_slide_ids(extra)}",
+                        "severity": "warning",
+                    })
+                if accumulate:
+                    all_source_ids = {
+                        (s.get("moduleId"), s.get("slideId"))
+                        for s in source_slides
+                        if s.get("moduleId") and s.get("slideId")
+                    }
+                    all_storyboard_ids = {
+                        (s.get("moduleId"), s.get("slideId"))
+                        for s in slides
+                        if s.get("moduleId") and s.get("slideId")
+                    }
+                    accumulated_missing = all_source_ids - all_storyboard_ids
+                    if accumulated_missing:
+                        errors.append({
+                            "field": "slides.accumulatedCoverage",
+                            "issue": f"missing accumulated slideIds: {StoryboardMCP._format_slide_ids(accumulated_missing)}",
+                            "severity": "error",
+                        })
             except json.JSONDecodeError:
                 pass
 
@@ -507,9 +541,14 @@ class StoryboardMCP:
             contract["_validation"]["lastStoryboardCheck"] = datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
             sf.write_text(json.dumps(contract, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-        if errors:
-            return {"status": "failed", "message": f"{len(errors)} storyboard check(s) failed", "errors": errors}
-        return {"status": "success", "message": "storyboard validation passed", "errors": []}
+        fatal_errors = [error for error in errors if error.get("severity") != "warning"]
+        if fatal_errors:
+            return {"status": "failed", "message": f"{len(fatal_errors)} storyboard check(s) failed", "errors": errors}
+        return {"status": "success", "message": "storyboard validation passed", "errors": errors}
+
+    @staticmethod
+    def _format_slide_ids(ids: set[tuple[str | None, str | None]]) -> list[str]:
+        return [f"{module}/{slide}" for module, slide in sorted(ids)]
 
     @staticmethod
     def _story_purpose(title: str, points: list[str]) -> str:

@@ -30,6 +30,13 @@ Latest verified state: **全部 4 模块 DEPLOY_READY**（ADP dispatcher 模式�
 - Persistence lives in browser `localStorage` (`shadergui-module-progress-v1`) and must not be written into course source or generated data contracts.
 - Implementation source is `.agent/templates/course-app/src/views/CourseHome.vue`; generated CourseApp should be updated by rerunning MVP/ADP, not by direct product edits.
 - Verification was expanded in `scripts/verify_course.py` and `.agent/templates/scripts/verify_course.py`.
+
+## 2026-05-06 ADP Storyboard Validation Fix
+
+- Execution-layer ADP report proved Module_03 was failing in Storyboard validation before Voice/Design/Stitch.
+- Root cause: accumulated storyboard validation compared bare `slideId` values, so another module's `p02` could be treated as an extra slide for Module_03. Warning-level findings were also treated as fatal.
+- Workflow fix: `flow_engine.py` passes ADP mode into storyboard validation; `StoryboardMCP.validate_storyboard_contract()` compares `(moduleId, slideId)`, checks accumulated coverage, and only fails on non-warning errors.
+- Product artifacts still need a fresh ADP execution by the execution layer.
 ## Recent Changes
 
 - **2026-05-06 (Lab 组件创建 + ADP 全量通过)**:

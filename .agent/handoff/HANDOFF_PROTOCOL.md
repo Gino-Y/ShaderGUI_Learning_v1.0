@@ -88,3 +88,10 @@ Do not store durable role instructions in `.cursor/` or `.workbuddy/`; write all
 - The state is persisted in browser `localStorage` under `shadergui-module-progress-v1`.
 - Do not write learner progress into course source JSON or DAG contracts.
 - If the current generated `CourseApp` lacks this UI, rerun MVP/ADP from the execution layer instead of hand-editing the product file.
+
+## ADP Storyboard Validation
+
+- ADP storyboard coverage must compare `(moduleId, slideId)`.
+- Do not treat bare slide ids such as `p02` as globally unique across modules.
+- Storyboard `severity: warning` findings are non-blocking; only non-warning errors fail the node.
+- If ADP fails at Module_03 Storyboard with only an extra-slide warning, the workflow implementation is stale.

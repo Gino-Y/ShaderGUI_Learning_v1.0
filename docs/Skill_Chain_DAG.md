@@ -223,3 +223,12 @@ CourseContent/course metadata
 - 后一级依赖前一级，运行时使用单一等级值表达阶梯进度，避免状态断裂。
 - 状态是学习者本地交互数据，不进入 `CourseContent/`、`course.json`、`slides.json`、`storyboard-contract.json`、`design-contract.json` 或 `stitch-manifest.json`。
 - 验收由 `scripts/verify_course.py` 检查模板和生成首页中的 `localStorage` key、四个状态标签和阶梯状态函数标记。
+
+## ADP Storyboard Validation Update
+
+ADP 累加模式下，StoryboardMCP 校验属于跨模块全局契约校验：
+
+- 覆盖关系必须使用 `(moduleId, slideId)`，不能只看 `slideId`。
+- `Module_01/p02` 不应在校验 `Module_03` 时被误判为当前模块的 extra slide。
+- `severity: warning` 是诊断信息，不阻断 DAG；只有非 warning 错误阻断节点。
+- ADP 校验还要确认累计 storyboard 覆盖当前生成的全部 slide，防止后续模块覆盖前序模块。

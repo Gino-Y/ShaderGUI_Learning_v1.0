@@ -538,3 +538,9 @@ Ordinary single-module MVP keeps its original cleanup and scoped output behavior
 - 状态属于学习者本地交互数据，默认使用浏览器 `localStorage` 持久化；不得写入 `CourseContent/`、`course.json`、`slides.json`、`storyboard-contract.json`、`design-contract.json` 或 `stitch-manifest.json`。
 - 该能力必须从 `.agent/templates/course-app/src/views/CourseHome.vue` 生成，禁止只手改 `CourseApp/src/views/CourseHome.vue` 产物。
 - `scripts/verify_course.py` 必须检查首页与模板包含模块状态持久化、四个状态标签和阶梯状态函数标记。
+
+## ADP Storyboard Validation
+
+- [ADP_STORYBOARD_MODULE_QUALIFIED_COVERAGE] ADP 累加后的 storyboard 校验必须用 `(moduleId, slideId)` 判断覆盖范围，禁止只用 `slideId`，因为不同模块都会有 `p00/p01`。
+- Storyboard 校验中的 `severity: warning` 不得阻断 pipeline；只有 `severity` 非 `warning` 的错误才能让节点失败。
+- ADP 模式下 Storyboard 校验还必须检查累计 storyboard 覆盖全部生成 slides，避免后一个模块覆盖前一个模块。

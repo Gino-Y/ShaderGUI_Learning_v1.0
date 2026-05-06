@@ -141,3 +141,7 @@ This is a role switch, not platform binding. Codex, Cursor, and any other execut
 ## Course Home Module Progress State
 
 Course home module cards must expose optional local progress states: `看过`, `学过`, `已做题`, and `掌握`. The state model is ordered: selecting a later state implies all earlier states, and the UI must avoid broken combinations such as mastered without practiced. Persist this as learner runtime state in `localStorage`, not in course source or generated JSON contracts. Implement it in `.agent/templates/course-app/src/views/CourseHome.vue` and verify it through `scripts/verify_course.py`.
+
+## ADP Storyboard Validation
+
+When ADP accumulates storyboard contracts, coverage validation must compare `(moduleId, slideId)`, not bare `slideId`. Warning-level storyboard findings are diagnostic and must not fail the pipeline; only non-warning errors are blocking. ADP validation must also check that the accumulated storyboard covers all generated slides.

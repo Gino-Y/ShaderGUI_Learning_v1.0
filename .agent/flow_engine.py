@@ -151,7 +151,7 @@ class CorePipeline:
             state.storyboard_brief = res.get("brief_file")
             state.visual_spec_file = state.storyboard_file
             val_res = StoryboardMCP.validate_storyboard_contract(
-                self.workspace, state.module, state.storyboard_file
+                self.workspace, state.module, state.storyboard_file, accumulate=(mode == "adp")
             )
             state = self._require_success(state, val_res, "STORYBOARD_READY")
             if state.status == "FAILED":

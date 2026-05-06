@@ -24,6 +24,15 @@ This section supersedes all older ADP notes below.
 - Persistence: browser `localStorage` key `shadergui-module-progress-v1`; no learner progress is written into course source or generated contract JSON.
 - Source of truth: `.agent/templates/course-app/src/views/CourseHome.vue` plus verification gates in `scripts/verify_course.py` and `.agent/templates/scripts/verify_course.py`.
 - Product update path: rerun MVP/ADP from the execution layer. Do not hand-edit `CourseApp/src/views/CourseHome.vue`.
+
+## 2026-05-06 ADP Storyboard Validation Fix
+
+- Role: workflow/DAG layer.
+- Fixed Module_03 ADP Storyboard false failure after execution-layer report.
+- Root cause: Storyboard validation used bare `slideId` for coverage under accumulated contracts and treated warning-level findings as fatal.
+- Changed `.agent/mcp_servers/storyboard_mcp.py` to validate `(moduleId, slideId)`, check accumulated coverage in ADP, and fail only on non-warning errors.
+- Changed `.agent/flow_engine.py` to pass `accumulate=(mode == "adp")` into storyboard validation.
+- Next execution layer should rerun ADP from the latest commit and report only command/result/errors.
 ## Completed Work
 
 - **2026-05-06 (Lab 组件创建 + ADP 全量通过)**:
