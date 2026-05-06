@@ -530,6 +530,22 @@ The final report must state:
 
 This report is a completion requirement and does not bind a platform to a permanent role. It is a handoff guard so the next executor does not infer missing work from chat context.
 
+## Copyable Role Guidance Format
+
+[ROLE_GUIDANCE_TEXT_BLOCK] When an executor writes copyable guidance for another role, platform, or AI executor in chat, it must wrap the full instruction in a fenced Markdown code block with language `text`.
+
+Required format:
+
+````markdown
+```text
+You are product / execution layer.
+
+Task...
+```
+````
+
+This applies to prompts or instructions such as `你是 product / 执行层`, `请 Cursor 执行以下任务`, `给制造者的补充说明`, `交给 review 层检查`, and execution-layer next-step instructions. Explanatory prose outside the code block is allowed, but the copyable instruction itself must be inside the `text` block.
+
 ## ADP Accumulation Semantics
 
 ADP controls MVP in accumulation mode:

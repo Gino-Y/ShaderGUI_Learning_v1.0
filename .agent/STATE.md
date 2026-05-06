@@ -74,6 +74,12 @@ Latest verified state: **全部 4 模块 DEPLOY_READY**（ADP dispatcher 模式�
 - Verification now checks that the progress contract and maker brief exist.
 - Product layer next step: run ADP from the latest main commit and verify the generated home page; do not hand-edit CourseApp as the final solution.
 
+## 2026-05-07 Copyable Role Guidance Format
+
+- New rule: copyable guidance for another role/platform/executor must be wrapped in a fenced Markdown `text` block in chat.
+- Applies to Cursor/Codex handoff prompts, maker instructions, review instructions, and execution-layer next-step text.
+- Purpose: keep copyable instructions separate from explanatory prose and avoid partial-context copy/paste errors.
+
 ## Recent Changes
 
 - **2026-05-06 (Lab 组件创建 + ADP 全量通过)**:

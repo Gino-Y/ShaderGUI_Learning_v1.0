@@ -146,6 +146,18 @@ Every completed task must end with a role-aware report:
 
 This applies to workflow, product/execution, and review roles equally.
 
+## Copyable Role Guidance Format
+
+When writing copyable guidance for another role, platform, or AI executor, wrap the full instruction in a fenced Markdown code block marked as `text`. This keeps role prompts separate from explanation and prevents the receiving executor from copying partial context.
+
+````markdown
+```text
+You are product / execution layer.
+
+Task...
+```
+````
+
 ## ADP Accumulation Semantics
 
 `--adp` performs one initial cleanup, then accumulates module outputs across the normal MVP pipeline. Course data, storyboard, design, and stitch manifests must merge by `moduleId`; ordinary MVP remains single-module and clean-first.
