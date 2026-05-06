@@ -224,6 +224,35 @@ def main() -> int:
         ]:
             if marker not in text:
                 errors.append(f"CourseHome template missing module progress marker: {marker}")
+    progress_contract = ROOT / ".agent" / "design" / "course-home-progress-contract.json"
+    if not progress_contract.exists():
+        errors.append("missing course home progress contract: .agent/design/course-home-progress-contract.json")
+    else:
+        contract = load_json(progress_contract, errors)
+        if contract:
+            if contract.get("status") != "workflow_ready":
+                errors.append("course-home-progress-contract.json must be workflow_ready")
+            storage = contract.get("storage") or {}
+            if storage.get("key") != "shadergui-module-progress-v1":
+                errors.append("course-home-progress-contract.json must define shadergui-module-progress-v1 storage key")
+            labels = {state.get("label") for state in contract.get("states", []) if isinstance(state, dict)}
+            for label in ["看过", "学过", "已做题", "掌握"]:
+                if label not in labels:
+                    errors.append(f"course-home-progress-contract.json missing state label: {label}")
+    maker_brief = ROOT / ".agent" / "tasks" / "course-home-module-progress-maker-brief.md"
+    if not maker_brief.exists():
+        errors.append("missing maker brief: .agent/tasks/course-home-module-progress-maker-brief.md")
+    else:
+        brief_text = maker_brief.read_text(encoding="utf-8")
+        for marker in [
+            "product / execution layer",
+            ".agent/design/course-home-progress-contract.json",
+            "python .agent\\flow_engine.py --mode production --scope all-content --basedir . --max-retries 5 --adp",
+            "shadergui-module-progress-v1",
+            "Do not hand-edit `CourseApp/src/views/CourseHome.vue`",
+        ]:
+            if marker not in brief_text:
+                errors.append(f"course home maker brief missing marker: {marker}")
     storyboard = load_json(APP / "src" / "data" / "storyboard-contract.json", errors)
     if storyboard and storyboard.get("status") != "storyboard_ready":
         errors.append("storyboard-contract.json must be storyboard_ready")

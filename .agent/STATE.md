@@ -65,6 +65,15 @@ Latest verified state: **全部 4 模块 DEPLOY_READY**（ADP dispatcher 模式�
 - If no other role needs follow-up, the executor must explicitly say no cross-role handoff is needed.
 - Purpose: prevent Codex/Cursor or any executor from inferring missing next steps from chat-only context.
 
+## 2026-05-07 Course Home Workflow Handoff
+
+- Current workflow truth: `.agent/templates/course-app/src/views/CourseHome.vue` exists and is the source of truth for the home page. CourseContent has Module_01 through Module_04.
+- Stale execution reports saying templates or Module_02/03/04 are missing must be ignored for the current repo state.
+- Added `.agent/design/course-home-progress-contract.json` for learner progress state semantics.
+- Added `.agent/tasks/course-home-module-progress-maker-brief.md` for product/execution layer regeneration instructions.
+- Verification now checks that the progress contract and maker brief exist.
+- Product layer next step: run ADP from the latest main commit and verify the generated home page; do not hand-edit CourseApp as the final solution.
+
 ## Recent Changes
 
 - **2026-05-06 (Lab 组件创建 + ADP 全量通过)**:

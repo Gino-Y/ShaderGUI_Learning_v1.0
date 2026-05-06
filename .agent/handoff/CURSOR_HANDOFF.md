@@ -63,6 +63,16 @@ This section supersedes all older ADP notes below.
 - Applies to workflow/DAG, product/execution, and review roles; it does not bind any platform permanently.
 - If there is no next role action, the executor must say no cross-role handoff is needed.
 
+## 2026-05-07 Course Home Workflow Handoff
+
+- Role: workflow/DAG layer.
+- Current repo state: `.agent/templates/course-app/src/views/CourseHome.vue` exists; `CourseContent/Module_01` through `CourseContent/Module_04` exist; `MVPMCP` copies templates into CourseApp.
+- Stale reports claiming missing templates or missing Module_02/03/04 are not valid for the current repo state.
+- Added `.agent/design/course-home-progress-contract.json`.
+- Added `.agent/tasks/course-home-module-progress-maker-brief.md`.
+- Updated `scripts/verify_course.py` and `.agent/templates/scripts/verify_course.py` to require the contract and brief.
+- Product/execution layer should read the maker brief, run ADP, run verify/build, inspect the homepage, and report results. It must not hand-edit CourseApp as the final solution.
+
 ## Completed Work
 
 - **2026-05-06 (Lab 组件创建 + ADP 全量通过)**:
