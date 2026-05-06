@@ -1,25 +1,7 @@
 {
-  "title": "ShaderGUI 课程",
-  "subtitle": "从入门到进阶",
+  "title": "ShaderGUI 专家成长之路",
+  "subtitle": "从工具使用者到工具定义者",
   "modules": [
-    {
-      "id": "Module_01",
-      "title": "模块一：解构",
-      "summary": "理解 ShaderGUI 的定位，并完成最小自定义材质面板架构。",
-      "slideCount": 3
-    },
-    {
-      "id": "Module_02",
-      "title": "模块二：重构",
-      "summary": "用分组布局、条件显示与工具函数，把复杂参数整理成直观可用的材质面板。",
-      "slideCount": 3
-    },
-    {
-      "id": "Module_03",
-      "title": "模块三：进化",
-      "summary": "建立模块化复用与 Managed Properties 思维，让大型材质面板可维护、可扩展。",
-      "slideCount": 2
-    },
     {
       "id": "Module_04",
       "title": "模块四：治理",

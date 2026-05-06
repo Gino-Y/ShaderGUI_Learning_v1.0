@@ -26,8 +26,11 @@ import BreadcrumbNav from "../components/BreadcrumbNav.vue";
 import slides from "../data/slides.json";
 import explorations from "../data/explorations.json";
 import PropertyGroupingLab from "../components/labs/PropertyGroupingLab.vue";
+import SmartUILinkageLab from "../components/labs/SmartUILinkageLab.vue";
+import ModularAssemblyLab from "../components/labs/ModularAssemblyLab.vue";
+import RenderStatePlayground from "../components/labs/RenderStatePlayground.vue";
 
-const labs = { PropertyGroupingLab };
+const labs = { PropertyGroupingLab, SmartUILinkageLab, ModularAssemblyLab, RenderStatePlayground };
 const route = useRoute();
 const moduleId = computed(() => String(route.params.moduleId));
 const slideId = computed(() => String(route.params.slideId));

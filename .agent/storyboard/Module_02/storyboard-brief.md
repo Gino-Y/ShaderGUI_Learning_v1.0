@@ -19,12 +19,12 @@
 - Palette: clear, instructional, confident
 - Emphasis: motionCues bind subtitles to knowledgeFocus; optional slide `mentalModel` in slides.json (teaching layer).
 - Motion cues:
-  - `cue-01` 00:00.00-00:11.78 segment 0: reveal-focus -> content-beat (信息架构设计); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: 告别参数地狱：逻辑化的分组设计 —— 逐字稿 参数多是 ShaderGUI 的常态，但"多"不等于"乱"。
-    - Shot: 0.00s-11.78s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“信息架构设计”，弱化其他内容；旁白：告别参数地狱：逻辑化的分组设计 —— 逐字稿 参数多是 ShaderGUI 的常态，但"多"不等于"乱"。
-  - `cue-02` 00:11.78-00:17.33 segment 1: reveal-focus -> content-beat (BeginVertical 创建视觉边界); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 本节课教你用信息架构思维，把一堆属性变成有序面板。
-    - Shot: 11.78s-17.33s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“BeginVertical 创建视觉边界”，弱化其他内容；旁白：本节课教你用信息架构思维，把一堆属性变成有序面板。
-  - `cue-03` 00:17.33-00:45.33 segment 2: reveal-focus -> content-beat (按渲染逻辑排列参数); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 核心观点 问题：Shader 属性多了，默认面板是一维长列表，美术不知道什么是什么 思路：按渲染逻辑分组，用 UI 边界（Vertical/Horizontal）建立视觉层次 金句："好的 GUI 不是把参数都摆出来，而是让美术知道先填什么、后填什么。
-    - Shot: 17.33s-45.33s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“按渲染逻辑排列参数”，弱化其他内容；旁白：核心观点 问题：Shader 属性多了，默认面板是一维长列表，美术不知道什么是什么 思路：按渲染逻辑分组，用 UI 边界（Vertical/Horizontal）建立视觉层次 金句："好的 GUI 不是把参数都摆出来，而是让美术知道先填什么、后填什么。
+  - `cue-01` 00:00.00-00:01.80 segment 0: reveal-focus -> content-beat (信息架构设计); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: 信息架构设计
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“信息架构设计”，弱化其他内容；旁白：信息架构设计。
+  - `cue-02` 00:00.00-00:01.80 segment 1: reveal-focus -> content-beat (BeginVertical 创建视觉边界); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: BeginVertical 创建视觉边界
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“BeginVertical 创建视觉边界”，弱化其他内容；旁白：BeginVertical 创建视觉边界。
+  - `cue-03` 00:00.00-00:01.80 segment 2: reveal-focus -> content-beat (按渲染逻辑排列参数); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 按渲染逻辑排列参数
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“按渲染逻辑排列参数”，弱化其他内容；旁白：按渲染逻辑排列参数。
 
 ### Module_02 / p01
 
@@ -37,12 +37,12 @@
 - Palette: clear, instructional, confident
 - Emphasis: motionCues bind subtitles to knowledgeFocus; optional slide `mentalModel` in slides.json (teaching layer).
 - Motion cues:
-  - `cue-01` 00:00.00-00:13.56 segment 0: reveal-focus -> content-beat (条件显示技术); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: 只给用户他需要的：智能 UI 联动 —— 逐字稿 好的面板不是"能改所有参数"，而是"在当前配置下，只展示有意义的参数"。
-    - Shot: 0.00s-13.56s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“条件显示技术”，弱化其他内容；旁白：只给用户他需要的：智能 UI 联动 —— 逐字稿 好的面板不是"能改所有参数"，而是"在当前配置下，只展示有意义的参数"。
-  - `cue-02` 00:13.56-00:16.67 segment 1: reveal-focus -> content-beat (Toggle/Enum 控制参数组显隐); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 条件显示是专业感的核心来源。
-    - Shot: 13.56s-16.67s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“Toggle/Enum 控制参数组显隐”，弱化其他内容；旁白：条件显示是专业感的核心来源。
-  - `cue-03` 00:16.67-00:34.22 segment 2: reveal-focus -> content-beat (EditorGUI.DisabledScope 应用); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 核心观点 问题：枚举切换后，某些参数对当前配置无意义，但还显示着，干扰判断 思路：监听关键属性（Toggle/Enum），用 EditorGUILayout.
-    - Shot: 16.67s-34.22s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“EditorGUI.DisabledScope 应用”，弱化其他内容；旁白：核心观点 问题：枚举切换后，某些参数对当前配置无意义，但还显示着，干扰判断 思路：监听关键属性（Toggle/Enum），用 EditorGUILayout。
+  - `cue-01` 00:00.00-00:01.80 segment 0: reveal-focus -> content-beat (条件显示技术); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: 条件显示技术
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“条件显示技术”，弱化其他内容；旁白：条件显示技术。
+  - `cue-02` 00:00.00-00:01.80 segment 1: reveal-focus -> content-beat (Toggle/Enum 控制参数组显隐); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: Toggle/Enum 控制参数组显隐
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“Toggle/Enum 控制参数组显隐”，弱化其他内容；旁白：Toggle/Enum 控制参数组显隐。
+  - `cue-03` 00:00.00-00:01.80 segment 2: reveal-focus -> content-beat (EditorGUI.DisabledScope 应用); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: EditorGUI.DisabledScope 应用
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“EditorGUI.DisabledScope 应用”，弱化其他内容；旁白：EditorGUI.DisabledScope 应用。
 
 ### Module_02 / p02
 
@@ -55,14 +55,23 @@
 - Palette: clear, instructional, confident
 - Emphasis: motionCues bind subtitles to knowledgeFocus; optional slide `mentalModel` in slides.json (teaching layer).
 - Motion cues:
-  - `cue-01` 00:00.00-00:16.89 segment 0: reveal-focus -> content-beat (封装 DrawProp / DrawTex / BeginGroup 工具类); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: 阶段6：封装工具类（Refactoring Utility）—— 逐字稿 如果我们每个 ShaderGUI 都手写一遍 EditorGUILayout.
-    - Shot: 0.00s-16.89s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“封装 DrawProp / DrawTex / BeginGroup 工具类”，弱化其他内容；旁白：阶段6：封装工具类（Refactoring Utility）—— 逐字稿 如果我们每个 ShaderGUI 都手写一遍 EditorGUILayout。
-  - `cue-02` 00:16.89-00:24.44 segment 1: reveal-focus -> content-beat (提高编写效率); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: BeginVertical("box")，代码会变得冗长且难以维护。
-    - Shot: 16.89s-24.44s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“提高编写效率”，弱化其他内容；旁白：BeginVertical("box")，代码会变得冗长且难以维护。
-  - `cue-03` 00:24.44-00:27.56 segment 2: reveal-focus -> content-beat (视觉统一性); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 作为开发者，我们要学会抽象。
-    - Shot: 24.44s-27.56s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“视觉统一性”，弱化其他内容；旁白：作为开发者，我们要学会抽象。
+  - `cue-01` 00:00.00-00:01.80 segment 0: reveal-focus -> content-beat (封装 DrawProp / DrawTex / BeginGroup 工具类); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: 封装 DrawProp / DrawTex / BeginGroup 工具类
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“封装 DrawProp / DrawTex / BeginGroup 工具类”，弱化其他内容；旁白：封装 DrawProp / DrawTex / BeginGroup 工具类。
+  - `cue-02` 00:00.00-00:01.80 segment 1: reveal-focus -> content-beat (提高编写效率); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 提高编写效率
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“提高编写效率”，弱化其他内容；旁白：提高编写效率。
+  - `cue-03` 00:00.00-00:01.80 segment 2: reveal-focus -> content-beat (视觉统一性); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 视觉统一性
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“视觉统一性”，弱化其他内容；旁白：视觉统一性。
 
 ## Interactive Screens
+
+### explore-p01-smart-ui-linkage - 智能 UI 联动实验
+
+- Route: `/module/Module_02/slide/p01/explore`
+- Purpose: Let learners manipulate ShaderGUI property grouping variables as a subpage of the current lesson, without consuming a main slide number.
+- Layout: interactive property grouping lab
+- Composition: wide interactive workbench / breadcrumb -> controls -> live feedback -> return to lesson
+- Realtime cues: 3
+- Handoff target: `CourseApp/src/views/ExploreView.vue`
 
 ### quiz - 做题页
 

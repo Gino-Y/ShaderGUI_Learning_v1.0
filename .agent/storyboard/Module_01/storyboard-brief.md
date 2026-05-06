@@ -19,10 +19,10 @@
 - Palette: clear, instructional, confident
 - Emphasis: motionCues bind subtitles to knowledgeFocus; optional slide `mentalModel` in slides.json (teaching layer).
 - Motion cues:
-  - `cue-01` 00:00.00-00:09.56 segment 0: reveal-focus -> content-beat (ShaderGUI 是 Shader 参数系统的前端工程层); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: 当我们谈论 ShaderGUI 时，先不要把它理解成给 Inspector 换一层皮。
-    - Shot: 0.00s-9.56s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“ShaderGUI 是 Shader 参数系统的前端工程层”，弱化其他内容；旁白：当我们谈论 ShaderGUI 时，先不要把它理解成给 Inspector 换一层皮。
-  - `cue-02` 00:09.56-00:15.56 segment 1: reveal-focus -> content-beat (不是简单的 UI 美化); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 更准确地说，它是 Shader 参数系统的前端工程层。
-    - Shot: 9.56s-15.56s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“不是简单的 UI 美化”，弱化其他内容；旁白：更准确地说，它是 Shader 参数系统的前端工程层。
+  - `cue-01` 00:00.00-00:01.80 segment 0: reveal-focus -> content-beat (ShaderGUI 是 Shader 参数系统的前端工程层); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: ShaderGUI 是 Shader 参数系统的前端工程层
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“ShaderGUI 是 Shader 参数系统的前端工程层”，弱化其他内容；旁白：ShaderGUI 是 Shader 参数系统的前端工程层。
+  - `cue-02` 00:00.00-00:01.80 segment 1: reveal-focus -> content-beat (不是简单的 UI 美化); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 不是简单的 UI 美化
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“不是简单的 UI 美化”，弱化其他内容；旁白：不是简单的 UI 美化。
 
 ### Module_01 / p01
 
@@ -35,12 +35,12 @@
 - Palette: clear, instructional, confident
 - Emphasis: motionCues bind subtitles to knowledgeFocus; optional slide `mentalModel` in slides.json (teaching layer).
 - Motion cues:
-  - `cue-01` 00:00.00-00:05.56 segment 0: reveal-focus -> content-beat (继承 ShaderGUI); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: 自定义 ShaderGUI 的最小架构其实很直接。
-    - Shot: 0.00s-5.56s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“继承 ShaderGUI”，弱化其他内容；旁白：自定义 ShaderGUI 的最小架构其实很直接。
-  - `cue-02` 00:05.56-00:14.67 segment 1: reveal-focus -> content-beat (重写 OnGUI); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: C Sharp 侧创建一个类，继承 ShaderGUI，并重写 OnGUI 方法。
-    - Shot: 5.56s-14.67s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“重写 OnGUI”，弱化其他内容；旁白：C Sharp 侧创建一个类，继承 ShaderGUI，并重写 OnGUI 方法。
-  - `cue-03` 00:14.67-00:22.22 segment 2: reveal-focus -> content-beat (通过 CustomEditor 绑定); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: Shader 侧在文件底部用 CustomEditor 绑定这个类。
-    - Shot: 14.67s-22.22s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“通过 CustomEditor 绑定”，弱化其他内容；旁白：Shader 侧在文件底部用 CustomEditor 绑定这个类。
+  - `cue-01` 00:00.00-00:01.80 segment 0: reveal-focus -> content-beat (继承 ShaderGUI); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: 继承 ShaderGUI
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“继承 ShaderGUI”，弱化其他内容；旁白：继承 ShaderGUI。
+  - `cue-02` 00:00.00-00:01.80 segment 1: reveal-focus -> content-beat (重写 OnGUI); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 重写 OnGUI
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“重写 OnGUI”，弱化其他内容；旁白：重写 OnGUI。
+  - `cue-03` 00:00.00-00:01.80 segment 2: reveal-focus -> content-beat (通过 CustomEditor 绑定); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 通过 CustomEditor 绑定
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“通过 CustomEditor 绑定”，弱化其他内容；旁白：通过 CustomEditor 绑定。
 
 ### Module_01 / p02
 
@@ -53,12 +53,12 @@
 - Palette: clear, instructional, confident
 - Emphasis: motionCues bind subtitles to knowledgeFocus; optional slide `mentalModel` in slides.json (teaching layer).
 - Motion cues:
-  - `cue-01` 00:00.00-00:04.89 segment 0: reveal-focus -> content-beat (Required 模式的风险); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: 在实际工程中，我们推荐使用 Safe 模式。
-    - Shot: 0.00s-4.89s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“Required 模式的风险”，弱化其他内容；旁白：在实际工程中，我们推荐使用 Safe 模式。
-  - `cue-02` 00:04.89-00:06.09 segment 1: reveal-focus -> content-beat (Safe 模式的安全获取); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 为什么？
-    - Shot: 4.89s-6.09s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“Safe 模式的安全获取”，弱化其他内容；旁白：为什么。
-  - `cue-03` 00:06.09-00:09.20 segment 2: reveal-focus -> content-beat (封装 FindPropertySafe 工具函数); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 因为 Shader 会迭代。
-    - Shot: 6.09s-9.20s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“封装 FindPropertySafe 工具函数”，弱化其他内容；旁白：因为 Shader 会迭代。
+  - `cue-01` 00:00.00-00:01.80 segment 0: reveal-focus -> content-beat (Required 模式的风险); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: Required 模式的风险
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“Required 模式的风险”，弱化其他内容；旁白：Required 模式的风险。
+  - `cue-02` 00:00.00-00:01.80 segment 1: reveal-focus -> content-beat (Safe 模式的安全获取); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: Safe 模式的安全获取
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“Safe 模式的安全获取”，弱化其他内容；旁白：Safe 模式的安全获取。
+  - `cue-03` 00:00.00-00:01.80 segment 2: reveal-focus -> content-beat (封装 FindPropertySafe 工具函数); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 封装 FindPropertySafe 工具函数
+    - Shot: 0.00s-1.80s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“封装 FindPropertySafe 工具函数”，弱化其他内容；旁白：封装 FindPropertySafe 工具函数。
 
 ## Interactive Screens
 

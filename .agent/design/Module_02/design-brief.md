@@ -86,6 +86,20 @@
 
 ## Interactive Screens
 
+### explore-p01-smart-ui-linkage - 智能 UI 联动实验
+
+- Route: `/module/Module_02/slide/p01/explore`
+- Prompt: Design the exploration as a child page of the current lesson, not as a numbered slide. The layout must foreground manipulable controls, linked visible feedback, and a clear return path to the parent lesson. Realtime storyboard actions to preserve: load-exploration-contract, manipulate-variable, return-to-parent-slide.
+- Story purpose: Let learners manipulate ShaderGUI property grouping variables as a subpage of the current lesson, without consuming a main slide number.
+- Realtime cues: 3
+- Runtime target: `CourseApp/src/views/ExplorationView.vue`
+- Components: ExplorationShell, PropertyGroupingLab, LinkedFeedbackPanel, ReturnToParentSlide
+- Constraints:
+  - Exploration must not appear in slides.json and must not consume a pxx number.
+  - The route must be a child of the parent slide route.
+  - Interaction exists only because interaction-necessity-gate decided insert.
+  - Provide an obvious return path to the parent lesson.
+
 ### quiz - 做题页
 
 - Route: `/module/Module_02/quiz`
