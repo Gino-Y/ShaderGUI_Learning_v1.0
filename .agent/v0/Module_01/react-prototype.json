@@ -2,12 +2,12 @@
   "provider": "local-v0-fallback",
   "status": "prototype_ready",
   "module": "Module_01",
-  "generatedAt": "2026-05-05T11:46:47Z",
+  "generatedAt": "2026-05-06T00:08:05Z",
   "chat": {
     "id": "local-fallback",
     "url": null,
     "apiUrl": null,
-    "fallbackReason": "v0 HTTP 402: {\"error\":{\"type\":\"payment_required_error\",\"message\":\"You are out of credits. Add more or enable Auto-topup at https://v0.app/chat/settings/billing\"}}"
+    "fallbackReason": "The read operation timed out"
   },
   "source": {
     "slides": "CourseApp/src/data/slides.json",

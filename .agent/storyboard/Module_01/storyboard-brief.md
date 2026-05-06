@@ -53,12 +53,12 @@
 - Palette: clear, instructional, confident
 - Emphasis: motionCues bind subtitles to knowledgeFocus; optional slide `mentalModel` in slides.json (teaching layer).
 - Motion cues:
-  - `cue-01` 00:00.00-00:09.56 segment 0: reveal-focus -> content-beat (Required 模式的风险); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: 阶段3：属性查找的工程策略 —— 逐字稿 在实际工程中，我们推荐使用 Safe 模式。
-    - Shot: 0.00s-9.56s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“Required 模式的风险”，弱化其他内容；旁白：阶段3：属性查找的工程策略 —— 逐字稿 在实际工程中，我们推荐使用 Safe 模式。
-  - `cue-02` 00:09.56-00:10.76 segment 1: reveal-focus -> content-beat (Safe 模式的安全获取); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 为什么？
-    - Shot: 9.56s-10.76s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“Safe 模式的安全获取”，弱化其他内容；旁白：为什么。
-  - `cue-03` 00:10.76-00:13.87 segment 2: reveal-focus -> content-beat (封装 FindPropertySafe 工具函数); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 因为 Shader 会迭代。
-    - Shot: 10.76s-13.87s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“封装 FindPropertySafe 工具函数”，弱化其他内容；旁白：因为 Shader 会迭代。
+  - `cue-01` 00:00.00-00:04.89 segment 0: reveal-focus -> content-beat (Required 模式的风险); focus `knowledge-01` with pulse-once-then-hold / knowledge-highlight; target `point-card`; source subtitle: 在实际工程中，我们推荐使用 Safe 模式。
+    - Shot: 0.00s-4.89s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“Required 模式的风险”，弱化其他内容；旁白：在实际工程中，我们推荐使用 Safe 模式。
+  - `cue-02` 00:04.89-00:06.09 segment 1: reveal-focus -> content-beat (Safe 模式的安全获取); focus `knowledge-02` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 为什么？
+    - Shot: 4.89s-6.09s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“Safe 模式的安全获取”，弱化其他内容；旁白：为什么。
+  - `cue-03` 00:06.09-00:09.20 segment 2: reveal-focus -> content-beat (封装 FindPropertySafe 工具函数); focus `knowledge-03` with soft-blink-then-hold / knowledge-highlight; target `point-card`; source subtitle: 因为 Shader 会迭代。
+    - Shot: 6.09s-9.20s 保持标题和主体结构稳定，将知识点卡片切到当前焦点“封装 FindPropertySafe 工具函数”，弱化其他内容；旁白：因为 Shader 会迭代。
 
 ## Interactive Screens
 

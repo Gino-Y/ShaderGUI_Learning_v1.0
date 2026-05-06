@@ -21,6 +21,8 @@ DEFAULT_VOICE = "zh-CN-XiaoxiaoNeural"
 
 def clean_text(path: Path) -> str:
     text = path.read_text(encoding="utf-8")
+    # 0. 移除 H1 文档标题行（匹配 `—— 逐字稿` 的元数据标题，非正文内容）
+    text = re.sub(r"^#\s+.*[—\-]{2}\s*逐字稿\s*$", "", text, flags=re.MULTILINE)
     # 1. 移除代码块（```...```）
     text = re.sub(r"```[\s\S]*?```", " ", text)
     # 2. 移除行内代码（`...`）
