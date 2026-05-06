@@ -149,3 +149,7 @@ When ADP accumulates storyboard contracts, coverage validation must compare `(mo
 ## ADP Design Validation
 
 When ADP accumulates design contracts, coverage validation must compare `(moduleId, slideId)`, not bare `slideId`. Warning-level design findings are diagnostic and must not fail the pipeline; only non-warning errors are blocking. ADP validation must also check that the accumulated design contract covers all generated slides.
+
+## Transcript Narration Quality
+
+Transcript text that feeds subtitles and TTS must not speak document-outline labels such as `核心观点`, `问题：`, `思路：`, `金句：`, or `结论：`. `generate_audio.py clean_text()` must remove transcript metadata headings, outline section headings, table rows, list labels, and internal production fields before generating audio/subtitles. `scripts/verify_course.py` must guard this cleaned narration surface.

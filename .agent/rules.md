@@ -550,3 +550,10 @@ Ordinary single-module MVP keeps its original cleanup and scoped output behavior
 - [ADP_DESIGN_MODULE_QUALIFIED_COVERAGE] ADP 累加后的 design 契约校验必须用 `(moduleId, slideId)` 判断覆盖范围，禁止只用 `slideId`。
 - Design 校验中的 `severity: warning` 不得阻断 pipeline；只有 `severity` 非 `warning` 的错误才能让节点失败。
 - ADP 模式下 Design 校验还必须检查累计 design 契约覆盖全部生成 slides，避免后续模块覆盖前序模块。
+
+## Transcript Narration Quality
+
+- [TRANSCRIPT_NARRATION_NO_OUTLINE_LABELS] 逐字稿进入 TTS 和字幕前不得朗读文档结构标签，例如 `核心观点`、`问题：`、`思路：`、`金句：`、`结论：`。
+- `generate_audio.py clean_text()` 必须移除逐字稿元数据标题、二级结构标题、表格行、列表标签和内部生产字段，再生成字幕和音频。
+- `scripts/verify_course.py` 必须检查清洗后的逐字稿不会把上述结构标签泄漏到语音或字幕。
+- 禁止通过手改 `CourseApp/public/audio` 或 `CourseApp/public/subtitles` 修复此类问题；必须改模板/验证门闸后重新生成。

@@ -102,3 +102,9 @@ Do not store durable role instructions in `.cursor/` or `.workbuddy/`; write all
 - Do not treat bare slide ids such as `p02` as globally unique across modules.
 - Design `severity: warning` findings are non-blocking; only non-warning errors fail the node.
 - If ADP fails at Module_03 Design with only an extra-slide warning, the workflow implementation is stale.
+
+## Transcript Narration Quality
+
+- Audio/subtitle generation must not speak transcript outline labels such as `核心观点`, `问题：`, `思路：`, `金句：`, or `结论：`.
+- Fix this at `.agent/templates/scripts/generate_audio.py` and `scripts/verify_course.py`, then regenerate through MVP/ADP.
+- Do not patch generated subtitle JSON or MP3 files by hand.

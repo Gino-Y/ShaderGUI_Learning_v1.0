@@ -42,6 +42,13 @@ This section supersedes all older ADP notes below.
 - Changed `.agent/mcp_servers/design_mcp.py` to validate `(moduleId, slideId)`, check accumulated coverage in ADP, and fail only on non-warning errors.
 - Changed `.agent/flow_engine.py` to pass `accumulate=(mode == "adp")` into design validation.
 - Next execution layer should rerun ADP from the latest commit and report only command/result/errors.
+## 2026-05-06 Transcript Narration Quality Gate
+
+- Role: workflow/DAG layer.
+- Fixed transcript narration quality issue where generated subtitles/audio could speak outline labels such as `核心观点`, `问题：`, and `思路：`.
+- Changed `.agent/templates/scripts/generate_audio.py` and synced `scripts/generate_audio.py` to remove metadata headings, outline headings, table rows, list labels, and internal production fields before subtitle/TTS generation.
+- Changed `scripts/verify_course.py` and `.agent/templates/scripts/verify_course.py` to validate cleaned narration text for forbidden outline labels.
+- Product artifacts were not hand-edited; execution layer must regenerate audio/subtitles via MVP/ADP.
 ## Completed Work
 
 - **2026-05-06 (Lab 组件创建 + ADP 全量通过)**:

@@ -21,35 +21,43 @@ DEFAULT_VOICE = "zh-CN-XiaoxiaoNeural"
 
 def clean_text(path: Path) -> str:
     text = path.read_text(encoding="utf-8")
-    # 0. 移除 H1 文档标题行（匹配 `—— 逐字稿` 的元数据标题，非正文内容）
-    text = re.sub(r"^#\s+.*[—\-]{2}\s*逐字稿\s*$", "", text, flags=re.MULTILINE)
-    # 1. 移除代码块（```...```）
+    # Remove metadata/title headings and outline-only section headers before TTS.
+    text = re.sub(r"^#\s+.*[—-]{2}\s*逐字稿\s*$", "", text, flags=re.MULTILINE)
+    text = re.sub(
+        r"^\s*#{2,6}\s*(核心观点|代码示例|工程实践建议|条件显示三板斧|实战验收|元认知总结)\s*$",
+        "",
+        text,
+        flags=re.MULTILINE,
+    )
+    # Remove narration labels that are useful in notes but awkward when spoken.
+    text = re.sub(
+        r"^\s*[-*+]?\s*(?:\*\*)?\s*(核心观点|问题|思路|金句|结论|建议|注意|目标|方法|原因|风险)(?:\*\*)?\s*[：:]\s*",
+        "",
+        text,
+        flags=re.MULTILINE,
+    )
+    # Remove fenced and inline code markers.
     text = re.sub(r"```[\s\S]*?```", " ", text)
-    # 2. 移除行内代码（`...`）
     text = re.sub(r"`([^`]+)`", r"\1", text)
-    # 3. 移除标题符号（# ## ###）
+    # Remove any remaining markdown heading markers but keep non-outline text.
     text = re.sub(r"^#+\s*", "", text, flags=re.MULTILINE)
-    # 4. 移除粗体/斜体符号（**bold** *italic*）
+    # Remove emphasis markers.
     text = re.sub(r"\*{1,2}([^\*]+)\*{1,2}", r"\1", text)
     text = re.sub(r"_{1,2}([^_]+)_{1,2}", r"\1", text)
-    # 5. 移除链接/图片语法（[text](url) ![alt](url)）
-    text = re.sub(r"!\[([^\]]*)\]\([^\)]*\)", r"\1", text)  # 图片
-    text = re.sub(r"\[([^\]]*)\]\([^\)]*\)", r"\1", text)    # 链接
-    # 6. 移除引用符号（>）
+    # Remove links/images, quotes, horizontal rules, list markers, and table syntax.
+    text = re.sub(r"!\[([^\]]*)\]\([^\)]*\)", r"\1", text)
+    text = re.sub(r"\[([^\]]*)\]\([^\)]*\)", r"\1", text)
     text = re.sub(r"^\s*>+\s*", "", text, flags=re.MULTILINE)
-    # 7. 移除水平线（--- *** ___）
     text = re.sub(r"^\s*(-{3,}|\*{3,}|_{3,})\s*$", "", text, flags=re.MULTILINE)
-    # 8. 移除列表符号（- * 1.）
+    text = re.sub(r"^\s*\|.*\|\s*$", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^\s*[-:\s|]{3,}\s*$", "", text, flags=re.MULTILINE)
     text = re.sub(r"^\s*[-*+]\s+", "", text, flags=re.MULTILINE)
     text = re.sub(r"^\s*\d+\.\s+", "", text, flags=re.MULTILINE)
-    # 9. 移除表格语法（|）
     text = text.replace("|", " ")
-    # 10. 移除内部指导字段（shotInstruction/focusInstruction/implementationHint/learnerTakeaway/Now focusing）
+    # Remove internal production guidance fields if they ever leak into transcript sources.
     text = re.sub(r"(shotInstruction|focusInstruction|implementationHint|learnerTakeaway|Now focusing)\s*[:：]\s*[^\n]*", "", text)
-    # 11. 合并多余空白
     text = re.sub(r"\s+", " ", text)
     return text.strip()
-
 
 def transcript_to_sentences(path: Path) -> list[str]:
     text = clean_text(path)

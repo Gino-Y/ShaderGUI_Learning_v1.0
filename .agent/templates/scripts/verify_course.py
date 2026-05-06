@@ -30,6 +30,50 @@ def source_snippets() -> list[str]:
                 snippets.append(sentence)
     return snippets
 
+NARRATION_LABEL_RE = re.compile(
+    r"(^|\s)(核心观点|问题|思路|金句|结论|建议|注意|目标|方法|原因|风险)\s*[：:]"
+)
+
+def clean_transcript_for_narration(text: str) -> str:
+    text = re.sub(r"^#\s+.*[—-]{2}\s*逐字稿\s*$", "", text, flags=re.MULTILINE)
+    text = re.sub(
+        r"^\s*#{2,6}\s*(核心观点|代码示例|工程实践建议|条件显示三板斧|实战验收|元认知总结)\s*$",
+        "",
+        text,
+        flags=re.MULTILINE,
+    )
+    text = re.sub(
+        r"^\s*[-*+]?\s*(?:\*\*)?\s*(核心观点|问题|思路|金句|结论|建议|注意|目标|方法|原因|风险)(?:\*\*)?\s*[：:]\s*",
+        "",
+        text,
+        flags=re.MULTILINE,
+    )
+    text = re.sub(r"```[\s\S]*?```", " ", text)
+    text = re.sub(r"`([^`]+)`", r"\1", text)
+    text = re.sub(r"^#+\s*", "", text, flags=re.MULTILINE)
+    text = re.sub(r"\*{1,2}([^\*]+)\*{1,2}", r"\1", text)
+    text = re.sub(r"_{1,2}([^_]+)_{1,2}", r"\1", text)
+    text = re.sub(r"!\[([^\]]*)\]\([^\)]*\)", r"\1", text)
+    text = re.sub(r"\[([^\]]*)\]\([^\)]*\)", r"\1", text)
+    text = re.sub(r"^\s*>+\s*", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^\s*(-{3,}|\*{3,}|_{3,})\s*$", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^\s*\|.*\|\s*$", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^\s*[-:\s|]{3,}\s*$", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^\s*[-*+]\s+", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^\s*\d+\.\s+", "", text, flags=re.MULTILINE)
+    text = text.replace("|", " ")
+    return re.sub(r"\s+", " ", text).strip()
+
+def check_transcript_narration_quality(errors: list[str]) -> None:
+    for path in CONTENT.glob("Module_*/doc/*.md"):
+        text = path.read_text(encoding="utf-8-sig")
+        cleaned = clean_transcript_for_narration(text)
+        match = NARRATION_LABEL_RE.search(cleaned)
+        if match:
+            errors.append(
+                f"transcript narration label would leak into audio/subtitles: {path.relative_to(ROOT)} -> {match.group(2)}"
+            )
+
 def check_mcp_content_boundary(errors: list[str]) -> None:
     snippets = source_snippets()
     for path in (ROOT / ".agent" / "mcp_servers").glob("*.py"):
@@ -356,6 +400,7 @@ def main() -> int:
                 errors.append(f"missing alignment constraint marker in {path.relative_to(ROOT)}: {marker}")
 
     check_utf8_and_mojibake(errors)
+    check_transcript_narration_quality(errors)
     check_mcp_content_boundary(errors)
     if errors:
         print("[FAIL] course verification failed")

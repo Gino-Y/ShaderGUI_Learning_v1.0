@@ -241,3 +241,18 @@ ADP 累加模式下，DesignMCP 校验同样属于跨模块全局契约校验：
 - `Module_01/p02` 不应在校验 `Module_03` 时被误判为当前模块的 extra slide。
 - `severity: warning` 是诊断信息，不阻断 DAG；只有非 warning 错误阻断节点。
 - ADP 校验还要确认累计 design 契约覆盖当前生成的全部 slide，防止后续模块覆盖前序模块。
+
+## Transcript Narration Quality Gate
+
+逐字稿进入语音与字幕前必须经过叙述面清洗：
+
+```text
+CourseContent/Module_XX/doc/*.md
+  -> generate_audio.py clean_text()
+  -> subtitles JSON + TTS MP3
+  -> verify_course.py narration-label gate
+```
+
+- 清洗必须移除元数据标题、二级结构标题、Markdown 表格和列表结构标签。
+- `核心观点`、`问题：`、`思路：`、`金句：`、`结论：` 等文档编辑标签不得出现在生成字幕或语音朗读文本中。
+- 此类问题不得通过手改 `CourseApp/public/audio` 或 `CourseApp/public/subtitles` 修复，必须改 `.agent/templates/scripts/generate_audio.py` 与验证门闸后重新生成。
