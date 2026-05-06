@@ -37,6 +37,13 @@ Latest verified state: **全部 4 模块 DEPLOY_READY**（ADP dispatcher 模式�
 - Root cause: accumulated storyboard validation compared bare `slideId` values, so another module's `p02` could be treated as an extra slide for Module_03. Warning-level findings were also treated as fatal.
 - Workflow fix: `flow_engine.py` passes ADP mode into storyboard validation; `StoryboardMCP.validate_storyboard_contract()` compares `(moduleId, slideId)`, checks accumulated coverage, and only fails on non-warning errors.
 - Product artifacts still need a fresh ADP execution by the execution layer.
+
+## 2026-05-06 ADP Design Validation Fix
+
+- Execution-layer ADP report proved Module_03 now passes Storyboard and fails in Design contract validation.
+- Root cause: accumulated design validation compared bare `slideId` values, so another module's `p02` could be treated as an extra slide for Module_03. Warning-level findings were also treated as fatal.
+- Workflow fix: `flow_engine.py` passes ADP mode into design validation; `DesignMCP.validate_design_contract()` compares `(moduleId, slideId)`, checks accumulated coverage, and only fails on non-warning errors.
+- Product artifacts still need a fresh ADP execution by the execution layer.
 ## Recent Changes
 
 - **2026-05-06 (Lab 组件创建 + ADP 全量通过)**:

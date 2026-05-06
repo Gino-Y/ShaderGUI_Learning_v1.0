@@ -544,3 +544,9 @@ Ordinary single-module MVP keeps its original cleanup and scoped output behavior
 - [ADP_STORYBOARD_MODULE_QUALIFIED_COVERAGE] ADP 累加后的 storyboard 校验必须用 `(moduleId, slideId)` 判断覆盖范围，禁止只用 `slideId`，因为不同模块都会有 `p00/p01`。
 - Storyboard 校验中的 `severity: warning` 不得阻断 pipeline；只有 `severity` 非 `warning` 的错误才能让节点失败。
 - ADP 模式下 Storyboard 校验还必须检查累计 storyboard 覆盖全部生成 slides，避免后一个模块覆盖前一个模块。
+
+## ADP Design Validation
+
+- [ADP_DESIGN_MODULE_QUALIFIED_COVERAGE] ADP 累加后的 design 契约校验必须用 `(moduleId, slideId)` 判断覆盖范围，禁止只用 `slideId`。
+- Design 校验中的 `severity: warning` 不得阻断 pipeline；只有 `severity` 非 `warning` 的错误才能让节点失败。
+- ADP 模式下 Design 校验还必须检查累计 design 契约覆盖全部生成 slides，避免后续模块覆盖前序模块。

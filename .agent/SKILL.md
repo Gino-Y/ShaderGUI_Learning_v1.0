@@ -145,3 +145,7 @@ Course home module cards must expose optional local progress states: `看过`, `
 ## ADP Storyboard Validation
 
 When ADP accumulates storyboard contracts, coverage validation must compare `(moduleId, slideId)`, not bare `slideId`. Warning-level storyboard findings are diagnostic and must not fail the pipeline; only non-warning errors are blocking. ADP validation must also check that the accumulated storyboard covers all generated slides.
+
+## ADP Design Validation
+
+When ADP accumulates design contracts, coverage validation must compare `(moduleId, slideId)`, not bare `slideId`. Warning-level design findings are diagnostic and must not fail the pipeline; only non-warning errors are blocking. ADP validation must also check that the accumulated design contract covers all generated slides.

@@ -95,3 +95,10 @@ Do not store durable role instructions in `.cursor/` or `.workbuddy/`; write all
 - Do not treat bare slide ids such as `p02` as globally unique across modules.
 - Storyboard `severity: warning` findings are non-blocking; only non-warning errors fail the node.
 - If ADP fails at Module_03 Storyboard with only an extra-slide warning, the workflow implementation is stale.
+
+## ADP Design Validation
+
+- ADP design coverage must compare `(moduleId, slideId)`.
+- Do not treat bare slide ids such as `p02` as globally unique across modules.
+- Design `severity: warning` findings are non-blocking; only non-warning errors fail the node.
+- If ADP fails at Module_03 Design with only an extra-slide warning, the workflow implementation is stale.

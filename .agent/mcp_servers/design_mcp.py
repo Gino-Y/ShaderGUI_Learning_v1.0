@@ -355,7 +355,7 @@ class DesignMCP:
 
     @staticmethod
     def validate_design_contract(
-        workspace: Path, module: str, design_file: str | None
+        workspace: Path, module: str, design_file: str | None, accumulate: bool = False
     ) -> dict:
         """Validate the design contract structure and field coverage."""
         if not design_file:
@@ -494,32 +494,63 @@ class DesignMCP:
         if slides_file.exists():
             try:
                 source_slides = json.loads(slides_file.read_text(encoding="utf-8"))
-                source_ids = {s.get("slideId") for s in source_slides if s.get("moduleId") == module}
-                contract_ids = {s.get("slideId") for s in slides}
+                source_ids = {
+                    (s.get("moduleId"), s.get("slideId"))
+                    for s in source_slides
+                    if s.get("moduleId") == module and s.get("slideId")
+                }
+                contract_ids = {
+                    (s.get("moduleId"), s.get("slideId"))
+                    for s in slides
+                    if s.get("moduleId") == module and s.get("slideId")
+                }
                 missing = source_ids - contract_ids
                 extra = contract_ids - source_ids
                 if missing:
                     errors.append({
                         "field": "slides.coverage",
-                        "issue": f"missing slideIds: {sorted(missing)}",
+                        "issue": f"missing slideIds: {DesignMCP._format_slide_ids(missing)}",
                         "severity": "error",
                     })
                 if extra:
                     errors.append({
                         "field": "slides.coverage",
-                        "issue": f"extra slideIds not in slides.json: {sorted(extra)}",
+                        "issue": f"extra slideIds not in slides.json: {DesignMCP._format_slide_ids(extra)}",
                         "severity": "warning",
                     })
+                if accumulate:
+                    all_source_ids = {
+                        (s.get("moduleId"), s.get("slideId"))
+                        for s in source_slides
+                        if s.get("moduleId") and s.get("slideId")
+                    }
+                    all_contract_ids = {
+                        (s.get("moduleId"), s.get("slideId"))
+                        for s in slides
+                        if s.get("moduleId") and s.get("slideId")
+                    }
+                    accumulated_missing = all_source_ids - all_contract_ids
+                    if accumulated_missing:
+                        errors.append({
+                            "field": "slides.accumulatedCoverage",
+                            "issue": f"missing accumulated slideIds: {DesignMCP._format_slide_ids(accumulated_missing)}",
+                            "severity": "error",
+                        })
             except json.JSONDecodeError:
                 pass  # slides.json parse error is not this method's responsibility
 
-        if errors:
+        fatal_errors = [error for error in errors if error.get("severity") != "warning"]
+        if fatal_errors:
             return {
                 "status": "failed",
-                "message": f"{len(errors)} check(s) failed",
+                "message": f"{len(fatal_errors)} check(s) failed",
                 "errors": errors,
             }
-        return {"status": "success", "message": "contract validation passed", "errors": []}
+        return {"status": "success", "message": "contract validation passed", "errors": errors}
+
+    @staticmethod
+    def _format_slide_ids(ids: set[tuple[str | None, str | None]]) -> list[str]:
+        return [f"{module}/{slide}" for module, slide in sorted(ids)]
 
     @staticmethod
     def auto_fix_design_contract(

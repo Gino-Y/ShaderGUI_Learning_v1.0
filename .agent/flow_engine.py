@@ -189,7 +189,7 @@ class CorePipeline:
             for attempt in range(1, state.max_retries + 1):
                 state.contract_check_retries = attempt
                 res = DesignMCP.validate_design_contract(
-                    self.workspace, state.module, state.design_file
+                    self.workspace, state.module, state.design_file, accumulate=(mode == "adp")
                 )
                 if res.get("status") == "success":
                     print(f"[Design 1/2 OK] 契约验证通过 (attempt {attempt})")
