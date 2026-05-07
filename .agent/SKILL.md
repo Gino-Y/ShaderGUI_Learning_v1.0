@@ -152,7 +152,7 @@ This applies to workflow, product/execution, and review roles equally.
 
 ## Course Home Module Progress State
 
-Course home module cards must expose optional local progress states: `看过`, `学过`, `已做题`, and `掌握`. The state model is ordered: selecting a later state implies all earlier states, and the UI must avoid broken combinations such as mastered without practiced. Persist this as learner runtime state in `localStorage`, not in course source or generated JSON contracts. Implement it in `.agent/templates/course-app/src/views/CourseHome.vue`, define the workflow contract in `.agent/design/course-home-progress-contract.json`, hand execution to `.agent/tasks/course-home-module-progress-maker-brief.md`, and verify it through `scripts/verify_course.py`.
+Course home module cards must expose optional local progress states: `看过`, `学过`, `已做题`, and `掌握`. The state model is ordered: selecting a later state implies all earlier states, and the UI must avoid broken combinations such as mastered without practiced. Persist this as learner runtime state in `localStorage`, not in course source or generated JSON contracts. Implement it in `.agent/templates/course-app/src/views/CourseHome.vue` and verify it through `scripts/verify_course.py`.
 
 ## ADP Storyboard Validation
 

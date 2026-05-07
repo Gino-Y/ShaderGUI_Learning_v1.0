@@ -551,8 +551,7 @@ Ordinary single-module MVP keeps its original cleanup and scoped output behavior
 - 状态必须按阶梯依赖表达：后一级状态表示前序状态已达成；运行时不得产生“掌握但未做题”之类的断裂状态。
 - 状态属于学习者本地交互数据，默认使用浏览器 `localStorage` 持久化；不得写入 `CourseContent/`、`course.json`、`slides.json`、`storyboard-contract.json`、`design-contract.json` 或 `stitch-manifest.json`。
 - 该能力必须从 `.agent/templates/course-app/src/views/CourseHome.vue` 生成，禁止只手改 `CourseApp/src/views/CourseHome.vue` 产物。
-- Workflow 层必须维护 `.agent/design/course-home-progress-contract.json` 和 `.agent/tasks/course-home-module-progress-maker-brief.md`，让执行层从文件接手，不依赖聊天上下文。
-- `scripts/verify_course.py` 必须检查首页与模板包含模块状态持久化、四个状态标签、阶梯状态函数标记、progress contract 和 maker brief。
+- `scripts/verify_course.py` 必须检查首页与模板包含模块状态持久化、四个状态标签和阶梯状态函数标记。
 
 ## ADP Storyboard Validation
 
