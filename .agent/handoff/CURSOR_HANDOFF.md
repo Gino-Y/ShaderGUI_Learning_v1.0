@@ -55,6 +55,18 @@ This section supersedes all older ADP notes below.
 - Added Pages base path `/ShaderGUI_Learning_v1.0/` to current app and templates.
 - Vue Router now uses `createWebHistory(import.meta.env.BASE_URL)` in current app and templates.
 - Deployment should publish only `CourseApp/dist` to `gh-pages`, with `.nojekyll` and `404.html` fallback.
+
+## 2026-05-07 GitHub Pages Playback Fix
+
+- Role: workflow/deploy + execution repair.
+- User reported online deep link playback failure at `https://gino-y.github.io/ShaderGUI_Learning_v1.0/module/Module_01/slide/p01`.
+- Confirmed deep link returned 404 and root-level audio path `/audio/Module_01/p01.mp3` returned 404, while subpath audio `/ShaderGUI_Learning_v1.0/audio/Module_01/p01.mp3` returned 200.
+- Changed current and template `SlideNav.vue` to resolve audio/subtitle public assets with `import.meta.env.BASE_URL`.
+- Changed current and template `package.json` build script to run `node scripts/postbuild-pages.mjs`.
+- Added current and template `scripts/postbuild-pages.mjs` to copy `dist/index.html` to `dist/404.html` and write `dist/.nojekyll`.
+- Verification: `python scripts\verify_course.py` passed; `npm --prefix CourseApp run build` passed; `CourseApp/dist/404.html` and `CourseApp/dist/.nojekyll` exist after build.
+- DAG impact: no DAG node order change; deploy gate strengthened.
+- Next execution step: publish updated `CourseApp/dist` to `gh-pages`.
 ## Completed Work
 
 - **2026-05-06 (Lab 组件创建 + ADP 全量通过)**:

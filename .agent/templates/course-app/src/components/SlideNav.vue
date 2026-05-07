@@ -32,7 +32,7 @@
           <RouterLink :to="nextRoute" class="rounded-md border border-white/15 px-3 py-2 text-sm text-white/80 transition hover:border-cyan-300/50 hover:text-white">{{ nextLabel }}</RouterLink>
         </div>
       </div>
-      <audio ref="audio" :src="slide.audio" class="hidden" preload="auto" playsinline @loadedmetadata="syncDuration" @canplay="requestInitialPlayback" @play="playing = true" @pause="playing = false" @timeupdate="syncPlayback" @ended="handleEnded" />
+      <audio ref="audio" :src="resolvedAudioSrc" class="hidden" preload="auto" playsinline @loadedmetadata="syncDuration" @canplay="requestInitialPlayback" @play="playing = true" @pause="playing = false" @timeupdate="syncPlayback" @ended="handleEnded" />
     </div>
   </footer>
 </template>
@@ -56,6 +56,7 @@ const prevRoute = computed(() => props.moduleSlides[currentIndex.value - 1]?.rou
 const isLastSlide = computed(() => currentIndex.value === props.moduleSlides.length - 1);
 const nextRoute = computed(() => props.moduleSlides[currentIndex.value + 1]?.route ?? `/module/${props.slide.moduleId}/quiz`);
 const nextLabel = computed(() => (isLastSlide.value ? "做题页" : "下一页"));
+const resolvedAudioSrc = computed(() => resolvePublicAsset(props.slide.audio));
 const seekPercent = computed({
   get() {
     if (!duration.value) return 0;
@@ -92,9 +93,16 @@ async function loadSubtitles() {
   emitSubtitle("");
   if (!props.slide.subtitles) return;
   try {
-    const response = await fetch(props.slide.subtitles);
+    const response = await fetch(resolvePublicAsset(props.slide.subtitles));
     subtitleEvents.value = response.ok ? await response.json() : [];
   } catch { subtitleEvents.value = []; }
+}
+function resolvePublicAsset(path) {
+  if (!path) return "";
+  if (/^(https?:)?\/\//.test(path) || path.startsWith("data:")) return path;
+  const base = import.meta.env.BASE_URL || "/";
+  const normalizedBase = base.endsWith("/") ? base : `${base}/`;
+  return `${normalizedBase}${String(path).replace(/^\/+/, "")}`;
 }
 function syncDuration() { duration.value = Number.isFinite(audio.value?.duration) ? audio.value.duration : 0; }
 function syncSubtitle() {

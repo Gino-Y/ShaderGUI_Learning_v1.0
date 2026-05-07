@@ -57,6 +57,17 @@ Latest verified state: **全部 4 模块 DEPLOY_READY**（ADP dispatcher 模式�
 - Changed current app and templates so Vite base and Vue Router base match the Pages subpath.
 - Deployment artifact must include `.nojekyll` and `404.html` copied from `index.html` for SPA fallback.
 - Publish only `CourseApp/dist` to `gh-pages`; do not mix execution-layer dirty changes into source branches.
+
+## 2026-05-07 GitHub Pages Playback Fix
+
+- User reported online page `https://gino-y.github.io/ShaderGUI_Learning_v1.0/module/Module_01/slide/p01` could no longer play.
+- Confirmed two production issues:
+  - Direct deep link returned 404 because `dist/404.html` was missing.
+  - Online audio existed under `/ShaderGUI_Learning_v1.0/audio/...`, but runtime data used `/audio/...`, causing browser requests to site-root audio paths.
+- Fixed `SlideNav.vue` in both current app and template to resolve public audio/subtitle assets through `import.meta.env.BASE_URL`.
+- Added `postbuild-pages.mjs` in current app and template so build writes `dist/404.html` and `dist/.nojekyll`.
+- Verification: `python scripts\verify_course.py` passed and `npm --prefix CourseApp run build` passed.
+- DAG impact: no node order change; this is a GitHub Pages deployment/runtime asset path gate fix.
 ## Recent Changes
 
 - **2026-05-06 (Lab 组件创建 + ADP 全量通过)**:
