@@ -214,20 +214,6 @@ Required report fields:
 
 This is a workflow completion gate, not a platform binding rule. It keeps cross-agent execution from depending on unrecorded chat context.
 
-## Copyable Role Guidance Format
-
-When the active executor gives another role, platform, or AI a copyable instruction, the instruction must be fenced as Markdown `text`:
-
-````markdown
-```text
-You are product / execution layer.
-
-Task...
-```
-````
-
-This applies to role prompts, Cursor/Codex handoff text, execution-layer instructions, review-layer instructions, and maker briefs pasted through chat. The surrounding explanation may stay outside the block.
-
 ## Small Fix Ownership
 
 小而确定、低风险的一致性问题由当前执行方直接修复，不得要求用户手动处理。包括路径不一致、编码问题、handoff/memory/STATE 漏写、验证脚本漂移和明显笔误。

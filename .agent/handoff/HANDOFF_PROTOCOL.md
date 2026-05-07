@@ -93,20 +93,6 @@ At task completion, every executor must report:
 
 This requirement applies regardless of current role and prevents the next executor from relying on chat-only context.
 
-## Copyable Role Guidance Format
-
-If a handoff response includes guidance intended to be copied into another AI or platform, the full guidance must be wrapped in a fenced Markdown code block with language `text`.
-
-````markdown
-```text
-You are workflow / DAG layer.
-
-Task...
-```
-````
-
-Do not mix copyable role instructions into surrounding explanation.
-
 ## Course Home Module Progress State
 
 - Course home module cards include local learner status: `看过 -> 学过 -> 已做题 -> 掌握`.

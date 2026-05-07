@@ -73,13 +73,6 @@ This section supersedes all older ADP notes below.
 - Updated `scripts/verify_course.py` and `.agent/templates/scripts/verify_course.py` to require the contract and brief.
 - Product/execution layer should read the maker brief, run ADP, run verify/build, inspect the homepage, and report results. It must not hand-edit CourseApp as the final solution.
 
-## 2026-05-07 Copyable Role Guidance Format
-
-- Role: workflow/DAG layer.
-- Added a rule requiring copyable role/platform instructions in chat to be wrapped in fenced Markdown `text` blocks.
-- Applies to prompts for Cursor/Codex, maker guidance, review handoffs, and execution-layer next-step instructions.
-- This is a handoff formatting guard only; it does not change role responsibilities.
-
 ## Completed Work
 
 - **2026-05-06 (Lab 组件创建 + ADP 全量通过)**:
