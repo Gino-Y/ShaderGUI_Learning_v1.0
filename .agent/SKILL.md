@@ -134,18 +134,6 @@ Roles are not permanently bound to platforms. When the user says `你是 <role>`
 
 This is a role switch, not platform binding. Codex, Cursor, and any other executor can serve any role when the user explicitly assigns it.
 
-## Cross-Role Completion Report
-
-Every completed task must end with a role-aware report:
-
-- name the current role used for the task;
-- summarize what was changed, run, verified, or inspected;
-- state whether DAG/rules/product artifacts were affected;
-- guide the next relevant role, such as workflow updating templates, execution rerunning MVP/ADP, or review inspecting a risk;
-- explicitly say when no cross-role handoff is needed.
-
-This applies to workflow, product/execution, and review roles equally.
-
 ## ADP Accumulation Semantics
 
 `--adp` performs one initial cleanup, then accumulates module outputs across the normal MVP pipeline. Course data, storyboard, design, and stitch manifests must merge by `moduleId`; ordinary MVP remains single-module and clean-first.

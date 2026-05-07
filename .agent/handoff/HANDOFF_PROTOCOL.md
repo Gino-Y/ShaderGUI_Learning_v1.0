@@ -81,18 +81,6 @@ Roles are runtime responsibilities, not platform identities. If the user says `�
 
 Do not store durable role instructions in `.cursor/` or `.workbuddy/`; write all persistent coordination under `.agent/`.
 
-## Cross-Role Completion Report
-
-At task completion, every executor must report:
-
-- Active role for the task.
-- Work performed: files changed, commands run, checks made, or findings recorded.
-- Impact boundary: DAG/rules/product artifacts affected or not affected.
-- Cross-role guidance: what workflow, product/execution, or review should do next.
-- No-op handoff: if no other role needs action, say so explicitly.
-
-This requirement applies regardless of current role and prevents the next executor from relying on chat-only context.
-
 ## Course Home Module Progress State
 
 - Course home module cards include local learner status: `看过 -> 学过 -> 已做题 -> 掌握`.
